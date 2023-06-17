@@ -1,0 +1,32 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio of work.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xcollantes/portfolio.git"
+  },
+  "author": "xcollantes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xcollantes/portfolio/issues"
+  },
+  "homepage": "https://github.com/xcollantes/portfolio#readme",
+  "dependencies": {
+    "next": "^13.4.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.3.1",
+    "@types/react": "18.2.12",
+    "typescript": "5.1.3"
+  }
+}
