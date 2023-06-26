@@ -1,3 +1,12 @@
+/** Home page. */
+
+import { Typography } from "@mui/material"
+
 export default function Page() {
-  return <h1>Hello, Next.js this is pages</h1>
+  return (
+    <>
+      <Typography variant="h1">Xavier Collantes</Typography>
+      <Typography>Software engineer</Typography>
+    </>
+  )
 }
