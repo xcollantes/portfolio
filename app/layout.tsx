@@ -5,8 +5,8 @@
 import { base } from "../themes/theme"
 import { Container, CssBaseline } from "@mui/material"
 import { ColorModeProvider } from "../contexts/colorMode"
-import Head from "next/head"
-import HeaderMetadata from "./header"
+// import Head from "next/head"
+// import HeaderMetadata from "./header"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
+    <html lang="en">
       <ColorModeProvider theme={base}>
         {/* <Head>
           <link rel="icon" href="/image/logo/favicon.ico" />
@@ -46,10 +46,8 @@ export default function RootLayout({
         {/* <HeaderMetadata /> */}
 
         <CssBaseline />
-        <Container>
-          <body>{children}</body>
-        </Container>
+        <Container>{children}</Container>
       </ColorModeProvider>
-    </>
+    </html>
   )
 }
