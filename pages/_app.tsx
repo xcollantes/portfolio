@@ -5,6 +5,7 @@ import { Container, CssBaseline } from "@mui/material"
 import { ColorModeProvider } from "../contexts/colorMode"
 
 import { base } from "../themes/theme"
+import DarkModeSwitch from "../components/DarkMode"
 
 export default function App({ Component, pageProps }) {
   return (
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }) {
 
       <CssBaseline />
       <Container>
+        <DarkModeSwitch />
         <Component {...pageProps} />
       </Container>
     </ColorModeProvider>
