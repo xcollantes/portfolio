@@ -39,7 +39,6 @@ export default function Page() {
       <Grid container spacing={2}>
         <Grid xs={12} sm={5}>
           <Box sx={{ m: 4, position: "fixed" }}>
-            {/* <Box sx={namePosition}> */}
             <Box sx={{ position: "absolute", right: -500 }}>
               <Typography variant="h1" align="right">
                 Xavier Collantes
