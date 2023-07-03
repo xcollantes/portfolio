@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <CssBaseline />
-      <Container>
+      <Container maxWidth="xl">
         <DarkModeSwitch />
         <Component {...pageProps} />
       </Container>
