@@ -6,7 +6,7 @@ import {
   getBlog,
   getBlogsPaths,
 } from "../../blog_utils/process_blogs"
-import { Typography } from "@mui/material"
+import { Typography, makeStyles } from "@mui/material"
 import { ParsedUrlQuery } from "querystring"
 
 /**
@@ -32,19 +32,39 @@ interface ContextParamsType extends ParsedUrlQuery {
  * */
 export async function getStaticProps(
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<{ blogData: BlogDataType }>> {
+): Promise<GetStaticPropsResult<BlogDataType>> {
   // Add type, otherwise undefined pages will cause error:
   // https://github.com/vercel/next.js/discussions/16522#discussioncomment-130070
   const params = context.params! as ContextParamsType
-  const blog: BlogDataType = getBlog(params.blogId)
+  const blog: BlogDataType = await getBlog(params.blogId)
 
-  return { props: { blogData: blog } }
+  const blogProps = {
+    ...blog,
+    metadata: JSON.parse(blog.metadata),
+  }
+
+  return { props: blogProps }
 }
 
-export default function Blog({ allBlogsData }) {
+export default function Blog({ body, html, metadata }) {
+  //   const useStyles = makeStyles((theme) => {
+  //     const tags = ["h1", "h2", "h3", "h4", "h5", "h6"]
+  //     const nestedRules = {}
+  //     tags.forEach((tag) => {
+  //       nestedRules[`& ${tag}`] = { ...theme.typography[tag] }
+  //     })
+  //     return {
+  //       root: nestedRules,
+  //     }
+  //   })
+  // const classes = useStyles()
+
   return (
     <>
-      <Typography variant="body1">stuff</Typography>
+      <Typography
+        variant="body1"
+        dangerouslySetInnerHTML={{ __html: html }}
+      ></Typography>
     </>
   )
 }
