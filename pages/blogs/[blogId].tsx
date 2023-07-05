@@ -6,7 +6,7 @@ import {
   getBlog,
   getBlogsPaths,
 } from "../../blog_utils/process_blogs"
-import { Typography, makeStyles } from "@mui/material"
+import { Typography } from "@mui/material"
 import { ParsedUrlQuery } from "querystring"
 
 /**
@@ -47,24 +47,11 @@ export async function getStaticProps(
 }
 
 export default function Blog({ body, html, metadata }) {
-  //   const useStyles = makeStyles((theme) => {
-  //     const tags = ["h1", "h2", "h3", "h4", "h5", "h6"]
-  //     const nestedRules = {}
-  //     tags.forEach((tag) => {
-  //       nestedRules[`& ${tag}`] = { ...theme.typography[tag] }
-  //     })
-  //     return {
-  //       root: nestedRules,
-  //     }
-  //   })
-  // const classes = useStyles()
-
   return (
     <>
-      <Typography
-        variant="body1"
-        dangerouslySetInnerHTML={{ __html: html }}
-      ></Typography>
+      <Typography variant="body1">
+        <div dangerouslySetInnerHTML={{ __html: html }}></div>
+      </Typography>
     </>
   )
 }
