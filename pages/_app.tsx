@@ -5,7 +5,7 @@ import { Container, CssBaseline } from "@mui/material"
 import { ColorModeProvider } from "../contexts/colorMode"
 
 import { base } from "../themes/theme"
-import DarkModeSwitch from "../components/DarkMode"
+import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
 
 export default function App({ Component, pageProps }) {
   return (
@@ -25,9 +25,10 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <CssBaseline />
-      <Container maxWidth="xl">
-        <DarkModeSwitch />
-        <Component {...pageProps} />
+      <Container sx={{ mt: 4 }} maxWidth="xl">
+        <SelectFilterTagContextProvider>
+          <Component {...pageProps} />
+        </SelectFilterTagContextProvider>
       </Container>
     </ColorModeProvider>
   )

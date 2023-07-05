@@ -20,6 +20,15 @@ export const base = {
       "Arial",
     ].join(","),
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+      },
+    },
+  },
 }
 
 // export const wave: Theme = deepmerge(base, {})
