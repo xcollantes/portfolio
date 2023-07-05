@@ -16,6 +16,7 @@ import ShareIcon from "@mui/icons-material/Share"
 import LongCard from "../components/LongCard"
 import Link from "next/link"
 import { MaterialLink } from "../components/MaterialLink"
+import FilterBar from "../components/FilterBar"
 
 export default function Page() {
   const theme: Theme = useTheme()
@@ -61,6 +62,9 @@ export default function Page() {
                 <Link href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`}>
                   <ShareIcon fontSize="large" />
                 </Link>
+              </Box>
+              <Box sx={{ mt: 8 }}>
+                <FilterBar />
               </Box>
             </Box>
           </Box>
