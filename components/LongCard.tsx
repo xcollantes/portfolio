@@ -1,10 +1,4 @@
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  Typography,
-} from "@mui/material"
+import { Button, Card, CardContent, Typography } from "@mui/material"
 
 export interface LongCardType {
   title: string
@@ -22,8 +16,12 @@ export default function LongCard({
       <Card>
         <CardContent>
           <Typography variant="h4">{title}</Typography>
-          <Typography variant="body1">{description}</Typography>
-          <Button variant="contained">See more</Button>
+          <Typography variant="body1" sx={{ mt: 2 }}>
+            {description}
+          </Typography>
+          <Button variant="contained" sx={{ mt: 2 }}>
+            See more
+          </Button>
         </CardContent>
       </Card>
     </>
