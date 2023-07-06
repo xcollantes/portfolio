@@ -11,7 +11,7 @@ export const filterData: FilterDataType[] = [
   { displayText: "Python", tagId: "python" },
   { displayText: "Cyber security", tagId: "security" },
   { displayText: "Consulting", tagId: "consulting" },
-  { displayText: "Database", tagId: "database" },
+  { displayText: "Cloud", tagId: "database" },
   { displayText: "Interests", tagId: "interests" },
   { displayText: "IoT", tagId: "iot" },
 ]
