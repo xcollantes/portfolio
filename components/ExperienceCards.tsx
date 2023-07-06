@@ -1,6 +1,6 @@
 /** Panel with list of cards. */
 
-import { useEffect, useState, useMemo } from "react"
+import { useState, useMemo } from "react"
 import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
@@ -20,7 +20,6 @@ export default function ExperienceCards() {
     useSelectedFilterTagContext()
 
   useMemo(() => {
-    console.log("SELECTED: ", selectedTags)
     if (selectedTags.length <= 0 || selectedTags.length >= filterData.length) {
       setSelected(experienceCardsData) // Render all cards
     } else {
@@ -42,6 +41,7 @@ export default function ExperienceCards() {
         <LongCard
           title={card.title}
           description={card.description}
+          pageLink={card.pageLink}
           imagePath={card.imagePath}
         />
       ))}
