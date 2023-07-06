@@ -6,8 +6,16 @@ import FilterBar from "../components/FilterBar"
 import DarkModeSwitch from "../components/DarkMode"
 import SocialMedia from "../components/SocialMedia"
 import ExperienceCards from "../components/ExperienceCards"
+import { NextRouter, useRouter } from "next/router"
+import {
+  SelectFilterTagContextType,
+  useSelectedFilterTagContext,
+} from "../contexts/selectFilterTag"
+import { FilterDataType, filterData } from "../experience_cards_data/filterData"
+import { useMemo } from "react"
 
 export default function Page() {
+  const router: NextRouter = useRouter()
   const theme: Theme = useTheme()
 
   const namePositionContainer = useMediaQuery(theme.breakpoints.down(1290))
@@ -17,6 +25,30 @@ export default function Page() {
   const namePositionChild = useMediaQuery(theme.breakpoints.down(1290))
     ? { position: "static" }
     : { position: "absolute" }
+
+  const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
+    useSelectedFilterTagContext()
+
+  useMemo(() => {
+    // Filter based on CGI args. Example: `?f=python,interests`.
+    if (router.query.f) {
+      const splitFilter = router.query.f.toString().split(",")
+      const availableFilters: string[] = filterData.map(
+        (filter: FilterDataType) => filter.tagId
+      )
+
+      const cleanTags: string[] = []
+      splitFilter.forEach((filter: string) => {
+        const cleanedFilter: string = filter.trim()
+
+        // Clean input and use input if tag exists as a filter tag.
+        if (availableFilters.includes(cleanedFilter)) {
+          cleanTags.push(cleanedFilter)
+        }
+        setSelectedTags([...selectedTags, ...cleanTags])
+      })
+    }
+  }, [router])
 
   return (
     <>

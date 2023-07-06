@@ -9,7 +9,6 @@ import {
   ReactNode,
   Context,
 } from "react"
-import { CardContentType, mockData } from "../pages"
 
 export interface SelectFilterTagContextType {
   selectedTags: string[]

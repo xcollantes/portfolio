@@ -54,6 +54,7 @@ export default function FilterButton({
       onClick={handleClick}
       id={tagId}
       sx={{ m: 1 }}
+      key={tagId}
     >
       {displayText}
     </Button>
