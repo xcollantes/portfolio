@@ -35,6 +35,7 @@ export default function ExperienceCards() {
     }
   }, [selectedTags])
 
+  let key: number = 0
   return (
     <Stack direction="column" spacing={2} alignItems="stretch">
       {selected.map((card: CardContentType) => (
@@ -43,6 +44,7 @@ export default function ExperienceCards() {
           description={card.description}
           pageLink={card.pageLink}
           imagePath={card.imagePath}
+          key={key++}
         />
       ))}
     </Stack>

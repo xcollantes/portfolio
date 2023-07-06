@@ -6,8 +6,11 @@ import { ColorModeProvider } from "../contexts/colorMode"
 
 import { base } from "../themes/theme"
 import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
+import { MOTD } from "../components/motd"
 
 export default function App({ Component, pageProps }) {
+  console.log(MOTD)
+
   return (
     <ColorModeProvider theme={base}>
       <Head>
