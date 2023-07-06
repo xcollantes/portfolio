@@ -5,7 +5,7 @@ import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 
 interface FilterButtonPropsType {
   displayText: string

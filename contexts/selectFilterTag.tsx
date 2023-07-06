@@ -7,7 +7,6 @@ import {
   createContext,
   useContext,
   ReactNode,
-  Context,
 } from "react"
 
 export interface SelectFilterTagContextType {
