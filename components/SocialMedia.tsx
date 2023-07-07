@@ -7,16 +7,21 @@ import GitHubIcon from "@mui/icons-material/GitHub"
 import ShareIcon from "@mui/icons-material/Share"
 
 export default function SocialMedia() {
+  const iconAttributes = {
+    fontSize: "large",
+    color: "secondary",
+  }
+
   return (
     <Box display="flex" justifyContent="flex-end" columnGap={2} sx={{ py: 3 }}>
       <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN_URL}`}>
-        <LinkedInIcon fontSize="large" />
+        <LinkedInIcon {...iconAttributes} />
       </Link>
       <Link href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`}>
-        <GitHubIcon fontSize="large" />
+        <GitHubIcon {...iconAttributes} />
       </Link>
       <Link href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`}>
-        <ShareIcon fontSize="large" />
+        <ShareIcon {...iconAttributes} />
       </Link>
     </Box>
   )

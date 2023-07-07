@@ -10,7 +10,6 @@ export interface FilterDataType {
 export const filterData: FilterDataType[] = [
   { displayText: "Python", tagId: "python" },
   { displayText: "Cyber security", tagId: "security" },
-  { displayText: "Consulting", tagId: "consulting" },
   { displayText: "Cloud", tagId: "database" },
   { displayText: "Interests", tagId: "interests" },
   { displayText: "IoT", tagId: "iot" },

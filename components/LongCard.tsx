@@ -28,7 +28,7 @@ export default function LongCard({
     <>
       <Card raised sx={{ px: 0.5 }}>
         <CardContent>
-          <Typography variant="h4">{title}</Typography>
+          <Typography variant="h2">{title}</Typography>
           <Typography variant="body1" sx={{ mt: 2 }}>
             {description}
           </Typography>
