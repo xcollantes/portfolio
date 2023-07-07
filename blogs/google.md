@@ -1,3 +1,14 @@
+---
+name: Working at Google
+author: Xavier Collantes
+date_written: 2023-07-01
+date_last_updated: 2023-07-01
+tags:
+  - google
+  - code
+  - devops
+---
+
 # Working at Google
 
 DATE: 06 July 2023
@@ -17,6 +28,11 @@ not use: [Google Critique](https://abseil.io/resources/swe-book/html/ch19.html).
 This is superior to any other code review tool available.
 
 ### H3
+
+My list:
+
+- first
+- second
 
 **BOLD**
 
