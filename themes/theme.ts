@@ -34,10 +34,12 @@ export const base = {
           textTransform: "none",
           fontWeight: 600,
           boxShadow: `0px 5px 14px 0px rgba(0,118,255,0.39)`,
+          borderRadius: 28,
         },
         outlined: { boxShadow: "none" },
       },
     },
+    MuiCard: { styleOverrides: { root: { borderRadius: 8 } } },
   },
 }
 
