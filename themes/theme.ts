@@ -20,11 +20,11 @@ export const base = {
       "Arial",
     ].join(","),
     fontSize: 15,
-    h1: {},
-    h2: {},
+    h1: { fontFamily: ["Permanent Marker"], fontSize: 110 },
+    h2: { fontFamily: ["Tilt Warp"], fontSize: 28 },
     h3: {},
-    subtitle1: {},
-    body1: {},
+    subtitle1: { fontFamily: ["Quicksand"], fontSize: 41 },
+    body1: { fontFamily: ["Quicksand"] },
   },
   palette: { primary: { main: "#0070f3" } },
   components: {
@@ -35,9 +35,19 @@ export const base = {
           fontWeight: 600,
           boxShadow: `0px 5px 14px 0px rgba(0,118,255,0.39)`,
         },
+        outlined: { boxShadow: "none" },
       },
     },
   },
 }
 
 // export const wave: Theme = deepmerge(base, {})
+
+// font-family: 'Koulen' strong and professional
+// font-family: 'Permanent Marker' fun
+// font-family: 'Tilt Warp'
+// font-family: 'Hanuman'
+
+// font-family: 'Quicksand'
+
+// font-family: 'Plus Jakarta Sans', sans-serif;

@@ -60,7 +60,7 @@ export default function Page() {
               <Typography variant="h1" align="right">
                 Xavier Collantes
               </Typography>
-              <Typography variant="h2" align="right">
+              <Typography variant="subtitle1" align="right">
                 Software engineer
               </Typography>
               <SocialMedia />
