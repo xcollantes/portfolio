@@ -14,5 +14,9 @@ export default function FadeCustom({ children }: FadeCustomPropType) {
     setShow(true)
   }, [])
 
-  return <Grow in={show}>{children}</Grow>
+  return (
+    <div>
+      <Grow in={show}>{children}</Grow>
+    </div>
+  )
 }
