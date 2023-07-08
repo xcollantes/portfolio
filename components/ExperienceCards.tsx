@@ -41,13 +41,15 @@ export default function ExperienceCards() {
     <Stack direction="column" spacing={2} alignItems="stretch">
       {selected.map((card: CardContentType) => (
         <FadeCustom key={key}>
-          <LongCard
-            title={card.title}
-            description={card.description}
-            pageLink={card.pageLink}
-            imagePath={card.imagePath}
-            key={key++}
-          />
+          <div>
+            <LongCard
+              title={card.title}
+              description={card.description}
+              pageLink={card.pageLink}
+              imagePath={card.imagePath}
+              key={key++}
+            />
+          </div>
         </FadeCustom>
       ))}
     </Stack>
