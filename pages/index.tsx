@@ -1,87 +1,77 @@
 /** Home page. */
 
-import {
-  Box,
-  Stack,
-  Theme,
-  Typography,
-  styled,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material"
+import { Box, Theme, Typography, useMediaQuery, useTheme } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2"
-import GitHubIcon from "@mui/icons-material/GitHub"
-import LinkedInIcon from "@mui/icons-material/LinkedIn"
-import ShareIcon from "@mui/icons-material/Share"
-import LongCard from "../components/LongCard"
-import Link from "next/link"
-import { MaterialLink } from "../components/MaterialLink"
+import FilterBar from "../components/FilterBar"
+import DarkModeSwitch from "../components/DarkMode"
+import SocialMedia from "../components/SocialMedia"
+import ExperienceCards from "../components/ExperienceCards"
+import { NextRouter, useRouter } from "next/router"
+import {
+  SelectFilterTagContextType,
+  useSelectedFilterTagContext,
+} from "../contexts/selectFilterTag"
+import { FilterDataType, filterData } from "../experience_cards_data/filterData"
+import { useMemo } from "react"
 
 export default function Page() {
+  const router: NextRouter = useRouter()
   const theme: Theme = useTheme()
-  const item = (
-    <Box>
-      <LongCard
-        title="Ransomeware project"
-        description="Creating my homemade randomware muahahah Crazy? I Was Crazy Once. They Locked Me In A Room. A Rubber Room. A Rubber Room With Rats. And Rats Make Me Crazy.Crazy? I Was Crazy Once. They Locked Me In A Room. A Rubber Room. A Rubber Room With Rats. And Rats Make Me Crazy.Crazy? I Was Crazy Once. They Locked Me In A Room. A Rubber Room. A Rubber Room With Rats. And Rats Make Me Crazy."
-        imagePath=""
-      />
-    </Box>
-  )
 
-  const namePosition = useMediaQuery(theme.breakpoints.down("sm"))
+  const namePositionContainer = useMediaQuery(theme.breakpoints.down(1290))
     ? { position: "static" }
     : { position: "fixed" }
 
-  console.log("POSITION: ", namePosition)
+  const namePositionChild = useMediaQuery(theme.breakpoints.down(1290))
+    ? { position: "static" }
+    : { position: "absolute" }
+
+  const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
+    useSelectedFilterTagContext()
+
+  useMemo(() => {
+    // Filter based on CGI args. Example: `?f=python,interests`.
+    if (router.query.f) {
+      const splitFilter = router.query.f.toString().split(",")
+      const availableFilters: string[] = filterData.map(
+        (filter: FilterDataType) => filter.tagId
+      )
+
+      const cleanTags: string[] = []
+      splitFilter.forEach((filter: string) => {
+        const cleanedFilter: string = filter.trim()
+
+        // Clean input and use input if tag exists as a filter tag.
+        if (availableFilters.includes(cleanedFilter)) {
+          cleanTags.push(cleanedFilter)
+        }
+        setSelectedTags([...selectedTags, ...cleanTags])
+      })
+    }
+  }, [router])
+
   return (
     <>
       <Grid container spacing={2}>
         <Grid xs={12} sm={5}>
-          <Box sx={{ m: 4, position: "fixed" }}>
-            <Box sx={{ position: "absolute", right: -500 }}>
+          <Box sx={{ m: 4, ...namePositionContainer }}>
+            <Box sx={{ ...namePositionChild, right: -500 }}>
+              <DarkModeSwitch />
               <Typography variant="h1" align="right">
                 Xavier Collantes
               </Typography>
-              <Typography variant="h2" align="right">
+              <Typography variant="subtitle1" align="right">
                 Software engineer
               </Typography>
-              <Box
-                display="flex"
-                justifyContent="flex-end"
-                columnGap={2}
-                sx={{ py: 3 }}
-              >
-                <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN_URL}`}>
-                  <LinkedInIcon fontSize="large" />
-                </Link>
-                <Link href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`}>
-                  <GitHubIcon fontSize="large" />
-                </Link>
-                <Link href={`${process.env.NEXT_PUBLIC_GITHUB_URL}`}>
-                  <ShareIcon fontSize="large" />
-                </Link>
+              <SocialMedia />
+              <Box sx={{ mt: 8 }}>
+                <FilterBar />
               </Box>
             </Box>
           </Box>
         </Grid>
-
         <Grid xs={12} sm={7}>
-          <Stack direction="column" spacing={2} alignItems="stretch">
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {item}
-            {/* Debug */}
-          </Stack>
+          <ExperienceCards />
         </Grid>
       </Grid>
     </>
