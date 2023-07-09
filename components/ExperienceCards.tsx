@@ -5,13 +5,14 @@ import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { Stack } from "@mui/material"
+import { Fade, Stack } from "@mui/material"
 import LongCard from "./LongCard"
 import {
   CardContentType,
   experienceCardsData,
 } from "../experience_cards_data/cardData"
 import { filterData } from "../experience_cards_data/filterData"
+import FadeCustom from "./Fade"
 
 export default function ExperienceCards() {
   const [selected, setSelected] =
@@ -39,13 +40,17 @@ export default function ExperienceCards() {
   return (
     <Stack direction="column" spacing={2} alignItems="stretch">
       {selected.map((card: CardContentType) => (
-        <LongCard
-          title={card.title}
-          description={card.description}
-          pageLink={card.pageLink}
-          imagePath={card.imagePath}
-          key={key++}
-        />
+        <FadeCustom key={key}>
+          <div>
+            <LongCard
+              title={card.title}
+              description={card.description}
+              pageLink={card.pageLink}
+              imagePath={card.imagePath}
+              key={key++}
+            />
+          </div>
+        </FadeCustom>
       ))}
     </Stack>
   )
