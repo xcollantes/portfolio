@@ -6,8 +6,9 @@ import {
   getBlog,
   getBlogsPaths,
 } from "../../blog_utils/process_blogs"
-import { Typography } from "@mui/material"
+import { Box, Divider, Typography } from "@mui/material"
 import { ParsedUrlQuery } from "querystring"
+import ReactMarkdown from "react-markdown"
 
 /**
  * Runs at build time to generate possible blog paths.
@@ -47,11 +48,32 @@ export async function getStaticProps(
 }
 
 export default function Blog({ body, html, metadata }) {
+  console.log(body)
   return (
     <>
+      <Box sx={{ display: "flex", flexDirection: "column", rowGap: 0.5 }}>
+        <Typography variant="h2">{metadata.name}</Typography>
+        <Typography variant="body1">Written by {metadata.author}</Typography>
+      </Box>
+
+      <Divider sx={{ my: 3 }} />
+
+      {/* Use ReactMarkdown instead of `dangerouslySetInnerHTML` */}
+      {/* TODO(https://github.com/xcollantes/portfolio/issues/17): 
+            Use MuiMarkdown to input themes   */}
+      <ReactMarkdown>{body}</ReactMarkdown>
+
       <Typography variant="body1">
         <div dangerouslySetInnerHTML={{ __html: html }}></div>
       </Typography>
+
+      <Typography variant="body1">
+        Created on {metadata.date_written}
+      </Typography>
+      <Typography variant="body1">
+        Last updated {metadata.date_last_updated}
+      </Typography>
+      {body}
     </>
   )
 }

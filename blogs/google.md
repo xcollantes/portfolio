@@ -9,11 +9,6 @@ tags:
   - devops
 ---
 
-# Working at Google
-
-DATE: 06 July 2023
-AUTHOR: Xavier Collantes
-
 This is an example page for my blog portfolio in case I get "promoted to
 customer".
 
