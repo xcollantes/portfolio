@@ -7,6 +7,7 @@ export interface LongCardType {
   title: string
   description: string
   pageLink: string
+  seeMoreButtonText?: string
   imagePath: string
 }
 
@@ -14,7 +15,8 @@ export default function LongCard({
   title,
   description,
   pageLink,
-  imagePath,
+  seeMoreButtonText = "See more",
+  imagePath = "",
 }: LongCardType) {
   return (
     <Card raised sx={{ px: 0.5 }}>
@@ -30,7 +32,7 @@ export default function LongCard({
             component={MaterialLink}
             to={pageLink}
           >
-            See more
+            {seeMoreButtonText}
           </Button>
         </Box>
       </CardContent>

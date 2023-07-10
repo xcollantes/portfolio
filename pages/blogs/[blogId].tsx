@@ -47,8 +47,13 @@ export async function getStaticProps(
   return { props: blogProps }
 }
 
-export default function Blog({ body, html, metadata }) {
-  console.log(body)
+export default function Blog({
+  fullMarkdown,
+  markdownBody,
+  htmlBody,
+  metadata,
+}) {
+  console.log(fullMarkdown)
   return (
     <>
       <Box sx={{ display: "flex", flexDirection: "column", rowGap: 0.5 }}>
@@ -60,20 +65,8 @@ export default function Blog({ body, html, metadata }) {
 
       {/* Use ReactMarkdown instead of `dangerouslySetInnerHTML` */}
       {/* TODO(https://github.com/xcollantes/portfolio/issues/17): 
-            Use MuiMarkdown to input themes   */}
-      <ReactMarkdown>{body}</ReactMarkdown>
-
-      <Typography variant="body1">
-        <div dangerouslySetInnerHTML={{ __html: html }}></div>
-      </Typography>
-
-      <Typography variant="body1">
-        Created on {metadata.date_written}
-      </Typography>
-      <Typography variant="body1">
-        Last updated {metadata.date_last_updated}
-      </Typography>
-      {body}
+            Use MuiMarkdown to input themes */}
+      <ReactMarkdown>{markdownBody}</ReactMarkdown>
     </>
   )
 }
