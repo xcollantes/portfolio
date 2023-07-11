@@ -1,15 +1,16 @@
 /** Applies to all pages. */
 
 import Head from "next/head"
-import { Container, CssBaseline, ThemeOptions } from "@mui/material"
+import { Container, CssBaseline } from "@mui/material"
 import { ColorModeProvider } from "../contexts/colorMode"
 
 import { base } from "../themes/theme"
 import "../css/global.css"
 import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
 import { MOTD } from "../components/motd"
+import { AppProps } from "next/app"
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   console.log(MOTD)
 
   return (
