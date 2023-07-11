@@ -53,12 +53,16 @@ export default function Blog({
   htmlBody,
   metadata,
 }) {
-  console.log(fullMarkdown)
   return (
     <>
       <Box sx={{ display: "flex", flexDirection: "column", rowGap: 0.5 }}>
-        <Typography variant="h2">{metadata.name}</Typography>
-        <Typography variant="body1">Written by {metadata.author}</Typography>
+        <Typography variant="h2">{metadata.title}</Typography>
+        {metadata.subTitle && (
+          <Typography variant="subtitle2">{metadata.subTitle}</Typography>
+        )}
+        <Typography variant="body1" color={"gray"}>
+          Written by {metadata.author}
+        </Typography>
       </Box>
 
       <Divider sx={{ my: 3 }} />

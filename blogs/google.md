@@ -1,5 +1,6 @@
 ---
-name: Working at Google
+title: Working at Google
+subTitle:
 author: Xavier Collantes
 date_written: 2023-07-01
 date_last_updated: 2023-07-01
@@ -8,9 +9,6 @@ tags:
   - code
   - devops
 ---
-
-This is an example page for my blog portfolio in case I get "promoted to
-customer".
 
 ## Search i18n
 

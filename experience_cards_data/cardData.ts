@@ -8,6 +8,8 @@ export interface CardContentType {
   // NextJS Link page name with no extension in relation to `pages/`.
   // Example: pages/blogs/project.tsx => blogs/project
   pageLink: string
+  // Card button text.
+  seeMoreButtonText?: string
   // Location of image icon.
   imagePath: string
   // Must match with filterData.ts list.
