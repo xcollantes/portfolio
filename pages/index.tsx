@@ -52,12 +52,31 @@ export default function Page() {
 
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container>
         <Grid xs={12} sm={5}>
           <Box sx={{ m: 4, ...namePositionContainer }}>
             <Box sx={{ ...namePositionChild, right: -500 }}>
-              <DarkModeSwitch />
-              <Typography variant="h1" align="right">
+              <Box
+                sx={{
+                  [theme.breakpoints.down("sm")]: {
+                    display: "flex",
+                    justifyContent: "end",
+                    alignItems: "end",
+                  },
+                  mb: 4,
+                  mt: -4,
+                }}
+              >
+                <DarkModeSwitch />
+              </Box>
+              <Typography
+                variant="h1"
+                sx={{
+                  [theme.breakpoints.down(1290)]: { fontSize: 75 },
+                  [theme.breakpoints.down("sm")]: { fontSize: 50 },
+                }}
+                align="right"
+              >
                 Xavier Collantes
               </Typography>
               <Typography variant="subtitle1" align="right">

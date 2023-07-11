@@ -4,29 +4,39 @@
  * https://mui.com/customization/default-theme
  */
 
-import { Theme, createTheme } from "@mui/material"
+import "@fontsource/permanent-marker" // Defaults to weight 400
+import "@fontsource/kumbh-sans" // Defaults to weight 400
+import "@fontsource/outfit"
+import { Theme, ThemeOptions, createTheme } from "@mui/material"
 
 // Used as a util but not exported as its own theme.
 const muiTheme: Theme = createTheme()
-console.log(muiTheme.palette)
-export const base = {
+
+export const base: ThemeOptions = {
   typography: {
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
-      '"Open Sans"',
+      "Outfit",
       "Roboto",
-      "Oxygen",
       "Arial",
     ].join(","),
-    fontSize: 15,
-    h1: { fontFamily: ["Permanent Marker"], fontSize: 110 },
-    h2: { fontFamily: ["Tilt Warp"], fontSize: 28 },
-    h3: {},
-    subtitle1: { fontFamily: ["Quicksand"], fontSize: 41 },
-    body1: { fontFamily: ["Quicksand"] },
+    fontSize: 16,
+
+    h1: { fontFamily: "Permanent Marker", fontSize: 110 },
+    subtitle1: { fontFamily: "Kumbh Sans", fontSize: 41 },
+
+    h2: { fontFamily: "Outfit", fontSize: 70 },
+    subtitle2: { fontFamily: "Outfit", fontSize: 28 },
+
+    h3: { fontFamily: "Outfit", fontSize: 45 },
+    h4: { fontFamily: "Outfit", fontSize: 32, fontWeight: "bold" },
+
+    body1: { fontFamily: "Outfit", fontSize: 22 },
   },
-  palette: { primary: { main: "#0070f3" } },
+  palette: {
+    primary: { main: "#0070f3" },
+  },
   components: {
     MuiButton: {
       styleOverrides: {
@@ -53,3 +63,6 @@ export const base = {
 // font-family: 'Quicksand'
 
 // font-family: 'Plus Jakarta Sans', sans-serif;
+
+// font-family: 'Kumbh Sans', sans-serif;
+// font-family: 'Outfit', sans-serif;

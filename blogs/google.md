@@ -1,5 +1,6 @@
 ---
-name: Working at Google
+title: Working at Google
+subTitle:
 author: Xavier Collantes
 date_written: 2023-07-01
 date_last_updated: 2023-07-01
@@ -8,14 +9,6 @@ tags:
   - code
   - devops
 ---
-
-# Working at Google
-
-DATE: 06 July 2023
-AUTHOR: Xavier Collantes
-
-This is an example page for my blog portfolio in case I get "promoted to
-customer".
 
 ## Search i18n
 
@@ -39,8 +32,6 @@ My list:
 _italian_
 
 #### H4
-
-![jeff](https://i.imgflip.com/212ph6.jpg)
 
 > Quote block
 > second line quote block
