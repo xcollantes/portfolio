@@ -6,9 +6,10 @@ import {
   getBlog,
   getBlogsPaths,
 } from "../../blog_utils/process_blogs"
-import { Box, Divider, Typography } from "@mui/material"
+import { Box, Divider, Theme, Typography, useTheme } from "@mui/material"
 import { ParsedUrlQuery } from "querystring"
 import ReactMarkdown from "react-markdown"
+import DarkModeSwitch from "../../components/DarkMode"
 
 /**
  * Runs at build time to generate possible blog paths.
@@ -53,10 +54,25 @@ export default function Blog({
   htmlBody,
   metadata,
 }) {
+  const theme: Theme = useTheme()
   return (
     <>
       <Box sx={{ display: "flex", flexDirection: "column", rowGap: 0.5 }}>
-        <Typography variant="h2">{metadata.title}</Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "row",
+            [theme.breakpoints.down("sm")]: {
+              flexDirection: "column-reverse",
+              justifyContent: "right",
+            },
+          }}
+        >
+          <Typography variant="h2">{metadata.title}</Typography>
+          <DarkModeSwitch />
+        </Box>
+
         {metadata.subTitle && (
           <Typography variant="subtitle2">{metadata.subTitle}</Typography>
         )}
