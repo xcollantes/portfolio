@@ -57,7 +57,14 @@ export default function Page() {
           <Box sx={{ m: 4, ...namePositionContainer }}>
             <Box sx={{ ...namePositionChild, right: -500 }}>
               <DarkModeSwitch />
-              <Typography variant="h1" align="right">
+              <Typography
+                variant="h1"
+                sx={{
+                  [theme.breakpoints.down(1290)]: { fontSize: 75 },
+                  [theme.breakpoints.down("sm")]: { fontSize: 50 },
+                }}
+                align="right"
+              >
                 Xavier Collantes
               </Typography>
               <Typography variant="subtitle1" align="right">

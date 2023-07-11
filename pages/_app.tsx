@@ -1,7 +1,7 @@
 /** Applies to all pages. */
 
 import Head from "next/head"
-import { Container, CssBaseline } from "@mui/material"
+import { Container, CssBaseline, ThemeOptions } from "@mui/material"
 import { ColorModeProvider } from "../contexts/colorMode"
 
 import { base } from "../themes/theme"

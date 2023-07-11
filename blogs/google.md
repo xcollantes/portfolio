@@ -33,8 +33,6 @@ _italian_
 
 #### H4
 
-![jeff](https://i.imgflip.com/212ph6.jpg)
-
 > Quote block
 > second line quote block
 > third line
