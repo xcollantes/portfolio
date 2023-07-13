@@ -16,7 +16,7 @@ import {
 } from "@mui/material"
 import { ParsedUrlQuery } from "querystring"
 import ReactMarkdown from "react-markdown"
-import DarkModeSwitch from "../../components/DarkMode"
+import Drawer from "../../components/Drawer"
 
 /**
  * Runs at build time to generate possible blog paths.
@@ -62,6 +62,7 @@ export default function Blog({
   metadata,
 }) {
   const theme: Theme = useTheme()
+
   return (
     <>
       <Container maxWidth={"md"}>
@@ -77,14 +78,24 @@ export default function Blog({
               display: "flex",
               justifyContent: "space-between",
               flexDirection: "row",
+
               [theme.breakpoints.down("sm")]: {
+                justifyContent: "flex-end",
                 flexDirection: "column-reverse",
-                justifyContent: "right",
               },
             }}
           >
             <Typography variant="h2">{metadata.title}</Typography>
-            <DarkModeSwitch />
+            <Box
+              sx={{
+                display: "flex",
+                [theme.breakpoints.down("sm")]: {
+                  justifyContent: "flex-end",
+                },
+              }}
+            >
+              <Drawer />
+            </Box>
           </Box>
 
           {metadata.subTitle && (
