@@ -6,7 +6,14 @@ import {
   getBlog,
   getBlogsPaths,
 } from "../../blog_utils/process_blogs"
-import { Box, Divider, Theme, Typography, useTheme } from "@mui/material"
+import {
+  Box,
+  Container,
+  Divider,
+  Theme,
+  Typography,
+  useTheme,
+} from "@mui/material"
 import { ParsedUrlQuery } from "querystring"
 import ReactMarkdown from "react-markdown"
 import DarkModeSwitch from "../../components/DarkMode"
@@ -57,36 +64,44 @@ export default function Blog({
   const theme: Theme = useTheme()
   return (
     <>
-      <Box sx={{ display: "flex", flexDirection: "column", rowGap: 0.5 }}>
+      <Container maxWidth={"md"}>
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-between",
-            flexDirection: "row",
-            [theme.breakpoints.down("sm")]: {
-              flexDirection: "column-reverse",
-              justifyContent: "right",
-            },
+            flexDirection: "column",
+            rowGap: 0.5,
           }}
         >
-          <Typography variant="h2">{metadata.title}</Typography>
-          <DarkModeSwitch />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: "row",
+              [theme.breakpoints.down("sm")]: {
+                flexDirection: "column-reverse",
+                justifyContent: "right",
+              },
+            }}
+          >
+            <Typography variant="h2">{metadata.title}</Typography>
+            <DarkModeSwitch />
+          </Box>
+
+          {metadata.subTitle && (
+            <Typography variant="subtitle2">{metadata.subTitle}</Typography>
+          )}
+          <Typography variant="body1" color={"gray"}>
+            Written by {metadata.author}
+          </Typography>
         </Box>
 
-        {metadata.subTitle && (
-          <Typography variant="subtitle2">{metadata.subTitle}</Typography>
-        )}
-        <Typography variant="body1" color={"gray"}>
-          Written by {metadata.author}
-        </Typography>
-      </Box>
+        <Divider sx={{ my: 3 }} />
 
-      <Divider sx={{ my: 3 }} />
-
-      {/* Use ReactMarkdown instead of `dangerouslySetInnerHTML` */}
-      {/* TODO(https://github.com/xcollantes/portfolio/issues/17): 
+        {/* Use ReactMarkdown instead of `dangerouslySetInnerHTML` */}
+        {/* TODO(https://github.com/xcollantes/portfolio/issues/17): 
             Use MuiMarkdown to input themes */}
-      <ReactMarkdown>{markdownBody}</ReactMarkdown>
+        <ReactMarkdown>{markdownBody}</ReactMarkdown>
+      </Container>
     </>
   )
 }
