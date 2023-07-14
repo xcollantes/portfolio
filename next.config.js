@@ -7,6 +7,12 @@ const contentSecurityPolicy = `
 `
 
 module.exports = {
+  i18n: {
+    // Locales you want to support in your application
+    locales: ["en-US"],
+    // Default locale when visiting a non-locale prefixed path e.g. `/hello`
+    defaultLocale: "en-US",
+  },
   async headers() {
     return [
       {
@@ -38,7 +44,7 @@ module.exports = {
             // content including scripts, stylesheets, images, fonts, objects,
             // media (audio, video), iframes, and more.
             key: "Content-Security-Policy",
-            value: contentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
+            value: contentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
           },
           {
             key: "X-Frame-Options",
