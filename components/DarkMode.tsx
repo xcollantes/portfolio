@@ -6,7 +6,7 @@ import {
   ColorModeContextType,
   useColorModeContext,
 } from "../contexts/colorMode"
-import { yoda, darkSideQuotes, lightSideQuotes, darthVader } from "./Motd"
+import { yoda, darkSideQuotes, lightSideQuotes, darthVader } from "./MsgOfDay"
 
 export default function DarkModeSwitch() {
   const { darkMode, setDarkMode }: ColorModeContextType = useColorModeContext()
