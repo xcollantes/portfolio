@@ -10,7 +10,7 @@ import "@fontsource/outfit"
 import { Theme, ThemeOptions, createTheme } from "@mui/material"
 
 // Used as a util but not exported as its own theme.
-const muiTheme: Theme = createTheme()
+export const defaultTheme: Theme = createTheme()
 
 export const base: ThemeOptions = {
   typography: {
@@ -40,13 +40,14 @@ export const base: ThemeOptions = {
   components: {
     MuiButton: {
       styleOverrides: {
-        root: {
+        contained: {
           textTransform: "none",
           fontWeight: 600,
           boxShadow: `0px 5px 14px 0px rgba(0,118,255,0.39)`,
           borderRadius: 28,
         },
         outlined: { boxShadow: "none" },
+        text: { textTransform: "none", fontWeight: 600 },
       },
     },
     MuiCard: { styleOverrides: { root: { borderRadius: 8 } } },

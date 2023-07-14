@@ -17,6 +17,7 @@ import {
 import { ParsedUrlQuery } from "querystring"
 import ReactMarkdown from "react-markdown"
 import Drawer from "../../components/Drawer"
+import Footer from "../../components/Footer"
 
 /**
  * Runs at build time to generate possible blog paths.
@@ -112,6 +113,7 @@ export default function Blog({
         {/* TODO(https://github.com/xcollantes/portfolio/issues/17): 
             Use MuiMarkdown to input themes */}
         <ReactMarkdown>{markdownBody}</ReactMarkdown>
+        <Footer />
       </Container>
     </>
   )
