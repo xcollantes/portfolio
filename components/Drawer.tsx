@@ -1,4 +1,5 @@
 /** Side drawer. */
+
 import {
   List,
   ListItem,
@@ -7,10 +8,11 @@ import {
   ListItemText,
   Theme,
   useTheme,
+  ListItemButton,
 } from "@mui/material"
-import MenuRoundedIcon from "@mui/icons-material/MenuRounded"
-import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded"
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded"
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded"
+import CloseIcon from "@mui/icons-material/Close"
 
 import { useState } from "react"
 import DarkMode from "./DarkMode"
@@ -46,21 +48,21 @@ export default function Drawer({ anchor = "right" }: DrawerPropType) {
         anchor={anchor}
       >
         <Box sx={boxWidth} role="presentation">
-          <List>
-            <ListItem key={key++}>
-              <HighlightOffRoundedIcon onClick={toggleDrawer} />
+          <List sx={{}}>
+            <ListItem key={key++} sx={{ pb: 1 }} disablePadding>
+              <ListItemButton disableRipple>
+                <ListItemText>
+                  <CloseIcon onClick={toggleDrawer} />
+                </ListItemText>
+                <DarkMode />
+              </ListItemButton>
             </ListItem>
 
-            <ListItem key={key++}>
-              <MaterialLink to={"/"}>
+            <ListItem key={key++} disablePadding>
+              <ListItemButton to="/" component={MaterialLink}>
                 <ListItemText primary="Home" />
                 <HomeRoundedIcon sx={{ mr: 1 }} />
-              </MaterialLink>
-            </ListItem>
-
-            <ListItem key={key++}>
-              <ListItemText primary="Mode" />
-              <DarkMode />
+              </ListItemButton>
             </ListItem>
 
             {/* TODO(): Add related content */}
