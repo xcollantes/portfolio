@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ColorModeProvider theme={base}>
       <Head>
-        <link rel="icon" href="/image/logo/favicon.ico" />
+        <link rel="icon" href="/icons/favicon.ico" />
         <meta
           name="description"
           content="Career works and personal projects of Xavier Collantes."
