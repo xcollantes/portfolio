@@ -7,7 +7,7 @@ import { ColorModeProvider } from "../contexts/colorMode"
 import { base } from "../themes/theme"
 import "../css/global.css"
 import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
-import { MOTD } from "../components/motd"
+import { MOTD } from "../components/Motd"
 import { AppProps } from "next/app"
 
 export default function App({ Component, pageProps }: AppProps) {
