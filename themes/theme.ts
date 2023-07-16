@@ -4,10 +4,16 @@
  * https://mui.com/customization/default-theme
  */
 
-import "@fontsource/permanent-marker" // Defaults to weight 400
-import "@fontsource/kumbh-sans" // Defaults to weight 400
-import "@fontsource/outfit"
+import { Kumbh_Sans, Outfit, Permanent_Marker } from "next/font/google"
 import { Theme, ThemeOptions, createTheme } from "@mui/material"
+
+const permanentMarker = Permanent_Marker({
+  subsets: ["latin"],
+  weight: "400",
+})
+const kumbhSans = Kumbh_Sans({ subsets: ["latin"], weight: "400" })
+const outfit_font = Outfit({ subsets: ["latin"], weight: "300" })
+const outfit = outfit_font.style.fontFamily
 
 // Used as a util but not exported as its own theme.
 export const defaultTheme: Theme = createTheme()
@@ -17,22 +23,22 @@ export const base: ThemeOptions = {
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
-      "Outfit",
+      outfit,
       "Roboto",
       "Arial",
     ].join(","),
     fontSize: 16,
 
-    h1: { fontFamily: "Permanent Marker", fontSize: 110 },
-    subtitle1: { fontFamily: "Kumbh Sans", fontSize: 41 },
+    h1: { fontFamily: permanentMarker.style.fontFamily, fontSize: 110 },
+    subtitle1: { fontFamily: kumbhSans.style.fontFamily, fontSize: 41 },
 
-    h2: { fontFamily: "Outfit", fontSize: 70 },
-    subtitle2: { fontFamily: "Outfit", fontSize: 28 },
+    h2: { fontFamily: outfit, fontSize: 70 },
+    subtitle2: { fontFamily: outfit, fontSize: 28 },
 
-    h3: { fontFamily: "Outfit", fontSize: 45 },
-    h4: { fontFamily: "Outfit", fontSize: 32, fontWeight: "bold" },
+    h3: { fontFamily: outfit, fontSize: 45 },
+    h4: { fontFamily: outfit, fontSize: 32, fontWeight: "bold" },
 
-    body1: { fontFamily: "Outfit", fontSize: 22 },
+    body1: { fontFamily: outfit, fontSize: 22 },
   },
   palette: {
     primary: { main: "#0070f3" },
