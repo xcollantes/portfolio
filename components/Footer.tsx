@@ -31,7 +31,7 @@ export default function Footer() {
           Home
         </Button>
         <Divider orientation="vertical" variant="middle" flexItem />
-        {/* TODO(): Add next blog feature */}
+        {/* TODO(https://github.com/xcollantes/portfolio/issues/33): Add next blog feature */}
         <Button variant="text" sx={sxButton} to={"/"} component={MaterialLink}>
           Next <ArrowForwardIosRoundedIcon sx={{ fontSize: "small", ml: 1 }} />
         </Button>
