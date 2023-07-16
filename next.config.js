@@ -2,12 +2,12 @@
 
 const contentSecurityPolicy = `
   default-src 'self';
-  script-src 'self';
-  font-src 'self';
-  style-src 'sha256-Qz/Qy6MnGkbUCmQVfNqj7YkEyRcQGsCm6tr6cCH0QuA=';
+  script-src 'unsafe-eval';
+  font-src 'self' fonts.googleapis.com;
+  style-src 'unsafe-inline';
 `
 
-let policy = {
+const policy = {
   // Helps prevent cross-site scripting (XSS), clickjacking, and other
   // code injection attacks.
   // Content Security Policy (CSP) can specify allowed origins for
@@ -15,14 +15,6 @@ let policy = {
   // media (audio, video), iframes, and more.
   key: "Content-Security-Policy",
   value: contentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
-}
-
-// Error if using CSP in local development
-if (process.env.NODE_ENV === "development") {
-  policy = {
-    key: "Content-Security-Policy",
-    value: "",
-  }
 }
 
 module.exports = {
@@ -76,14 +68,12 @@ module.exports = {
             key: "X-Frame-Options",
             value: "SAMEORIGIN",
           },
-
           {
             // Allows which APIs in browser can be accessed
             // Ex: `camera=(), microphone=(), geolocation=(), browsing-topics=()`
             key: "Permissions-Policy",
             value: "geolocation=*", // allow specified policies here
           },
-          { ...policy },
         ],
       },
     ]
