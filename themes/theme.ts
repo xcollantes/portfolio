@@ -10,7 +10,7 @@ import "@fontsource/outfit"
 import { Theme, ThemeOptions, createTheme } from "@mui/material"
 
 // Used as a util but not exported as its own theme.
-const muiTheme: Theme = createTheme()
+export const defaultTheme: Theme = createTheme()
 
 export const base: ThemeOptions = {
   typography: {
