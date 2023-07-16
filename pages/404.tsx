@@ -10,6 +10,7 @@ export default function NotFound() {
       <ErrorPage errorTitle="Page not found" />
       <Box sx={{ textAlign: "center", mt: 4, ml: 5 }}>
         <Image
+          priority
           src={"/images/404_pulp_fiction.gif"}
           alt=""
           width={300}
