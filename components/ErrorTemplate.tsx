@@ -23,7 +23,12 @@ export default function ErrorPage({ errorTitle }: ErrorPagePropType) {
           mt: 4,
         }}
       >
-        <Button variant="contained" to={"/"} component={MaterialLink}>
+        <Button
+          variant="contained"
+          to={"/"}
+          component={MaterialLink}
+          sx={{ mb: 7 }}
+        >
           Home
         </Button>
       </Box>
