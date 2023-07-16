@@ -6,6 +6,24 @@ const contentSecurityPolicy = `
   font-src 'self';
 `
 
+let policy = {
+  // Helps prevent cross-site scripting (XSS), clickjacking, and other
+  // code injection attacks.
+  // Content Security Policy (CSP) can specify allowed origins for
+  // content including scripts, stylesheets, images, fonts, objects,
+  // media (audio, video), iframes, and more.
+  key: "Content-Security-Policy",
+  value: contentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
+}
+
+// Error if using CSP in local development
+if (process.env.NODE_ENV === "development") {
+  policy = {
+    key: "Content-Security-Policy",
+    value: "",
+  }
+}
+
 module.exports = {
   i18n: {
     // Locales you want to support in your application
@@ -38,15 +56,6 @@ module.exports = {
             value: "nosniff",
           },
           {
-            // Helps prevent cross-site scripting (XSS), clickjacking, and other
-            // code injection attacks.
-            // Content Security Policy (CSP) can specify allowed origins for
-            // content including scripts, stylesheets, images, fonts, objects,
-            // media (audio, video), iframes, and more.
-            key: "Content-Security-Policy",
-            value: contentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
-          },
-          {
             key: "X-Frame-Options",
             value: "sameorigin",
           },
@@ -73,6 +82,7 @@ module.exports = {
             key: "Permissions-Policy",
             value: "geolocation=*", // allow specified policies here
           },
+          { ...policy },
         ],
       },
     ]
