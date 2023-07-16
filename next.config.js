@@ -4,6 +4,7 @@ const contentSecurityPolicy = `
   default-src 'self';
   script-src 'self';
   font-src 'self';
+  style-src 'sha256-Qz/Qy6MnGkbUCmQVfNqj7YkEyRcQGsCm6tr6cCH0QuA=';
 `
 
 let policy = {
