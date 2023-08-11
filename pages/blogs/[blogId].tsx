@@ -49,9 +49,56 @@ export async function getStaticProps(
 export default function Blog({ body, html, metadata }) {
   return (
     <>
-      <Typography variant="body1">
-        <div dangerouslySetInnerHTML={{ __html: html }}></div>
-      </Typography>
+      <Container maxWidth={"md"}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            rowGap: 0.5,
+          }}
+        >
+          {/* Drawer menu */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: "row",
+
+              [theme.breakpoints.down("sm")]: {
+                justifyContent: "flex-end",
+                flexDirection: "column-reverse",
+              },
+            }}
+          >
+            <Typography variant="h2">{metadata.title}</Typography>
+            <Box
+              sx={{
+                display: "flex",
+                [theme.breakpoints.down("sm")]: {
+                  justifyContent: "flex-end",
+                },
+              }}
+            >
+              <Drawer />
+            </Box>
+          </Box>
+
+          {metadata.subTitle && (
+            <Typography variant="subtitle2">{metadata.subTitle}</Typography>
+          )}
+          <Typography variant="body1" color={"gray"}>
+            Written by {metadata.author}
+          </Typography>
+        </Box>
+
+        <Divider sx={{ my: 3 }} />
+
+        {/* Use ReactMarkdown instead of `dangerouslySetInnerHTML` */}
+        {/* TODO(https://github.com/xcollantes/portfolio/issues/17): 
+            Use MuiMarkdown to input themes */}
+        <ReactMarkdown>{markdownBody}</ReactMarkdown>
+        <Footer />
+      </Container>
     </>
   )
 }

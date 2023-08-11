@@ -17,9 +17,8 @@ export interface CardContentType {
 
 export const experienceCardsData: CardContentType[] = [
   {
-    title: "Google Search",
-    description:
-      "Improving the internet's most well-known web application work for all locales.",
+    title: "Technical Solutions in Google Search",
+    description: "Improving Search to work for all locales at scale.",
     pageLink: "blogs/google",
     imagePath: "",
     tagIds: ["python", "cloud", "google", "search"],
