@@ -46,6 +46,7 @@ export default function ExperienceCards() {
               title={card.title}
               description={card.description}
               pageLink={card.pageLink}
+              seeMoreButtonText={card.seeMoreButtonText}
               imagePath={card.imagePath}
               key={key++}
             />

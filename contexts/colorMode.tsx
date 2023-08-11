@@ -2,7 +2,12 @@
 
 "use client"
 
-import { Theme, ThemeProvider, createTheme } from "@mui/material"
+import {
+  Theme,
+  ThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+} from "@mui/material"
 import {
   Context,
   Dispatch,
@@ -45,10 +50,12 @@ export function ColorModeProvider({ theme, children }: ColorModeContextProps) {
    */
   const themeWithMode = useMemo<Theme>(
     () =>
-      createTheme(
-        deepmerge(theme, {
-          palette: { mode: darkMode ? "dark" : "light" },
-        })
+      responsiveFontSizes(
+        createTheme(
+          deepmerge(theme, {
+            palette: { mode: darkMode ? "dark" : "light" },
+          })
+        )
       ),
     [darkMode, theme]
   )

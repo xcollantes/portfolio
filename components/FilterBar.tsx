@@ -7,7 +7,7 @@ import { FilterDataType, filterData } from "../experience_cards_data/filterData"
 export default function FilterBar() {
   let key: number = 0
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+    <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "end" }}>
       {filterData.map((filter: FilterDataType) => (
         <FilterButton
           displayText={filter.displayText}

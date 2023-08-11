@@ -6,8 +6,18 @@ import {
   getBlog,
   getBlogsPaths,
 } from "../../blog_utils/process_blogs"
-import { Typography } from "@mui/material"
+import {
+  Box,
+  Container,
+  Divider,
+  Theme,
+  Typography,
+  useTheme,
+} from "@mui/material"
 import { ParsedUrlQuery } from "querystring"
+import ReactMarkdown from "react-markdown"
+import Drawer from "../../components/Drawer"
+import Footer from "../../components/Footer"
 
 /**
  * Runs at build time to generate possible blog paths.
@@ -46,7 +56,14 @@ export async function getStaticProps(
   return { props: blogProps }
 }
 
-export default function Blog({ body, html, metadata }) {
+export default function Blog({
+  fullMarkdown,
+  markdownBody,
+  htmlBody,
+  metadata,
+}) {
+  const theme: Theme = useTheme()
+
   return (
     <>
       <Container maxWidth={"md"}>
@@ -57,7 +74,6 @@ export default function Blog({ body, html, metadata }) {
             rowGap: 0.5,
           }}
         >
-          {/* Drawer menu */}
           <Box
             sx={{
               display: "flex",

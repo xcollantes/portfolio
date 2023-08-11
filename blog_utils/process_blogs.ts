@@ -8,16 +8,33 @@ import html from "remark-html"
 
 const blogsDirectory: string = path.join(process.cwd(), "blogs")
 
+export interface MetadataType {
+  // Shown as title on blog page. Human readable. Case-sensitive.
+  title: string
+  // Shown as text under title on blog page. Human readable. Case-sensitive.
+  subTitle?: string
+  // Shown as author on blog page. Human readable. Case-sensitive.
+  author?: string
+  // Timestamp of creation of blog.
+  date_written?: Date
+  // Timestamp of last major update.
+  date_last_updated?: Date
+  // Tags that should match some tag in filterData.ts.
+  tags?: string[]
+}
+
 export interface BlogDataType {
   // Filename of the blog entry without any extension.
   fileId: string
   // Raw text to be placed in the body.
   // Contains headers.
   // WARNING: The body will be directly rendered on user page.
-  body: string
+  fullMarkdown: string
+  // Markdown content without headers.
+  markdownBody: string
   // Text converted from Markdown to HTML.
   // Does not have headers.
-  html: any
+  htmlBody: any
   // YAML metadata at head of Markdown file.
   // Must stringify to serialize first then deserialize when used.
   metadata: string
@@ -45,20 +62,16 @@ export function getBlogsPaths(): Array<{ params: { blogId: string } }> {
  */
 export async function getBlog(blogId: string): Promise<BlogDataType> {
   const fullFilePath: string = path.join(blogsDirectory, `${blogId}.md`)
-  const content: string = fs.readFileSync(fullFilePath, "utf8")
+  const fileContents: string = fs.readFileSync(fullFilePath, "utf8")
 
-  const blogMetadata: matter.GrayMatterFile<string> = matter(content)
+  const blogMetadata: matter.GrayMatterFile<string> = matter(fileContents)
   let htmlBody = await remark().use(html).process(blogMetadata.content)
-
-  //   let htmlBody = htmlBodyPre.value
-  //     .toString()
-  //     .replace(/<h1>/, "<Typography variant='h1'>")
-  //     .replace(/<\/h1>/, "</Typography>")
 
   return {
     fileId: blogId,
-    body: content,
-    html: htmlBody.value.toString(),
-    metadata: JSON.stringify(blogMetadata.data),
+    fullMarkdown: fileContents,
+    markdownBody: blogMetadata.content,
+    htmlBody: htmlBody.value.toString(),
+    metadata: JSON.stringify(blogMetadata.data as MetadataType),
   }
 }

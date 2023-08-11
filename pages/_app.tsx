@@ -7,22 +7,16 @@ import { ColorModeProvider } from "../contexts/colorMode"
 import { base } from "../themes/theme"
 import "../css/global.css"
 import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
-import { MOTD } from "../components/motd"
+import { MOTD } from "../components/MsgOfDay"
+import { AppProps } from "next/app"
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   console.log(MOTD)
 
   return (
     <ColorModeProvider theme={base}>
       <Head>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Carter+One&family=Geologica:wght@600&family=Hanuman:wght@700&family=Koulen&family=Montserrat+Subrayada&family=Montserrat:wght@700&family=Permanent+Marker&family=Tilt+Warp&display=swap');
-          @import
-          url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@600&family=Outfit:wght@300&family=Plus+Jakarta+Sans:wght@700&family=Quicksand&display=swap');
-        </style>
-
-        <link rel="icon" href="/image/logo/favicon.ico" />
+        <link rel="icon" href="/icons/favicon.ico" />
         <meta
           name="description"
           content="Career works and personal projects of Xavier Collantes."
