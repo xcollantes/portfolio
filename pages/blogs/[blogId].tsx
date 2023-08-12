@@ -40,7 +40,7 @@ interface ContextParamsType extends ParsedUrlQuery {
  *
  * Requires return of
  * `{ props: <prop variable> }`
- * */
+ */
 export async function getStaticProps(
   context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<BlogDataType>> {
@@ -110,9 +110,6 @@ export default function Blog({
 
         <Divider sx={{ my: 3 }} />
 
-        {/* Use ReactMarkdown instead of `dangerouslySetInnerHTML` */}
-        {/* TODO(https://github.com/xcollantes/portfolio/issues/17): 
-            Use MuiMarkdown to input themes */}
         <ReactMarkdown>{markdownBody}</ReactMarkdown>
         <Footer />
       </Container>

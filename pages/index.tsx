@@ -15,8 +15,10 @@ import { FilterDataType, filterData } from "../blog_utils/filters"
 import { useMemo } from "react"
 import { GetStaticPropsResult } from "next"
 import { MetadataType, getHeaderMetadata } from "../blog_utils/process_blogs"
-import { AppProps } from "next/app"
 
+/**
+ * Runs at build time to statically generate preview cards.
+ */
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ metadata: MetadataType[] }>
 > {
@@ -30,7 +32,6 @@ export async function getStaticProps(): Promise<
 export default function Page(props) {
   const router: NextRouter = useRouter()
   const theme: Theme = useTheme()
-  console.log("PROPS: ", props)
 
   const namePositionContainer = useMediaQuery(theme.breakpoints.down(1290))
     ? { position: "static" }
