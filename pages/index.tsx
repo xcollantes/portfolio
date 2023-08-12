@@ -11,10 +11,29 @@ import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { FilterDataType, filterData } from "../experience_cards_data/filterData"
+import { FilterDataType, filterData } from "../blog_utils/filters"
 import { useMemo } from "react"
+import { GetStaticPropsResult } from "next"
+import { MetadataType, getHeaderMetadata } from "../blog_utils/process_blogs"
 
-export default function Page() {
+/**
+ * Runs at build time to statically generate preview cards.
+ */
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<{ metadata: MetadataType[] }>
+> {
+  const blogsMetadata: string[] = await getHeaderMetadata()
+  const metadata: MetadataType[] = blogsMetadata.map(
+    (unparsedMetadata: string) => JSON.parse(unparsedMetadata)
+  )
+  return { props: { metadata: metadata } }
+}
+
+interface IndexPropTypes {
+  metadata: MetadataType[]
+}
+
+export default function Page(props: IndexPropTypes) {
   const router: NextRouter = useRouter()
   const theme: Theme = useTheme()
 
@@ -90,7 +109,7 @@ export default function Page() {
           </Box>
         </Grid>
         <Grid xs={12} sm={7}>
-          <ExperienceCards />
+          <ExperienceCards metadata={props.metadata} />
         </Grid>
       </Grid>
     </>

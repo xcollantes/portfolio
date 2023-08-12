@@ -4,7 +4,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from "next"
 import {
   BlogDataType,
   getBlog,
-  getBlogsPaths,
+  getBlogsPathsAsProps,
 } from "../../blog_utils/process_blogs"
 import {
   Box,
@@ -26,7 +26,8 @@ import Footer from "../../components/Footer"
  * `{ paths: [{ params: <blogId> }, { params: <blogId> }] }`
  */
 export async function getStaticPaths() {
-  const blogsPaths: Array<{ params: { blogId: string } }> = getBlogsPaths()
+  const blogsPaths: Array<{ params: { blogId: string } }> =
+    getBlogsPathsAsProps()
   return { paths: blogsPaths, fallback: false }
 }
 
@@ -39,7 +40,7 @@ interface ContextParamsType extends ParsedUrlQuery {
  *
  * Requires return of
  * `{ props: <prop variable> }`
- * */
+ */
 export async function getStaticProps(
   context: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<BlogDataType>> {
@@ -109,9 +110,6 @@ export default function Blog({
 
         <Divider sx={{ my: 3 }} />
 
-        {/* Use ReactMarkdown instead of `dangerouslySetInnerHTML` */}
-        {/* TODO(https://github.com/xcollantes/portfolio/issues/17): 
-            Use MuiMarkdown to input themes */}
         <ReactMarkdown>{markdownBody}</ReactMarkdown>
         <Footer />
       </Container>

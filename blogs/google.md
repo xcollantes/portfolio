@@ -1,10 +1,18 @@
 ---
-title: Working at Google
-subTitle:
+title: Technical Solutions in Google Search
+cardDescription: Improving Search to work for all locales at scale.
+cardPageLink: blogs/google
+subTitle: ""
+cardButtonText: ""
+imagePath: ""
 author: Xavier Collantes
-date_written: 2023-07-01
-date_last_updated: 2023-07-01
-tags:
+dateWritten: 2023-07-01
+dateLastUpdated: 2023-07-01
+tagIds:
+  - python
+  - cloud
+  - consulting
+  - search
   - google
   - code
   - devops

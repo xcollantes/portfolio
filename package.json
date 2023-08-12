@@ -27,6 +27,7 @@
     "@fontsource/permanent-marker": "^5.0.5",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.6",
+    "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "next": "^13.4.6",
     "react": "^18.2.0",

@@ -5,17 +5,17 @@ import { MaterialLink } from "./MaterialLink"
 
 export interface LongCardType {
   title: string
-  description: string
-  pageLink: string
-  seeMoreButtonText?: string
+  cardDescription: string
+  cardPageLink: string
+  cardButtonText?: string
   imagePath: string
 }
 
 export default function LongCard({
   title,
-  description,
-  pageLink,
-  seeMoreButtonText = "See more",
+  cardDescription,
+  cardPageLink,
+  cardButtonText = "See more",
   imagePath = "",
 }: LongCardType) {
   return (
@@ -23,16 +23,16 @@ export default function LongCard({
       <CardContent>
         <Typography variant="h4">{title}</Typography>
         <Typography variant="body1" sx={{ mt: 2 }}>
-          {description}
+          {cardDescription}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Button
             variant="contained"
             sx={{ mt: 2 }}
             component={MaterialLink}
-            to={pageLink}
+            to={cardPageLink}
           >
-            {seeMoreButtonText}
+            {cardButtonText}
           </Button>
         </Box>
       </CardContent>

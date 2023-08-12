@@ -1,7 +1,6 @@
 /** Bottom footer. */
 
 import { Box, Button, Divider, Theme, useTheme } from "@mui/material"
-import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded"
 import { MaterialLink } from "./MaterialLink"
 
 export default function Footer() {
