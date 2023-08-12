@@ -29,7 +29,11 @@ export async function getStaticProps(): Promise<
   return { props: { metadata: metadata } }
 }
 
-export default function Page(props) {
+interface IndexPropTypes {
+  metadata: MetadataType[]
+}
+
+export default function Page(props: IndexPropTypes) {
   const router: NextRouter = useRouter()
   const theme: Theme = useTheme()
 
