@@ -1,6 +1,6 @@
 ---
 title: Ham radio
-cardDescription:
+cardDescription: ""
 cardPageLink: ""
 imagePath: ""
 tagIds: ["interests", "radio"]

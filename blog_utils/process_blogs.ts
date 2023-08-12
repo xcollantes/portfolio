@@ -77,21 +77,23 @@ export interface BlogDataType {
   metadata: string
 }
 
+/** Read local files IDs from paths of the Markdown files. */
+export function getBlogsPaths(): string[] {
+  return fs.readdirSync(blogsDirectory)
+}
+
 /**
- * Read local files IDs from paths of the Markdown files.
+ * Get blog paths as NextJS props.
+ *
+ * Remove the file extension and create object for getStaticPaths().
  */
-export function getBlogsPaths(): Array<{ params: { blogId: string } }> {
-  const fileNames: string[] = fs.readdirSync(blogsDirectory)
-
-  const pathsProps: Array<{ params: { blogId: string } }> = fileNames.map(
-    (fileName: string) => ({
-      params: {
-        blogId: `${fileName.replace(/\.md$/, "")}`,
-      },
-    })
-  )
-
-  return pathsProps
+export function getBlogsPathsAsProps(): Array<{ params: { blogId: string } }> {
+  const fileNames: string[] = getBlogsPaths()
+  return fileNames.map((fileName: string) => ({
+    params: {
+      blogId: `${fileName.replace(/\.md$/, "")}`,
+    },
+  }))
 }
 
 /**
@@ -111,4 +113,25 @@ export async function getBlog(blogId: string): Promise<BlogDataType> {
     htmlBody: htmlBody.value.toString(),
     metadata: JSON.stringify(blogMetadata.data as MetadataType),
   }
+}
+
+/**
+ * Get the YAML header with metadata for each blog.
+ *
+ * Deserialized metadata which is string then must be converted to object before
+ * use.
+ */
+export async function getHeaderMetadata(): Promise<string[]> {
+  const blogPaths: string[] = getBlogsPaths()
+
+  const blogs: string[] = await Promise.all(
+    blogPaths.map(async (blogPath: string) => {
+      const blog: BlogDataType = await getBlog(
+        `${blogPath.replace(/\.md$/, "")}`
+      )
+      return blog.metadata
+    })
+  )
+
+  return blogs
 }

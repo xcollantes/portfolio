@@ -4,7 +4,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from "next"
 import {
   BlogDataType,
   getBlog,
-  getBlogsPaths,
+  getBlogsPathsAsProps,
 } from "../../blog_utils/process_blogs"
 import {
   Box,
@@ -26,7 +26,8 @@ import Footer from "../../components/Footer"
  * `{ paths: [{ params: <blogId> }, { params: <blogId> }] }`
  */
 export async function getStaticPaths() {
-  const blogsPaths: Array<{ params: { blogId: string } }> = getBlogsPaths()
+  const blogsPaths: Array<{ params: { blogId: string } }> =
+    getBlogsPathsAsProps()
   return { paths: blogsPaths, fallback: false }
 }
 

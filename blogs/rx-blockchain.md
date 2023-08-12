@@ -1,5 +1,5 @@
 ---
-title: "Prescription Blockchain"
+title: Prescription Blockchain
 cardDescription: ""
 cardPageLink: ""
 imagePath: ""

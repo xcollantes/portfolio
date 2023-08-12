@@ -1,6 +1,6 @@
 ---
 title: Homemade Google Home
-cardDescription:
+cardDescription: ""
 cardPageLink: ""
 imagePath: ""
 tagIds: ["iot", "python", "interests", "electronics"]
