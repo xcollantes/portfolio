@@ -1,12 +1,13 @@
 ---
-title: Associate Cloud Certification
+title: Google Associate Cloud Engineer
 subTitle: Expanding technical capabilities on the job.
+cardPageLink: blogs/cloud
 author: Xavier Collantes
-date_written: 2023-07-07
-date_last_updated: 2023-07-07
-card_description: Google Cloud certification test and practical knowledge.
-image_path:
-tags:
+dateWritten: 2023-07-07
+dateLastUpdated: 2023-07-07
+imagePath: ""
+tagIds:
+  - python
   - google
   - certification
   - code

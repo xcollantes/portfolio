@@ -8,19 +8,56 @@ import html from "remark-html"
 
 const blogsDirectory: string = path.join(process.cwd(), "blogs")
 
+/**
+ * YAML metadata tags set in each Markdown blog file.
+ *
+ * Example at the top of every article Markdown file:
+ * ```
+ * ---
+ * title: Technical Solutions in Google Search
+ * cardDescription: What I did on the team and how I did it.
+ * imagePath: /myblog/image.png
+ * cardPageLink: /myblogpage-no-extension
+ * cardButtonText: See more
+ * author: Xavier Collantes
+ * dateWritten: 2023-07-01
+ * dateLastUpdated: 2023-07-01
+ * tagIds:
+ *   - python
+ *   - cloud
+ *   - consulting
+ *   - search
+ * ---
+ * ```
+ */
 export interface MetadataType {
-  // Shown as title on blog page. Human readable. Case-sensitive.
+  // Shown as title on blog page and preview card header. Human readable.
+  // Case-sensitive.
   title: string
+  // Description used on preview card. One or two sentences.
+  cardDescription: string
+  // Usually the page where the article is located but the link can be an
+  // external page and skip the article altogether.
+  //
+  // NextJS Link page name with no extension in relation to `pages/`.
+  // Example: pages/blogs/project.tsx => blogs/project
+  cardPageLink: string
+  // Preview card button text. Default is "See more".
+  imagePath: string
+  // Must match with filterData.ts list.
+  // Add as many tags since only tags specified in filterData.ts are filterable.
+  // Order not considered.
+  tagIds: string[]
   // Shown as text under title on blog page. Human readable. Case-sensitive.
   subTitle?: string
   // Shown as author on blog page. Human readable. Case-sensitive.
   author?: string
   // Timestamp of creation of blog.
-  date_written?: Date
+  cardButtonText?: string
+  // Location of image icon relative to the `public/` directory.
+  dateWritten?: Date
   // Timestamp of last major update.
-  date_last_updated?: Date
-  // Tags that should match some tag in filterData.ts.
-  tags?: string[]
+  dateLastUpdated?: Date
 }
 
 export interface BlogDataType {

@@ -11,7 +11,7 @@ import {
   CardContentType,
   experienceCardsData,
 } from "../experience_cards_data/cardData"
-import { filterData } from "../experience_cards_data/filterData"
+import { filterData } from "../blog_utils/filters"
 import FadeCustom from "./Fade"
 
 export default function ExperienceCards() {

@@ -7,6 +7,7 @@ export interface FilterDataType {
   tagId: string
 }
 
+// List of filters turned on.
 export const filterData: FilterDataType[] = [
   { displayText: "Python", tagId: "python" },
   { displayText: "Cyber security", tagId: "security" },

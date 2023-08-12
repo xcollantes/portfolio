@@ -2,7 +2,7 @@
 
 import { Box } from "@mui/material"
 import FilterButton from "./FilterButton"
-import { FilterDataType, filterData } from "../experience_cards_data/filterData"
+import { FilterDataType, filterData } from "../blog_utils/filters"
 
 export default function FilterBar() {
   let key: number = 0

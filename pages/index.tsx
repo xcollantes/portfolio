@@ -11,7 +11,7 @@ import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { FilterDataType, filterData } from "../experience_cards_data/filterData"
+import { FilterDataType, filterData } from "../blog_utils/filters"
 import { useMemo } from "react"
 
 export default function Page() {
