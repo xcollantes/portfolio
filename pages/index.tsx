@@ -113,7 +113,7 @@ export default function Page(props: IndexPropTypes) {
           </Box>
         </Grid>
         <Grid xs={12} sm={7}>
-          {session && status != "authenticated" ? (
+          {session ? (
             <ExperienceCards metadata={props.metadata} />
           ) : (
             <AuthButton />
