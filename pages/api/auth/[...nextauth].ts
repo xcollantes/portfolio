@@ -2,7 +2,6 @@
 
 import NextAuth, { NextAuthOptions } from "next-auth"
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google"
-import GithubProvider, { GithubProfile } from "next-auth/providers/github"
 import { google } from "googleapis"
 
 export const authOptions: NextAuthOptions = {
