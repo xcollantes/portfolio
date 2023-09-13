@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      if (account?.provider == "google" && user?.verified) {
+      if (account?.provider == "google") {
         const onList: boolean = await isAllowed(profile?.email as string)
         if (onList) {
           return true
