@@ -2,6 +2,7 @@
 
 import { Box, Theme, Typography, useMediaQuery, useTheme } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2"
+import { useSession } from "next-auth/react"
 import FilterBar from "../components/FilterBar"
 import DarkModeSwitch from "../components/DarkMode"
 import SocialMedia from "../components/SocialMedia"
@@ -15,6 +16,7 @@ import { FilterDataType, filterData } from "../blog_utils/filters"
 import { useMemo } from "react"
 import { GetStaticPropsResult } from "next"
 import { MetadataType, getHeaderMetadata } from "../blog_utils/process_blogs"
+import AuthButton from "../components/AuthButton"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -34,6 +36,8 @@ interface IndexPropTypes {
 }
 
 export default function Page(props: IndexPropTypes) {
+  const { data: session, status } = useSession()
+
   const router: NextRouter = useRouter()
   const theme: Theme = useTheme()
 
@@ -109,7 +113,11 @@ export default function Page(props: IndexPropTypes) {
           </Box>
         </Grid>
         <Grid xs={12} sm={7}>
-          <ExperienceCards metadata={props.metadata} />
+          {session && status != "authenticated" ? (
+            <ExperienceCards metadata={props.metadata} />
+          ) : (
+            <AuthButton />
+          )}
         </Grid>
       </Grid>
     </>
