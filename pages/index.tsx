@@ -118,6 +118,7 @@ export default function Page(props: IndexPropTypes) {
           ) : (
             <AuthButton />
           )}
+          <AuthButton />
         </Grid>
       </Grid>
     </>

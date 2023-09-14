@@ -3,6 +3,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth"
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google"
 import { google } from "googleapis"
+import { signOut } from "next-auth/react"
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -32,10 +33,15 @@ export const authOptions: NextAuthOptions = {
           return true
         }
       }
+      // if (false) {
+      //   return true
+      // }
 
       return "/403"
     },
   },
+
+  pages: { error: "/403" },
 }
 
 /** Return true if email is on authorized list. */
@@ -56,7 +62,7 @@ async function isAllowed(fullEmail: string): Promise<boolean> {
 
   const emailList = res.data.values as Array<Array<string>>
 
-  for (let rowIdx = 0; rowIdx <= emailList?.length; rowIdx++) {
+  for (let rowIdx = 0; rowIdx < emailList?.length; rowIdx++) {
     if (
       fullEmail.toLowerCase().trim() ==
       emailList[rowIdx][0].toLowerCase().trim()
