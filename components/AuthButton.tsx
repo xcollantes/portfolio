@@ -6,6 +6,10 @@ import { signIn, signOut, useSession } from "next-auth/react"
 export default function AuthButton() {
   const { data: session, status } = useSession()
 
+  const authUser = () => {
+    signIn("google")
+  }
+
   // Avoids showing button on load
   if (status == "loading") {
     return
@@ -13,9 +17,15 @@ export default function AuthButton() {
 
   if (!session) {
     return (
-      <Button onClick={() => signIn()} variant="contained">
-        Prove you are human
+      <Button onClick={() => authUser()} variant="contained">
+        Prove you are human to unlock content
       </Button>
     )
   }
+
+  return (
+    <Button onClick={() => signOut()} variant="contained">
+      Sign out
+    </Button>
+  )
 }
