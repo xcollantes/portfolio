@@ -23,10 +23,4 @@ export default function AuthButton() {
       </Button>
     )
   }
-
-  return (
-    <Button onClick={() => signOut()} variant="contained">
-      Sign out
-    </Button>
-  )
 }

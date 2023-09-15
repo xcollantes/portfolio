@@ -2,8 +2,8 @@
 
 import NextAuth, { NextAuthOptions } from "next-auth"
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google"
+import LinkedInProvider from "next-auth/providers/linkedin"
 import { google } from "googleapis"
-import { signOut } from "next-auth/react"
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -23,6 +23,10 @@ export const authOptions: NextAuthOptions = {
       },
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_SECRET as string,
+    }),
+    LinkedInProvider({
+      clientId: process.env.LINKEDIN_CLIENT_ID as string,
+      clientSecret: process.env.LINKEDIN_CLIENT_SECRET as string,
     }),
   ],
   callbacks: {

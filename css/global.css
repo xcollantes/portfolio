@@ -8,3 +8,15 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.blurLight {
+  filter: blur(1px);
+}
+
+.blurMedium {
+  filter: blur(5px);
+}
+
+.blurHeavy {
+  filter: blur(10px);
+}
