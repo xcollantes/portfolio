@@ -9,6 +9,7 @@ export interface LongCardType {
   cardPageLink: string
   cardButtonText?: string
   imagePath: string
+  disabled?: boolean
 }
 
 export default function LongCard({
@@ -17,11 +18,17 @@ export default function LongCard({
   cardPageLink,
   cardButtonText = "See more",
   imagePath = "",
+  disabled = false,
 }: LongCardType) {
+  const titleStyle = disabled ? "blurMedium" : ""
+  const descStyle = disabled ? "blurHeavy" : ""
+
   return (
-    <Card raised sx={{ px: 0.5 }}>
+    <Card raised sx={{ px: 0.5 }} className={titleStyle}>
       <CardContent>
-        <Typography variant="h4">{title}</Typography>
+        <Typography variant="h4" className={descStyle}>
+          {title}
+        </Typography>
         <Typography variant="body1" sx={{ mt: 2 }}>
           {cardDescription}
         </Typography>
@@ -31,6 +38,7 @@ export default function LongCard({
             sx={{ mt: 2 }}
             component={MaterialLink}
             to={cardPageLink}
+            disabled={disabled}
           >
             {cardButtonText}
           </Button>

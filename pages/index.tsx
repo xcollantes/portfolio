@@ -17,6 +17,7 @@ import { useMemo } from "react"
 import { GetStaticPropsResult } from "next"
 import { MetadataType, getHeaderMetadata } from "../blog_utils/process_blogs"
 import AuthButton from "../components/AuthButton"
+import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -28,6 +29,7 @@ export async function getStaticProps(): Promise<
   const metadata: MetadataType[] = blogsMetadata.map(
     (unparsedMetadata: string) => JSON.parse(unparsedMetadata)
   )
+
   return { props: { metadata: metadata } }
 }
 
@@ -107,7 +109,7 @@ export default function Page(props: IndexPropTypes) {
               </Typography>
               <SocialMedia />
               <Box sx={{ mt: 8 }}>
-                <FilterBar />
+                <FilterBar disabled={!Boolean(session)} />
               </Box>
             </Box>
           </Box>
@@ -116,9 +118,28 @@ export default function Page(props: IndexPropTypes) {
           {session ? (
             <ExperienceCards metadata={props.metadata} />
           ) : (
-            <AuthButton />
+            <>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "10%",
+                    zIndex: 10000000,
+                  }}
+                >
+                  <AuthButton />
+                </Box>
+              </Box>
+
+              <ExperienceCardsPlaceholder />
+            </>
           )}
-          <AuthButton />
         </Grid>
       </Grid>
     </>

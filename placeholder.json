@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Amazon price graph",
+    "cardDescription": "Built browser extension showing inline graphs price trends on Amazon products.",
+    "cardPageLink": "https://github.com/xcollantes/amazon_camel",
+    "subTitle": "Chrome Extension",
+    "author": "Xavier Collantes",
+    "date_written": "2023-07-01T00:00:00.000Z",
+    "dateLastUpdated": "2023-07-01T00:00:00.000Z",
+    "tagIds": [
+      "amazon",
+      "code",
+      "chromeExtension",
+      "frontend",
+      "apis",
+      "typescript"
+    ]
+  },
+  {
+    "title": "Interviewed by the Dean of the Gonzaga School of Business",
+    "cardDescription": "Weekly podcast hosted by Dean Anderson with guest Xavier Collantes.",
+    "cardPageLink": "",
+    "imagePath": "",
+    "tagIds": ["interests", "gonzaga", "business"]
+  },
+  {
+    "title": "Bulldog Band",
+    "cardDescription": "As the \"Fungineer\" of the Gonzaga University Bulldog Band, responsibilities include keeping morale up for the 80+ members on weekly trips across the United States for March Madness.",
+    "cardPageLink": "https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234",
+    "imagePath": "",
+    "tagIds": ["interests", "gonzaga", "music"]
+  },
+  {
+    "title": "Google Associate Cloud Engineer",
+    "subTitle": "Expanding technical capabilities on the job.",
+    "cardPageLink": "blogs/cloud",
+    "author": "Xavier Collantes",
+    "dateWritten": "2023-07-07T00:00:00.000Z",
+    "dateLastUpdated": "2023-07-07T00:00:00.000Z",
+    "imagePath": "",
+    "tagIds": ["python", "google", "certification", "code"]
+  },
+  {
+    "title": "Homemade Google Home",
+    "cardDescription": "",
+    "cardPageLink": "",
+    "imagePath": "",
+    "tagIds": ["iot", "python", "interests", "electronics"]
+  },
+  {
+    "title": "Technical Solutions in Google Search",
+    "cardDescription": "Improving Search to work for all locales at scale.",
+    "cardPageLink": "blogs/google",
+    "subTitle": "",
+    "cardButtonText": "",
+    "imagePath": "",
+    "author": "Xavier Collantes",
+    "dateWritten": "2023-07-01T00:00:00.000Z",
+    "dateLastUpdated": "2023-07-01T00:00:00.000Z",
+    "tagIds": [
+      "python",
+      "cloud",
+      "consulting",
+      "search",
+      "google",
+      "code",
+      "devops"
+    ]
+  },
+  {
+    "title": "Portfolio website",
+    "cardDescription": "Design, plan, code, and test the website you're looking at.",
+    "cardPageLink": "",
+    "imagePath": "",
+    "tagIds": ["typescript", "frontend", "webdev", "design", "nextjs", "vercel"]
+  },
+  {
+    "title": "Ham radio",
+    "cardDescription": "",
+    "cardPageLink": "",
+    "imagePath": "",
+    "tagIds": ["interests", "radio"]
+  },
+  {
+    "title": "Raspberry Pi camera",
+    "cardDescription": "Homemade internet-of-things private cloud connected motion-detecting camera.",
+    "cardPageLink": "",
+    "imagePath": "",
+    "tagIds": ["electronics", "iot", "python"]
+  },
+  {
+    "title": "Prescription Blockchain",
+    "cardDescription": "",
+    "cardPageLink": "",
+    "imagePath": "",
+    "tagIds": ["leadership", "volunteering", "gonzaga"]
+  }
+]

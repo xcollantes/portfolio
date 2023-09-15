@@ -10,11 +10,13 @@ import { useMemo, useState } from "react"
 interface FilterButtonPropsType {
   displayText: string
   tagId: string
+  disabledBtn?: boolean
 }
 
 export default function FilterButton({
   displayText,
   tagId,
+  disabledBtn = false,
 }: FilterButtonPropsType) {
   const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
     useSelectedFilterTagContext()
@@ -55,6 +57,7 @@ export default function FilterButton({
       id={tagId}
       sx={{ m: 1 }}
       key={tagId}
+      disabled={disabledBtn}
     >
       {displayText}
     </Button>
