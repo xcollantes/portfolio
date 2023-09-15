@@ -48,15 +48,24 @@ export const authOptions: NextAuthOptions = {
   pages: { error: "/403" },
 }
 
-/** Return true if email is on authorized list. */
+/** Return true if email is on authorized Google Sheets list. */
 async function isAllowed(fullEmail: string): Promise<boolean> {
   const scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
   const sheets = google.sheets({
     version: "v4",
-    auth: await google.auth.getClient({
+    auth: new google.auth.GoogleAuth({
+      credentials: {
+        client_id: process.env.GOOGLE_CRED_CLIENT_ID,
+        client_email: process.env.GOOGLE_CRED_CLIENT_EMAIL,
+        private_key: process.env.GOOGLE_CRED_PRIVATE_KEY,
+      },
       scopes: scopes,
     }),
+
+    // auth: await google.auth.getClient({
+    //   scopes: scopes,
+    // }),
   })
 
   const res = await sheets.spreadsheets.values.get({
