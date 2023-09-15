@@ -38,3 +38,9 @@ Xavier's personal portfolio of work.
 
 1.  Write your Markdown article. At build time, the Markdown file will be
     converted to HTML with styles applied.
+
+## Common pitfalls
+
+### Use `secrets` for Next Auth
+
+### Add URL for branch and production to OAuth for provider
