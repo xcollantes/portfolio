@@ -124,12 +124,12 @@ export default function Page(props: IndexPropTypes) {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  position: "relative",
+                  top: "10%",
                 }}
               >
                 <Box
                   sx={{
-                    position: "absolute",
-                    top: "10%",
                     zIndex: 10000000,
                   }}
                 >
