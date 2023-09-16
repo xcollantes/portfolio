@@ -29,23 +29,23 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET as string,
     }),
   ],
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      if (account?.provider == "google") {
-        const onList: boolean = await isAllowed(profile?.email as string)
-        if (onList) {
-          return true
-        }
-      }
-      // if (false) {
-      //   return true
-      // }
+  // callbacks: {
+  //   async signIn({ user, account, profile, email, credentials }) {
+  //     if (account?.provider == "google") {
+  //       const onList: boolean = await isAllowed(profile?.email as string)
+  //       if (onList) {
+  //         return true
+  //       }
+  //     }
+  //     // if (false) {
+  //     //   return true
+  //     // }
 
-      return "/403"
-    },
-  },
+  //     return "/403"
+  //   },
+  // },
 
-  pages: { error: "/403" },
+  // pages: { error: "/403" },
 }
 
 /** Return true if email is on authorized Google Sheets list. */
