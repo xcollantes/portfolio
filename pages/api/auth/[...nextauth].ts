@@ -56,9 +56,9 @@ async function isAllowed(fullEmail: string): Promise<boolean> {
     version: "v4",
     auth: new google.auth.GoogleAuth({
       credentials: {
-        client_id: process.env.GOOGLE_CRED_CLIENT_ID,
-        client_email: process.env.GOOGLE_CRED_CLIENT_EMAIL,
-        private_key: process.env.GOOGLE_CRED_PRIVATE_KEY,
+        client_id: process.env.GOOGLE_CRED_CLIENT_ID!,
+        client_email: process.env.GOOGLE_CRED_CLIENT_EMAIL!,
+        private_key: process.env.GOOGLE_CRED_PRIVATE_KEY!,
       },
       scopes: scopes,
     }),
