@@ -29,7 +29,7 @@ Xavier's personal portfolio of work.
    `portfolio/blog_utils/process_blogs.ts` under `MetadataType` for fields
    required and available.
 
-   The `tagsId` field can be speicified a list `tagIds: [tag1, tag2]` or
+   The `tagsId` field can be specified a list `tagIds: [tag1, tag2]` or
    button list:
 
    ```yaml
