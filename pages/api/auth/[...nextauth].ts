@@ -28,34 +28,31 @@ export const authOptions: NextAuthOptions = {
     }),
     GitHubProvider({
       profile(profile: GithubProfile) {
-        console.log("GITHUBPROFILE: ", profile)
-        return { profile }
+        return { ...profile }
       },
-      clientId: process.env.GITHUB_ID as string,
-      clientSecret: process.env.GITHUB_SECRET as string,
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     }),
     LinkedInProvider({
       profile(profile: LinkedInProfile) {
-        console.log("LINKEDIN: ", profile)
-        return { profile }
+        return {
+          ...profile,
+          id: profile.sub, // Required
+        }
       },
       clientId: process.env.LINKEDIN_CLIENT_ID as string,
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET as string,
+      authorization: {
+        params: { scope: "openid profile email" },
+      },
+      issuer: "https://www.linkedin.com",
+      jwks_endpoint: "https://www.linkedin.com/oauth/openid/jwks",
     }),
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      if (account?.provider == "google") {
-        const onList: boolean = await isAllowed(profile?.email as string)
-        if (onList) {
-          return true
-        }
-      }
-      // if (false) {
-      //   return true
-      // }
-
-      return "/403"
+      logUser({ user, account, profile, email, credentials })
+      return true
     },
   },
 
@@ -76,10 +73,6 @@ async function isAllowed(fullEmail: string): Promise<boolean> {
       },
       scopes: scopes,
     }),
-
-    // auth: await google.auth.getClient({
-    //   scopes: scopes,
-    // }),
   })
 
   const res = await sheets.spreadsheets.values.get({
@@ -98,6 +91,51 @@ async function isAllowed(fullEmail: string): Promise<boolean> {
     }
   }
   return false
+}
+
+/** Find data of successfully authenticated user. */
+async function logUser({ user, account, profile, email, credentials }) {
+  console.log(account.provider)
+  console.log(profile)
+
+  const scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+
+  const sheets = google.sheets({
+    version: "v4",
+    auth: new google.auth.GoogleAuth({
+      credentials: {
+        client_id: process.env.GOOGLE_CRED_CLIENT_ID,
+        client_email: process.env.GOOGLE_CRED_CLIENT_EMAIL,
+        private_key: process.env.GOOGLE_CRED_PRIVATE_KEY,
+      },
+      scopes: scopes,
+    }),
+  })
+
+  const now = new Date()
+  const res = await sheets.spreadsheets.values.append({
+    spreadsheetId: process.env.VISITOR_LOG_SHEET_ID,
+    range: "visitor_log!A:A",
+    requestBody: {
+      values: [
+        [
+          now.toUTCString(),
+          JSON.stringify(account.provider, undefined, 4),
+          JSON.stringify(user.name, undefined, 4),
+          JSON.stringify(user.email, undefined, 4),
+          JSON.stringify(user, undefined, 4),
+          JSON.stringify(account, undefined, 4),
+          JSON.stringify(profile, undefined, 4),
+          JSON.stringify(email, undefined, 4),
+          JSON.stringify(credentials, undefined, 4),
+        ],
+      ],
+    },
+    insertDataOption: "INSERT_ROWS",
+    valueInputOption: "USER_ENTERED",
+  })
+
+  console.log(res)
 }
 
 export default NextAuth(authOptions)
