@@ -44,6 +44,7 @@ export const authOptions: NextAuthOptions = {
       return "/403"
     },
   },
+  pages: { error: "/403" },
 }
 
 /** Return true if email is on authorized Google Sheets list. */
