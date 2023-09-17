@@ -37,7 +37,7 @@ export const authOptions: NextAuthOptions = {
       profile(profile: LinkedInProfile) {
         return {
           ...profile,
-          id: profile.sub, // Required
+          id: profile.sub as string, // Required
         }
       },
       clientId: process.env.LINKEDIN_CLIENT_ID as string,
