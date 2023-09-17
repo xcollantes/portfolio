@@ -46,6 +46,20 @@ Xavier's personal portfolio of work.
 1. Write your Markdown article. At build time, the Markdown file will be
    converted to HTML with styles applied.
 
+## NextAuth
+
+### Secure all pages behind login
+
+Not adding a `config` variable will secure all pages in web application.
+
+**middleware.js**
+
+```js
+export { default } from "next-auth/middleware"
+```
+
+https://next-auth.js.org/configuration/nextjs#middleware
+
 ## Common pitfalls
 
 ### Use `secrets` for Next Auth
