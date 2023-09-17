@@ -65,9 +65,6 @@ export default function Blog({
 }) {
   const theme: Theme = useTheme()
 
-  // TODO: Temp fix for turning off blogs
-  return <></>
-
   return (
     <>
       <Container maxWidth={"md"}>
