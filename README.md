@@ -53,8 +53,15 @@ Xavier's personal portfolio of work.
 Specify a `NEXTAUTH_SECRET=` in the ENV file which is required for productions:
 https://next-auth.js.org/configuration/options#secret
 
+### State not created in error from OAuth
+
+Check to make sure the ENV vars are formatted correctly.
+
 ### Origin error when accessing the web application
 
 Must match what you entered with OAuth provider `NEXTAUTH_URL=`.
 
 ### Add URL for branch and production to OAuth for provider
+
+There are multiple places in the OAuth provider where you may need to specify
+the URLs for the OAuth to recognize the call from the application backend.
