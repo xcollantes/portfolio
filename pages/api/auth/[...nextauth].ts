@@ -2,7 +2,8 @@
 
 import NextAuth, { NextAuthOptions } from "next-auth"
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google"
-import LinkedInProvider from "next-auth/providers/linkedin"
+import GitHubProvider, { GithubProfile } from "next-auth/providers/github"
+import LinkedInProvider, { LinkedInProfile } from "next-auth/providers/linkedin"
 import { google } from "googleapis"
 
 export const authOptions: NextAuthOptions = {
@@ -23,8 +24,21 @@ export const authOptions: NextAuthOptions = {
       },
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_SECRET as string,
+      authorization: { params: { prompt: "select_account" } },
+    }),
+    GitHubProvider({
+      profile(profile: GithubProfile) {
+        console.log("GITHUBPROFILE: ", profile)
+        return { profile }
+      },
+      clientId: process.env.GITHUB_ID as string,
+      clientSecret: process.env.GITHUB_SECRET as string,
     }),
     LinkedInProvider({
+      profile(profile: LinkedInProfile) {
+        console.log("LINKEDIN: ", profile)
+        return { profile }
+      },
       clientId: process.env.LINKEDIN_CLIENT_ID as string,
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET as string,
     }),

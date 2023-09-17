@@ -8,7 +8,7 @@ export default function AuthButton() {
 
   const authUser = () => {
     // `prompt`: https://stackoverflow.com/q/77102556/8278075
-    signIn("google", undefined, { prompt: "select_account" })
+    signIn()
   }
 
   // Avoids showing button on load
