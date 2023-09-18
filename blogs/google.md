@@ -28,6 +28,8 @@ The internal code review and submit tool is open for everyone to read about but
 not use: [Google Critique](https://abseil.io/resources/swe-book/html/ch19.html).
 This is superior to any other code review tool available.
 
+![](/public/icons/android-chrome-192x192.png)
+
 ### H3
 
 My list:
