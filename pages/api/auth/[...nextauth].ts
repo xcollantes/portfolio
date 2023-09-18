@@ -28,7 +28,7 @@ export const authOptions: NextAuthOptions = {
     }),
     GitHubProvider({
       profile(profile: GithubProfile) {
-        return { ...profile }
+        return { ...profile, id: profile.sub }
       },
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
@@ -37,8 +37,8 @@ export const authOptions: NextAuthOptions = {
       profile(profile: LinkedInProfile) {
         return {
           ...profile,
-          id: profile.sub as string, // Required
-        }
+          id: profile.sub, // Required
+        } as any
       },
       clientId: process.env.LINKEDIN_CLIENT_ID as string,
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET as string,
