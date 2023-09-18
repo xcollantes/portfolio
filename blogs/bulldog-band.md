@@ -2,7 +2,7 @@
 title: Bulldog Band
 author: Xavier Collantes
 cardDescription: As the "Fungineer" of the Gonzaga University Bulldog Band, responsibilities include keeping morale up for the 80+ members on weekly trips across the United States for March Madness.
-cardPageLink: /bulldog-band
+cardPageLink: /blogs/bulldog-band
 imagePath: ""
 tagIds: ["interests", "gonzaga", "music"]
 ---
@@ -27,7 +27,7 @@ prepared to cheer and dance around.
 For my entire time at Gonzaga University, I was an active leader in the Gonzaga
 Bulldog Band.
 
-[![{priority}](/blogs_assets/images/bulldog-band/interview_krem.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+[![{priority}](/blog_assets/images/bulldog_band/interview_krem.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
 _Credit: [Rob Harris](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)_
 
@@ -35,7 +35,7 @@ _Credit: [Rob Harris](https://www.king5.com/article/sports/gonzaga-bulldogs/bull
 
 ## Fungineer
 
-![](/blogs_assets/images/bulldog-band/hug.webp)
+![](/blog_assets/images/bulldog_band/hug.webp)
 
 _Credit: [Gonzaga Bulletin](https://www.gonzaga.edu/student-life/student-affairs/our-departments-and-programs/student-media/gonzaga-bulletin)_
 
@@ -50,9 +50,9 @@ Need the entire band to start
 
 Natural ascended to leadership
 
-[![](/blogs_assets/images/bulldog-band/sax_camera.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+[![](/blog_assets/images/bulldog_band/sax_camera.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
-[![](/blogs_assets/images/bulldog-band/packing.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+[![](/blog_assets/images/bulldog_band/packing.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
 During my senior year, the Gonzaga Bulldog Men's Basketball team made it to the
 NCAA final

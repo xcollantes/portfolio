@@ -18,6 +18,7 @@ import { GetStaticPropsResult } from "next"
 import { MetadataType, getHeaderMetadata } from "../blog_utils/process_blogs"
 import AuthButton from "../components/AuthButton"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
+import Image from "next/image"
 
 /**
  * Runs at build time to statically generate preview cards.
