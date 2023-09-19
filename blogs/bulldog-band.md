@@ -31,8 +31,6 @@ Bulldog Band.
 
 _Credit: [Rob Harris](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)_
 
-## Bands function
-
 ## Fungineer
 
 ![](/blogs/images/bulldog_band/hug.webp)
@@ -44,11 +42,7 @@ members, I eventually became the "Fungineer" or "Fun Engineer", a non-official
 position in the Bulldog Band leadership who was in charge of leading cheers and
 morale boosting the ~80 members in the band.
 
-Need the entire band to start
-
 ## Perks
-
-Natural ascended to leadership
 
 [![](/blogs/images/bulldog_band/sax_camera.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
