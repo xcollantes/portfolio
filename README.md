@@ -17,6 +17,16 @@ Xavier's personal portfolio of work.
    the `.env.production` file but in any case you'll need the tokens, variables,
    and IDs.
 
+## Getting environment variables from Vercel
+
+You can download a file with all the environment variables from Vercel for local
+development. In the Vercel account, the env vars marked with `Development` will
+be used when pulling with this method.
+
+1. Download the Vercel CLI: `npm i -g vercel`
+1. Authenticate and link project: `vercel link`
+1. Download env vars file: `vercel env pull <download_filename>`
+
 ## Adding a new article
 
 1. Create a Markdown file under `blogs/`. This will be the path used in the URL
