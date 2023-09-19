@@ -18,7 +18,6 @@ import { ParsedUrlQuery } from "querystring"
 import ReactMarkdown from "react-markdown"
 import Drawer from "../../components/Drawer"
 import Footer from "../../components/Footer"
-import { imgCustom } from "../../components/ReactMarkdownCustom"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
 
 /**
@@ -89,7 +88,9 @@ export default function Blog({
               },
             }}
           >
-            <Typography variant="h2">{metadata.title}</Typography>
+            <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+              {metadata.title}
+            </Typography>
             <Box
               sx={{
                 display: "flex",
