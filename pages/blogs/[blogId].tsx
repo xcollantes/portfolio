@@ -19,6 +19,7 @@ import ReactMarkdown from "react-markdown"
 import Drawer from "../../components/Drawer"
 import Footer from "../../components/Footer"
 import { imgCustom } from "../../components/ReactMarkdownCustom"
+import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
 
 /**
  * Runs at build time to generate possible blog paths.
@@ -111,7 +112,7 @@ export default function Blog({
 
         <Divider sx={{ my: 3 }} />
 
-        <ReactMarkdown components={{ img: imgCustom }}>
+        <ReactMarkdown components={ReactMarkdownRules()}>
           {markdownBody}
         </ReactMarkdown>
         <Footer />
