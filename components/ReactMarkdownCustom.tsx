@@ -4,7 +4,7 @@ import Image from "next/image"
 import imageStyles from "../css/images.module.css"
 import { Box } from "@mui/material"
 
-export const imgCustom = (imageData) => {
+const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
   const altTextSection = imageData.alt?.match(/^([a-zA-Z ]+)/)
   const altText = altTextSection ? altTextSection[1].trim() : ""
@@ -42,3 +42,9 @@ export const imgCustom = (imageData) => {
     </Box>
   )
 }
+
+const ReactMarkdownRules = () => ({
+  img: imgCustom,
+})
+
+export default ReactMarkdownRules
