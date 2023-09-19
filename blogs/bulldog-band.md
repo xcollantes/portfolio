@@ -29,13 +29,13 @@ Bulldog Band.
 
 [![{priority}](/blogs/images/bulldog_band/interview_krem.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
-_Credit: [Rob Harris](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)_
+###### _Credit: [Rob Harris](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)_
 
-## Fungineer
+## "Fungineer"
 
 ![](/blogs/images/bulldog_band/hug.webp)
 
-_Credit: [Gonzaga Bulletin](https://www.gonzaga.edu/student-life/student-affairs/our-departments-and-programs/student-media/gonzaga-bulletin)_
+###### _Credit: [Gonzaga Bulletin](https://www.gonzaga.edu/student-life/student-affairs/our-departments-and-programs/student-media/gonzaga-bulletin)_
 
 As time went on and built the trust and friendship of many of my fellow band
 members, I eventually became the "Fungineer" or "Fun Engineer", a non-official
