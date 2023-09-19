@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import imageStyles from "../css/images.module.css"
-import { Box } from "@mui/material"
+import { Box, Typography } from "@mui/material"
+import Link from "next/link"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
@@ -15,16 +16,12 @@ const imgCustom = (imageData) => {
   // const height = size ? size[2] : "250"
 
   /** Looking for `![some alt text {priority}](/the/image/path.png)` => {priority} */
-  let isPriority = false
+  let isPriority: boolean = false
   const matchPriority = imageData.alt?.match(/(\{priority\})/)
 
   if (matchPriority) {
     isPriority = matchPriority[0] == "{priority}"
   }
-
-  console.log(imageData)
-  console.log(matchPriority)
-  console.log(isPriority)
 
   return (
     <Box component={"span"} className={imageStyles.imageContainer}>
@@ -43,8 +40,18 @@ const imgCustom = (imageData) => {
   )
 }
 
+const h1Custom = (h1) => {
+  return <Typography variant="h1">{h1.children}</Typography>
+}
+
+const aCustom = (a) => {
+  return <Link href={a.href}>{a.children}</Link>
+}
+
 const ReactMarkdownRules = () => ({
+  h1: h1Custom,
   img: imgCustom,
+  a: aCustom,
 })
 
 export default ReactMarkdownRules
