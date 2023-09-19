@@ -2,8 +2,10 @@
 
 import Image from "next/image"
 import imageStyles from "../css/images.module.css"
-import { Box, Typography } from "@mui/material"
+import blogStyles from "../css/blog.module.css"
+import { Box, Typography, useTheme } from "@mui/material"
 import Link from "next/link"
+import styled from "@emotion/styled"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
@@ -44,12 +46,29 @@ const h1Custom = (h1) => {
   return <Typography variant="h1">{h1.children}</Typography>
 }
 
+/** Using H6 tag as a caption.
+ *
+ * Markdown has no caption equivalent so I decided to use H6 tag.
+ */
+const h6Custom = (h6) => {
+  return (
+    <Typography variant="caption" sx={{ m: 0, p: 0, border: 0 }}>
+      {h6.children}
+    </Typography>
+  )
+}
+
 const aCustom = (a) => {
-  return <Link href={a.href}>{a.children}</Link>
+  return (
+    <Link href={a.href} passHref className={blogStyles.linkText}>
+      {a.children}
+    </Link>
+  )
 }
 
 const ReactMarkdownRules = () => ({
   h1: h1Custom,
+  h6: h6Custom,
   img: imgCustom,
   a: aCustom,
 })

@@ -29,17 +29,30 @@ be used when pulling with this method.
 
 ## Adding a new article
 
-1. Create a Markdown file under `blogs/`. This will be the path used in the URL
-   of the article page without the `.md` extension.
+### Page registering
+
+1. Create a Markdown file under `pages/blogs/`. This will be the path used in
+   the URL of the article page without `pages/` and the `.md` extension.
 
    - Use all lowercase
    - Use hyphens and not underscores
+
+1. Check the `blog_utils/filters.ts` file to make sure your desired filters
+   are included and labeled properly. These are the filter options a user can
+   filter preview cards by. **The tag MUST match exactly the `tagIds` in the
+   Markdown file to be included in a filter.**
+
+### Article header
 
 1. Add a YAML metadata section to the top of the Markdown file. See
    `portfolio/blog_utils/process_blogs.ts` under `MetadataType` for fields
    required and available.
 
-   The `tagsId` field can be specified a list `tagIds: [tag1, tag2]` or
+1. The `title` field is the header of the entire article.
+1. Make sure the `cardPageLink` field is the path to the article found in the
+   repository without the `pages/` directory.
+
+1. The `tagsId` field can be specified a list `tagIds: [tag1, tag2]` or
    button list:
 
    ```yaml
@@ -48,13 +61,18 @@ be used when pulling with this method.
      - tag2
    ```
 
-1. Check the `blog_utils/filters.ts` file to make sure your desired filters
-   are included and labeled properly. These are the filter options a user can
-   filter preview cards by. **The tag MUST match exactly the `tagIds` in the
-   Markdown file to be included in a filter.**
+### Article content
 
 1. Write your Markdown article. At build time, the Markdown file will be
    converted to HTML with styles applied.
+
+   Use the Markdown for H6 as caption for photos. Example: `###### My caption`.
+
+   Images will fill the width of the blog container.
+
+   Compress images.
+
+   Favor WEBP format for quality and compression.
 
 ## NextAuth
 

@@ -1,0 +1,19 @@
+.linkText {
+  background-color: none;
+  box-shadow: inset 0 0 0 0 #fff;
+  color: rgb(255, 0, 140);
+
+  text-decoration: none;
+  border-radius: 5px;
+
+  /* background: linear-gradient(to left) right; */
+  /* background-size: 200% 100%; */
+  transition: color 0.5s ease-in-out, box-shadow 1s ease-in-out;
+}
+
+.linkText:hover {
+  box-shadow: inset 5000px 0 0 0 rgb(0, 131, 55);
+  color: white;
+
+  /* background-position: left; */
+}
