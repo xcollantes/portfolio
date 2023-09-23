@@ -8,12 +8,10 @@
 
   /* background: linear-gradient(to left) right; */
   /* background-size: 200% 100%; */
-  transition: color 0.5s ease-in-out, box-shadow 1s ease-in-out;
+  transition: color 0.25s ease-in-out, box-shadow 0.5s ease-in-out;
 }
 
 .linkText:hover {
-  box-shadow: inset 5000px 0 0 0 rgb(0, 131, 55);
+  box-shadow: inset 5000px 0 0 0;
   color: white;
-
-  /* background-position: left; */
 }

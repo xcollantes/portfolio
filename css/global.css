@@ -9,6 +9,10 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
+::selection {
+  background-color: blueviolet;
+}
+
 .blurLight {
   filter: blur(1px);
 }
