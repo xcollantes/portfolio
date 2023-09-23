@@ -40,9 +40,55 @@ Bulldog Band.
 As time went on and built the trust and friendship of many of my fellow band
 members, I eventually became the "Fungineer" or "Fun Engineer", a non-official
 position in the Bulldog Band leadership who was in charge of leading cheers and
-morale boosting the ~80 members in the band.
+morale boosting morale of the ~80 members in the band.
 
-## Perks
+The role required certain traits (as I soon learned) to be successful:
+creativity and listening.
+
+Creativity is a main tool of the Fungineer. Rallying a platoon of college
+students to cheer the same way or get every single band member to participate is
+a massive challenge is any endeavor. The little dances the band does or the
+sheer amount of noise it can generate depends on how much enthusiasm a person is
+inspired with to set the fire which burns throughout the crowd. Perhaps the
+arena is quiet or the opposing team is about to make a free-throw shot and the
+player is facing the band, that's the time for a cheer.
+
+As in musicianship, listening is key to understanding how a person can
+contribute to a situation. "Where is the beat?", "whose solo is next?", "does
+this drum fill belong here?", same with playing music in a group or duet, a
+leader must be attuned to the temperature of the team and how the people in the
+team feel and reconciling the team's emotional temperature with desired feeling
+you want to convey or steer the group into.
+
+Imagine the last home game in before the tournament, the whole arena is glum,
+[Zags down 11-25](https://www.espn.com/mens-college-basketball/game/_/gameId/400915890) during senior night. Of course
+as part of that crowd, the band will share the feeling, but it's the job of the
+Fungineer to repel such forces of sorrow. But how do you do that with a full
+band at 80 members in a
+sold out game of 6,000 alumni, students, and local Spokanites? You're only 1% of
+the whole crowd after all. You are the Fungineer, you envision not what is but
+what could be; and you do this by being the spark in a tinderbox of 6,000
+Gonzaga fans.
+
+You stand up in front of the band and do one simple thing: you get on a seat
+facing the band and wait... Until every pair of eyes are locked at you curiously...
+Point at the edges of the band 20 rows up, making eye direct contact with
+every human in a band uniform... Take a deep breath and from the bottom of
+your lungs, you yell in a deep pitch. "HOOOOO!" And as you yell as deep as your
+body can take, motion your arms up and down. The band starts yelling back in a
+raucous rallying response... They starts jumping
+up and down... The band faces the crowd and transfers their war yell across the
+arena... You see the crowd of 6,000 stand up and the noise in the area reaches a
+fever pitch.
+
+Congratulations, you are a Fungineer. Like the drovers of the old Wild
+American West, herding cattle across miles and reining strays; you are a
+wrangler of fervent college students directing the masses to exert their
+potential together.
+
+## Local news interview
+
+2017 was the first entry of the Gonzaga Bulldogs into the NCAA Men's Basketball
 
 [![](/blogs/images/bulldog_band/sax_camera.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
