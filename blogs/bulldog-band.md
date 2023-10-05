@@ -101,7 +101,7 @@ fervent college students directing the masses to exert their potential together.
 During my senior year, the Gonzaga Bulldog Men's Basketball team made it to the
 NCAA Final Four for the first time, the local news station requested an
 interview which can be seen here:
-https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234
+[king5.com](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
 [![](/blogs/images/bulldog_band/interview_krem.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
