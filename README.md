@@ -74,6 +74,29 @@ be used when pulling with this method.
 
    Favor WEBP format for quality and compression.
 
+1. **Embedded content**
+
+   Use this snippet for making `iframe` responsive and replace the src:
+
+   ```html
+   <div
+     style="padding-bottom:56.25%; position:relative; display:block; width: 100%"
+   >
+     <iframe
+       width="100%"
+       height="100%"
+       src="https://youtu.be/j5a0jTc9S10?si=eGX-bRyQGBp4cAed"
+       frameborder="0"
+       allowfullscreen=""
+       style="position:absolute; top:0; left: 0"
+     >
+     </iframe>
+   </div>
+   ```
+
+   To make embedded content such as HTML rendered, we use `rehypeRaw` plugin for
+   ReactMarkdown [more info](https://stackoverflow.com/a/70548866/8278075).
+
 ## NextAuth
 
 ### Secure all pages behind login
