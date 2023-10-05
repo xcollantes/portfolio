@@ -16,13 +16,16 @@ export default function AuthButton() {
       <Button onClick={() => authUser()} variant="contained">
         Prove you are human to unlock content
       </Button>
-      <CircularProgress />
     </>
   )
 
   // Avoids showing button on load
   if (status == "loading") {
-    return loginButton
+    return (
+      <>
+        {loginButton} <CircularProgress />
+      </>
+    )
   }
 
   if (!session) {
