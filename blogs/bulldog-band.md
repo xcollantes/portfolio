@@ -9,6 +9,8 @@ tagIds: ["interests", "gonzaga", "music"]
 
 ## Bulldog Band: The Ultimate Experience
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qwA6MmbeGNo?si=Lg8VEUWhQKrHy-sX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 Imagine for one month every year in college you had an all-expenses paid trip
 including food, hotels, and a chartered flight with your closest friends to a
 handful of cities across the United States including Las Vegas, San Jose,

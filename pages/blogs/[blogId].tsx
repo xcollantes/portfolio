@@ -16,6 +16,7 @@ import {
 } from "@mui/material"
 import { ParsedUrlQuery } from "querystring"
 import ReactMarkdown from "react-markdown"
+import rehypeRaw from "rehype-raw"
 import Drawer from "../../components/Drawer"
 import Footer from "../../components/Footer"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
@@ -113,7 +114,14 @@ export default function Blog({
 
         <Divider sx={{ my: 3 }} />
 
-        <ReactMarkdown components={ReactMarkdownRules()}>
+        {/* `rehypeRaw` used for HTML elements to be understood as HTML.
+            This includes iframes and ability to use HTML elements.
+            https://stackoverflow.com/a/70548866/8278075 */}
+
+        <ReactMarkdown
+          components={ReactMarkdownRules()}
+          rehypePlugins={[rehypeRaw] as any}
+        >
           {markdownBody}
         </ReactMarkdown>
         <Footer />
