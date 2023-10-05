@@ -28,15 +28,10 @@ let alone seats court-side.
   </iframe>
 </div>
 
-![{priority}](/blogs/images/bulldog_band/rafa.webp)
-
 _What does one have to do for all this?_ Show up with an instrument and be
 prepared to cheer and dance around.
 
-For my entire time at Gonzaga University, I was an active leader in the Gonzaga
-Bulldog Band.
-
-[![{priority}](/blogs/images/bulldog_band/interview_krem.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+![{priority}](/blogs/images/bulldog_band/rafa.webp)
 
 ###### _Credit: [Rob Harris](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)_
 
@@ -45,6 +40,9 @@ Bulldog Band.
 ![](/blogs/images/bulldog_band/hug.webp)
 
 ###### _Credit: [Gonzaga Bulletin](https://www.gonzaga.edu/student-life/student-affairs/our-departments-and-programs/student-media/gonzaga-bulletin)_
+
+For my entire time at Gonzaga University, I was an active leader in the Gonzaga
+Bulldog Band.
 
 As time went on and built the trust and friendship of many of my fellow band
 members, I eventually became the "Fungineer" or "Fun Engineer", a non-official
@@ -69,6 +67,8 @@ leader must be attuned to the temperature of the team and how the people in the
 team feel and reconciling the team's emotional temperature with desired feeling
 you want to convey or steer the group into.
 
+![](/blogs/images/bulldog_band/tv.webp)
+
 Imagine the last home game in before the tournament, the whole arena is glum,
 [Zags down
 11-25](https://www.espn.com/mens-college-basketball/game/_/gameId/400915890)
@@ -80,38 +80,33 @@ all. You are the Fungineer, you envision not what is but what could be; and you
 do this by being the spark in a tinderbox of 6,000 Gonzaga fans.
 
 You stand up in front of the band and do one simple thing: you get on a seat
-facing the band and wait... Until every pair of eyes are locked at you curiously...
-Point at the edges of the band 20 rows up, making eye direct contact with
-every human in a band uniform... Take a deep breath and from the bottom of
-your lungs, you yell in a deep pitch. "HOOOOO!" And as you yell as deep as your
-body can take, motion your arms up and down. The band starts yelling back in a
-raucous rallying response... They starts jumping
-up and down... The band faces the crowd and transfers their war yell across the
+facing the band and wait... Until every pair of eyes are locked at you
+curiously... Point at the edges of the band 20 rows up, making eye direct
+contact with every human in a band uniform... Take a deep breath and from the
+bottom of your lungs, you yell in a deep pitch. "HOOOOO!" And as you yell as
+deep as your body can take, motion your arms up and down. The band starts
+yelling back in a raucous rallying response... They starts jumping up and
+down... The band faces the crowd and transfers their war yell across the
 arena... You see the crowd of 6,000 stand up and the noise in the area reaches a
 fever pitch.
 
 ![](/blogs/images/bulldog_band/commercial.webp)
 
-Congratulations, you are a Fungineer. Like the drovers of the old Wild
-American West, herding cattle across miles and reining strays; you are a
-wrangler of fervent college students directing the masses to exert their
-potential together.
+Congratulations, you are a Fungineer. Like the drovers of the old Wild American
+West, herding cattle across miles and reining strays; you are a wrangler of
+fervent college students directing the masses to exert their potential together.
 
 ## Local news interview
 
-2017 was the first entry of the Gonzaga Bulldogs into the NCAA Men's Basketball
+During my senior year, the Gonzaga Bulldog Men's Basketball team made it to the
+NCAA Final Four for the first time, the local news station requested an
+interview which can be seen here:
+https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234
+
+[![](/blogs/images/bulldog_band/interview_krem.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
 [![](/blogs/images/bulldog_band/sax_camera.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
 [![](/blogs/images/bulldog_band/packing.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
-[![](/blogs/images/bulldog_band/tv.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
-
 [![](/blogs/images/bulldog_band/courtside_snap.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
-
-During my senior year, the Gonzaga Bulldog Men's Basketball team made it to the
-NCAA final
-
-See the local news interview:
-
-https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234
