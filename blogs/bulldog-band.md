@@ -9,8 +9,6 @@ tagIds: ["interests", "gonzaga", "music"]
 
 ## Bulldog Band: The Ultimate Experience
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qwA6MmbeGNo?si=Lg8VEUWhQKrHy-sX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 Imagine for one month every year in college you had an all-expenses paid trip
 including food, hotels, and a chartered flight with your closest friends to a
 handful of cities across the United States including Las Vegas, San Jose,
@@ -22,6 +20,13 @@ basketball games during the NCAA March Madness. In the Final Four, [Row D seats
 alone costs
 $50,000](https://www.cbssports.com/college-basketball/news/final-four-2017-heres-what-tickets-are-selling-for-one-package-almost-50k)
 let alone seats court-side.
+
+<div style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
+  <iframe width="100%" height="100%"
+    src="https://www.king5.com/embeds/video/responsive/293-2555007/iframe"
+    frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0">
+  </iframe>
+</div>
 
 ![{priority}](/blogs/images/bulldog_band/rafa.webp)
 
