@@ -3,9 +3,8 @@
 import Image from "next/image"
 import imageStyles from "../css/images.module.css"
 import blogStyles from "../css/blog.module.css"
-import { Box, Typography, useTheme } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import Link from "next/link"
-import styled from "@emotion/styled"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
