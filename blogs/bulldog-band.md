@@ -1,7 +1,7 @@
 ---
 title: Bulldog Band
 author: Xavier Collantes
-cardDescription: As the "Fungineer" of the Gonzaga University Bulldog Band, responsibilities include keeping morale up for the 80+ members on weekly trips across the United States for March Madness.
+cardDescription: As the "Fungineer" of the Gonzaga University Bulldog Band, responsibilities include keeping morale up for the 80+ members on weekly trips nation for March Madness.
 cardPageLink: /blogs/bulldog-band
 imagePath: ""
 tagIds: ["interests", "gonzaga", "music"]
@@ -20,6 +20,8 @@ basketball games during the NCAA March Madness. In the Final Four, [Row D seats
 alone costs
 $50,000](https://www.cbssports.com/college-basketball/news/final-four-2017-heres-what-tickets-are-selling-for-one-package-almost-50k)
 let alone seats court-side.
+
+![{priority}](/blogs/images/bulldog_band/rafa.webp)
 
 _What does one have to do for all this?_ Show up with an instrument and be
 prepared to cheer and dance around.
@@ -61,14 +63,14 @@ team feel and reconciling the team's emotional temperature with desired feeling
 you want to convey or steer the group into.
 
 Imagine the last home game in before the tournament, the whole arena is glum,
-[Zags down 11-25](https://www.espn.com/mens-college-basketball/game/_/gameId/400915890) during senior night. Of course
-as part of that crowd, the band will share the feeling, but it's the job of the
-Fungineer to repel such forces of sorrow. But how do you do that with a full
-band at 80 members in a
-sold out game of 6,000 alumni, students, and local Spokanites? You're only 1% of
-the whole crowd after all. You are the Fungineer, you envision not what is but
-what could be; and you do this by being the spark in a tinderbox of 6,000
-Gonzaga fans.
+[Zags down
+11-25](https://www.espn.com/mens-college-basketball/game/_/gameId/400915890)
+during senior night. Of course as part of that crowd, the band will share the
+feeling, but it's the job of the Fungineer to repel such forces of sorrow. But
+how do you do that with a full band at 80 members in a sold out game of 6,000
+alumni, students, and local Spokanites? You're only 1% of the whole crowd after
+all. You are the Fungineer, you envision not what is but what could be; and you
+do this by being the spark in a tinderbox of 6,000 Gonzaga fans.
 
 You stand up in front of the band and do one simple thing: you get on a seat
 facing the band and wait... Until every pair of eyes are locked at you curiously...
@@ -80,6 +82,8 @@ raucous rallying response... They starts jumping
 up and down... The band faces the crowd and transfers their war yell across the
 arena... You see the crowd of 6,000 stand up and the noise in the area reaches a
 fever pitch.
+
+![](/blogs/images/bulldog_band/commercial.webp)
 
 Congratulations, you are a Fungineer. Like the drovers of the old Wild
 American West, herding cattle across miles and reining strays; you are a
@@ -93,6 +97,10 @@ potential together.
 [![](/blogs/images/bulldog_band/sax_camera.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
 [![](/blogs/images/bulldog_band/packing.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+
+[![](/blogs/images/bulldog_band/tv.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+
+[![](/blogs/images/bulldog_band/courtside_snap.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
 During my senior year, the Gonzaga Bulldog Men's Basketball team made it to the
 NCAA final
