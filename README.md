@@ -37,13 +37,6 @@ be used when pulling with this method.
    - Use all lowercase
    - Use hyphens and not underscores
 
-1. Check the `blog_utils/filters.ts` file to make sure your desired filters
-   are included and labeled properly. These are the filter options a user can
-   filter preview cards by. **The tag MUST match exactly the `tagIds` in the
-   Markdown file to be included in a filter.**
-
-### Article header
-
 1. Add a YAML metadata section to the top of the Markdown file. See
    `portfolio/blog_utils/process_blogs.ts` under `MetadataType` for fields
    required and available.
@@ -61,41 +54,50 @@ be used when pulling with this method.
      - tag2
    ```
 
+### Registering filter
+
+1. Check the `blog_utils/filters.ts` file to make sure your desired filters
+   are included and labeled properly. These are the filter options a user can
+   filter preview cards by. **The tag MUST match exactly the `tagIds` in the
+   Markdown file to be included in a filter.**
+
 ### Article content
 
-1. Write your Markdown article. At build time, the Markdown file will be
-   converted to HTML with styles applied.
+Write your Markdown article. At build time, the Markdown file will be
+converted to HTML with styles applied.
 
-   Use the Markdown for H6 as caption for photos. Example: `###### My caption`.
+#### Images
 
-   Images will fill the width of the blog container.
+Use the Markdown for H6 as caption for photos. Example: `###### My caption`.
 
-   Compress images.
+Images will fill the width of the blog container.
 
-   Favor WEBP format for quality and compression.
+Compress images.
 
-1. **Embedded content**
+Favor WEBP format for quality and compression.
 
-   Use this snippet for making `iframe` responsive and replace the src:
+#### Embedded content
 
-   ```html
-   <div
-     style="padding-bottom:56.25%; position:relative; display:block; width: 100%"
-   >
-     <iframe
-       width="100%"
-       height="100%"
-       src="https://youtu.be/j5a0jTc9S10?si=eGX-bRyQGBp4cAed"
-       frameborder="0"
-       allowfullscreen=""
-       style="position:absolute; top:0; left: 0"
-     >
-     </iframe>
-   </div>
-   ```
+Use this snippet for making `iframe` responsive and replace the src:
 
-   To make embedded content such as HTML rendered, we use `rehypeRaw` plugin for
-   ReactMarkdown [more info](https://stackoverflow.com/a/70548866/8278075).
+```html
+<div
+  style="padding-bottom:56.25%; position:relative; display:block; width: 100%"
+>
+  <iframe
+    width="100%"
+    height="100%"
+    src="https://youtu.be/j5a0jTc9S10?si=eGX-bRyQGBp4cAed"
+    frameborder="0"
+    allowfullscreen=""
+    style="position:absolute; top:0; left: 0"
+  >
+  </iframe>
+</div>
+```
+
+To make embedded content such as HTML rendered, we use `rehypeRaw` plugin for
+ReactMarkdown [more info](https://stackoverflow.com/a/70548866/8278075).
 
 ## NextAuth
 
