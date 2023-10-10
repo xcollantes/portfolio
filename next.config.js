@@ -18,6 +18,16 @@ const policy = {
 }
 
 module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img.shields.io",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
   i18n: {
     // Locales you want to support in your application
     locales: ["en-US"],
