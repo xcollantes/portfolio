@@ -7,3 +7,9 @@ cardPageLink: ""
 imagePath: ""
 tagIds: ["typescript", "frontend", "webdev", "design", "nextjs", "vercel"]
 ---
+
+##
+
+## Challenges
+
+## Lessons learned

@@ -10,6 +10,12 @@ https://github.com/xcollantes/portfolio
 
 ## Requirements
 
+### Goals
+
+### Non-goals
+
+### User journeys
+
 ## Technologies used
 
 ![](https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
