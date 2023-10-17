@@ -25,6 +25,8 @@ improve serving features to the 4.3 billion Google Search users globally.
 
 ## Establishing processes
 
+## Scaling
+
 ## Data Engineering
 
 _Disclaimer: Statistics and figures in this article are based on publicly known data._
