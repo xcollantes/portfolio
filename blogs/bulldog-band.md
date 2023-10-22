@@ -53,6 +53,8 @@ inspired with to set the fire which burns throughout the crowd. Perhaps the
 arena is quiet or the opposing team is about to make a free-throw shot and the
 player is facing the band, that's the time for a cheer.
 
+![](/blogs/images/bulldog_band/courtside_snap.webp)
+
 As in musicianship, listening is key to understanding how a person can
 contribute to a situation. "Where is the beat?", "whose solo is next?", "does
 this drum fill belong here?", same with playing music in a group or duet, a
@@ -85,6 +87,8 @@ Congratulations, you are a Fungineer. Like the drovers of the old Wild
 American West, herding cattle across miles and reining strays; you are a
 wrangler of fervent college students directing the masses to exert their
 potential together.
+
+![](/blogs/images/bulldog_band/commercial.webp)
 
 ## Local news interview
 
