@@ -2,6 +2,7 @@
 title: Raspberry Pi motion camera
 cardDescription: Homemade internet-of-things private cloud connected motion-detecting camera.
 cardPageLink: "/blogs/rpi-camera"
+author: Xavier Collantes
 imagePath: ""
 tagIds: ["electronics", "iot", "python"]
 ---
@@ -63,12 +64,28 @@ capabilities of The Motion Project to run a camera on a Raspberry Pi or any
 Linux OS with [Rclone](https://rclone.org) to securely upload videos and images
 to a encrypted end-to-end cloud provider.
 
+GitHub code repository: [github.com/xcollantes/mocam](https://github.com/xcollantes/mocam)
+
+Getting started: [MoCam
+README](https://github.com/xcollantes/mocam/blob/master/README.md)
+
 ### Hardware
+
+Required hardware is a Raspberry Pi, preferably at least 2 GB of RAM since
+processing the video puts strain on the machine. Lower RAM machines were not
+tested such as the Raspberry Pico.
 
 ![](/blogs/images/rpi_camera/rpi.webp)
 
-## GitHub code repository
+A camera is also needed. I found the best results with a USB camera since it's
+fairly easy to setup as well. There is a Raspberry Pis Module Camera
+specifically meant for the Raspberry Pi but I did not have this at the time.
+Here's an example of a compatible USB camera on
+[Amazon](https://a.co/d/gr5Srno).
 
-[github.com/xcollantes/mocam](https://github.com/xcollantes/mocam)
+In the project, I found some pitfalls with the camera, detailed in ["Common
+pitfalls"](https://github.com/xcollantes/mocam/blob/master/README.md#common-pitfalls).
+There are some commands needed to find the ID of the camera as this is needed
+for the Docker image.
 
-Getting started: [MoCam README](https://github.com/xcollantes/portfolio/blob/main/README.md)
+![](/blogs/images/rpi_camera/usb_camera.webp)
