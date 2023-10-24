@@ -11,12 +11,6 @@ const imgCustom = (imageData) => {
   const altTextSection = imageData.alt?.match(/^([a-zA-Z ]+)/)
   const altText = altTextSection ? altTextSection[1].trim() : ""
 
-  /** Looking for `![some alt text {500x250}](/the/image/path.png)` => {500x250} */
-  // const size = imageData.alt?.match(/\{(\d+)x(\d+)\}/)
-  // const width = size ? size[1] : "100%"
-  // const height = size ? size[2] : "250"
-
-  /** Looking for `![some alt text {priority}](/the/image/path.png)` => {priority} */
   let fill: boolean = true
   let isPriority: boolean = false
   let width: number | undefined = undefined
@@ -25,7 +19,6 @@ const imgCustom = (imageData) => {
   const matchPriority = imageData.alt?.match(/(\{priority\})/)
   const matchImageHeight = imageData.alt?.match(/\{h: (\d+)\}/)
 
-  console.log("WIDTH: ", imageData)
   if (matchPriority) {
     isPriority = matchPriority[0] == "{priority}"
   }
