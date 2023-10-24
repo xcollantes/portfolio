@@ -31,13 +31,13 @@ let alone seats court-side.
 _What does one have to do for all this?_ Show up with an instrument and be
 prepared to cheer and dance around.
 
-![{priority}](/blogs/images/bulldog_band/rafa.webp)
+![{priority} {h: 300}](/blogs/images/bulldog_band/rafa.webp)
 
 ###### _Credit: [Rob Harris](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)_
 
 ## "Fungineer"
 
-![](/blogs/images/bulldog_band/hug.webp)
+![{h: 400}](/blogs/images/bulldog_band/hug.webp)
 
 ###### _Credit: [Gonzaga Bulletin](https://www.gonzaga.edu/student-life/student-affairs/our-departments-and-programs/student-media/gonzaga-bulletin)_
 
@@ -67,7 +67,7 @@ leader must be attuned to the temperature of the team and how the people in the
 team feel and reconciling the team's emotional temperature with desired feeling
 you want to convey or steer the group into.
 
-![](/blogs/images/bulldog_band/tv.webp)
+![{h: 300}](/blogs/images/bulldog_band/tv.webp)
 
 Imagine the last home game in before the tournament, the whole arena is glum,
 [Zags down

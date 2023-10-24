@@ -27,7 +27,7 @@ functionality close to what existed commercially. The challenge would not be
 creating my own software for a motion detector but **integrating** several
 existing technologies to achieve my requirements.
 
-![](/blogs/images/rpi_camera/zucc.webp)
+![{h: 300}](/blogs/images/rpi_camera/zucc.webp)
 
 ## Requirements
 
@@ -56,7 +56,7 @@ functionalities by priority:
 
 ### Software
 
-![](/blogs/images/rpi_camera/rclone.svg)
+![{h: 100}](/blogs/images/rpi_camera/rclone.svg)
 
 My solution, MoCam, is an implementation of
 [motion-project.github.io](https://motion-project.github.io). I combined the
@@ -75,7 +75,7 @@ Required hardware is a Raspberry Pi, preferably at least 2 GB of RAM since
 processing the video puts strain on the machine. Lower RAM machines were not
 tested such as the Raspberry Pico.
 
-![](/blogs/images/rpi_camera/rpi.webp)
+![{h: 200}](/blogs/images/rpi_camera/rpi.webp)
 
 A camera is also needed. I found the best results with a USB camera since it's
 fairly easy to setup as well. There is a Raspberry Pis Module Camera
@@ -88,4 +88,4 @@ pitfalls"](https://github.com/xcollantes/mocam/blob/master/README.md#common-pitf
 There are some commands needed to find the ID of the camera as this is needed
 for the Docker image.
 
-![](/blogs/images/rpi_camera/usb_camera.webp)
+![{h: 200}](/blogs/images/rpi_camera/usb_camera.webp)

@@ -70,7 +70,22 @@ converted to HTML with styles applied.
 
 Use the Markdown for H6 as caption for photos. Example: `###### My caption`.
 
-Images will fill the width of the blog container.
+Images will fill the width of the blog container. Specify the height of the
+image to make the image smaller than the container. Only specify the height as
+the image will maintain ratio when height is specified.
+
+```markdown
+![{h: 200}](my/blog/image.webp)
+```
+
+If the image is above the fold when the blog first renders, you can assign a
+priority load flag the same way you would use
+`[priority](https://nextjs.org/docs/pages/api-reference/components/image#priority)`
+in NextJS or ReactJS:
+
+```markdown
+![{priority}](my/blog/image.webp)
+```
 
 Compress images.
 
