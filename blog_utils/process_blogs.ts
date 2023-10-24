@@ -52,9 +52,9 @@ export interface MetadataType {
   subTitle?: string
   // Shown as author on blog page. Human readable. Case-sensitive.
   author?: string
-  // Timestamp of creation of blog.
-  cardButtonText?: string
   // Location of image icon relative to the `public/` directory.
+  cardButtonText?: string
+  // Timestamp of creation of blog.
   dateWritten?: Date
   // Timestamp of last major update.
   dateLastUpdated?: Date

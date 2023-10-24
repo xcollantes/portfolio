@@ -67,6 +67,11 @@ export default function Blog({
 }) {
   const theme: Theme = useTheme()
 
+  let dateWrittenL10n: string = ""
+  if (metadata.dateWritten) {
+    dateWrittenL10n = new Date(metadata.dateWritten).toLocaleDateString()
+  }
+
   return (
     <>
       <Container maxWidth={"md"}>
@@ -107,9 +112,16 @@ export default function Blog({
           {metadata.subTitle && (
             <Typography variant="subtitle2">{metadata.subTitle}</Typography>
           )}
-          <Typography variant="body1" color={"gray"}>
-            Written by {metadata.author}
-          </Typography>
+          {metadata.author && (
+            <Typography variant="body1" color={"gray"}>
+              Written by {metadata.author}
+            </Typography>
+          )}
+          {metadata.dateWritten && (
+            <Typography variant="body1" color={"gray"}>
+              {dateWrittenL10n}
+            </Typography>
+          )}
         </Box>
 
         <Divider sx={{ my: 3 }} />
