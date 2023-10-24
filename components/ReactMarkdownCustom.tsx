@@ -17,11 +17,28 @@ const imgCustom = (imageData) => {
   // const height = size ? size[2] : "250"
 
   /** Looking for `![some alt text {priority}](/the/image/path.png)` => {priority} */
+  let fill: boolean = true
   let isPriority: boolean = false
-  const matchPriority = imageData.alt?.match(/(\{priority\})/)
+  let width: number | undefined = undefined
+  let height: number | undefined = undefined
 
+  const matchPriority = imageData.alt?.match(/(\{priority\})/)
+  const matchImageHeight = imageData.alt?.match(/\{h: (\d+)\}/)
+
+  console.log("WIDTH: ", imageData)
   if (matchPriority) {
     isPriority = matchPriority[0] == "{priority}"
+  }
+
+  if (matchImageHeight) {
+    // Only have user specify the height as the image will maintain ratio when
+    // height is specified. Width does not change the image width.
+    width = 3000
+    height = matchImageHeight[1]
+
+    // Either `width` and `height` are specified OR `fill` is specified; cannot
+    // have both.
+    fill = false
   }
 
   return (
@@ -30,9 +47,9 @@ const imgCustom = (imageData) => {
         src={imageData.src}
         alt={altText}
         blurDataURL="https://davisgitonga.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbanner.749d546a.jpg"
-        fill
-        // width={width}
-        // height={height}
+        fill={fill}
+        width={width}
+        height={height}
         priority={isPriority}
         placeholder="blur"
         className={imageStyles.imageItem}
