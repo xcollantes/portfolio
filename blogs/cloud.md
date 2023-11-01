@@ -3,8 +3,8 @@ title: Google Associate Cloud Engineer
 subTitle: Expanding technical capabilities on the job.
 cardPageLink: blogs/cloud
 author: Xavier Collantes
-dateWritten: 2023-07-07
-dateLastUpdated: 2023-07-07
+dateWritten: 04/05/2019
+dateLastUpdated: 01/02/2023
 imagePath: ""
 tagIds:
   - python
