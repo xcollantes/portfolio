@@ -1,24 +1,25 @@
-/** Set article order on front page. */
+/** Set article order and set articles accessible. */
 
 /**
  * Article order to display.
  *
- * IMPORTANT: If not listed, will not show up on web app.
+ * IMPORTANT: If not listed, will not show up on web app and articles will not
+ * be accessible when reaching URL.
  * MUST EXACT MATCH CASE TO INCLUDE ARTICLE.
  */
 export const orderedIncludeArticlesConfig: string[] = [
-  /** Work experiences */
-  "google",
-  "cloud",
-  "anderson-podcast",
-  "portfolio",
-  "itron",
-  //  "amazon-price",
-  "rpi-camera",
-  "rx-blockchain",
-  "bulldog-band",
-  //  "google-home",
+  // WORK EXPERIENCES
+  "google.md",
+  // "cloud.md",
+  // "portfolio.md",
+  "anderson-podcast.md",
+  "rx-blockchain.md",
+  "bulldog-band.md",
+  "rpi-camera.md",
+  "itron.md",
+  //  "amazon-price.md",
+  //  "google-home.md",
 
-  /** Blogs */
-  // "radio",
+  // BLOGS
+  // "radio.md",
 ]

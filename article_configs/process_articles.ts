@@ -5,6 +5,7 @@ import fs from "fs"
 import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
+import { orderedIncludeArticlesConfig } from "./article_order_config"
 
 const articlesDirectory: string = path.join(process.cwd(), "articles")
 
@@ -77,9 +78,21 @@ export interface ArticleDataType {
   metadata: string
 }
 
-/** Read local files IDs from paths of the Markdown files. */
-export function getArticlePaths(): string[] {
-  return fs.readdirSync(articlesDirectory)
+/**
+ * Read local files IDs from paths of the Markdown files.
+ *
+ * Include article files which have been explicitly included.
+ */
+export function getArticlePaths(): (string | undefined)[] {
+  const fileNames: string[] = fs.readdirSync(articlesDirectory)
+
+  const showArticles: (string | undefined)[] | undefined =
+    orderedIncludeArticlesConfig.map((includedArticleFileName: string) => {
+      if (fileNames.includes(includedArticleFileName)) {
+        return includedArticleFileName
+      }
+    })
+  return showArticles
 }
 
 /**
@@ -91,6 +104,7 @@ export function getArticlePathsAsProps(): Array<{
   params: { articleId: string }
 }> {
   const fileNames: string[] = getArticlePaths()
+  console.log("FILEPATHS: ", fileNames)
   return fileNames.map((fileName: string) => ({
     params: {
       articleId: `${fileName.replace(/\.md$/, "")}`,
@@ -101,7 +115,7 @@ export function getArticlePathsAsProps(): Array<{
 /**
  * Read local file for one Markdown article.
  */
-export async function getArticle(articleId: string): Promise<articleDataType> {
+export async function getArticle(articleId: string): Promise<ArticleDataType> {
   const fullFilePath: string = path.join(articlesDirectory, `${articleId}.md`)
   const fileContents: string = fs.readFileSync(fullFilePath, "utf8")
 

@@ -31,14 +31,14 @@ be used when pulling with this method.
 
 ### Page registering
 
-1. Create a Markdown file under `pages/articles/`. This will be the path used in
+1. Create a Markdown file under `pages/articles/`. This path will be used in
    the URL of the article page without `pages/` and the `.md` extension.
 
    - Use all lowercase
    - Use hyphens and not underscores
 
 1. Add a YAML metadata section to the top of the Markdown file. See
-   `portfolio/article_configs/process_articles.ts` under `MetadataType` for fields
+   `article_configs/process_articles.ts` under `MetadataType` for fields
    required and available.
 
 1. The `title` field is the header of the entire article.
@@ -53,6 +53,12 @@ be used when pulling with this method.
      - tag1
      - tag2
    ```
+
+### Article order and enabling articles
+
+**IMPORTANT:** To make an article accessible through the URL and in general, you
+have to explicitly include the filename with the extension in
+`article_configs/article_order_config.ts`.
 
 ### Registering filter
 
