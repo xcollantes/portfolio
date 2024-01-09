@@ -86,12 +86,13 @@ export interface ArticleDataType {
 export function getArticlePaths(): (string | undefined)[] {
   const fileNames: string[] = fs.readdirSync(articlesDirectory)
 
-  const showArticles: (string | undefined)[] | undefined =
-    orderedIncludeArticlesConfig.map((includedArticleFileName: string) => {
+  const showArticles: (string | undefined)[] = orderedIncludeArticlesConfig.map(
+    (includedArticleFileName: string) => {
       if (fileNames.includes(includedArticleFileName)) {
         return includedArticleFileName
       }
-    })
+    }
+  )
   return showArticles
 }
 
@@ -103,7 +104,7 @@ export function getArticlePaths(): (string | undefined)[] {
 export function getArticlePathsAsProps(): Array<{
   params: { articleId: string }
 }> {
-  const fileNames: string[] = getArticlePaths()
+  const fileNames: (string | undefined)[] = getArticlePaths()
   console.log("FILEPATHS: ", fileNames)
   return fileNames.map((fileName: string) => ({
     params: {
@@ -138,7 +139,7 @@ export async function getArticle(articleId: string): Promise<ArticleDataType> {
  * use.
  */
 export async function getHeaderMetadata(): Promise<string[]> {
-  const articlePaths: string[] = getArticlePaths()
+  const articlePaths: (string | undefined)[] = getArticlePaths()
 
   const articles: string[] = await Promise.all(
     articlePaths.map(async (articlePath: string) => {
