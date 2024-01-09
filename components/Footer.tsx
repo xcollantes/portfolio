@@ -30,7 +30,7 @@ export default function Footer() {
           Home
         </Button>
 
-        {/* TODO(https://github.com/xcollantes/portfolio/issues/33): Add next blog feature */}
+        {/* TODO(https://github.com/xcollantes/portfolio/issues/33): Add next article feature */}
         {/*
         <Divider orientation="vertical" variant="middle" flexItem />
          <Button variant="text" sx={sxButton} to={"/"} component={MaterialLink}>

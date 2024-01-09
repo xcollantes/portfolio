@@ -2,7 +2,7 @@
 title: Prescription Blockchain
 author: Xavier Collantes
 cardDescription: "Sponsored and mentored a Gonzaga University student engineering capstone project"
-cardPageLink: "/blogs/rx-blockchain"
+cardPageLink: "/articles/rx-blockchain"
 imagePath: ""
 tagIds:
   [
@@ -15,7 +15,7 @@ tagIds:
   ]
 ---
 
-![{h: 500} {priority}](/blogs/images/rx_blockchain/signage.webp)
+![{h: 500} {priority}](/articles/images/rx_blockchain/signage.webp)
 
 In 2018, I sponsored a student engineering capstone team at Gonzaga University.
 Shortly after graduating, I wanted to continue making an impact in my community
@@ -79,15 +79,15 @@ introduce subject-matter experts if need be.
 
 ## Meeting on Senior Day
 
-![{h: 350}](/blogs/images/rx_blockchain/group.webp)
+![{h: 350}](/articles/images/rx_blockchain/group.webp)
 
 As the close of their student careers, the students were all excited; especially
 our team. The exposition day for the senior projects was the first our team had
 met in person.
 
-![](/blogs/images/rx_blockchain/busy.webp)
+![](/articles/images/rx_blockchain/busy.webp)
 
-![](/blogs/images/rx_blockchain/mehek_explains.webp)
+![](/articles/images/rx_blockchain/mehek_explains.webp)
 
 When noon came, our team had reviewed other booths and I was delighted at the
 ingenuity of the other engineering student groups. I was so proud of our group
@@ -96,9 +96,9 @@ agree to have a sponsor as young as me.
 
 ## Winning 1st place
 
-![](/blogs/images/rx_blockchain/judges.webp)
+![](/articles/images/rx_blockchain/judges.webp)
 
-![](/blogs/images/rx_blockchain/show_judge.webp)
+![](/articles/images/rx_blockchain/show_judge.webp)
 
 ###### Panel composed of professors
 
@@ -106,4 +106,4 @@ The professors were impressed and our team was awarded 1st place in the
 Computer Science Department and 3rd out of 50 in the School of Engineering
 overall!
 
-![](/blogs/images/rx_blockchain/cool.webp)
+![](/articles/images/rx_blockchain/cool.webp)

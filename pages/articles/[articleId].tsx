@@ -1,11 +1,11 @@
-/** Statically generated blog page. */
+/** Statically generated article page. */
 
 import { GetStaticPropsContext, GetStaticPropsResult } from "next"
 import {
-  BlogDataType,
-  getBlog,
-  getBlogsPathsAsProps,
-} from "../../article_configs/process_blogs"
+  ArticleDataType,
+  getArticle,
+  getArticlePathsAsProps,
+} from "../../article_configs/process_articles"
 import {
   Box,
   Container,
@@ -22,44 +22,44 @@ import Footer from "../../components/Footer"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
 
 /**
- * Runs at build time to generate possible blog paths.
+ * Runs at build time to generate possible article paths.
  *
  * Requires return of
- * `{ paths: [{ params: <blogId> }, { params: <blogId> }] }`
+ * `{ paths: [{ params: <articleId> }, { params: <articleId> }] }`
  */
 export async function getStaticPaths() {
-  const blogsPaths: Array<{ params: { blogId: string } }> =
-    getBlogsPathsAsProps()
-  return { paths: blogsPaths, fallback: false }
+  const articlePaths: Array<{ params: { articleId: string } }> =
+    getArticlePathsAsProps()
+  return { paths: articlePaths, fallback: false }
 }
 
 interface ContextParamsType extends ParsedUrlQuery {
-  blogId: string
+  articleId: string
 }
 
 /**
- * Runs at build time to statically generate blog pages.
+ * Runs at build time to statically generate article pages.
  *
  * Requires return of
  * `{ props: <prop variable> }`
  */
 export async function getStaticProps(
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<BlogDataType>> {
+): Promise<GetStaticPropsResult<ArticleDataType>> {
   // Add type, otherwise undefined pages will cause error:
   // https://github.com/vercel/next.js/discussions/16522#discussioncomment-130070
   const params = context.params! as ContextParamsType
-  const blog: BlogDataType = await getBlog(params.blogId)
+  const article: ArticleDataType = await getArticle(params.articleId)
 
-  const blogProps = {
-    ...blog,
-    metadata: JSON.parse(blog.metadata),
+  const articleProps = {
+    ...article,
+    metadata: JSON.parse(article.metadata),
   }
 
-  return { props: blogProps }
+  return { props: articleProps }
 }
 
-export default function Blog({
+export default function article({
   fullMarkdown,
   markdownBody,
   htmlBody,

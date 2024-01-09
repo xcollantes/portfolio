@@ -9,7 +9,7 @@ import { Stack } from "@mui/material"
 import LongCard from "./LongCard"
 import { filterDataConfig } from "../article_configs/filters_config"
 import FadeCustom from "./Fade"
-import { MetadataType } from "../article_configs/process_blogs"
+import { MetadataType } from "../article_configs/process_articles"
 
 export interface ExperienceCardsPropType {
   metadata: MetadataType[]

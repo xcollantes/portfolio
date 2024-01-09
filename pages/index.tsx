@@ -21,7 +21,7 @@ import { GetStaticPropsResult } from "next"
 import {
   MetadataType,
   getHeaderMetadata,
-} from "../article_configs/process_blogs"
+} from "../article_configs/process_articles"
 import AuthButton from "../components/AuthButton"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import Image from "next/image"
@@ -32,8 +32,8 @@ import Image from "next/image"
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ metadata: MetadataType[] }>
 > {
-  const blogsMetadata: string[] = await getHeaderMetadata()
-  const metadata: MetadataType[] = blogsMetadata.map(
+  const articleMetadata: string[] = await getHeaderMetadata()
+  const metadata: MetadataType[] = articleMetadata.map(
     (unparsedMetadata: string) => JSON.parse(unparsedMetadata)
   )
 
