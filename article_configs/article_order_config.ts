@@ -1,6 +1,6 @@
 /** Set article order on front page. */
 
-export interface OrderedIncludeArticlesType {
+export interface OrderedIncludeArticlesConfigType {
   // Name of the file without the file type.
   articleFileName: string
 }
@@ -11,7 +11,7 @@ export interface OrderedIncludeArticlesType {
  * IMPORTANT: If not listed, will not show up on web app.
  * MUST EXACT MATCH CASE TO INCLUDE ARTICLE.
  */
-export const orderedIncludeArticles: OrderedIncludeArticlesType[] = [
+export const orderedIncludeArticlesConfig: OrderedIncludeArticlesType[] = [
   // Work experiences
   "google",
   "cloud",
