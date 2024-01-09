@@ -12,7 +12,10 @@ import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { FilterDataType, filterData } from "../article_configs/filters_config"
+import {
+  FilterDataConfigType,
+  filterDataConfig,
+} from "../article_configs/filters_config"
 import { useMemo } from "react"
 import { GetStaticPropsResult } from "next"
 import {
@@ -62,8 +65,8 @@ export default function Page(props: IndexPropTypes) {
     // Filter based on CGI args. Example: `?f=python,interests`.
     if (router.query.f) {
       const splitFilter = router.query.f.toString().split(",")
-      const availableFilters: string[] = filterData.map(
-        (filter: FilterDataType) => filter.tagId
+      const availableFilters: string[] = filterDataConfig.map(
+        (filter: FilterDataConfigType) => filter.tagId
       )
 
       const cleanTags: string[] = []

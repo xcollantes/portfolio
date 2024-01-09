@@ -44,8 +44,8 @@ export interface MetadataType {
   cardPageLink: string
   // Preview card button text. Default is "See more".
   imagePath: string
-  // Must match with filterData.ts list.
-  // Add as many tags since only tags specified in filterData.ts are filterable.
+  // Must match with filterDataConfig.ts list.
+  // Add as many tags since only tags specified in filterDataConfig.ts are filterable.
   // Order not considered.
   tagIds: string[]
   // Shown as text under title on blog page. Human readable. Case-sensitive.

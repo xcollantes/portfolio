@@ -1,18 +1,13 @@
 /** Set article order on front page. */
 
-export interface OrderedIncludeArticlesConfigType {
-  // Name of the file without the file type.
-  articleFileName: string
-}
-
 /**
  * Article order to display.
  *
  * IMPORTANT: If not listed, will not show up on web app.
  * MUST EXACT MATCH CASE TO INCLUDE ARTICLE.
  */
-export const orderedIncludeArticlesConfig: OrderedIncludeArticlesType[] = [
-  // Work experiences
+export const orderedIncludeArticlesConfig: string[] = [
+  /** Work experiences */
   "google",
   "cloud",
   "anderson-podcast",
@@ -24,6 +19,6 @@ export const orderedIncludeArticlesConfig: OrderedIncludeArticlesType[] = [
   "bulldog-band",
   //  "google-home",
 
-  // Blogs
+  /** Blogs */
   // "radio",
 ]
