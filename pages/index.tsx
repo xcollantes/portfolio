@@ -12,10 +12,16 @@ import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { FilterDataType, filterData } from "../blog_utils/filters"
+import {
+  FilterDataConfigType,
+  filterDataConfig,
+} from "../article_configs/filters_config"
 import { useMemo } from "react"
 import { GetStaticPropsResult } from "next"
-import { MetadataType, getHeaderMetadata } from "../blog_utils/process_blogs"
+import {
+  MetadataType,
+  getHeaderMetadata,
+} from "../article_configs/process_articles"
 import AuthButton from "../components/AuthButton"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import Image from "next/image"
@@ -26,8 +32,8 @@ import Image from "next/image"
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ metadata: MetadataType[] }>
 > {
-  const blogsMetadata: string[] = await getHeaderMetadata()
-  const metadata: MetadataType[] = blogsMetadata.map(
+  const articleMetadata: string[] = await getHeaderMetadata()
+  const metadata: MetadataType[] = articleMetadata.map(
     (unparsedMetadata: string) => JSON.parse(unparsedMetadata)
   )
 
@@ -59,8 +65,8 @@ export default function Page(props: IndexPropTypes) {
     // Filter based on CGI args. Example: `?f=python,interests`.
     if (router.query.f) {
       const splitFilter = router.query.f.toString().split(",")
-      const availableFilters: string[] = filterData.map(
-        (filter: FilterDataType) => filter.tagId
+      const availableFilters: string[] = filterDataConfig.map(
+        (filter: FilterDataConfigType) => filter.tagId
       )
 
       const cleanTags: string[] = []

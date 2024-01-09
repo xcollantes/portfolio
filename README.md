@@ -31,14 +31,14 @@ be used when pulling with this method.
 
 ### Page registering
 
-1. Create a Markdown file under `pages/blogs/`. This will be the path used in
+1. Create a Markdown file under `pages/articles/`. This path will be used in
    the URL of the article page without `pages/` and the `.md` extension.
 
    - Use all lowercase
    - Use hyphens and not underscores
 
 1. Add a YAML metadata section to the top of the Markdown file. See
-   `portfolio/blog_utils/process_blogs.ts` under `MetadataType` for fields
+   `article_configs/process_articles.ts` under `MetadataType` for fields
    required and available.
 
 1. The `title` field is the header of the entire article.
@@ -54,12 +54,18 @@ be used when pulling with this method.
      - tag2
    ```
 
+### Article order and enabling articles
+
+**IMPORTANT:** To make an article accessible through the URL and in general, you
+have to explicitly include the filename with the extension in
+`article_configs/article_order_config.ts`.
+
 ### Registering filter
 
-1. Check the `blog_utils/filters.ts` file to make sure your desired filters
-   are included and labeled properly. These are the filter options a user can
-   filter preview cards by. **The tag MUST match exactly the `tagIds` in the
-   Markdown file to be included in a filter.**
+1. Check the `article_configs/filters_config.ts` file to make sure your desired
+   filters are included and labeled properly. These are the filter options a
+   user can filter preview cards by. **The tag MUST match exactly the `tagIds`
+   in the Markdown file to be included in a filter.**
 
 ### Article content
 
@@ -70,21 +76,21 @@ converted to HTML with styles applied.
 
 Use the Markdown for H6 as caption for photos. Example: `###### My caption`.
 
-Images will fill the width of the blog container. Specify the height of the
+Images will fill the width of the article container. Specify the height of the
 image to make the image smaller than the container. Only specify the height as
 the image will maintain ratio when height is specified.
 
 ```markdown
-![{h: 200}](my/blog/image.webp)
+![{h: 200}](my/article/image.webp)
 ```
 
-If the image is above the fold when the blog first renders, you can assign a
+If the image is above the fold when the article first renders, you can assign a
 priority load flag the same way you would use
 `[priority](https://nextjs.org/docs/pages/api-reference/components/image#priority)`
 in NextJS or ReactJS:
 
 ```markdown
-![{priority}](my/blog/image.webp)
+![{priority}](my/article/image.webp)
 ```
 
 Compress images.

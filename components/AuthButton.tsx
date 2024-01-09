@@ -1,7 +1,7 @@
 /** Handle frontend for authentication. */
 
 import { Button, CircularProgress } from "@mui/material"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 
 export default function AuthButton() {
   const { data: session, status } = useSession()

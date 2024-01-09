@@ -1,7 +1,7 @@
 ---
 title: Raspberry Pi motion camera
 cardDescription: Homemade internet-of-things private cloud connected motion-detecting camera.
-cardPageLink: "/blogs/rpi-camera"
+cardPageLink: "/articles/rpi-camera"
 author: Xavier Collantes
 imagePath: ""
 tagIds: ["electronics", "iot", "python"]
@@ -27,7 +27,7 @@ functionality close to what existed commercially. The challenge would not be
 creating my own software for a motion detector but **integrating** several
 existing technologies to achieve my requirements.
 
-![{h: 300}](/blogs/images/rpi_camera/zucc.webp)
+![{h: 300}](/articles/images/rpi_camera/zucc.webp)
 
 ## Requirements
 
@@ -42,7 +42,7 @@ functionalities by priority:
   - Data is uploaded, downloaded, and edited with access only to the user
   - The cloud provider has no access to the media stored (Proton.me, ["Zero
     Knowledge Cloud
-    Storage"](https://proton.me/blog/zero-knowledge-cloud-storage))
+    Storage"](https://proton.me/article/zero-knowledge-cloud-storage))
 - Must be able to run continuously for months
 - Should NOT cost more than a conventional system
   - $150 as limit since this would cover monthly costs and initial costs
@@ -56,7 +56,7 @@ functionalities by priority:
 
 ### Software
 
-![{h: 100}](/blogs/images/rpi_camera/rclone.svg)
+![{h: 100}](/articles/images/rpi_camera/rclone.svg)
 
 My solution, MoCam, is an implementation of
 [motion-project.github.io](https://motion-project.github.io). I combined the
@@ -75,7 +75,7 @@ Required hardware is a Raspberry Pi, preferably at least 2 GB of RAM since
 processing the video puts strain on the machine. Lower RAM machines were not
 tested such as the Raspberry Pico.
 
-![{h: 200}](/blogs/images/rpi_camera/rpi.webp)
+![{h: 200}](/articles/images/rpi_camera/rpi.webp)
 
 A camera is also needed. I found the best results with a USB camera since it's
 fairly easy to setup as well. There is a Raspberry Pis Module Camera
@@ -88,4 +88,4 @@ pitfalls"](https://github.com/xcollantes/mocam/blob/master/README.md#common-pitf
 There are some commands needed to find the ID of the camera as this is needed
 for the Docker image.
 
-![{h: 200}](/blogs/images/rpi_camera/usb_camera.webp)
+![{h: 200}](/articles/images/rpi_camera/usb_camera.webp)

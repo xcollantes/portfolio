@@ -3,7 +3,7 @@ title: Business Intelligence Engineer
 author: Xavier Collantes
 dateWritten: 06/01/2016
 cardDescription: Constructing a data pipeline responsible for $500 million in finance sales.
-cardPageLink: "/blogs/itron"
+cardPageLink: "/articles/itron"
 imagePath: ""
 tagIds: ["itron", "internship", "engineering", "data", "business"]
 ---

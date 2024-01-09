@@ -5,5 +5,5 @@ export { default } from "next-auth/middleware"
 
 // Applies to both `pages/` and `public/`.
 export const config = {
-  matcher: ["/blogs/(.*)"],
+  matcher: ["/articles/(.*)"],
 }

@@ -2,7 +2,10 @@
 
 import { Box } from "@mui/material"
 import FilterButton from "./FilterButton"
-import { FilterDataType, filterData } from "../blog_utils/filters"
+import {
+  FilterDataConfigType,
+  filterDataConfig,
+} from "../article_configs/filters_config"
 
 interface FilterBarPropType {
   disabled?: boolean
@@ -12,7 +15,7 @@ export default function FilterBar({ disabled }: FilterBarPropType) {
   let key: number = 0
   return (
     <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "end" }}>
-      {filterData.map((filter: FilterDataType) => (
+      {filterDataConfig.map((filter: FilterDataConfigType) => (
         <FilterButton
           displayText={filter.displayText}
           tagId={filter.tagId}

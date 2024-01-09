@@ -1,6 +1,6 @@
 /** Filter options shown as buttons. The order is respected. */
 
-export interface FilterDataType {
+export interface FilterDataConfigType {
   // Case sensitive and should be human readable.
   displayText: string
   // Should be camelcase with no spaces.
@@ -8,7 +8,7 @@ export interface FilterDataType {
 }
 
 // List of filters turned on.
-export const filterData: FilterDataType[] = [
+export const filterDataConfig: FilterDataConfigType[] = [
   { displayText: "Python", tagId: "python" },
   { displayText: "Cyber security", tagId: "security" },
   { displayText: "Cloud", tagId: "database" },

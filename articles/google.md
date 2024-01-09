@@ -1,7 +1,7 @@
 ---
 title: Technical Solutions in Google Search
 cardDescription: Improving Search to work for all locales at scale.
-cardPageLink: blogs/google
+cardPageLink: articles/google
 subTitle: ""
 cardButtonText: ""
 imagePath: ""

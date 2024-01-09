@@ -7,9 +7,9 @@ import {
 } from "../contexts/selectFilterTag"
 import { Stack } from "@mui/material"
 import LongCard from "./LongCard"
-import { filterData } from "../blog_utils/filters"
+import { filterDataConfig } from "../article_configs/filters_config"
 import FadeCustom from "./Fade"
-import { MetadataType } from "../blog_utils/process_blogs"
+import { MetadataType } from "../article_configs/process_articles"
 
 export interface ExperienceCardsPropType {
   metadata: MetadataType[]
@@ -21,7 +21,10 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
     useSelectedFilterTagContext()
 
   useMemo(() => {
-    if (selectedTags.length <= 0 || selectedTags.length >= filterData.length) {
+    if (
+      selectedTags.length <= 0 ||
+      selectedTags.length >= filterDataConfig.length
+    ) {
       setSelected(metadata) // Render all cards
     } else {
       setSelected(
@@ -31,7 +34,7 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
       )
     }
 
-    if (selectedTags.length >= filterData.length) {
+    if (selectedTags.length >= filterDataConfig.length) {
       setSelectedTags([])
     }
   }, [selectedTags])

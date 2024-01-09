@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import imageStyles from "../css/images.module.css"
-import blogStyles from "../css/blog.module.css"
+import articleStyles from "../css/article.module.css"
 import { Box, Typography } from "@mui/material"
 import Link from "next/link"
 
@@ -69,7 +69,7 @@ const h6Custom = (h6) => {
 
 const aCustom = (a) => {
   return (
-    <Link href={a.href} passHref className={blogStyles.linkText}>
+    <Link href={a.href} passHref className={articleStyles.linkText}>
       {a.children}
     </Link>
   )
