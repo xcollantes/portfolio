@@ -12,10 +12,13 @@ import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { FilterDataType, filterData } from "../blog_utils/filters"
+import { FilterDataType, filterData } from "../article_configs/filters_config"
 import { useMemo } from "react"
 import { GetStaticPropsResult } from "next"
-import { MetadataType, getHeaderMetadata } from "../blog_utils/process_blogs"
+import {
+  MetadataType,
+  getHeaderMetadata,
+} from "../article_configs/process_blogs"
 import AuthButton from "../components/AuthButton"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import Image from "next/image"

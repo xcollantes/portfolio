@@ -2,7 +2,7 @@
 
 import { Box } from "@mui/material"
 import FilterButton from "./FilterButton"
-import { FilterDataType, filterData } from "../blog_utils/filters"
+import { FilterDataType, filterData } from "../article_configs/filters_config"
 
 interface FilterBarPropType {
   disabled?: boolean

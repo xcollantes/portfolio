@@ -1,7 +1,7 @@
 /** Placeholder for when unauthenticated. */
 
 import { Stack } from "@mui/material"
-import { MetadataType } from "../blog_utils/process_blogs"
+import { MetadataType } from "../article_configs/process_blogs"
 import FadeCustom from "./Fade"
 import LongCard from "./LongCard"
 

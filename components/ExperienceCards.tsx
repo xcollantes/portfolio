@@ -7,9 +7,9 @@ import {
 } from "../contexts/selectFilterTag"
 import { Stack } from "@mui/material"
 import LongCard from "./LongCard"
-import { filterData } from "../blog_utils/filters"
+import { filterData } from "../article_configs/filters_config"
 import FadeCustom from "./Fade"
-import { MetadataType } from "../blog_utils/process_blogs"
+import { MetadataType } from "../article_configs/process_blogs"
 
 export interface ExperienceCardsPropType {
   metadata: MetadataType[]

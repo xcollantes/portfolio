@@ -5,7 +5,7 @@ import {
   BlogDataType,
   getBlog,
   getBlogsPathsAsProps,
-} from "../../blog_utils/process_blogs"
+} from "../../article_configs/process_blogs"
 import {
   Box,
   Container,
