@@ -1,7 +1,7 @@
 ---
 title: Prescription Blockchain
 author: Xavier Collantes
-cardDescription: "Sponsored and mentored a Gonzaga University student engineering capstone project"
+cardDescription: "Sponsored and mentored a Gonzaga University student engineering capstone project."
 cardPageLink: "/articles/rx-blockchain"
 imagePath: ""
 tagIds:

@@ -11,7 +11,7 @@ tagIds: ["interests", "gonzaga", "business", "podcast", "alumni"]
   <iframe
     width="100%"
     height="100%"
-    src="https://www.youtube-nocookie.com/embed/27kAuEFGduI?si=S2ySYw1xf4gjbXBU"
+    src="https://www.youtube-nocookie.com/embed/27kAuEFGduI?si=rYG3QUug9_FN5nEO"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen
@@ -26,3 +26,59 @@ Kenneth
 Anderson](https://www.gonzaga.edu/academics/faculty-listing/detail/anderson),
 the Dean of Business School at Gonzaga University's podcast to speak about my
 experiences as an alumni in the professional world.
+
+## Highlights
+
+### Intro: The Saxophone Player
+
+<div style="position:relative; display:block; width: 100%">
+  <iframe
+    width="100%"
+    height="50%"
+    src="https://www.youtube-nocookie.com/embed/27kAuEFGduI?si=rYG3QUug9_FN5nEO&start=5"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+</div>
+
+### The (almost) college dropout
+
+<div style="position:relative; display:block; width: 100%">
+  <iframe
+    width="100%"
+    height="50%"
+    src="https://www.youtube-nocookie.com/embed/27kAuEFGduI?si=rYG3QUug9_FN5nEO&start=129"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+</div>
+
+### "You gotta stay relaxed"
+
+<div style="position:relative; display:block; width: 100%">
+  <iframe
+    width="100%"
+    height="50%"
+    src="https://www.youtube-nocookie.com/embed/27kAuEFGduI?si=rYG3QUug9_FN5nEO&start=1985"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+</div>
+
+### Favorite mistake
+
+Question by Dr. Bull Schaefer
+
+<div style="position:relative; display:block; width: 100%">
+  <iframe
+    width="100%"
+    height="50%"
+    src="https://www.youtube-nocookie.com/embed/27kAuEFGduI?si=rYG3QUug9_FN5nEO&start=2392"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+</div>
