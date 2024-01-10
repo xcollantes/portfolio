@@ -1,6 +1,6 @@
 ---
-title: Guest on the Dean of the Gonzaga School of Business' podcast
-cardDescription: Weekly podcast hosted by Dean Anderson with guest Xavier Collantes.
+title: Dean of the Gonzaga School of Business' podcast
+cardDescription: Weekly podcast hosted by Dr. Kenneth Anderson with guest Xavier Collantes.
 cardPageLink: articles/anderson-podcast
 cardButtonText: Watch video
 imagePath: ""
@@ -21,6 +21,8 @@ tagIds: ["interests", "gonzaga", "business", "podcast", "alumni"]
 
 [Link to Youtube](https://youtu.be/27kAuEFGduI?si=Kmi83PUNLZhXewPK)
 
-In 2021, during the COVID pandemic, I was lucky enough to be a guest on the Dean
-of Business School at Gonzaga University's podcast to speak about my experiences
-as an alumni in the professional world.
+In 2021, during the COVID pandemic, I was lucky enough to be a guest on [Dr.
+Kenneth
+Anderson](https://www.gonzaga.edu/academics/faculty-listing/detail/anderson),
+the Dean of Business School at Gonzaga University's podcast to speak about my
+experiences as an alumni in the professional world.
