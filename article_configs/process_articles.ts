@@ -41,7 +41,8 @@ export interface MetadataType {
   // external page and skip the article altogether.
   //
   // NextJS Link page name with no extension in relation to `pages/`.
-  // Example: pages/articles/project.tsx => articles/project
+  // Example: If file path is `pages/articles/project.tsx` => field would be
+  // `articles/project`.
   cardPageLink: string
   // Preview card button text. Default is "See more".
   imagePath: string
