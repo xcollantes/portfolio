@@ -1,9 +1,9 @@
 ---
-title: Ham radio
-cardDescription: ""
+title: Licensed ham radio operator
+cardDescription: FCC licensed and learning uses of radio for computer security and other applications.
 cardPageLink: ""
 imagePath: ""
-tagIds: ["interests", "radio"]
+tagIds: ["interests", "radio", "blogs"]
 ---
 
 <div style="padding-bottom:56.25%; position:relative; display:block; width: 100%">

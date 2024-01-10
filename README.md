@@ -117,6 +117,10 @@ Use this snippet for making `iframe` responsive and replace the src:
 </div>
 ```
 
+NOTE: For best results from YouTube, use
+`https://www.youtube-nocookie.com/embed/27kAuEFGduI?si=rYG3QUug9_FN5nEO&start=5`
+with `nocookie` if using the `start=` parameter.
+
 To make embedded content such as HTML rendered, we use `rehypeRaw` plugin for
 ReactMarkdown [more info](https://stackoverflow.com/a/70548866/8278075).
 
