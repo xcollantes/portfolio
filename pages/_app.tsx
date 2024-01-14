@@ -17,6 +17,11 @@ export default function App({
 }: AppProps) {
   console.log(MOTD)
 
+  // Override requirement for user to auth for articles with ENV variable.
+  if (!process.env.NEXT_PUBLIC_AUTH_USERS) {
+    session = undefined
+  }
+
   return (
     <SessionProvider session={session}>
       <ColorModeProvider theme={base}>
