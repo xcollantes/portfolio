@@ -17,6 +17,7 @@ export const orderedIncludeArticlesConfig: string[] = [
   "bulldog-band.md",
   "rpi-camera.md",
   "itron.md",
+  "housing.md",
   //  "amazon-price.md",
   //  "google-home.md",
 

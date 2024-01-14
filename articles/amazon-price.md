@@ -11,6 +11,8 @@ tagIds:
   - code
   - chromeExtension
   - frontend
+  - bi
+  - webdev
   - apis
   - typescript
 ---

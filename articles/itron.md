@@ -5,7 +5,7 @@ dateWritten: 06/01/2016
 cardDescription: Constructing a data pipeline responsible for $500 million in finance sales.
 cardPageLink: "/articles/itron"
 imagePath: ""
-tagIds: ["itron", "internship", "engineering", "data", "business"]
+tagIds: ["itron", "internship", "engineering", "data", "business", "bi"]
 ---
 
 Liberty Lake, WA in 2016, I had the opportunity to be an intern at Itron, Inc.,

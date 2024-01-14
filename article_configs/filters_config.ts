@@ -10,8 +10,10 @@ export interface FilterDataConfigType {
 // List of filters turned on.
 export const filterDataConfig: FilterDataConfigType[] = [
   { displayText: "Python", tagId: "python" },
-  { displayText: "Cyber security", tagId: "security" },
-  { displayText: "Cloud", tagId: "database" },
-  { displayText: "Interests", tagId: "interests" },
+  { displayText: "Web dev", tagId: "webdev" },
   { displayText: "IoT", tagId: "iot" },
+  // { displayText: "Cyber security", tagId: "security" },
+  // { displayText: "Cloud", tagId: "database" },
+  { displayText: "Business Intelligence", tagId: "bi" },
+  { displayText: "Interests", tagId: "interests" },
 ]

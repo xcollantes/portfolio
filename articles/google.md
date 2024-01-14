@@ -1,6 +1,6 @@
 ---
 title: Technical Solutions in Google Search
-cardDescription: Improving Search to work for all locales at scale.
+cardDescription: Improving Search for users globally.
 cardPageLink: articles/google
 subTitle: ""
 cardButtonText: ""
@@ -15,6 +15,7 @@ tagIds:
   - search
   - google
   - code
+  - webdev
   - devops
 ---
 
