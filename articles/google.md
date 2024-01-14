@@ -17,8 +17,8 @@ tagIds:
   - devops
 ---
 
-If you've ever used [google.com](https://www.google.com), odds are you've seen
-my work.
+If you have ever used [google.com](https://www.google.com), odds are you have
+seen my work.
 
 [![{priority}](/articles/images/google/google_logo.webp)](https://www.google.com/search?q=google+in+1998)
 
