@@ -1,6 +1,6 @@
 ---
 title: Technical Solutions Consultant, Google Search
-cardDescription: Improving Google Search for users globally.
+cardDescription: Improving Google Search for 2.7 billion users globally.
 cardPageLink: articles/google
 imagePath: ""
 author: Xavier Collantes
@@ -22,7 +22,7 @@ tagIds:
 If you have ever used [google.com](https://www.google.com), odds are you have
 seen my work.
 
-[![{priority}](/articles/images/google/google_logo.webp)](https://www.google.com/search?q=google+in+1998)
+[![Google logo {priority}](/articles/images/google/google_logo.webp)](https://www.google.com/search?q=google+in+1998)
 
 ## The ultimate web development experience
 
@@ -32,11 +32,11 @@ the world!
 
 As Google is diverse and far reaching in its products, so has been my experience
 in honing my skills in software engineering and product management to improve
-features for the 1.5 billion Google Search users globally.
+features for the 2.7 billion Google Search users globally<sup>1</sup>.
 
 ## Software engineering
 
-![](/articles/images/google/front.webp)
+![Image of me {priority}](/articles/images/google/front.webp)
 
 ###### Mountain View, California
 
@@ -111,8 +111,6 @@ A typical project for me would generally follow the process:
 Accomplishing these tasks requires meticulous documentation and well-defined
 metrics.
 
-## i18n
-
 ## Scaling
 
 _"You can solve a problem once but at Google you have to go further and solve it
@@ -120,7 +118,11 @@ globally"_ was the catchphrase of a manager I once had, which summed up the
 complexity of issues at Google. Often in my work, it was not good enough to
 figure out a problem but how do you solve the issue for as many use cases?
 
-## Data Engineering
-
-_Disclaimer: Statistics and figures in this article are based on publicly known
-data._
+<sup>1</sup>_Disclaimer: Statistics and figures in this article are based on publicly known
+data. The figure "2.7 billion users daily"; this is calculated by taking "8.5
+billion searches a day" as determined by
+[InternetLiveStats.com](https://www.internetlivestats.com/one-second/#google-band)
+in 2022 and dividing from
+[Moz.com's](https://moz.com/blog/new-google-survey-results) research of where
+users were found to use Search "3 to 4 times daily". Actual metrics are not
+included since this is confidential information._
