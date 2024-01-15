@@ -67,6 +67,13 @@ export default function article({
 }) {
   const theme: Theme = useTheme()
 
+  let dateLastUpdatedL10n: string = ""
+  if (metadata.dateLastUpdated) {
+    dateLastUpdatedL10n = new Date(
+      metadata.dateLastUpdated
+    ).toLocaleDateString()
+  }
+
   let dateWrittenL10n: string = ""
   if (metadata.dateWritten) {
     dateWrittenL10n = new Date(metadata.dateWritten).toLocaleDateString()
@@ -117,7 +124,17 @@ export default function article({
               Written by {metadata.author}
             </Typography>
           )}
-          {metadata.dateWritten && (
+          {metadata.dateLastUpdated && metadata.dateWritten && (
+            <Typography variant="body1" color={"gray"}>
+              Created: {dateWrittenL10n}; Last updated: {dateLastUpdatedL10n}
+            </Typography>
+          )}
+          {metadata.dateLastUpdated && !metadata.dateWritten && (
+            <Typography variant="body1" color={"gray"}>
+              {dateLastUpdatedL10n}
+            </Typography>
+          )}
+          {!metadata.dateLastUpdated && metadata.dateWritten && (
             <Typography variant="body1" color={"gray"}>
               {dateWrittenL10n}
             </Typography>
