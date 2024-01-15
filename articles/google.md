@@ -56,6 +56,8 @@ about 75% of time on Software Engineering tasks such as:
   Feature Engineers, UX designers, Program Managers, Product Managers, and Data
   Analysts
 
+![Image of group {priority}](/articles/images/google/circle_group.jpeg)
+
 Google uses mostly internal tools for the development of software but Google has
 made many available to the public. The following are the tools I am most
 proficient with internal tools replaced by their external counterparts:
@@ -103,13 +105,15 @@ A typical project for me would generally follow the process:
 
 1. Identify issue, pain points, or opportunity
 1. Scope requirements in time and resources
-1. Pilot
+1. Pilot program to discover new requirements and issues in practice
 1. Propose top solutions weighing cost and benefit for each
 1. Gain approval (funding if needed)
-1. Implement process and
+1. Implement process by writing code, setting up IAM infrastructure, delegate
+   tasks
 
 Accomplishing these tasks requires meticulous documentation and well-defined
-metrics.
+metrics. The metrics are chosen at the beginning and determine if the project
+should continue.
 
 ## Scaling
 
@@ -117,6 +121,8 @@ _"You can solve a problem once but at Google you have to go further and solve it
 globally"_ was the catchphrase of a manager I once had, which summed up the
 complexity of issues at Google. Often in my work, it was not good enough to
 figure out a problem but how do you solve the issue for as many use cases?
+
+[![{h: 250}](/articles/images/google/xkcd.png)](https://xkcd.com/2797)
 
 <sup>1</sup>_Disclaimer: Statistics and figures in this article are based on publicly known
 data. The figure "2.7 billion users daily"; this is calculated by taking "8.5
