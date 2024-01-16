@@ -30,6 +30,9 @@ With my time at Google, I am lucky enough to have contributed to one of the most
 recognizable products in history and hone my skills with the brightest minds in
 the world!
 
+Most of my work was based on increasing quality for Search features such as
+[Knowledge Panels](https://en.wikipedia.org/wiki/Google_Knowledge_Graph).
+
 As Google is diverse and far reaching in its products, so has been my experience
 in honing my skills in software engineering and product management to improve
 features for the 2.7 billion Google Search users globally<sup>1</sup>.
@@ -124,9 +127,23 @@ figure out a problem but how do you solve the issue for as many use cases?
 
 [![{h: 250}](/articles/images/google/xkcd.png)](https://xkcd.com/2797)
 
-<sup>1</sup>_Disclaimer: Statistics and figures in this article are based on publicly known
-data. The figure "2.7 billion users daily"; this is calculated by taking "8.5
-billion searches a day" as determined by
+Scaling at Google requires drawing lines in the project plan in scope. As a
+leader, you must say no to some features or functions which may over-extend the
+team. A core-competency must be established or in other words, "what you are
+good in that no other person or team can do?".
+
+When I was establishing a process with the goal of choosing the best translation
+for Search features, you have to calculate the complexity of the problem by
+asking questions such as:
+
+- How many features are there?
+- How many languages do we need to cover?
+- Do we need to have all the languages? Maybe just the target ones?
+- Which languages yield the most impact?
+
+<sup>1</sup>_Disclaimer: Statistics and figures in this article are based on
+publicly known data. The figure "2.7 billion users daily"; this is calculated by
+taking "8.5 billion searches a day" as determined by
 [InternetLiveStats.com](https://www.internetlivestats.com/one-second/#google-band)
 in 2022 and dividing from
 [Moz.com's](https://moz.com/blog/new-google-survey-results) research of where
