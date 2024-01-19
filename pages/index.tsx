@@ -24,7 +24,7 @@ import {
 } from "../article_configs/process_articles"
 import AuthButton from "../components/AuthButton"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
-import Image from "next/image"
+import { isUserSignedIn } from "../components/AuthUtils"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -116,13 +116,13 @@ export default function Page(props: IndexPropTypes) {
               </Typography>
               <SocialMedia />
               <Box sx={{ mt: 8 }}>
-                <FilterBar disabled={!Boolean(session)} />
+                <FilterBar disabled={!isUserSignedIn(session)} />
               </Box>
             </Box>
           </Box>
         </Grid>
         <Grid xs={12} sm={7}>
-          {session ? (
+          {isUserSignedIn(session) ? (
             <ExperienceCards metadata={props.metadata} />
           ) : (
             <>
