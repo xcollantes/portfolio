@@ -17,11 +17,6 @@ export default function App({
 }: AppProps) {
   console.log(MOTD)
 
-  // Override requirement for user to auth for articles with ENV variable.
-  if (!process.env.NEXT_PUBLIC_AUTH_USERS) {
-    session = undefined
-  }
-
   return (
     <SessionProvider session={session}>
       <ColorModeProvider theme={base}>
@@ -36,6 +31,12 @@ export default function App({
             content="resume,portfolio,career,projects,xavier,collantes"
           />
           <meta name="og:title" content="Xavier Collantes" />
+
+          <script
+            src="https://www.google.com/recaptcha/api.js"
+            async
+            defer
+          ></script>
 
           <title>Xavier Collantes</title>
         </Head>

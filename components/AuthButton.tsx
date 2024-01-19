@@ -11,6 +11,14 @@ export default function AuthButton() {
     signIn()
   }
 
+  if (process.env.NEXT_PUBLIC_CAPTCHA === "true") {
+    return (
+      <Button onClick={() => {}} variant="contained">
+        Click to enter
+      </Button>
+    )
+  }
+
   // Avoids showing button on load
   if (status == "loading") {
     return <CircularProgress />

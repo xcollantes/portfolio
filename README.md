@@ -138,7 +138,26 @@ export { default } from "next-auth/middleware"
 
 https://next-auth.js.org/configuration/nextjs#middleware
 
+### Enable or disable 3rd party OAuth user requirement
+
+Change the following variables.
+
+- In the `env` file, set `NEXT_PUBLIC_AUTH_USERS` to `true` to block elements if
+  user is not authenticated.
+- In `middleware.ts`, choose the pattern to block if user is not authenticated.
+
+NOTE: Since NextJS forbids variables and conditional statements in middleware.ts
+just comment out the unused option.
+
 ## Common pitfalls
+
+### ENV arg is always true
+
+Adding boolean values in `.env` files will return as true every time. Process
+the string to match "true" or "false".
+
+`NEXT_PUBLIC_CAPTCHA=false` for example will always return true if evaluated
+since the value is a type string.
 
 ### Use `secrets` for Next Auth
 
