@@ -7,8 +7,10 @@ import { NextRequest, NextResponse } from "next/server"
 export function middleware(request: NextRequest) {
   const CLICK_CHECK_KEY = "XAVIER_WAS_HERE"
 
+  // Coming from simple "CAPTCHA", redirect to destination
+  // Add cookie to let checked users through
   if (request.url.match("verified=true")) {
-    console.log("MIDDLEWARE: VERIFY TRUE")
+    console.log("MIDDLEWARE: VERIFIED")
 
     const response = NextResponse.next()
     const now = new Date()
@@ -17,6 +19,7 @@ export function middleware(request: NextRequest) {
     return response
   }
 
+  // If not checked, redirect to simple "CAPTCHA"
   if (!request.cookies.has(CLICK_CHECK_KEY)) {
     console.log("MIDDLEWARE: NO COOKIE")
 
