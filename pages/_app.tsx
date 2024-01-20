@@ -32,12 +32,6 @@ export default function App({
           />
           <meta name="og:title" content="Xavier Collantes" />
 
-          <script
-            src="https://www.google.com/recaptcha/api.js"
-            async
-            defer
-          ></script>
-
           <title>Xavier Collantes</title>
         </Head>
 
