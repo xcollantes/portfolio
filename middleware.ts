@@ -28,6 +28,7 @@ export function middleware(request: NextRequest) {
 
     return NextResponse.rewrite(verifyPage.href)
   }
+  console.log("MIDDLEWARE: Pass")
 }
 
 // Applies to both `pages/` and `public/`.
