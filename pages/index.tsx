@@ -115,13 +115,13 @@ export default function Page(props: IndexPropTypes) {
                 Software engineer
               </Typography>
               <SocialMedia />
-              <Box sx={{ mt: 8 }}>
-                <FilterBar disabled={!isUserSignedIn(session)} />
-              </Box>
             </Box>
           </Box>
         </Grid>
         <Grid xs={12} sm={7}>
+          <Box sx={{ my: 3 }}>
+            <FilterBar disabled={!isUserSignedIn(session)} />
+          </Box>
           {isUserSignedIn(session) ? (
             <ExperienceCards metadata={props.metadata} />
           ) : (
