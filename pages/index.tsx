@@ -140,7 +140,9 @@ export default function Page(props: IndexPropTypes) {
                     zIndex: 10000000,
                   }}
                 >
-                  <AuthButton />
+                  {process.env.NEXT_PUBLIC_AUTH_USERS === "true" && (
+                    <AuthButton />
+                  )}
                 </Box>
               </Box>
 

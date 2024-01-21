@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server"
 export function middleware(request: NextRequest) {
   const CLICK_CHECK_KEY = "XAVIER_WAS_HERE"
 
-  // Coming from simple "CAPTCHA", redirect to destination
+  // Coming from simple "CAPTCHA", rewrite to destination
   // Add cookie to let checked users through
   if (request.url.match("verified=true")) {
     console.log("MIDDLEWARE: VERIFIED")
@@ -19,7 +19,7 @@ export function middleware(request: NextRequest) {
     return response
   }
 
-  // If not checked, redirect to simple "CAPTCHA"
+  // If not checked, rewrite to simple "CAPTCHA"
   if (!request.cookies.has(CLICK_CHECK_KEY)) {
     console.log("MIDDLEWARE: NO COOKIE")
 
@@ -28,7 +28,15 @@ export function middleware(request: NextRequest) {
 
     return NextResponse.rewrite(verifyPage.href)
   }
+
   console.log("MIDDLEWARE: Pass")
+
+  const cleanUrl = new URL(request.url)
+  cleanUrl.searchParams.delete("verified")
+  cleanUrl.searchParams.delete("intended")
+  cleanUrl.searchParams.delete("articleId")
+
+  return NextResponse.rewrite(cleanUrl.href)
 }
 
 // Applies to both `pages/` and `public/`.
