@@ -1,11 +1,11 @@
 /** Panel with list of cards. */
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { Stack } from "@mui/material"
+import { Stack, Typography } from "@mui/material"
 import LongCard from "./LongCard"
 import { filterDataConfig } from "../article_configs/filters_config"
 import FadeCustom from "./Fade"
@@ -20,7 +20,11 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
   const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
     useSelectedFilterTagContext()
 
+  const [workExps, setWorkExps] = useState<MetadataType[]>()
+  const [blogs, setBlogs] = useState<MetadataType[]>()
+
   useMemo(() => {
+    // If all filters or no filters selected, show all cards
     if (
       selectedTags.length <= 0 ||
       selectedTags.length >= filterDataConfig.length
@@ -39,23 +43,45 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
     }
   }, [selectedTags])
 
+  useEffect(() => {
+    const split = Object.groupBy(selected, (e: MetadataType) => e.articleType)
+    setWorkExps(split.WORKEXP)
+    setBlogs(split.BLOG)
+    console.log(split)
+  }, [selected])
+
+  const header = (text: string) => (
+    <Typography variant="subtitle2">{text}</Typography>
+  )
+  const renderCard = (card: MetadataType) => (
+    <FadeCustom key={key}>
+      <div>
+        <LongCard
+          title={card.title}
+          cardDescription={card.cardDescription}
+          cardPageLink={card.cardPageLink}
+          cardButtonText={card.cardButtonText}
+          imagePath={card.imagePath}
+          key={key++}
+        />
+      </div>
+    </FadeCustom>
+  )
+
   let key: number = 0
   return (
     <Stack direction="column" spacing={2} alignItems="stretch">
-      {selected.map((card: MetadataType) => (
-        <FadeCustom key={key}>
-          <div>
-            <LongCard
-              title={card.title}
-              cardDescription={card.cardDescription}
-              cardPageLink={card.cardPageLink}
-              cardButtonText={card.cardButtonText}
-              imagePath={card.imagePath}
-              key={key++}
-            />
-          </div>
-        </FadeCustom>
-      ))}
+      {workExps && header("Work experiences")}
+      {workExps &&
+        workExps.map((card: MetadataType) => {
+          return renderCard(card)
+        })}
+
+      {blogs && header("Blogs")}
+      {blogs &&
+        blogs.map((card: MetadataType) => {
+          return renderCard(card)
+        })}
     </Stack>
   )
 }

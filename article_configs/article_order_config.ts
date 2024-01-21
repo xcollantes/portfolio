@@ -7,20 +7,29 @@
  * be accessible when reaching URL.
  * MUST EXACT MATCH CASE TO INCLUDE ARTICLE.
  */
-export const orderedIncludeArticlesConfig: string[] = [
-  // WORK EXPERIENCES
+
+// WORK EXPERIENCES
+export const orderedIncludeWorkExp: string[] = [
   "google.md",
   // "cloud.md",
   // "portfolio.md",
-  "anderson-podcast.md",
   "rx-blockchain.md",
-  "bulldog-band.md",
-  "rpi-camera.md",
+
   "itron.md",
   "housing.md",
+  "rpi-camera.md",
   //  "amazon-price.md",
   //  "google-home.md",
+]
 
-  // BLOGS
+// BLOGS
+export const orderedIncludeBlogs: string[] = [
+  "bulldog-band.md",
+  "anderson-podcast.md",
   "radio.md",
+]
+
+export const orderedIncludeArticlesConfig = [
+  ...orderedIncludeWorkExp,
+  ...orderedIncludeBlogs,
 ]
