@@ -44,10 +44,11 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
   }, [selectedTags])
 
   useEffect(() => {
+    // https://github.com/xcollantes/portfolio/issues/74
+    //@ts-ignore
     const split = Object.groupBy(selected, (e: MetadataType) => e.articleType)
     setWorkExps(split.WORKEXP)
     setBlogs(split.BLOG)
-    console.log(split)
   }, [selected])
 
   const header = (text: string) => (
