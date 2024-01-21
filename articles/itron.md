@@ -2,6 +2,7 @@
 title: Business Intelligence Engineer
 author: Xavier Collantes
 dateWritten: 06/01/2016
+articleType: WORKEXP
 cardDescription: Constructing a data pipeline responsible for $500 million in finance sales.
 cardPageLink: "/articles/itron"
 imagePath: ""

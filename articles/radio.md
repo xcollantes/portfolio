@@ -2,6 +2,7 @@
 title: Licensed ham radio operator
 author: Xavier Collantes
 dateLastUpdated: 2024-01-09
+articleType: BLOG
 cardDescription: FCC licensed and learning uses of radio for computer security and other applications.
 cardPageLink: "articles/radio"
 imagePath: ""

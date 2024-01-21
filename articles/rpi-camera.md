@@ -3,6 +3,7 @@ title: Raspberry Pi motion camera
 cardDescription: Homemade internet-of-things private cloud connected motion-detecting camera.
 cardPageLink: "/articles/rpi-camera"
 author: Xavier Collantes
+articleType: BLOG
 imagePath: ""
 tagIds: ["electronics", "iot", "python"]
 ---

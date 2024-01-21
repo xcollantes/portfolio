@@ -32,6 +32,9 @@ const articlesDirectory: string = path.join(process.cwd(), "articles")
  * ```
  */
 export interface MetadataType {
+  // Article type.
+  // Either BLOG or WORKEXP.
+  articleType: "BLOG" | "WORKEXP"
   // Shown as title on article page and preview card header. Human readable.
   // Case-sensitive.
   title: string

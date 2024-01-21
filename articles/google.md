@@ -3,6 +3,7 @@ title: Technical Solutions Consultant, Google Search
 cardDescription: Improving Google Search for 2.7 billion users globally.
 cardPageLink: articles/google
 imagePath: ""
+articleType: WORKEXP
 author: Xavier Collantes
 dateWritten: 2024-01-15
 tagIds:

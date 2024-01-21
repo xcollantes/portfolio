@@ -4,6 +4,7 @@ cardDescription: Weekly podcast hosted by Dr. Kenneth Anderson with guest Xavier
 cardPageLink: articles/anderson-podcast
 cardButtonText: Watch video
 imagePath: ""
+articleType: WORKEXP
 tagIds: ["interests", "gonzaga", "business", "podcast", "alumni"]
 ---
 

@@ -3,6 +3,7 @@ title: Gonzaga Housing Web Developer
 cardDescription: Web developer for hire for a place to stay.
 cardPageLink: articles/housing
 imagePath: ""
+articleType: WORKEXP
 author: Xavier Collantes
 tagIds:
   - consulting
