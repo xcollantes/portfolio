@@ -44,6 +44,7 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
   }, [selectedTags])
 
   useEffect(() => {
+    //@ts-ignore
     const split = Object.groupBy(selected, (e: MetadataType) => e.articleType)
     setWorkExps(split.WORKEXP)
     setBlogs(split.BLOG)
