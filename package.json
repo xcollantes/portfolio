@@ -27,6 +27,8 @@
     "@fontsource/permanent-marker": "^5.0.5",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.6",
+    "embla-carousel-autoplay": "^8.0.0-rc19",
+    "embla-carousel-react": "^8.0.0-rc19",
     "fs": "^0.0.1-security",
     "googleapis": "^126.0.1",
     "gray-matter": "^4.0.3",
