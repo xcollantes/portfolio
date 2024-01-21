@@ -25,6 +25,7 @@ import {
 import AuthButton from "../components/AuthButton"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import { isUserSignedIn } from "../components/AuthUtils"
+import Carousel from "../components/carousel/Carousel"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -115,6 +116,7 @@ export default function Page(props: IndexPropTypes) {
                 Software engineer
               </Typography>
               <SocialMedia />
+              <Carousel slidesData={[]} delay={2000} />
             </Box>
           </Box>
         </Grid>
