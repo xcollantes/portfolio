@@ -2,17 +2,10 @@
 
 import { Card, CardContent, Typography, Box, Button } from "@mui/material"
 import { MaterialLink } from "./MaterialLink"
-
-export interface RecommendationCardType {
-  name: string
-  title: string
-  imagePath: string
-  previewText: string
-  link: string
-}
+import { RecommendationCardType } from "../recommendations/RecommendationType"
 
 export default function RecommendationCard(props: RecommendationCardType) {
-  const { name, title, previewText, imagePath, link } = props
+  const { name } = props
 
   return (
     <Card raised sx={{ px: 0.5 }}>
