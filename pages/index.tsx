@@ -25,27 +25,43 @@ import {
 import AuthButton from "../components/AuthButton"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import { isUserSignedIn } from "../components/AuthUtils"
-import Carousel from "../components/carousel/Carousel"
+import RecommendationSlides from "../components/RecommendationSlides"
+import { RecommendationType } from "../recommendations/RecommendationType"
+import { getRecommendationData } from "../recommendations/process_recommendations"
 
 /**
  * Runs at build time to statically generate preview cards.
  */
 export async function getStaticProps(): Promise<
-  GetStaticPropsResult<{ metadata: MetadataType[] }>
+  GetStaticPropsResult<{
+    metadataProps: MetadataType[]
+    recommendationsProp: RecommendationType[]
+  }>
 > {
+  // Article preview cards.
   const articleMetadata: string[] = await getHeaderMetadata()
   const metadata: MetadataType[] = articleMetadata.map(
     (unparsedMetadata: string) => JSON.parse(unparsedMetadata)
   )
 
-  return { props: { metadata: metadata } }
+  // Recommendation slides feature.
+  const recommendationData: RecommendationType[] = await getRecommendationData()
+  // const recommendationData = recommendations.map((unparsedRec: string) =>
+  //   JSON.parse(unparsedRec)
+  // )
+
+  return {
+    props: { metadataProps: metadata, recommendationsProp: recommendationData },
+  }
 }
 
 interface IndexPropTypes {
-  metadata: MetadataType[]
+  metadataProps: MetadataType[]
+  recommendationsProp: RecommendationType[]
 }
 
 export default function Page(props: IndexPropTypes) {
+  console.log("INDEX: ", props.recommendationsProp)
   const { data: session, status } = useSession()
 
   const router: NextRouter = useRouter()
@@ -116,7 +132,12 @@ export default function Page(props: IndexPropTypes) {
                 Software engineer
               </Typography>
               <SocialMedia />
-              <Carousel slidesData={[]} delay={2000} />
+              {/* <Typography sx={{ ml: 100 }}>
+                {JSON.stringify(props.recommendationsProp)}
+              </Typography> */}
+              <RecommendationSlides
+                recommendationData={props.recommendationsProp}
+              />
             </Box>
           </Box>
         </Grid>
@@ -125,7 +146,7 @@ export default function Page(props: IndexPropTypes) {
             <FilterBar disabled={!isUserSignedIn(session)} />
           </Box>
           {isUserSignedIn(session) ? (
-            <ExperienceCards metadata={props.metadata} />
+            <ExperienceCards metadata={props.metadataProps} />
           ) : (
             <>
               <Box

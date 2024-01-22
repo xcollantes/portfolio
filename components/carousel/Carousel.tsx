@@ -5,25 +5,31 @@ import Autoplay from "embla-carousel-autoplay"
 
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures"
 import { Box } from "@mui/material"
-import LongCard from "../LongCard"
 import emblaCss from "../../css/emblaCarousel.module.css"
-import { useCallback, useEffect, useState } from "react"
-import { EmblaCarouselType } from "embla-carousel"
-import {
-  DotButton,
-  PrevButton,
-  NextButton,
-} from "./EmblaCarouselArrowsDotsButtons"
+import { useCallback } from "react"
+import { PrevButton, NextButton } from "./EmblaCarouselArrowsDotsButtons"
 import FadeCustom from "../Fade"
-import RecommendationCard from "../RecommendationCard"
 
-export default function Carousel(
+export interface CarouselType {
+  // Array of elements to include for each slide.
+  slidesData: any[]
+  // Slides will transition to next slide if true without user interaction.
+  autoplay?: boolean
+  // Milliseconds until the next slide is moved to.
+  delay?: number
+  // Stop the slides autoplay if mouse is on the feature.
+  stopOnMouseEnter?: boolean
+  // Stop the slides completely if any interaction in the feature.
+  stopOnInteraction?: boolean
+}
+
+export default function Carousel({
   slidesData,
-  autoplay: boolean = true,
-  delay: number = 4000,
-  stopOnMouseEnter: boolean = true,
-  stopOnInteraction: boolean = false
-) {
+  autoplay = true,
+  delay = 4000,
+  stopOnMouseEnter = true,
+  stopOnInteraction = false,
+}: CarouselType) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: autoplay }, [
     Autoplay({
       delay: delay,
@@ -38,29 +44,6 @@ export default function Carousel(
 
   // const [selectedIndex, setSelectedIndex] = useState(0)
   // const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
-
-  const testdata = [
-    <RecommendationCard
-      name={"A"}
-      title={"Software engineer"}
-      previewText={"Blah blah"}
-      link={""}
-    />,
-    <RecommendationCard
-      name={"B"}
-      title={"Software engineer"}
-      previewText={"Blah blah"}
-      link={""}
-    />,
-    <RecommendationCard
-      name={"C"}
-      title={"Software engineer"}
-      previewText={"Blah blah"}
-      link={""}
-    />,
-  ]
-
-  slidesData = testdata
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev()
