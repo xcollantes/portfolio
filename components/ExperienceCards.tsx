@@ -10,6 +10,7 @@ import LongCard from "./LongCard"
 import { filterDataConfig } from "../article_configs/filters_config"
 import FadeCustom from "./Fade"
 import { MetadataType } from "../article_configs/process_articles"
+import groupBy from "./GroupBy"
 
 export interface ExperienceCardsPropType {
   metadata: MetadataType[]
@@ -44,8 +45,11 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
   }, [selectedTags])
 
   useEffect(() => {
-    //@ts-ignore
-    const split = Object.groupBy(selected, (e: MetadataType) => e.articleType)
+    const split = groupBy(selected, "articleType")
+
+    // `@ts-ignore` will not work on Safari: https://github.com/xcollantes/portfolio/issues/74
+    // const split = Object.groupBy(selected, (e: MetadataType) => e.articleType)
+
     setWorkExps(split.WORKEXP)
     setBlogs(split.BLOG)
     console.log(split)
