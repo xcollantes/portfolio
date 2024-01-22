@@ -8,7 +8,7 @@ import { RecommendationType } from "./RecommendationType"
 export async function getRecommendationData(): Promise<RecommendationType[]> {
   const recommendationsYamlFile: string = path.join(
     process.cwd(),
-    "recommendations/recommendations.yaml"
+    "recommendations/ordered_recommendations.yaml"
   )
 
   const fileContents: string = fs.readFileSync(recommendationsYamlFile, "utf8")
