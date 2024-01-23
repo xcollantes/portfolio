@@ -54,7 +54,7 @@ export default function RecommendationCard(props: RecommendationCardType) {
             <Button
               variant="outlined"
               component={MaterialLink}
-              to={`/recs?recId={sio}`}
+              to={`/recs?recId=${name}`}
             >
               See full
             </Button>

@@ -20,6 +20,7 @@ import { MaterialLink } from "../components/MaterialLink"
 import DarkModeSwitch from "../components/DarkMode"
 import { useEffect, useState } from "react"
 import Drawer from "../components/Drawer"
+import { NextRouter, useRouter } from "next/router"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -39,16 +40,37 @@ export async function getStaticProps(): Promise<
 
 export default function Recs(props) {
   const theme: Theme = useTheme()
+  const router: NextRouter = useRouter()
 
   const recommendations = props.recommendationsProp
-  const initialExpandDict = recommendations.map(
-    (recommendation: RecommendationType) => ({
-      recId: recommendation.name,
-      expand: false,
-    })
-  )
-  const [expandDictionary, setExpandDictionary] =
-    useState<{ recId: string; expand: boolean }[]>(initialExpandDict)
+
+  const initialExpandDictWithSelected = () => {
+    const initialExpandDict = recommendations.map(
+      (recommendation: RecommendationType) => ({
+        recId: recommendation.name,
+        expand: false,
+      })
+    )
+
+    if (router.query.recId) {
+      const newDictionary: any = []
+      for (let setting of initialExpandDict) {
+        if (setting.recId == router.query.recId) {
+          newDictionary.push({ recId: setting.recId, expand: !setting.expand })
+        } else {
+          newDictionary.push(setting)
+        }
+      }
+
+      return newDictionary
+    }
+
+    return initialExpandDict
+  }
+
+  const [expandDictionary, setExpandDictionary] = useState<
+    { recId: string; expand: boolean }[]
+  >(initialExpandDictWithSelected())
 
   const handleClick = (id: string) => {
     const newDictionary: any = []
