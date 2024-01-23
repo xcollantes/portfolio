@@ -141,7 +141,7 @@ export default function Page(props: IndexPropTypes) {
                   justifyContent: "center",
                   position: "relative",
                   display: "flex",
-                  mb: 50,
+                  mb: 70,
                 }}
               >
                 <Box

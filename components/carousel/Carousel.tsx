@@ -3,10 +3,11 @@
 import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures"
-import { Box } from "@mui/material"
+import { Box, Stack } from "@mui/material"
 import emblaCss from "../../css/emblaCarousel.module.css"
 import { useCallback } from "react"
 import FadeCustom from "../Fade"
+import { PrevButton, NextButton } from "./EmblaCarouselButtons"
 
 export interface CarouselType {
   // Array of elements to include for each slide.
@@ -45,29 +46,6 @@ export default function Carousel({
     if (emblaApi) emblaApi.scrollNext()
   }, [emblaApi])
 
-  // const scrollTo = useCallback(
-  //   (index: number) => emblaApi && emblaApi.scrollTo(index),
-  //   [emblaApi]
-  // )
-
-  // const onInit = useCallback((emblaApi: EmblaCarouselType) => {
-  //   setScrollSnaps(emblaApi.scrollSnapList())
-  // }, [])
-
-  // useEffect(() => {
-  //   if (!emblaApi) return
-
-  //   // onInit(emblaApi)
-  //   // onSelect(emblaApi)
-  //   // emblaApi.on("reInit", onInit)
-  //   // emblaApi.on("reInit", onSelect)
-  //   // emblaApi.on("select", onSelect)
-  // }, [
-  //   emblaApi,
-  //   // onInit,
-  //   // onSelect,
-  // ])
-
   return (
     <FadeCustom>
       <Box className={emblaCss.embla}>
@@ -78,10 +56,17 @@ export default function Carousel({
             ))}
           </Box>
 
-          {/* <Box className={emblaCss.embla__buttons}>
-            <PrevButton className={emblaCss.embla__prev} onClick={scrollPrev} />
-            <NextButton className={emblaCss.embla__next} onClick={scrollNext} />
-          </Box> */}
+          <Stack
+            className={emblaCss.embla__buttons}
+            spacing={15}
+            sx={{
+              justifyContent: "center",
+            }}
+            direction={"row"}
+          >
+            <PrevButton onClick={scrollPrev} />
+            <NextButton onClick={scrollNext} />
+          </Stack>
         </Box>
       </Box>
     </FadeCustom>
