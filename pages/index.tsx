@@ -61,7 +61,6 @@ interface IndexPropTypes {
 }
 
 export default function Page(props: IndexPropTypes) {
-  console.log("INDEX: ", props.recommendationsProp)
   const { data: session, status } = useSession()
 
   const router: NextRouter = useRouter()
@@ -118,6 +117,7 @@ export default function Page(props: IndexPropTypes) {
               >
                 <DarkModeSwitch />
               </Box>
+
               <Typography
                 variant="h1"
                 sx={{
@@ -128,16 +128,32 @@ export default function Page(props: IndexPropTypes) {
               >
                 Xavier Collantes
               </Typography>
+
               <Typography variant="subtitle1" align="right">
                 Software engineer
               </Typography>
+
               <SocialMedia />
-              {/* <Typography sx={{ ml: 100 }}>
-                {JSON.stringify(props.recommendationsProp)}
-              </Typography> */}
-              <RecommendationSlides
-                recommendationData={props.recommendationsProp}
-              />
+
+              <Box
+                sx={{
+                  alignContent: "right",
+                  width: 600,
+                  ...namePositionContainer,
+                  [theme.breakpoints.down("sm")]: {
+                    justifyContent: "right",
+                    alignItems: "end",
+                  },
+                  mb: 4,
+                  mt: -4,
+                }}
+              >
+                {/* <Box sx={{ ...namePositionChild }}> */}
+                <RecommendationSlides
+                  recommendationData={props.recommendationsProp}
+                />
+                {/* </Box> */}
+              </Box>
             </Box>
           </Box>
         </Grid>
