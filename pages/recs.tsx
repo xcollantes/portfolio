@@ -50,10 +50,17 @@ export default function Recs(props) {
   const [expandDictionary, setExpandDictionary] =
     useState<{ recId: string; expand: boolean }[]>(initialExpandDict)
 
-  //   const [expandAll, setExpandAll] = useState(false)
-
   const handleClick = (id: string) => {
-    setExpandDictionary([{ recId: id, expand: true }, ...expandDictionary])
+    const newDictionary: any = []
+    for (let setting of expandDictionary) {
+      if (setting.recId == id) {
+        newDictionary.push({ recId: setting.recId, expand: !setting.expand })
+      } else {
+        newDictionary.push(setting)
+      }
+    }
+
+    setExpandDictionary(newDictionary)
   }
 
   const handleCollapseAll = () => {
@@ -92,13 +99,6 @@ export default function Recs(props) {
       <Box>
         <Stack direction={"row"} spacing={2} sx={{ my: 3 }}>
           <DarkModeSwitch />
-
-          <Button
-            variant="contained"
-            onClick={() => console.log(expandDictionary)}
-          >
-            TEST
-          </Button>
 
           <Button variant="contained" onClick={() => handleExpandAll()}>
             Expand all
