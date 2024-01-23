@@ -25,23 +25,36 @@ import {
 import AuthButton from "../components/AuthButton"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import { isUserSignedIn } from "../components/AuthUtils"
+import RecommendationSlides from "../components/RecommendationSlides"
+import { RecommendationType } from "../recommendations/RecommendationType"
+import { getRecommendationData } from "../recommendations/process_recommendations"
 
 /**
  * Runs at build time to statically generate preview cards.
  */
 export async function getStaticProps(): Promise<
-  GetStaticPropsResult<{ metadata: MetadataType[] }>
+  GetStaticPropsResult<{
+    metadataProps: MetadataType[]
+    recommendationsProp: RecommendationType[]
+  }>
 > {
+  // Article preview cards.
   const articleMetadata: string[] = await getHeaderMetadata()
   const metadata: MetadataType[] = articleMetadata.map(
     (unparsedMetadata: string) => JSON.parse(unparsedMetadata)
   )
 
-  return { props: { metadata: metadata } }
+  // Recommendation slides feature.
+  const recommendationData: RecommendationType[] = await getRecommendationData()
+
+  return {
+    props: { metadataProps: metadata, recommendationsProp: recommendationData },
+  }
 }
 
 interface IndexPropTypes {
-  metadata: MetadataType[]
+  metadataProps: MetadataType[]
+  recommendationsProp: RecommendationType[]
 }
 
 export default function Page(props: IndexPropTypes) {
@@ -85,7 +98,7 @@ export default function Page(props: IndexPropTypes) {
   return (
     <>
       <Grid container>
-        <Grid xs={12} sm={5}>
+        <Grid xs={12} sm={5} sx={{ display: "flex" }}>
           <Box sx={{ m: 4, ...namePositionContainer }}>
             <Box sx={{ ...namePositionChild, right: -500 }}>
               <Box
@@ -101,6 +114,7 @@ export default function Page(props: IndexPropTypes) {
               >
                 <DarkModeSwitch />
               </Box>
+
               <Typography
                 variant="h1"
                 sx={{
@@ -111,10 +125,40 @@ export default function Page(props: IndexPropTypes) {
               >
                 Xavier Collantes
               </Typography>
+
               <Typography variant="subtitle1" align="right">
-                Software engineer
+                Software Engineer
               </Typography>
+
               <SocialMedia />
+
+              {/*
+                Potential for buggy display. Good enough for now.
+                https://github.com/xcollantes/portfolio/issues/77
+               */}
+              <Box
+                sx={{
+                  justifyContent: "center",
+                  position: "relative",
+                  display: "flex",
+                  mb: 70,
+                }}
+              >
+                <Box
+                  sx={{
+                    mt: 10,
+                    width: "100%",
+                    position: "absolute",
+                    [theme.breakpoints.down("sm")]: {
+                      mt: 0,
+                    },
+                  }}
+                >
+                  <RecommendationSlides
+                    recommendationData={props.recommendationsProp}
+                  />
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Grid>
@@ -123,7 +167,7 @@ export default function Page(props: IndexPropTypes) {
             <FilterBar disabled={!isUserSignedIn(session)} />
           </Box>
           {isUserSignedIn(session) ? (
-            <ExperienceCards metadata={props.metadata} />
+            <ExperienceCards metadata={props.metadataProps} />
           ) : (
             <>
               <Box

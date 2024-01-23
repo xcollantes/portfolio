@@ -52,7 +52,6 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
 
     setWorkExps(split.WORKEXP)
     setBlogs(split.BLOG)
-    console.log(split)
   }, [selected])
 
   const header = (text: string) => (
