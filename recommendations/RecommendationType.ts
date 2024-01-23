@@ -25,4 +25,7 @@ export interface RecommendationType {
   //
   // Use the `|` for retaining the newline breaks in YAML file.
   fullRec: string
+  // Set to true if show recommendation on slideshow in preview.
+  // By default is true.
+  showInSlides?: boolean
 }

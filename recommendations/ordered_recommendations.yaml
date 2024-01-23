@@ -1,4 +1,5 @@
 - name: Siobhan Williams, Ph.D.
+  showInSlides: true
   headline: Software Engineer at Google
   relationship: Siobhan worked with Xavier but on different teams
   dateCreated: 2024-01-18
@@ -187,6 +188,79 @@
     and other teams helped teammates achieve their goals. Xavier's programming
     ability was a great asset to the team by writing scripts and automating
     tasks.
+
+- name: Philip Hu
+  headline: Solutions Consultant at Google
+  relationship: Philip worked with Xavier on the same team
+  dateCreated: 2020-02-19
+  profileImagePath: "/recommendations/profile_pics/philip.jpeg"
+  linkedInLink: https://www.linkedin.com/in/philip-hu
+  previewText: >
+    proven himself in just as little as 2 months that he's capable of driving
+    team forward...
+  fullRec: >
+    Xavier was one of the most knowledgeable teammate I met so far. He has
+    proven himself in just as little as 2 months that he's capable of driving
+    team forward. With his expertise in programming and automation, he wrote
+    several tools to better support the teams. With his initiative mindset and
+    technical skills, he implemented and brainstormed validation rules to reduce
+    the overall on-boarding process.
+
+- name: Rick Collins
+  headline: Sales, Advisory, and Business Development Services
+  relationship: Rick was Xavier's mentor
+  dateCreated: 2017-04-26
+  profileImagePath: "/recommendations/profile_pics/[].jpeg"
+  linkedInLink: https://www.linkedin.com/in/rick-collins-22573
+  previewText: >
+    With this skill set and strong personal character, I have no doubt that
+    Xavier will be a great addition to any organization...
+  fullRec: >
+    Xavier exhibits that rare capacity to balance technical passion, knowledge,
+    and acumen with an appreciation for and ability to communicate with his
+    peers and managers. In addition, Xavier shows strong understanding of
+    business strategy and markets, and his perspectives are not limited to
+    technical concepts alone.
+
+    With this skill set and strong personal character, I have no doubt that
+    Xavier will be a great addition to any organization or work group as he
+    wraps his undergraduate studies and begins his professional pursuits.
+
+    The sky is the limit for Xavier individually, and the organization he lands
+    with will reap great value and reward having him on their team.
+
+- name: Brian McCann
+  headline: First Vice President, Financial Advisor, CFP®, CEPA® at Morgan Stanley
+  relationship: Brian was Xavier's teacher
+  dateCreated: 2017-04-20
+  profileImagePath: "/recommendations/profile_pics/brian.jpeg"
+  linkedInLink: https://www.linkedin.com/in/briandmccann
+  previewText: >
+    His ability to consistently be prepared goes beyond the classroom as it
+    demonstrates Xavier's demand for excellence...
+  fullRec: >
+    Xavier's excitement, passion, and dedication for music has helped him grow
+    into an outstanding performer throughout his years at Gonzaga University.
+    His ability to consistently be prepared goes beyond the classroom as it
+    demonstrates Xavier's demand for excellence from himself in all aspects of
+    life. In addition, his happy and cheerful demeanor has allowed him to
+    fulfill any role within a team and has set him apart as a natural leader
+    capable of positively connecting with those around him. I fully anticipate
+    Xavier to be a fantastic addition to the business world!
+
+- name: Dr. Tim Olsen
+  headline: Professor of Management Information Systems at Gonzaga University
+  relationship: Tim was Xavier's teacher
+  dateCreated: 2017-04-14
+  showInSlides: false
+  profileImagePath: "/recommendations/profile_pics/olsen.jpeg"
+  linkedInLink: https://www.linkedin.com/in/4timolsen
+  previewText: >
+    Xavier was a bright student, contributed regularly to class discussions, and
+    was active leader...
+  fullRec: >
+    Xavier was a bright student, contributed regularly to class discussions, and
+    was active leader in the MIS Club (Management Information Systems).
 
 # TEMPLATE
 #
