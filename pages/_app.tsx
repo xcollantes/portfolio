@@ -31,6 +31,10 @@ export default function App({
             content="resume,portfolio,career,projects,xavier,collantes"
           />
           <meta name="og:title" content="Xavier Collantes" />
+          <meta
+            name="og:image"
+            content="/public/articles/images/google/front.webp"
+          />
 
           <title>Xavier Collantes</title>
         </Head>
