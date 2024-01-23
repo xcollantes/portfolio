@@ -54,12 +54,6 @@ export default function Carousel({
   //   setScrollSnaps(emblaApi.scrollSnapList())
   // }, [])
 
-  // const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-  //   // setSelectedIndex(emblaApi.selectedScrollSnap())
-  //   setPrevBtnDisabled(!emblaApi.canScrollPrev())
-  //   setNextBtnDisabled(!emblaApi.canScrollNext())
-  // }, [])
-
   // useEffect(() => {
   //   if (!emblaApi) return
 

@@ -46,9 +46,6 @@ export async function getStaticProps(): Promise<
 
   // Recommendation slides feature.
   const recommendationData: RecommendationType[] = await getRecommendationData()
-  // const recommendationData = recommendations.map((unparsedRec: string) =>
-  //   JSON.parse(unparsedRec)
-  // )
 
   return {
     props: { metadataProps: metadata, recommendationsProp: recommendationData },
@@ -101,7 +98,7 @@ export default function Page(props: IndexPropTypes) {
   return (
     <>
       <Grid container>
-        <Grid xs={12} sm={5}>
+        <Grid xs={12} sm={5} sx={{ display: "flex" }}>
           <Box sx={{ m: 4, ...namePositionContainer }}>
             <Box sx={{ ...namePositionChild, right: -500 }}>
               <Box
@@ -130,29 +127,37 @@ export default function Page(props: IndexPropTypes) {
               </Typography>
 
               <Typography variant="subtitle1" align="right">
-                Software engineer
+                Software Engineer
               </Typography>
 
               <SocialMedia />
 
+              {/*
+                Potential for buggy display. Good enough for now.
+                https://github.com/xcollantes/portfolio/issues/77
+               */}
               <Box
                 sx={{
-                  alignContent: "right",
-                  width: 600,
-                  ...namePositionContainer,
-                  [theme.breakpoints.down("sm")]: {
-                    justifyContent: "right",
-                    alignItems: "end",
-                  },
-                  mb: 4,
-                  mt: -4,
+                  justifyContent: "center",
+                  position: "relative",
+                  display: "flex",
+                  pb: 50,
                 }}
               >
-                {/* <Box sx={{ ...namePositionChild }}> */}
-                <RecommendationSlides
-                  recommendationData={props.recommendationsProp}
-                />
-                {/* </Box> */}
+                <Box
+                  sx={{
+                    mt: 10,
+                    width: "100%",
+                    position: "absolute",
+                    [theme.breakpoints.down("sm")]: {
+                      mt: 0,
+                    },
+                  }}
+                >
+                  <RecommendationSlides
+                    recommendationData={props.recommendationsProp}
+                  />
+                </Box>
               </Box>
             </Box>
           </Box>

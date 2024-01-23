@@ -50,10 +50,10 @@ export default function RecommendationCard(props: RecommendationCardType) {
             <Typography variant="body1" fontStyle={"italic"}>
               {previewText}
             </Typography>
+
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
               <Button
                 variant="outlined"
-                sx={{ mt: 2 }}
                 component={MaterialLink}
                 to={`/recs?recId={sio}`}
               >
