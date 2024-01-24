@@ -1,6 +1,10 @@
 /** Statically generated article page. */
 
+import Head from "next/head"
 import { GetStaticPropsContext, GetStaticPropsResult } from "next"
+import { ParsedUrlQuery } from "querystring"
+import ReactMarkdown from "react-markdown"
+import rehypeRaw from "rehype-raw"
 import {
   ArticleDataType,
   getArticle,
@@ -14,9 +18,6 @@ import {
   Typography,
   useTheme,
 } from "@mui/material"
-import { ParsedUrlQuery } from "querystring"
-import ReactMarkdown from "react-markdown"
-import rehypeRaw from "rehype-raw"
 import Drawer from "../../components/Drawer"
 import Footer from "../../components/Footer"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
@@ -81,6 +82,9 @@ export default function article({
 
   return (
     <>
+      <Head>
+        <meta name="robots" content="noindex" />
+      </Head>
       <Container maxWidth={"md"}>
         <Box
           sx={{
