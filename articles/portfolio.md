@@ -1,21 +1,56 @@
 ---
 title: Portfolio website
-cardDescription: Design, plan, code, and test the website you're looking at.
+author: Xavier Collantes
+dateWritten: 2024-01-24
+cardDescription: Design, plan, and code the website you're looking at.
 cardPageLink: "/articles/portfolio"
 imagePath: ""
 articleType: WORKEXP
-tagIds: ["typescript", "frontend", "webdev", "design", "nextjs", "vercel"]
+tagIds:
+  [
+    "typescript",
+    "frontend",
+    "javascript",
+    "react",
+    "ux",
+    "ui",
+    "webdev",
+    "design",
+    "nextjs",
+    "vercel",
+  ]
 ---
+
+Software design lifecycle for my portfolio, xaviercollantes.dev.
 
 https://github.com/xcollantes/portfolio
 
-## Requirements
+## Planning
+
+The motivation for creating a portfolio website is driven by the diversity of
+interests and technical ability I have been accumulating over the years.
+
+### Requirements
+
+Bring context to history of work.
 
 ### Goals
 
-### Non-goals
+Convey depth of ability.
 
 ### User journeys
+
+Software engineering managers...
+
+### Initial ideas
+
+TODO: Add Figma designs
+
+TODO: Add screenshots of early designs
+
+Design decisions.
+
+Based on fibonacci spiral.
 
 ## Technologies used
 
@@ -29,8 +64,6 @@ https://github.com/xcollantes/portfolio
 ![](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
 ![](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
 
-## Process
-
 ## Technical decisions
 
 ### Auth
@@ -41,4 +74,6 @@ https://github.com/xcollantes/portfolio
 
 ### Hosting
 
-## Design decisions
+DNS
+
+Tried Firebase
