@@ -124,6 +124,20 @@ with `nocookie` if using the `start=` parameter.
 To make embedded content such as HTML rendered, we use `rehypeRaw` plugin for
 ReactMarkdown [more info](https://stackoverflow.com/a/70548866/8278075).
 
+## Adding new recommendation
+
+You can add recommendations to boost credibility and give insight to your
+quality of work.
+
+Tend to use LinkedIn Recommendations since recommendation givers can be verified.
+
+1. Copy and paste recommendation and relevant data in
+   `recommendations/ordered_recommendations.yaml`. List is ordered.
+1. See `recommendations/RecommendationType.ts` for fields.
+1. Download the profile picture from LinkedIn of the recommendation giver and
+   upload to `public/recommendations/profile_pics/`. Be sure to specify the
+   picture in the ordered_recommendations.yaml.
+
 ## NextAuth
 
 ### Secure all pages behind login
