@@ -27,12 +27,14 @@ https://github.com/xcollantes/portfolio
 
 ## Planning
 
-The motivation for creating a portfolio website is driven by the diversity of
-interests and technical ability I have been accumulating over the years.
+The motivation for creating a portfolio website is driven by the need to show
+context of the diversity of interests and technical ability I have accumulated
+over the last 8+ years professionally and personally.
 
 ### Requirements
 
-Bring context to history of work.
+- User can find detailed context on a past work or project in
+- Modern UX and UI practices
 
 ### Goals
 
@@ -63,6 +65,39 @@ Based on fibonacci spiral.
 ![](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 ![](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
 ![](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
+
+## Testing strategy
+
+### Speed and tech efficiency
+
+- [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring)
+- Chrome Browser DevTools
+
+![TODO: Image of Lighthouse]()
+
+### User satisfaction
+
+1. Gather people I personally know who are in the target demographic and send them
+   a link on desktop and mobile. The mix of people should represent technical
+   and non-technical since the site content and wording should give both groups
+   a sense of impact and depth in the projects. The Senior members of this test
+   group should have experience hiring reports.
+
+   - Senior Software Engineer Manager
+   - Peer level Software Engineer
+   - Non-technical Program Manager
+   - Technical recruiter
+   - Non-technical recruiter
+   - Someone's parent who knows nothing of the tech industry (if this person can
+     get a general idea of what Xavier does, then the message is proven to be clear)
+
+1. Ask:
+   - How fast did you find detailed information on a project?
+   - Is the text easy to read?
+   - Are you able to understand in under 30 seconds the article's general gist?
+   - If you did not know this person, do you understand his capabilities?
+   - How does this profile rank with candidates you have seen in the past?
+   - Any other feedback?
 
 ## Technical decisions
 
