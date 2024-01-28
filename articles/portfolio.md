@@ -21,8 +21,6 @@ tagIds:
   ]
 ---
 
-Software design lifecycle for my portfolio, xaviercollantes.dev.
-
 I provide an in-depth insight into the development of my personal portfolio
 website, xaviercollantes.dev. Serving in the roles of Software Engineer, Project
 Manager, and UX designer, I share my journey from planning to execution,
