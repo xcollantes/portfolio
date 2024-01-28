@@ -29,6 +29,7 @@ export const orderedIncludeBlogs: string[] = [
   "pandas-styling-cheatsheet.md",
   "streamlit-cheatsheet.md",
   "json-python.md",
+  "sql-cheatsheet.md",
   "radio.md",
 ]
 
