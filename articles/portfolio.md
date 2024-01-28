@@ -88,9 +88,9 @@ outcomes through user interviews and testing throughout the development process.
 
 ### Speed and tech efficiency
 
-- [Google
-  Lighthouse](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring)
-- Chrome Browser DevTools
+I employed tools like [Google
+Lighthouse](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring)
+and Chrome Browser DevTools to ensure optimal speed and technical efficiency.
 
 ![Image of Lighthouse](/articles/images/portfolio/lighthouse.webp)
 
@@ -352,3 +352,12 @@ Visit a non-existent page such as
 ### 500 Office Space
 
 Visit server error page such at <https://xaviercollantes.dev/500>.
+
+## Conclusion
+
+My personal portfolio reflects a comprehensive software design lifecycle. The
+journey involved meticulous planning, user-centric testing, design inspiration,
+and technical decision-making. The resulting NextJS portfolio web application
+not only serves its purpose but also showcases my commitment to excellence in
+software engineering and user-centric design. The inclusion of easter eggs adds
+a personal and engaging touch to enhance the overall user experience.
