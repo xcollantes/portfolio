@@ -12,9 +12,8 @@
 export const orderedIncludeWorkExp: string[] = [
   "google.md",
   // "cloud.md",
-  // "portfolio.md",
+  "portfolio.md",
   "rx-blockchain.md",
-
   "itron.md",
   "housing.md",
   "rpi-camera.md",
@@ -26,6 +25,11 @@ export const orderedIncludeWorkExp: string[] = [
 export const orderedIncludeBlogs: string[] = [
   "bulldog-band.md",
   "anderson-podcast.md",
+  "web-opt.md",
+  "pandas-styling-cheatsheet.md",
+  "streamlit-cheatsheet.md",
+  "json-python.md",
+  "sql-cheatsheet.md",
   "radio.md",
 ]
 

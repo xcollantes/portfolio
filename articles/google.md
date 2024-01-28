@@ -1,5 +1,5 @@
 ---
-title: Technical Solutions Consultant, Google Search
+title: Software Solutions Engineer, Google Search
 cardDescription: Improving Google Search for 2.7 billion users globally.
 cardPageLink: articles/google
 imagePath: ""
@@ -44,9 +44,7 @@ features for the 2.7 billion Google Search users globally<sup>1</sup>.
 
 ###### Mountain View, California
 
-What does the _Technical_ of _Technical Solutions Consultant_ mean?
-
-The TSC role varies depending on the needs of the team. In my case, I spent
+The role varies depending on the needs of the team. In my case, I spent
 about 75% of time on Software Engineering tasks such as:
 
 - Writing code
@@ -97,11 +95,9 @@ A couple books I live by as an engineer are published by Google:
   </iframe>
 </div>
 
-What does the _Solutions Consultant_ of _Technical Solutions Consultant_ mean?
-
 The other 25% of my time is spent on strategic project goals.
 
-In general, a TSC creates or optimizes processes by running pilots with engineers
+In general, I create or optimize processes by running pilots with engineers
 and vendors. If there is traction and success in the process, the project can
 scale up.
 

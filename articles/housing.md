@@ -1,5 +1,5 @@
 ---
-title: Gonzaga Housing Web Developer
+title: Gonzaga Housing Web Developer Consultant
 cardDescription: Web developer for hire for a place to stay.
 cardPageLink: articles/housing
 imagePath: ""
