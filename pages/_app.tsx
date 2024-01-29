@@ -34,7 +34,7 @@ export default function App({
           <meta name="og:title" content="Xavier Collantes" />
           <meta name="og:image" content="/preview_image/front.jpeg" />
 
-          <GoogleAnalytics gaId="G-XYZ" />
+          <GoogleAnalytics gaId="G-HB7D403D67" />
 
           <title>Xavier Collantes</title>
         </Head>
