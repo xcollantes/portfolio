@@ -2,6 +2,7 @@
 
 import Head from "next/head"
 import { Container, CssBaseline } from "@mui/material"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { ColorModeProvider } from "../contexts/colorMode"
 import { SessionProvider } from "next-auth/react"
 
@@ -32,6 +33,8 @@ export default function App({
           />
           <meta name="og:title" content="Xavier Collantes" />
           <meta name="og:image" content="/preview_image/front.jpeg" />
+
+          <GoogleAnalytics gaId="G-XYZ" />
 
           <title>Xavier Collantes</title>
         </Head>
