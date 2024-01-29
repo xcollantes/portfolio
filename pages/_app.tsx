@@ -43,6 +43,7 @@ export default function App({
         <Container sx={{ mt: 4 }} maxWidth="xl">
           <SelectFilterTagContextProvider>
             <Component {...pageProps} />
+            <GoogleAnalytics gaId="G-HB7D403D67" />
           </SelectFilterTagContextProvider>
         </Container>
       </ColorModeProvider>
