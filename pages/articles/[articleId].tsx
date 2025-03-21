@@ -18,7 +18,6 @@ import {
   Typography,
   useTheme,
 } from "@mui/material"
-import Drawer from "../../components/Drawer"
 import Footer from "../../components/Footer"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
 
@@ -93,32 +92,9 @@ export default function article({
             rowGap: 0.5,
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexDirection: "row",
-
-              [theme.breakpoints.down("sm")]: {
-                justifyContent: "flex-end",
-                flexDirection: "column-reverse",
-              },
-            }}
-          >
-            <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-              {metadata.title}
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                [theme.breakpoints.down("sm")]: {
-                  justifyContent: "flex-end",
-                },
-              }}
-            >
-              <Drawer />
-            </Box>
-          </Box>
+          <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+            {metadata.title}
+          </Typography>
 
           {metadata.subTitle && (
             <Typography variant="subtitle2">{metadata.subTitle}</Typography>
