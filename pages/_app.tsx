@@ -44,7 +44,18 @@ export default function App({
         </Head>
 
         <CssBaseline />
-        <Container sx={{ mt: 4 }} maxWidth="xl">
+
+        {/*
+          The navbar is fixed, so we need to account for it when calculating
+          the margin top so the page is not covered by the navbar.
+        */}
+        <Container
+          sx={{
+            mt: 2,
+            pt: !isHomePage ? { xs: 12, sm: 10 } : 0
+          }}
+          maxWidth="xl"
+        >
           <SelectFilterTagContextProvider>
             {!isHomePage && <Navbar />}
             <Component {...pageProps} />
