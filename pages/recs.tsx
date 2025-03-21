@@ -20,8 +20,6 @@ import {
 import { GetStaticPropsResult } from "next"
 import { NextRouter, useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import DarkModeSwitch from "../components/DarkMode"
-import Drawer from "../components/Drawer"
 import { MaterialLink } from "../components/MaterialLink"
 import { RecommendationType } from "../recommendations/RecommendationType"
 import { getRecommendationData } from "../recommendations/process_recommendations"
@@ -202,21 +200,8 @@ export default function Recs(props) {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          [theme.breakpoints.down("sm")]: {
-            justifyContent: "flex-end",
-          },
-        }}
-      >
-        <Drawer />
-      </Box>
       <Box>
         <Stack direction={"row"} spacing={2} sx={{ my: 3 }}>
-
-          <DarkModeSwitch />
-
           <Button variant="contained" onClick={() => handleExpandAll()}>
             Expand all
           </Button>
