@@ -40,11 +40,24 @@ export async function getStaticProps(): Promise<
 
 export default function Recs(props) {
   const theme: Theme = useTheme()
+  // Access the router to get URL query parameters, specifically 'recId'.
+  // This allows direct linking to a specific recommendation.
   const router: NextRouter = useRouter()
 
   const recommendations = props.recommendationsProp
 
+  /**
+   * Creates the initial expansion state for all recommendation accordions.
+   *
+   * - Each recommendation gets an entry in the dictionary with its ID and expansion state.
+   * - If a 'recId' is provided in the URL query parameters, the matching recommendation
+   *   will be expanded by default, while others remain collapsed.
+   * - The 'recId' parameter allows direct linking to a specific expanded recommendation.
+   *
+   * @returns An array of objects tracking the expansion state of each recommendation.
+   */
   const initialExpandDictWithSelected = () => {
+    // Create initial dictionary with all recommendations collapsed
     const initialExpandDict = recommendations.map(
       (recommendation: RecommendationType) => ({
         recId: recommendation.name,
@@ -52,11 +65,13 @@ export default function Recs(props) {
       })
     )
 
+    // If a specific recommendation ID is specified in the URL (?recId=someId)
+    // set that specific recommendation's expand state to true
     if (router.query.recId) {
       const newDictionary: any = []
       for (let setting of initialExpandDict) {
         if (setting.recId == router.query.recId) {
-          newDictionary.push({ recId: setting.recId, expand: !setting.expand })
+          newDictionary.push({ recId: setting.recId, expand: true })
         } else {
           newDictionary.push(setting)
         }
@@ -68,10 +83,38 @@ export default function Recs(props) {
     return initialExpandDict
   }
 
+  // State to track which recommendations are expanded/collapsed
+  // Initially set based on the URL query parameter if present
   const [expandDictionary, setExpandDictionary] = useState<
     { recId: string; expand: boolean }[]
   >(initialExpandDictWithSelected())
 
+  /**
+   * Effect to handle URL changes with recId parameter.
+   *
+   * This ensures that when the URL changes with a new recId parameter,
+   * or when navigating directly to a URL with a recId parameter,
+   * the correct recommendation accordion will be expanded.
+   *
+   * The dependency array ensures this runs whenever the recId query parameter changes.
+   */
+  useEffect(() => {
+    if (router.query.recId) {
+      const newDictionary = expandDictionary.map(setting => {
+        if (setting.recId == router.query.recId) {
+          return { ...setting, expand: true };
+        }
+        return setting;
+      });
+      setExpandDictionary(newDictionary);
+    }
+  }, [router.query.recId]);
+
+  /**
+   * Toggles the expansion state of a specific recommendation when clicked.
+   *
+   * @param id - The unique identifier (recId) of the recommendation to toggle.
+   */
   const handleClick = (id: string) => {
     const newDictionary: any = []
     for (let setting of expandDictionary) {
@@ -85,6 +128,10 @@ export default function Recs(props) {
     setExpandDictionary(newDictionary)
   }
 
+  /**
+   * Collapses all recommendation accordions.
+   * Sets all 'expand' values to false in the expansion dictionary.
+   */
   const handleCollapseAll = () => {
     const recommendations = props.recommendationsProp
     const initialExpandDict = recommendations.map(
@@ -97,6 +144,10 @@ export default function Recs(props) {
     setExpandDictionary(initialExpandDict)
   }
 
+  /**
+   * Expands all recommendation accordions.
+   * Sets all 'expand' values to true in the expansion dictionary.
+   */
   const handleExpandAll = () => {
     const newDictionary: any = []
     for (let setting of expandDictionary) {
@@ -131,11 +182,14 @@ export default function Recs(props) {
         </Stack>
         {props.recommendationsProp.map((recommendation: RecommendationType) => (
           <Accordion
+            // The expanded prop controls whether this accordion is open or closed
+            // It finds the matching recId in the expandDictionary and checks its 'expand' value
             expanded={
               expandDictionary.find(
                 (setting) => setting.recId === recommendation.name
               )?.expand
             }
+            // When clicked, toggle this specific recommendation's expansion state
             onChange={() => handleClick(recommendation.name)}
             key={recommendation.name}
           >
