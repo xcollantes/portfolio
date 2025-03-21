@@ -22,6 +22,18 @@ export default function App({
   const router = useRouter()
   const isHomePage = router.pathname === "/"
 
+  const navbar = (() => {
+    switch (router.pathname) {
+      case "/":
+        // None.
+        return
+      case "/recs":
+        return <Navbar containerWidth="xl" />
+      default:
+        return <Navbar containerWidth="md" />
+    }
+  })();
+
   return (
     <SessionProvider session={session}>
       <ColorModeProvider theme={base}>
@@ -57,7 +69,7 @@ export default function App({
           maxWidth="xl"
         >
           <SelectFilterTagContextProvider>
-            {!isHomePage && <Navbar />}
+            {navbar}
             <Component {...pageProps} />
             <GoogleAnalytics gaId="G-HB7D403D67" />
           </SelectFilterTagContextProvider>

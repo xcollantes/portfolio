@@ -5,7 +5,11 @@ import DarkModeSwitch from "./DarkMode"
 import Drawer from "./Drawer"
 import { MaterialLink } from "./MaterialLink"
 
-export default function Navbar() {
+interface NavbarProps {
+  containerWidth?: "xs" | "sm" | "md" | "lg" | "xl"
+}
+
+export default function Navbar({ containerWidth = "md" }: NavbarProps) {
   const theme: Theme = useTheme()
 
   return (
@@ -23,7 +27,7 @@ export default function Navbar() {
         boxShadow: "0 5px 4px rgba(0,0,0,0.1)",
       }}
     >
-      <Container maxWidth={"md"}>
+      <Container maxWidth={containerWidth}>
         <Box sx={{
           display: "flex",
           justifyContent: "space-between",
