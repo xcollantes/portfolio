@@ -5,18 +5,22 @@ import { Container, CssBaseline } from "@mui/material"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { ColorModeProvider } from "../contexts/colorMode"
 import { SessionProvider } from "next-auth/react"
+import { useRouter } from "next/router"
 
 import { base } from "../themes/theme"
 import "../css/global.css"
 import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
 import { MOTD } from "../components/MsgOfDay"
 import { AppProps } from "next/app"
+import Navbar from "../components/Navbar"
 
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) {
   console.log(MOTD)
+  const router = useRouter()
+  const isHomePage = router.pathname === "/"
 
   return (
     <SessionProvider session={session}>
@@ -42,6 +46,7 @@ export default function App({
         <CssBaseline />
         <Container sx={{ mt: 4 }} maxWidth="xl">
           <SelectFilterTagContextProvider>
+            {!isHomePage && <Navbar />}
             <Component {...pageProps} />
             <GoogleAnalytics gaId="G-HB7D403D67" />
           </SelectFilterTagContextProvider>
