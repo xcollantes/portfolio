@@ -1,5 +1,7 @@
 /** Page for all recommendations listed. */
 
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import LinkIcon from "@mui/icons-material/Link"
 import {
   Accordion,
   AccordionDetails,
@@ -7,20 +9,22 @@ import {
   Avatar,
   Box,
   Button,
+  IconButton,
+  Snackbar,
   Stack,
   Theme,
+  Tooltip,
   Typography,
   useTheme,
 } from "@mui/material"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import { GetStaticPropsResult } from "next"
+import { NextRouter, useRouter } from "next/router"
+import { useEffect, useState } from "react"
+import DarkModeSwitch from "../components/DarkMode"
+import Drawer from "../components/Drawer"
+import { MaterialLink } from "../components/MaterialLink"
 import { RecommendationType } from "../recommendations/RecommendationType"
 import { getRecommendationData } from "../recommendations/process_recommendations"
-import { MaterialLink } from "../components/MaterialLink"
-import DarkModeSwitch from "../components/DarkMode"
-import { useEffect, useState } from "react"
-import Drawer from "../components/Drawer"
-import { NextRouter, useRouter } from "next/router"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -46,15 +50,23 @@ export default function Recs(props) {
 
   const recommendations = props.recommendationsProp
 
+  // State for showing the copy success message
+  const [copySuccess, setCopySuccess] = useState<boolean>(false)
+  const [copyMessage, setCopyMessage] = useState<string>("")
+
   /**
    * Creates the initial expansion state for all recommendation accordions.
    *
-   * - Each recommendation gets an entry in the dictionary with its ID and expansion state.
-   * - If a 'recId' is provided in the URL query parameters, the matching recommendation
-   *   will be expanded by default, while others remain collapsed.
-   * - The 'recId' parameter allows direct linking to a specific expanded recommendation.
+   * - Each recommendation gets an entry in the dictionary with its ID and
+   *   expansion state.
+   * - If a 'recId' is provided in the URL query parameters, the matching
+   *   recommendation will be expanded by default, while others remain
+   *   collapsed.
+   * - The 'recId' parameter allows direct linking to a specific expanded
+   *   recommendation.
    *
-   * @returns An array of objects tracking the expansion state of each recommendation.
+   * @returns An array of objects tracking the expansion state of each
+   *   recommendation.
    */
   const initialExpandDictWithSelected = () => {
     // Create initial dictionary with all recommendations collapsed
@@ -157,6 +169,37 @@ export default function Recs(props) {
     setExpandDictionary(newDictionary)
   }
 
+  /**
+   * Copies the current URL with a specific recommendation ID to the clipboard.
+   *
+   * @param recId - The ID of the recommendation to be shared.
+   */
+  const copyRecommendationLink = (recId: string) => {
+    // Get the current URL
+    const currentURL = window.location.origin + window.location.pathname;
+
+    // Create a URL with the recId as a query parameter, ensuring it's properly encoded
+    const encodedRecId = encodeURIComponent(recId);
+    const linkToCopy = `${currentURL}?recId=${encodedRecId}`;
+
+    // Copy the URL to clipboard
+    navigator.clipboard.writeText(linkToCopy)
+      .then(() => {
+        setCopyMessage("Recommendation link copied to clipboard!");
+        setCopySuccess(true);
+      })
+      .catch((err) => {
+        console.error("Failed to copy recommendation link: ", err);
+        setCopyMessage("Failed to copy recommendation link.");
+        setCopySuccess(true);
+      });
+  };
+
+  // Handle closing the copy success notification
+  const handleCloseSnackbar = () => {
+    setCopySuccess(false);
+  };
+
   return (
     <>
       <Box
@@ -171,6 +214,7 @@ export default function Recs(props) {
       </Box>
       <Box>
         <Stack direction={"row"} spacing={2} sx={{ my: 3 }}>
+
           <DarkModeSwitch />
 
           <Button variant="contained" onClick={() => handleExpandAll()}>
@@ -180,18 +224,24 @@ export default function Recs(props) {
             Collapse all
           </Button>
         </Stack>
+
         {props.recommendationsProp.map((recommendation: RecommendationType) => (
           <Accordion
-            // The expanded prop controls whether this accordion is open or closed
-            // It finds the matching recId in the expandDictionary and checks its 'expand' value
+            // The expanded prop controls whether this accordion is open or
+            // closed
+            // It finds the matching recId in the expandDictionary and checks
+            // its 'expand' value
             expanded={
               expandDictionary.find(
                 (setting) => setting.recId === recommendation.name
               )?.expand
             }
-            // When clicked, toggle this specific recommendation's expansion state
+
+            // When clicked, toggle this specific recommendation's expansion
+            // state
             onChange={() => handleClick(recommendation.name)}
             key={recommendation.name}
+
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -224,7 +274,20 @@ export default function Recs(props) {
                   {recommendation.fullRec}
                 </Typography>
               </Stack>
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
+                <Tooltip title="Copy link to this recommendation">
+                  <IconButton
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent accordion from toggling
+                      copyRecommendationLink(recommendation.name);
+                    }}
+                    sx={{ mr: 1 }}
+                  >
+
+                    <LinkIcon />
+
+                  </IconButton>
+                </Tooltip>
                 <Button
                   variant="outlined"
                   component={MaterialLink}
@@ -238,6 +301,13 @@ export default function Recs(props) {
             </AccordionDetails>
           </Accordion>
         ))}
+        <Snackbar
+          open={copySuccess}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackbar}
+          message={copyMessage}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        />
       </Box>
     </>
   )
