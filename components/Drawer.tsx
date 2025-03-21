@@ -13,6 +13,7 @@ import {
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded"
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded"
 import CloseIcon from "@mui/icons-material/Close"
+import StarRoundedIcon from "@mui/icons-material/StarRounded"
 
 import { useState } from "react"
 import DarkMode from "./DarkMode"
@@ -62,6 +63,13 @@ export default function Drawer({ anchor = "right" }: DrawerPropType) {
               <ListItemButton to="/" component={MaterialLink}>
                 <ListItemText primary="Home" />
                 <HomeRoundedIcon sx={{ mr: 1 }} />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem key={key++} disablePadding>
+              <ListItemButton to="/recs" component={MaterialLink}>
+                <ListItemText primary="Recommendations" />
+                <StarRoundedIcon sx={{ mr: 1 }} />
               </ListItemButton>
             </ListItem>
 
