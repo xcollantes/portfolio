@@ -1,3 +1,21 @@
+:root {
+  /* Light mode colors */
+  --primary-light: #2563eb;
+  --secondary-light: #8b5cf6;
+  --text-primary-light: #18181b;
+  --text-secondary-light: #4b5563;
+  --background-light: #ffffff;
+  --background-paper-light: #f8fafc;
+
+  /* Dark mode colors */
+  --primary-dark: #3b82f6;
+  --secondary-dark: #a78bfa;
+  --text-primary-dark: #f8fafc;
+  --text-secondary-dark: #cbd5e1;
+  --background-dark: #0f172a;
+  --background-paper-dark: #1e293b;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
   display: none;
@@ -5,12 +23,20 @@ body::-webkit-scrollbar {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background-color: blueviolet;
+  background-color: #8b5cf6;
+  color: white;
+}
+
+a {
+  transition: color 0.2s ease;
 }
 
 .blurLight {
@@ -23,4 +49,25 @@ body {
 
 .blurHeavy {
   filter: blur(10px);
+}
+
+/* Add subtle animations */
+.animate-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.animate-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+}
+
+/* Improve focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+}
+
+/* Dark mode will use different focus outline */
+.dark *:focus-visible {
+  outline-color: var(--primary-dark);
 }

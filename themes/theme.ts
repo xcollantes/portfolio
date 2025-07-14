@@ -4,8 +4,8 @@
  * https://mui.com/customization/default-theme
  */
 
+import { createTheme, PaletteOptions, Theme, ThemeOptions } from "@mui/material"
 import { Kumbh_Sans, Outfit, Permanent_Marker } from "next/font/google"
-import { Theme, ThemeOptions, createTheme } from "@mui/material"
 
 const permanentMarker = Permanent_Marker({
   subsets: ["latin"],
@@ -17,6 +17,97 @@ const outfit = outfit_font.style.fontFamily
 
 // Used as a util but not exported as its own theme.
 export const defaultTheme: Theme = createTheme()
+
+// Color palette definition
+export const lightPalette: PaletteOptions = {
+  mode: 'light',
+  primary: {
+    main: "#2563eb", // Modern blue that's accessible
+    light: "#93c5fd",
+    dark: "#1e40af",
+    contrastText: "#ffffff",
+  },
+  secondary: {
+    main: "#8b5cf6", // Purple for accent elements
+    light: "#c4b5fd",
+    dark: "#6d28d9",
+    contrastText: "#ffffff",
+  },
+  error: {
+    main: "#ef4444",
+    light: "#fca5a5",
+    dark: "#b91c1c",
+  },
+  warning: {
+    main: "#f59e0b",
+    light: "#fcd34d",
+    dark: "#d97706",
+  },
+  info: {
+    main: "#0ea5e9",
+    light: "#7dd3fc",
+    dark: "#0369a1",
+  },
+  success: {
+    main: "#10b981",
+    light: "#6ee7b7",
+    dark: "#047857",
+  },
+  text: {
+    primary: "#18181b",
+    secondary: "#4b5563",
+    disabled: "#9ca3af",
+  },
+  background: {
+    default: "#ffffff",
+    paper: "#f8fafc",
+  },
+}
+
+export const darkPalette: PaletteOptions = {
+  mode: 'dark',
+  primary: {
+    main: "#3b82f6", // Brighter blue for dark mode
+    light: "#93c5fd",
+    dark: "#1e3a8a",
+    contrastText: "#ffffff",
+  },
+  secondary: {
+    main: "#a78bfa", // Lighter purple for dark mode
+    light: "#c4b5fd",
+    dark: "#7c3aed",
+    contrastText: "#ffffff",
+  },
+  error: {
+    main: "#f87171",
+    light: "#fca5a5",
+    dark: "#b91c1c",
+  },
+  warning: {
+    main: "#fbbf24",
+    light: "#fcd34d",
+    dark: "#d97706",
+  },
+  info: {
+    main: "#38bdf8",
+    light: "#7dd3fc",
+    dark: "#0369a1",
+  },
+  success: {
+    main: "#34d399",
+    light: "#6ee7b7",
+    dark: "#047857",
+  },
+  text: {
+    primary: "#f8fafc",
+    secondary: "#cbd5e1",
+    disabled: "#64748b",
+  },
+  background: {
+    default: "#0f172a",
+    paper: "#1e293b",
+  },
+}
 
 export const base: ThemeOptions = {
   typography: {
@@ -40,26 +131,70 @@ export const base: ThemeOptions = {
 
     body1: { fontFamily: outfit, fontSize: 22 },
   },
-  palette: {
-    primary: { main: "#0070f3" },
-  },
+  palette: lightPalette,
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
           textTransform: "none",
           fontWeight: 600,
-          boxShadow: `0px 5px 14px 0px rgba(0,118,255,0.39)`,
+          boxShadow: `0px 5px 14px 0px rgba(37,99,235,0.3)`,
           borderRadius: 28,
+          transition: "all 0.2s ease-in-out",
+          "&:hover": {
+            transform: "translateY(-2px)",
+            boxShadow: `0px 7px 14px 0px rgba(37,99,235,0.4)`,
+          }
         },
-        outlined: { boxShadow: "none" },
+        outlined: {
+          boxShadow: "none",
+          "&:hover": {
+            transform: "translateY(-2px)",
+            boxShadow: `0px 3px 8px 0px rgba(37,99,235,0.2)`,
+          }
+        },
+        containedSecondary: {
+          boxShadow: `0px 5px 14px 0px rgba(139,92,246,0.3)`,
+          "&:hover": {
+            boxShadow: `0px 7px 14px 0px rgba(139,92,246,0.4)`,
+          }
+        },
       },
     },
-    MuiCard: { styleOverrides: { root: { borderRadius: 8 } } },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          boxShadow: "0px 0px 10px 2px rgba(0, 0, 0, 0.08)",
+          transition: "all 0.3s ease",
+          "&:hover": {
+            transform: "translateY(-4px)",
+            boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.12)",
+          }
+        }
+      }
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: "none",
+          transition: "color 0.2s ease",
+          "&:hover": {
+            textDecoration: "underline",
+          }
+        }
+      }
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
+          fontWeight: 500,
+        }
+      }
+    },
   },
 }
-
-// export const wave: Theme = deepmerge(base, {})
 
 // font-family: 'Koulen' strong and professional
 // font-family: 'Permanent Marker' fun
