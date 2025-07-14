@@ -15,6 +15,7 @@ import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
 import { ToastProvider } from "../contexts/toastContext"
 import "../css/global.css"
 import { base } from "../themes/theme"
+import { Analytics } from "@vercel/analytics/next"
 
 export default function App({
   Component,
@@ -90,6 +91,7 @@ export default function App({
               <Component {...pageProps} />
               <Toast />
               <GoogleAnalytics gaId="G-HB7D403D67" />
+              <Analytics />
             </SelectFilterTagContextProvider>
           </Container>
         </ToastProvider>
