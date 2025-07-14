@@ -29,6 +29,8 @@ import {
 import { RecommendationType } from "../recommendations/RecommendationType"
 import { getRecommendationData } from "../recommendations/process_recommendations"
 
+const oneLiner: string = process.env.NEXT_PUBLIC_ONE_LINER || ""
+
 /**
  * Runs at build time to statically generate preview cards.
  */
@@ -126,9 +128,11 @@ export default function Page(props: IndexPropTypes) {
                 Xavier Collantes
               </Typography>
 
-              <Typography variant="subtitle1" align="right">
-                Software Engineer
-              </Typography>
+              {oneLiner && (
+                <Typography variant="subtitle1" align="right">
+                  {oneLiner}
+                </Typography>
+              )}
 
               <SocialMedia />
 
