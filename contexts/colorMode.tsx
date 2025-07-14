@@ -19,6 +19,7 @@ import {
   useState,
 } from "react"
 import { deepmerge } from "@mui/utils"
+import { darkPalette, lightPalette } from "../themes/theme"
 
 export interface ColorModeContextType {
   darkMode: boolean
@@ -42,7 +43,7 @@ interface ColorModeContextProps {
 
 /** ThemeProvider must contain the ColorModeContext. */
 export function ColorModeProvider({ theme, children }: ColorModeContextProps) {
-  const [darkMode, setDarkMode] = useState<boolean>(true)
+  const [darkMode, setDarkMode] = useState<boolean>(false)
 
   /**
    * Read in object with customization and `createTheme` will fill in any
@@ -53,7 +54,7 @@ export function ColorModeProvider({ theme, children }: ColorModeContextProps) {
       responsiveFontSizes(
         createTheme(
           deepmerge(theme, {
-            palette: { mode: darkMode ? "dark" : "light" },
+            palette: darkMode ? darkPalette : lightPalette,
           })
         )
       ),
