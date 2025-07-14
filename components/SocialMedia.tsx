@@ -10,7 +10,11 @@ import ShareButton from "./ShareButton"
 export default function SocialMedia() {
   const themeContext = useTheme()
   const theme: Theme = createTheme(themeContext)
-  const sx = { fontSize: 35, color: theme.palette.secondary.main }
+  const sx = {
+    fontSize: 35,
+    color: theme.palette.secondary.main,
+    filter: `drop-shadow(0 0 1px ${theme.palette.secondary.light})`
+  }
 
   return (
     <Box display="flex" justifyContent="flex-end" columnGap={2} sx={{ py: 3 }}>

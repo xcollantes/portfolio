@@ -43,7 +43,7 @@ interface ColorModeContextProps {
 
 /** ThemeProvider must contain the ColorModeContext. */
 export function ColorModeProvider({ theme, children }: ColorModeContextProps) {
-  const [darkMode, setDarkMode] = useState<boolean>(false)
+  const [darkMode, setDarkMode] = useState<boolean>(true)
 
   /**
    * Read in object with customization and `createTheme` will fill in any

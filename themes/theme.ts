@@ -138,13 +138,13 @@ export const base: ThemeOptions = {
         root: {
           textTransform: "none",
           fontWeight: 600,
-          boxShadow: `0px 5px 14px 0px rgba(37,99,235,0.3)`,  // Color on hover
+          boxShadow: `0px 5px 14px 0px rgba(37,99,235,0.45)`,
           borderRadius: 28,
           transition: "all 0.2s ease-in-out",
           "&:hover": {
             transform: "translateY(-2px)",
-            boxShadow: `0px 7px 14px 0px rgba(255,20,147,0.4)`, // Color on hover
-            backgroundColor: "#FF1493", // Fixed: Directly using secondary color value
+            boxShadow: `0px 8px 16px 0px rgba(255,20,147,0.6)`,
+            backgroundColor: "#FF1493",
             color: "#ffffff",
           }
         },
@@ -152,16 +152,16 @@ export const base: ThemeOptions = {
           boxShadow: "none",
           "&:hover": {
             transform: "translateY(-2px)",
-            boxShadow: `0px 3px 8px 0px rgba(255,20,147,0.2)`, // Color on hover
-            backgroundColor: "#FF1493", // Fixed: Directly using secondary color value
+            boxShadow: `0px 4px 10px 0px rgba(255,20,147,0.35)`,
+            backgroundColor: "#FF1493",
             color: "#ffffff",
           }
         },
         containedSecondary: {
-          boxShadow: `0px 5px 14px 0px rgba(255,20,147,0.3)`,
+          boxShadow: `0px 5px 14px 0px rgba(255,20,147,0.45)`,
           "&:hover": {
-            boxShadow: `0px 7px 14px 0px rgba(255,20,147,0.4)`, // Color on hover
-            backgroundColor: "#FF1493", // Fixed: Using secondary.dark value directly
+            boxShadow: `0px 8px 16px 0px rgba(255,20,147,0.6)`,
+            backgroundColor: "#FF1493",
           }
         },
       },
