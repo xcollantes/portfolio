@@ -1,7 +1,7 @@
 :root {
   /* Light mode colors */
   --primary-light: #2563eb;
-  --secondary-light: #8b5cf6;
+  --secondary-light: #FF69B4;
   --text-primary-light: #18181b;
   --text-secondary-light: #4b5563;
   --background-light: #ffffff;
@@ -9,7 +9,7 @@
 
   /* Dark mode colors */
   --primary-dark: #3b82f6;
-  --secondary-dark: #a78bfa;
+  --secondary-dark: #FF1493;
   --text-primary-dark: #f8fafc;
   --text-secondary-dark: #cbd5e1;
   --background-dark: #0f172a;
@@ -31,7 +31,7 @@ body {
 }
 
 ::selection {
-  background-color: #8b5cf6;
+  background-color: #FF1493;
   color: white;
 }
 
