@@ -28,9 +28,9 @@ export const lightPalette: PaletteOptions = {
     contrastText: "#ffffff",
   },
   secondary: {
-    main: "#8b5cf6", // Purple for accent elements
-    light: "#c4b5fd",
-    dark: "#6d28d9",
+    main: "#FF1493", // Hot pink for accent elements
+    light: "#FF8AC4",
+    dark: "#FF1493",
     contrastText: "#ffffff",
   },
   error: {
@@ -73,9 +73,9 @@ export const darkPalette: PaletteOptions = {
     contrastText: "#ffffff",
   },
   secondary: {
-    main: "#a78bfa", // Lighter purple for dark mode
-    light: "#c4b5fd",
-    dark: "#7c3aed",
+    main: "#FF1493", // Hot pink for dark mode
+    light: "#FF1493",
+    dark: "#D1006A",
     contrastText: "#ffffff",
   },
   error: {
@@ -138,25 +138,30 @@ export const base: ThemeOptions = {
         root: {
           textTransform: "none",
           fontWeight: 600,
-          boxShadow: `0px 5px 14px 0px rgba(37,99,235,0.3)`,
+          boxShadow: `0px 5px 14px 0px rgba(37,99,235,0.3)`,  // Color on hover
           borderRadius: 28,
           transition: "all 0.2s ease-in-out",
           "&:hover": {
             transform: "translateY(-2px)",
-            boxShadow: `0px 7px 14px 0px rgba(37,99,235,0.4)`,
+            boxShadow: `0px 7px 14px 0px rgba(255,20,147,0.4)`, // Color on hover
+            backgroundColor: "#FF1493", // Fixed: Directly using secondary color value
+            color: "#ffffff",
           }
         },
         outlined: {
           boxShadow: "none",
           "&:hover": {
             transform: "translateY(-2px)",
-            boxShadow: `0px 3px 8px 0px rgba(37,99,235,0.2)`,
+            boxShadow: `0px 3px 8px 0px rgba(255,20,147,0.2)`, // Color on hover
+            backgroundColor: "#FF1493", // Fixed: Directly using secondary color value
+            color: "#ffffff",
           }
         },
         containedSecondary: {
-          boxShadow: `0px 5px 14px 0px rgba(139,92,246,0.3)`,
+          boxShadow: `0px 5px 14px 0px rgba(255,20,147,0.3)`,
           "&:hover": {
-            boxShadow: `0px 7px 14px 0px rgba(139,92,246,0.4)`,
+            boxShadow: `0px 7px 14px 0px rgba(255,20,147,0.4)`, // Color on hover
+            backgroundColor: "#FF1493", // Fixed: Using secondary.dark value directly
           }
         },
       },
