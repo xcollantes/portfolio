@@ -21,7 +21,7 @@ export default function Navbar({ containerWidth = "md" }: NavbarProps) {
         left: 0,
         right: 0,
         zIndex: 1000,
-        bgcolor: theme.palette.mode === "dark" ? "#6a1b9a" : "#ffffff",
+        bgcolor: theme.palette.mode === "dark" ? theme.palette.background.paper : "#ffffff",
         color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
         p: 1.5,
         boxShadow: "0 5px 4px rgba(0,0,0,0.1)",
