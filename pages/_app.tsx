@@ -16,6 +16,7 @@ import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
 import { ToastProvider } from "../contexts/toastContext"
 import "../css/global.css"
 import { base } from "../themes/theme"
+import { Analytics } from "@vercel/analytics/next"
 
 export default function App({
   Component,
@@ -75,6 +76,20 @@ export default function App({
     }
   }, [router])
 
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      // Send page view event to Google Analytics
+      window.gtag('config', 'G-HB7D403D67', {
+        page_path: url,
+      });
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   const navbar = (() => {
     switch (router.pathname) {
       case "/":
@@ -126,6 +141,8 @@ export default function App({
               {navbar}
               <Component {...pageProps} />
               <Toast />
+              <GoogleAnalytics gaId="G-HB7D403D67" />
+              <Analytics />
             </SelectFilterTagContextProvider>
           </Container>
         </ToastProvider>
