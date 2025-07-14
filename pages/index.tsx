@@ -22,7 +22,6 @@ import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder
 import FilterBar from "../components/FilterBar"
 import RecommendationSlides from "../components/RecommendationSlides"
 import SocialMedia from "../components/SocialMedia"
-import { ToastDemo } from "../components/ToastDemo"
 import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
@@ -167,7 +166,6 @@ export default function Page(props: IndexPropTypes) {
           <Box sx={{ my: 3 }}>
             <FilterBar disabled={!isUserSignedIn(session)} />
           </Box>
-          {isUserSignedIn(session) && <ToastDemo />}
           {isUserSignedIn(session) ? (
             <ExperienceCards metadata={props.metadataProps} />
           ) : (
