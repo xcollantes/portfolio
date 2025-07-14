@@ -24,7 +24,7 @@ export default function SocialMedia() {
           <GitHubIcon sx={sx} />
         </IconButton>
       </Link>
-      <ShareButton sx={sx} shareUrl={process.env.NEXT_PUBLIC_SHARE_URL} />
+      <ShareButton sx={sx} shareUrl={process.env.NEXT_PUBLIC_SHARE_URL || ""} />
     </Box>
   )
 }
