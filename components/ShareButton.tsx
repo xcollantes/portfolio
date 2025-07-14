@@ -3,6 +3,7 @@
 import ShareIcon from "@mui/icons-material/Share"
 import { IconButton, Tooltip, useMediaQuery, useTheme } from "@mui/material"
 import { useState } from "react"
+import { useToastNotification } from "../hooks/useToastNotification"
 
 interface ShareButtonProps {
   shareUrl: string
@@ -13,6 +14,7 @@ interface ShareButtonProps {
 export default function ShareButton({ title, sx, shareUrl }: ShareButtonProps) {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const toast = useToastNotification()
   const [tooltipOpen, setTooltipOpen] = useState<boolean>(false)
   const [tooltipText, setTooltipText] = useState<string>("Share")
 
@@ -40,6 +42,7 @@ export default function ShareButton({ title, sx, shareUrl }: ShareButtonProps) {
           title: shareTitle,
           url: shareUrl,
         })
+        toast.success("Shared successfully")
         console.log("Shared: ", shareUrl)
 
       } catch (error) {
@@ -57,8 +60,10 @@ export default function ShareButton({ title, sx, shareUrl }: ShareButtonProps) {
     const success = await copyToClipboard(shareUrl)
 
     if (success) {
+      toast.success("Link copied to clipboard")
       setTooltipText("Copied!")
     } else {
+      toast.error("Failed to copy link")
       setTooltipText("Failed to copy")
     }
 

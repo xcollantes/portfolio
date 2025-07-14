@@ -2,30 +2,31 @@
 
 import { Box, Theme, Typography, useMediaQuery, useTheme } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2"
+import { GetStaticPropsResult } from "next"
 import { useSession } from "next-auth/react"
-import FilterBar from "../components/FilterBar"
-import DarkModeSwitch from "../components/DarkMode"
-import SocialMedia from "../components/SocialMedia"
-import ExperienceCards from "../components/ExperienceCards"
 import { NextRouter, useRouter } from "next/router"
-import {
-  SelectFilterTagContextType,
-  useSelectedFilterTagContext,
-} from "../contexts/selectFilterTag"
+import { useMemo } from "react"
 import {
   FilterDataConfigType,
   filterDataConfig,
 } from "../article_configs/filters_config"
-import { useMemo } from "react"
-import { GetStaticPropsResult } from "next"
 import {
   MetadataType,
   getHeaderMetadata,
 } from "../article_configs/process_articles"
 import AuthButton from "../components/AuthButton"
-import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import { isUserSignedIn } from "../components/AuthUtils"
+import DarkModeSwitch from "../components/DarkMode"
+import ExperienceCards from "../components/ExperienceCards"
+import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
+import FilterBar from "../components/FilterBar"
 import RecommendationSlides from "../components/RecommendationSlides"
+import SocialMedia from "../components/SocialMedia"
+import { ToastDemo } from "../components/ToastDemo"
+import {
+  SelectFilterTagContextType,
+  useSelectedFilterTagContext,
+} from "../contexts/selectFilterTag"
 import { RecommendationType } from "../recommendations/RecommendationType"
 import { getRecommendationData } from "../recommendations/process_recommendations"
 
@@ -166,6 +167,7 @@ export default function Page(props: IndexPropTypes) {
           <Box sx={{ my: 3 }}>
             <FilterBar disabled={!isUserSignedIn(session)} />
           </Box>
+          {isUserSignedIn(session) && <ToastDemo />}
           {isUserSignedIn(session) ? (
             <ExperienceCards metadata={props.metadataProps} />
           ) : (
