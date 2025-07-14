@@ -6,6 +6,8 @@ import { SessionProvider } from "next-auth/react"
 import { AppProps } from "next/app"
 import Head from "next/head"
 import { useRouter } from "next/router"
+import { useEffect, useRef } from "react"
+import { trackNavigation, trackPageView, trackTimeOnPage } from "../components/AnalyticsUtils"
 import { MOTD } from "../components/MsgOfDay"
 import Navbar from "../components/Navbar"
 import { Toast } from "../components/Toast"
@@ -22,6 +24,56 @@ export default function App({
   console.log(MOTD)
   const router = useRouter()
   const isHomePage = router.pathname === "/"
+
+  // Track time spent on page
+  const pageLoadTimeRef = useRef<number>(Date.now())
+  const previousPathRef = useRef<string>("")
+
+  // Track page views and time spent when route changes
+  useEffect(() => {
+    const handleRouteChangeStart = (url: string) => {
+      const currentPath = router.pathname
+      // Record time spent on the previous page before navigating
+      const timeSpentSeconds = Math.round((Date.now() - pageLoadTimeRef.current) / 1000)
+
+      if (previousPathRef.current) {
+        trackTimeOnPage(previousPathRef.current, timeSpentSeconds)
+        trackNavigation(previousPathRef.current, url)
+      }
+
+      previousPathRef.current = currentPath
+    }
+
+    const handleRouteChangeComplete = (url: string) => {
+      // Reset timer for the new page
+      pageLoadTimeRef.current = Date.now()
+      // Track page view for the new page
+      trackPageView(url)
+    }
+
+    // Track initial page load
+    if (typeof window !== "undefined") {
+      const currentUrl = window.location.pathname + window.location.search
+      previousPathRef.current = currentUrl
+      trackPageView(currentUrl)
+    }
+
+    // Track route changes
+    router.events.on("routeChangeStart", handleRouteChangeStart)
+    router.events.on("routeChangeComplete", handleRouteChangeComplete)
+
+    // Cleanup event listeners and track time when component unmounts
+    return () => {
+      router.events.off("routeChangeStart", handleRouteChangeStart)
+      router.events.off("routeChangeComplete", handleRouteChangeComplete)
+
+      // Track time spent on final page when user leaves the site
+      const finalTimeSpent = Math.round((Date.now() - pageLoadTimeRef.current) / 1000)
+      if (previousPathRef.current) {
+        trackTimeOnPage(previousPathRef.current, finalTimeSpent)
+      }
+    }
+  }, [router])
 
   const navbar = (() => {
     switch (router.pathname) {
@@ -74,7 +126,6 @@ export default function App({
               {navbar}
               <Component {...pageProps} />
               <Toast />
-              <GoogleAnalytics gaId="G-HB7D403D67" />
             </SelectFilterTagContextProvider>
           </Container>
         </ToastProvider>

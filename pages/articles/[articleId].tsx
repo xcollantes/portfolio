@@ -20,6 +20,9 @@ import {
 } from "@mui/material"
 import Footer from "../../components/Footer"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
+import ArticleAnalytics from "../../components/ArticleAnalytics"
+
+import { useRouter } from "next/router"
 
 /**
  * Runs at build time to generate possible article paths.
@@ -66,6 +69,8 @@ export default function article({
   metadata,
 }) {
   const theme: Theme = useTheme()
+  const router = useRouter()
+  const { articleId } = router.query
 
   let dateLastUpdatedL10n: string = ""
   if (metadata.dateLastUpdated) {
@@ -84,6 +89,14 @@ export default function article({
       <Head>
         <meta name="robots" content="noindex" />
       </Head>
+
+      {/* Include ArticleAnalytics to track article engagement */}
+      <ArticleAnalytics
+        articleId={articleId as string}
+        articleTitle={metadata.title}
+        articleType={metadata.articleType || "BLOG"}
+      />
+
       <Container maxWidth={"md"}>
         <Box
           sx={{
