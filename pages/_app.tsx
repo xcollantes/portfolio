@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react"
 import { AppProps } from "next/app"
 import Head from "next/head"
 import { useRouter } from "next/router"
+import { useEffect } from "react"
 import { MOTD } from "../components/MsgOfDay"
 import Navbar from "../components/Navbar"
 import { Toast } from "../components/Toast"
@@ -22,6 +23,20 @@ export default function App({
   console.log(MOTD)
   const router = useRouter()
   const isHomePage = router.pathname === "/"
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      // Send page view event to Google Analytics
+      window.gtag('config', 'G-HB7D403D67', {
+        page_path: url,
+      });
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   const navbar = (() => {
     switch (router.pathname) {
