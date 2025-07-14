@@ -23,6 +23,8 @@ import { useEffect, useState } from "react"
 import { MaterialLink } from "../components/MaterialLink"
 import { RecommendationType } from "../recommendations/RecommendationType"
 import { getRecommendationData } from "../recommendations/process_recommendations"
+import { sendGAEvent } from "@next/third-parties/google"
+import { trackUserInteraction } from "../components/AnalyticsUtils"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -51,6 +53,14 @@ export default function Recs(props) {
   // State for showing the copy success message
   const [copySuccess, setCopySuccess] = useState<boolean>(false)
   const [copyMessage, setCopyMessage] = useState<string>("")
+
+  // Track page visit when the page loads
+  useEffect(() => {
+    // Track recommendations page view with count of recommendations
+    sendGAEvent("recommendations_page_view", {
+      recommendation_count: recommendations.length,
+    })
+  }, [])
 
   /**
    * Creates the initial expansion state for all recommendation accordions.
@@ -87,6 +97,8 @@ export default function Recs(props) {
         }
       }
 
+      // Track direct link to recommendation
+      trackUserInteraction("direct_link", `recommendation_${router.query.recId}`, "recommendation")
       return newDictionary
     }
 
@@ -127,12 +139,22 @@ export default function Recs(props) {
    */
   const handleClick = (id: string) => {
     const newDictionary: any = []
+    let isExpanding = false
+
     for (let setting of expandDictionary) {
       if (setting.recId == id) {
+        isExpanding = !setting.expand
         newDictionary.push({ recId: setting.recId, expand: !setting.expand })
       } else {
         newDictionary.push(setting)
       }
+    }
+
+    // Track recommendation interaction
+    if (isExpanding) {
+      trackUserInteraction("expand", `recommendation_${id}`, "recommendation")
+    } else {
+      trackUserInteraction("collapse", `recommendation_${id}`, "recommendation")
     }
 
     setExpandDictionary(newDictionary)
@@ -151,6 +173,9 @@ export default function Recs(props) {
       })
     )
 
+    // Track collapse all action
+    trackUserInteraction("collapse_all", "recommendations", "recommendation")
+
     setExpandDictionary(initialExpandDict)
   }
 
@@ -163,6 +188,9 @@ export default function Recs(props) {
     for (let setting of expandDictionary) {
       newDictionary.push({ recId: setting.recId, expand: true })
     }
+
+    // Track expand all action
+    trackUserInteraction("expand_all", "recommendations", "recommendation")
 
     setExpandDictionary(newDictionary)
   }
@@ -185,6 +213,9 @@ export default function Recs(props) {
       .then(() => {
         setCopyMessage("Recommendation link copied to clipboard!");
         setCopySuccess(true);
+
+        // Track link sharing
+        trackUserInteraction("share_link", `recommendation_${recId}`, "recommendation")
       })
       .catch((err) => {
         console.error("Failed to copy recommendation link: ", err);
