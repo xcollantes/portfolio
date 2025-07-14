@@ -1,92 +1,79 @@
 /** Share button component that copies URL on desktop and opens share menu on mobile. */
 
 import ShareIcon from "@mui/icons-material/Share"
-import { IconButton, Tooltip, useTheme } from "@mui/material"
-import { useRef, useState } from "react"
+import { IconButton, Tooltip, useMediaQuery, useTheme } from "@mui/material"
+import { useState } from "react"
 
 interface ShareButtonProps {
-  url?: string
+  shareUrl: string
   title?: string
   sx?: any
 }
 
-export default function ShareButton({ url, title, sx }: ShareButtonProps) {
+export default function ShareButton({ title, sx, shareUrl }: ShareButtonProps) {
   const theme = useTheme()
-  const [tooltipOpen, setTooltipOpen] = useState(false)
-  const [tooltipText, setTooltipText] = useState("Share")
-  const textAreaRef = useRef<HTMLTextAreaElement>(null)
-
-  // Fallback clipboard method using document.execCommand
-  const fallbackCopyTextToClipboard = (text: string): boolean => {
-    if (!textAreaRef.current) return false;
-
-    const textArea = textAreaRef.current;
-    textArea.value = text;
-    textArea.focus();
-    textArea.select();
-
-    try {
-      const successful = document.execCommand('copy');
-      return successful;
-    } catch (err) {
-      console.error('Fallback: Oops, unable to copy', err);
-      return false;
-    }
-  };
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  const [tooltipOpen, setTooltipOpen] = useState<boolean>(false)
+  const [tooltipText, setTooltipText] = useState<string>("Share")
 
   const copyToClipboard = async (text: string): Promise<boolean> => {
-    if (!navigator.clipboard) {
-      return fallbackCopyTextToClipboard(text);
-    }
-
     try {
-      await navigator.clipboard.writeText(text);
-      return true;
+      await navigator.clipboard.writeText(text)
+      console.log("Copied to clipboard: ", text)
+      return true
+
     } catch (err) {
-      console.error('Could not copy text: ', err);
-      return fallbackCopyTextToClipboard(text);
+      console.error("Could not copy text: ", err)
+      return false
+
     }
   };
 
   const handleShare = async () => {
     // Use current URL if none provided
-    const shareUrl = url || window.location.href
     const shareTitle = title || document.title
 
-    // Check if Web Share API is supported (mostly on mobile devices)
-    if (navigator.share) {
+    // Check if on mobile based on screen size
+    if (isMobile && navigator.share) {
       try {
         await navigator.share({
           title: shareTitle,
           url: shareUrl,
         })
+        console.log("Shared: ", shareUrl)
+
       } catch (error) {
         console.error("Error sharing:", error)
+        // Fall back to clipboard on mobile if sharing fails
+        await handleCopyToClipboard()
       }
     } else {
       // On desktop, copy to clipboard
-      const success = await copyToClipboard(shareUrl);
-
-      if (success) {
-        setTooltipText("Copied!")
-      } else {
-        setTooltipText("Failed to copy")
-      }
-
-      setTooltipOpen(true)
-
-      // Reset tooltip after 2 seconds
-      setTimeout(() => {
-        setTooltipText("Share")
-        setTooltipOpen(false)
-      }, 2000)
+      await handleCopyToClipboard()
     }
+  }
+
+  const handleCopyToClipboard = async () => {
+    const success = await copyToClipboard(shareUrl)
+
+    if (success) {
+      setTooltipText("Copied!")
+    } else {
+      setTooltipText("Failed to copy")
+    }
+
+    setTooltipOpen(true)
+
+    // Reset tooltip after 2 seconds
+    setTimeout(() => {
+      setTooltipText("Share")
+      setTooltipOpen(false)
+    }, 2000)
   }
 
   return (
     <>
       <textarea
-        ref={textAreaRef}
         style={{
           position: 'absolute',
           left: '-9999px',
@@ -101,9 +88,6 @@ export default function ShareButton({ url, title, sx }: ShareButtonProps) {
       <Tooltip
         title={tooltipText}
         open={tooltipOpen}
-        disableFocusListener
-        disableHoverListener
-        disableTouchListener
       >
         <IconButton onClick={handleShare} size="large">
           <ShareIcon
