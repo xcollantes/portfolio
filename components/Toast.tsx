@@ -1,7 +1,8 @@
-/** Toast component. */
+/** Toast component using Sonner. */
 
-import { Alert, Slide, SlideProps, Snackbar, Theme, useTheme } from '@mui/material';
-import React from 'react';
+import { AlertColor } from '@mui/material';
+import { useEffect } from 'react';
+import { toast as sonnerToast, Toaster } from 'sonner';
 import { useToast } from '../contexts/toastContext';
 
 interface ToastProps {
@@ -14,10 +15,6 @@ interface ToastProps {
   elevation?: number;
 }
 
-function SlideTransition(props: SlideProps) {
-  return <Slide {...props} direction="left" />;
-}
-
 export const Toast = ({
   autoHideDuration = 5000,
   anchorOrigin = { vertical: 'bottom', horizontal: 'right' },
@@ -25,59 +22,41 @@ export const Toast = ({
   elevation = 6,
 }: ToastProps) => {
   const { toast, hideToast } = useToast();
-  const theme: Theme = useTheme();
 
-  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') return; // Don't close on random clickaway
-    hideToast();
+  // Map MUI severity to Sonner toast type
+  const mapSeverityToType = (severity: AlertColor) => {
+    switch (severity) {
+      case 'success': return 'success';
+      case 'error': return 'error';
+      case 'warning': return 'warning';
+      case 'info':
+      default:
+        return 'info';
+    }
   };
 
-  // Prevent touch events from propagating to background
-  const handleTouch = (event: React.TouchEvent) => {
-    event.stopPropagation();
-  };
+  // Show Sonner toast when toast context changes
+  useEffect(() => {
+    if (toast.open && toast.message) {
+      const toastType = mapSeverityToType(toast.severity);
+
+      // Use the appropriate Sonner toast type
+      sonnerToast[toastType](toast.message, {
+        duration: autoHideDuration,
+        onDismiss: hideToast,
+      });
+    }
+  }, [toast, autoHideDuration, hideToast]);
+
+  // Map MUI position to Sonner position
+  const position = `${anchorOrigin.vertical}-${anchorOrigin.horizontal}`;
 
   return (
-    <Snackbar
-      open={toast.open}
-      autoHideDuration={autoHideDuration}
-      onClose={handleClose}
-      anchorOrigin={anchorOrigin}
-      TransitionComponent={SlideTransition}
-      TransitionProps={{
-        onExited: () => hideToast(),
-      }}
-      action={<div />} /* Empty div required for swipe functionality */
-      disableWindowBlurListener
-      sx={{
-        maxWidth: 'sm',
-        zIndex: 9999, // Ensure toast appears at the very front
-        '& .MuiSnackbarContent-root': {
-          minWidth: '250px',
-          touchAction: 'none', // Prevent default touch actions
-        },
-      }}
-    >
-      <Alert
-        onClose={handleClose}
-        severity={toast.severity}
-        variant={variant}
-        elevation={elevation}
-        onClick={() => hideToast()}
-        onTouchStart={handleTouch}
-        onTouchMove={handleTouch}
-        onTouchEnd={handleTouch}
-        sx={{
-          width: '100%',
-          boxShadow: theme.shadows[elevation],
-          cursor: 'pointer',
-          touchAction: 'pan-x', // Allow horizontal swiping only
-          WebkitUserSelect: 'none',
-          userSelect: 'none',
-        }}
-      >
-        {toast.message}
-      </Alert>
-    </Snackbar>
+    <Toaster
+      position={position as any}
+      richColors={variant === 'filled'}
+      closeButton={true}
+      theme="light"
+    />
   );
 };

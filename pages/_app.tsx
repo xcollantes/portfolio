@@ -5,6 +5,7 @@ import { GoogleAnalytics } from "@next/third-parties/google"
 import { SessionProvider } from "next-auth/react"
 import Head from "next/head"
 import { useRouter } from "next/router"
+import { Toaster } from "sonner"
 import { ColorModeProvider } from "../contexts/colorMode"
 
 import { AppProps } from "next/app"

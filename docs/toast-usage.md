@@ -1,7 +1,7 @@
 # Toast Notification System
 
-The portfolio website includes a toast notification system built with Material
-UI.  This document explains how to use it in your components.
+The portfolio website includes a toast notification system built with Sonner.
+This document explains how to use it in your components.
 
 ## Basic Usage
 
@@ -61,7 +61,7 @@ the props:
   autoHideDuration={3000} // Duration in milliseconds
   anchorOrigin={{ vertical: "top", horizontal: "right" }}
   variant="outlined" // 'filled', 'outlined', or 'standard'
-  elevation={2} // Shadow elevation
+  elevation={2} // Shadow elevation (only used if variant is filled)
 />
 ```
 
@@ -70,8 +70,14 @@ the props:
 The toast system consists of three main parts:
 
 1. `ToastContext` - Manages the state of toast notifications
-2. `Toast` component - Renders the actual toast UI
+2. `Toast` component - Renders Sonner toasts using the toast context
 3. `useToastNotification` hook - Provides a simplified API for showing toasts
 
-All toast notifications will auto-hide after 6 seconds by default, but this can
+All toast notifications will auto-hide after 5 seconds by default, but this can
 be customized.
+
+## About Sonner
+
+Sonner is a lightweight, accessible toast notification library with a clean interface.
+It offers smooth animations, keyboard navigation support, and a customizable appearance.
+For more details, visit the [Sonner documentation](https://sonner.emilkowal.ski/).
