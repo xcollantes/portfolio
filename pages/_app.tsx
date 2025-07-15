@@ -86,20 +86,6 @@ export default function App({
     }
   }, [router])
 
-  useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      // Send page view event to Google Analytics
-      window.gtag('config', 'G-HB7D403D67', {
-        page_path: url,
-      });
-    };
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
-
   const navbar = (() => {
     switch (router.pathname) {
       case "/":
