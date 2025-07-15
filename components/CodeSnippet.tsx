@@ -1,7 +1,6 @@
 /** Code snippet component with GitHub gist styling and proper syntax highlighting. */
 
 import ArticleIcon from "@mui/icons-material/Article"
-import CheckIcon from "@mui/icons-material/Check"
 import CodeIcon from "@mui/icons-material/Code"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 import DataObjectIcon from "@mui/icons-material/DataObject"
@@ -21,7 +20,6 @@ import {
   Typography,
   useTheme,
 } from "@mui/material"
-import { useState } from "react"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
   vs,
@@ -57,19 +55,27 @@ export default function CodeSnippet({
 }: CodeSnippetProps) {
   const theme: Theme = useTheme()
   const toast = useToastNotification()
-  const [copied, setCopied] = useState<boolean>(false)
 
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(code)
-      setCopied(true)
-      toast.success("Code copied to clipboard!")
 
-      // Reset copy state after 2 seconds
-      setTimeout(() => setCopied(false), 2000)
+      // Random success messages for copy action.
+      const copyMessages = [
+        "Copied to clipboard!",
+        "Copied to clipboard!",
+        "Copied to clipboard!",
+        "Copied to clipboard!",
+        "Code 'borrowed' 😉",
+        "Code grabbed 🤏",
+        "Swiped 🦊💨",
+      ]
+      const randomMessage = copyMessages[Math.floor(Math.random() * copyMessages.length)]
+      toast.success(randomMessage)
+
     } catch (error) {
       console.error("Failed to copy code:", error)
-      toast.error("Failed to copy code")
+      toast.error("Failed to copy")
     }
   }
 
@@ -382,11 +388,11 @@ export default function CodeSnippet({
               },
             }}
           >
-            by portfolio
+            by Xavier
           </Link>
         </Box>
 
-        <Tooltip title={copied ? "Copied!" : "Copy to clipboard"}>
+        <Tooltip title="Copy">
           <IconButton
             size="small"
             onClick={copyToClipboard}
@@ -397,11 +403,7 @@ export default function CodeSnippet({
               },
             }}
           >
-            {copied ? (
-              <CheckIcon sx={{ fontSize: 14 }} />
-            ) : (
-              <ContentCopyIcon sx={{ fontSize: 14 }} />
-            )}
+            <ContentCopyIcon sx={{ fontSize: 14 }} />
           </IconButton>
         </Tooltip>
       </Box>
