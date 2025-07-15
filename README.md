@@ -124,6 +124,34 @@ with `nocookie` if using the `start=` parameter.
 To make embedded content such as HTML rendered, we use `rehypeRaw` plugin for
 ReactMarkdown [more info](https://stackoverflow.com/a/70548866/8278075).
 
+#### GitHub Gists
+
+The portfolio supports automatic GitHub gist embedding. Simply paste a gist URL in your markdown:
+
+```markdown
+Here's a useful utility function:
+
+https://gist.github.com/xcollantes/abc123def456789
+
+This function helps with data processing.
+```
+
+Or use markdown link syntax:
+
+```markdown
+Check out this [React hook example](https://gist.github.com/xcollantes/abc123def456789).
+```
+
+The system automatically:
+
+- Fetches live content from GitHub's API
+- Shows author information and gist metadata
+- Supports multi-file gists with tabbed interface
+- Inherits your existing CodeSnippet styling and dark mode
+- Provides syntax highlighting and copy functionality
+
+For more details, see `docs/gist-usage.md`.
+
 ## Adding new recommendation
 
 You can add recommendations to boost credibility and give insight to your
