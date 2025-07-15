@@ -12,6 +12,7 @@
 export const orderedIncludeWorkExp: string[] = [
   "faxion-ai.md",
   "google.md",
+  "belva-ai.md",
   // "cloud.md",
   "portfolio.md",
   "rx-blockchain.md",
