@@ -1,20 +1,20 @@
 /** Card for recommendations. */
 
+import { Visibility } from "@mui/icons-material"
 import {
-  Card,
-  CardContent,
-  Typography,
+  Avatar,
   Box,
   Button,
-  Avatar,
+  Card,
+  CardContent,
   Stack,
+  Typography,
 } from "@mui/material"
-import { Visibility } from "@mui/icons-material"
-import { MaterialLink } from "./MaterialLink"
-import { RecommendationType } from "../recommendations/RecommendationType"
 import Link from "next/link"
+import { RecommendationType } from "../recommendations/RecommendationType"
+import { MaterialLink } from "./MaterialLink"
 
-export interface RecommendationCardType extends RecommendationType {}
+export interface RecommendationCardType extends RecommendationType { }
 
 export default function RecommendationCard(props: RecommendationCardType) {
   const {
@@ -79,17 +79,29 @@ export default function RecommendationCard(props: RecommendationCardType) {
                   height: "100%",
                   background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
                   transition: "left 0.5s",
+                  animation: "autoShine 2.5s ease-in-out infinite",
                 },
                 "&:hover:before": {
                   left: "100%",
                 },
-                animation: "pulse 2s ease-in-out infinite alternate",
+                animation: "pulse 0.5s ease-in-out infinite alternate",
                 "@keyframes pulse": {
                   "0%": {
                     boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .3)",
                   },
                   "100%": {
                     boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .6)",
+                  },
+                },
+                "@keyframes autoShine": {
+                  "0%": {
+                    left: "-100%",
+                  },
+                  "20%": {
+                    left: "100%",
+                  },
+                  "100%": {
+                    left: "100%",
                   },
                 },
               }}
