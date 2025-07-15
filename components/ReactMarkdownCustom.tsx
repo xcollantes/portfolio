@@ -6,6 +6,8 @@ import Link from "next/link"
 import articleStyles from "../css/article.module.css"
 import imageStyles from "../css/images.module.css"
 import CodeSnippet from "./CodeSnippet"
+import Gist from "./Gist"
+import { extractGistId } from "./GistUtils"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
@@ -69,6 +71,15 @@ const h6Custom = (h6) => {
 }
 
 const aCustom = (a) => {
+  // Check if this is a GitHub gist URL
+  const gistId = extractGistId(a.href)
+
+  if (gistId) {
+    // Render as embedded gist
+    return <Gist gistId={gistId} />
+  }
+
+  // Regular link
   return (
     <Link href={a.href} passHref className={articleStyles.linkText}>
       {a.children}
@@ -165,11 +176,30 @@ const codeCustom = (props) => {
   return <code className={className} {...rest}>{children}</code>
 }
 
+const pCustom = (props) => {
+  const { children } = props
+
+  // Check if paragraph contains only a single text node that might be a gist URL
+  if (Array.isArray(children) && children.length === 1 && typeof children[0] === 'string') {
+    const text = children[0].trim()
+    const gistId = extractGistId(text)
+
+    if (gistId) {
+      // Render as embedded gist
+      return <Gist gistId={gistId} />
+    }
+  }
+
+  // Regular paragraph
+  return <Typography component="p" sx={{ my: 2 }}>{children}</Typography>
+}
+
 const ReactMarkdownRules = () => ({
   h1: h1Custom,
   h6: h6Custom,
   img: imgCustom,
   a: aCustom,
+  p: pCustom,
   pre: preCustom,
   code: codeCustom,
 })
