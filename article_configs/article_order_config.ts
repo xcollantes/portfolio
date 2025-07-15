@@ -27,6 +27,7 @@ export const orderedIncludeWorkExp: string[] = [
 export const orderedIncludeBlogs: string[] = [
   "bulldog-band.md",
   "anderson-podcast.md",
+  "gist-example.md",
   "web-opt.md",
   "pandas-styling-cheatsheet.md",
   "streamlit-cheatsheet.md",
