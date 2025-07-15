@@ -10,6 +10,7 @@
 
 // WORK EXPERIENCES
 export const orderedIncludeWorkExp: string[] = [
+  "faxion-ai.md",
   "google.md",
   // "cloud.md",
   "portfolio.md",
