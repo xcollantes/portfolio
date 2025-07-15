@@ -1,4 +1,4 @@
-/** Code snippet component with GitHub gist styling. */
+/** Code snippet component with GitHub gist styling and proper syntax highlighting. */
 
 import { useState } from "react"
 import {
@@ -14,6 +14,11 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 import CheckIcon from "@mui/icons-material/Check"
 import OpenInNewIcon from "@mui/icons-material/OpenInNew"
 import FavoriteIcon from "@mui/icons-material/Favorite"
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import {
+  vscDarkPlus,
+  vs
+} from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useToastNotification } from "../hooks/useToastNotification"
 
 export interface CodeSnippetProps {
@@ -87,10 +92,32 @@ export default function CodeSnippet({
     return languageMap[lang.toLowerCase()] || lang
   }
 
-  const codeLines = code.split('\n')
-  const lineCount = codeLines.length
+  // Get the appropriate syntax highlighting style based on theme
+  const syntaxStyle = theme.palette.mode === "dark" ? vscDarkPlus : vs
 
-    return (
+  // Custom style overrides to match the GitHub gist appearance
+  const customSyntaxStyle = {
+    ...syntaxStyle,
+    'pre[class*="language-"]': {
+      ...syntaxStyle['pre[class*="language-"]'],
+      margin: 0,
+      padding: '12px 16px',
+      backgroundColor: 'transparent',
+      fontSize: '12px',
+      fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
+      lineHeight: '1.45',
+      overflow: 'visible',
+    },
+    'code[class*="language-"]': {
+      ...syntaxStyle['code[class*="language-"]'],
+      fontSize: '12px',
+      fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
+      lineHeight: '1.45',
+      backgroundColor: 'transparent',
+    },
+  }
+
+  return (
     <Box
       sx={{
         border: `1px solid ${theme.palette.divider}`,
@@ -167,10 +194,9 @@ export default function CodeSnippet({
         </Box>
       )}
 
-      {/* Code Content with Line Numbers */}
+      {/* Code Content with Syntax Highlighting */}
       <Box
         sx={{
-          display: "flex",
           backgroundColor: theme.palette.mode === "dark"
             ? "#0d1117"
             : "#ffffff",
@@ -200,65 +226,31 @@ export default function CodeSnippet({
           },
         }}
       >
-        {/* Line Numbers */}
-        {showLineNumbers && (
-          <Box
-            sx={{
-              backgroundColor: theme.palette.mode === "dark"
-                ? "#161b22"
-                : "#f6f8fa",
-              borderRight: `1px solid ${theme.palette.divider}`,
-              padding: "12px 8px",
-              minWidth: `${Math.max(2, String(lineCount).length)}ch`,
-              textAlign: "right",
-              userSelect: "none",
-              fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
-              fontSize: "12px",
-              lineHeight: "1.45",
-              color: theme.palette.text.disabled,
-            }}
-          >
-            {codeLines.map((_, index) => (
-              <div key={index + 1}>
-                {index + 1}
-              </div>
-            ))}
-          </Box>
-        )}
-
-        {/* Code */}
-        <Box
-          component="pre"
-          sx={{
+        <SyntaxHighlighter
+          language={language}
+          style={customSyntaxStyle}
+          showLineNumbers={showLineNumbers}
+          customStyle={{
             margin: 0,
-            padding: "12px 16px",
-            flex: 1,
-            color: theme.palette.text.primary,
-            fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
-            fontSize: "12px",
-            lineHeight: "1.45",
-            whiteSpace: "pre",
-            overflow: "visible",
-
-            // Basic syntax highlighting colors
-            "& .keyword": {
-              color: theme.palette.mode === "dark" ? "#ff7b72" : "#d73a49",
-              fontWeight: "bold",
-            },
-            "& .string": {
-              color: theme.palette.mode === "dark" ? "#a5d6ff" : "#032f62",
-            },
-            "& .comment": {
-              color: theme.palette.mode === "dark" ? "#8b949e" : "#6a737d",
-              fontStyle: "italic",
-            },
-            "& .number": {
-              color: theme.palette.mode === "dark" ? "#79c0ff" : "#005cc5",
-            },
+            backgroundColor: 'transparent',
+            maxHeight: 'none',
+            overflow: 'visible',
           }}
+          lineNumberStyle={{
+            color: theme.palette.text.disabled,
+            backgroundColor: theme.palette.mode === "dark" ? "#161b22" : "#f6f8fa",
+            paddingRight: '8px',
+            borderRight: `1px solid ${theme.palette.divider}`,
+            marginRight: '8px',
+            fontSize: '12px',
+            fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
+            userSelect: 'none',
+          }}
+          wrapLines={true}
+          wrapLongLines={true}
         >
-          <code>{code}</code>
-        </Box>
+          {code}
+        </SyntaxHighlighter>
       </Box>
 
       {/* Footer */}
