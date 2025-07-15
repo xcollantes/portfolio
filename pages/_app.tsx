@@ -124,7 +124,7 @@ export default function App({
             />
             <meta
               name="keywords"
-              content="resume,portfolio,career,projects,xavier,collantes"
+              content="resume,consulting,ai,llm,google,portfolio,career,projects,xavier,collantes"
             />
             <meta name="og:title" content="Xavier Collantes" />
             <meta name="og:image" content="/preview_image/front.jpeg" />
@@ -154,7 +154,6 @@ export default function App({
               {navbar}
               <Component {...pageProps} />
               <Toast />
-              <GoogleAnalytics gaId="G-HB7D403D67" />
               <Analytics />
             </SelectFilterTagContextProvider>
           </Container>
