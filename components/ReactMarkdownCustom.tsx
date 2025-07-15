@@ -1,10 +1,11 @@
 /** Custom rules for ReactMarkdown converter. */
 
-import Image from "next/image"
-import imageStyles from "../css/images.module.css"
-import articleStyles from "../css/article.module.css"
 import { Box, Typography } from "@mui/material"
+import Image from "next/image"
 import Link from "next/link"
+import articleStyles from "../css/article.module.css"
+import imageStyles from "../css/images.module.css"
+import CodeSnippet from "./CodeSnippet"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
@@ -75,11 +76,102 @@ const aCustom = (a) => {
   )
 }
 
+const preCustom = (props) => {
+  // ReactMarkdown passes props differently than expected
+  const { node, children, ...rest } = props
+
+  // Look for code element in children
+  const codeElement = children && children[0]
+
+  // Check if this is a code block (has code element child with language class)
+  if (codeElement && codeElement.props && codeElement.props.className) {
+    const className = codeElement.props.className || ''
+
+    // Only handle language-specific code blocks
+    if (className.startsWith('language-')) {
+      const language = className.replace('language-', '') || 'text'
+      const code = codeElement.props.children || ''
+
+      // Convert array of children to string if needed
+      const codeString = Array.isArray(code) ? code.join('') : String(code)
+
+      // Extract filename from code content if it starts with a comment
+      let filename: string | undefined = undefined
+      let cleanCode: string = codeString
+
+      if (typeof codeString === 'string') {
+        const lines = codeString.split('\n')
+        const firstLine = lines[0]?.trim()
+
+        // Check for filename patterns in first line comments
+        const filenamePatterns = [
+          /^\/\/\s*(.+)$/, // JavaScript/TypeScript: // filename.js
+          /^#\s*(.+)$/, // Python/Shell: # filename.py
+          /^<!--\s*(.+)\s*-->$/, // HTML: <!-- filename.html -->
+          /^\/\*\s*(.+)\s*\*\/$/, // CSS: /* filename.css */
+        ]
+
+        for (const pattern of filenamePatterns) {
+          const match = firstLine?.match(pattern)
+          if (match && match[1] && match[1].includes('.')) {
+            filename = match[1].trim()
+            // Remove the filename line from code
+            cleanCode = lines.slice(1).join('\n').replace(/^\n/, '')
+            break
+          }
+        }
+      }
+
+      return (
+        <CodeSnippet
+          code={cleanCode}
+          language={language}
+          filename={filename}
+        />
+      )
+    }
+  }
+
+  // Fallback for regular pre elements or non-language code blocks
+  return <pre {...rest}>{children}</pre>
+}
+
+const codeCustom = (props) => {
+  const { node, children, className, ...rest } = props
+
+  // Handle inline code (not in pre blocks and without language class)
+  const isInline = !className || !className.includes('language-')
+
+  if (isInline) {
+    return (
+      <Typography
+        component="code"
+        sx={{
+          backgroundColor: (theme) => theme.palette.mode === 'dark'
+            ? 'rgba(255, 255, 255, 0.1)'
+            : 'rgba(0, 0, 0, 0.1)',
+          padding: '2px 6px',
+          borderRadius: '4px',
+          fontFamily: 'monospace',
+          fontSize: '0.9em',
+        }}
+      >
+        {children}
+      </Typography>
+    )
+  }
+
+  // For code blocks, let the pre handler take care of it
+  return <code className={className} {...rest}>{children}</code>
+}
+
 const ReactMarkdownRules = () => ({
   h1: h1Custom,
   h6: h6Custom,
   img: imgCustom,
   a: aCustom,
+  pre: preCustom,
+  code: codeCustom,
 })
 
 export default ReactMarkdownRules
