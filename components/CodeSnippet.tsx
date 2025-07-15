@@ -1,31 +1,31 @@
 /** Code snippet component with GitHub gist styling and proper syntax highlighting. */
 
-import { useState } from "react"
-import {
-  Box,
-  Typography,
-  IconButton,
-  useTheme,
-  Theme,
-  Tooltip,
-  Link,
-} from "@mui/material"
-import ContentCopyIcon from "@mui/icons-material/ContentCopy"
+import ArticleIcon from "@mui/icons-material/Article"
 import CheckIcon from "@mui/icons-material/Check"
-import OpenInNewIcon from "@mui/icons-material/OpenInNew"
-import FavoriteIcon from "@mui/icons-material/Favorite"
 import CodeIcon from "@mui/icons-material/Code"
+import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 import DataObjectIcon from "@mui/icons-material/DataObject"
+import FavoriteIcon from "@mui/icons-material/Favorite"
+import OpenInNewIcon from "@mui/icons-material/OpenInNew"
+import SettingsIcon from "@mui/icons-material/Settings"
 import StorageIcon from "@mui/icons-material/Storage"
+import StyleIcon from "@mui/icons-material/Style"
 import TerminalIcon from "@mui/icons-material/Terminal"
 import WebIcon from "@mui/icons-material/Web"
-import StyleIcon from "@mui/icons-material/Style"
-import ArticleIcon from "@mui/icons-material/Article"
-import SettingsIcon from "@mui/icons-material/Settings"
+import {
+  Box,
+  IconButton,
+  Link,
+  Theme,
+  Tooltip,
+  Typography,
+  useTheme,
+} from "@mui/material"
+import { useState } from "react"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
-  vscDarkPlus,
-  vs
+  vs,
+  vscDarkPlus
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useToastNotification } from "../hooks/useToastNotification"
 
