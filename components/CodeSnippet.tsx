@@ -14,6 +14,14 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 import CheckIcon from "@mui/icons-material/Check"
 import OpenInNewIcon from "@mui/icons-material/OpenInNew"
 import FavoriteIcon from "@mui/icons-material/Favorite"
+import CodeIcon from "@mui/icons-material/Code"
+import DataObjectIcon from "@mui/icons-material/DataObject"
+import StorageIcon from "@mui/icons-material/Storage"
+import TerminalIcon from "@mui/icons-material/Terminal"
+import WebIcon from "@mui/icons-material/Web"
+import StyleIcon from "@mui/icons-material/Style"
+import ArticleIcon from "@mui/icons-material/Article"
+import SettingsIcon from "@mui/icons-material/Settings"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
   vscDarkPlus,
@@ -76,7 +84,8 @@ export default function CodeSnippet({
     const languageMap: { [key: string]: string } = {
       javascript: "JavaScript",
       typescript: "TypeScript",
-      python: "Python",
+      python: "Python3",
+      python2: "Python2",
       bash: "Bash",
       shell: "Shell",
       json: "JSON",
@@ -90,6 +99,54 @@ export default function CodeSnippet({
       text: "Text",
     }
     return languageMap[lang.toLowerCase()] || lang
+  }
+
+  const getLanguageIcon = (lang: string) => {
+    const iconMap: { [key: string]: JSX.Element } = {
+      javascript: <CodeIcon />,
+      typescript: <CodeIcon />,
+      python2: (
+        <Box
+          component="span"
+          sx={{
+            width: 16,
+            height: 16,
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          🐍
+        </Box>
+      ),
+      python: (
+        <Box
+          component="span"
+          sx={{
+            width: 16,
+            height: 16,
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          🐍
+        </Box>
+      ),
+      bash: <TerminalIcon />,
+      shell: <TerminalIcon />,
+      json: <DataObjectIcon />,
+      yaml: <SettingsIcon />,
+      css: <StyleIcon />,
+      html: <WebIcon />,
+      jsx: <CodeIcon />,
+      tsx: <CodeIcon />,
+      sql: <StorageIcon />,
+      markdown: <ArticleIcon />,
+      text: <ArticleIcon />,
+    }
+
+    return iconMap[lang.toLowerCase()] || <CodeIcon />
   }
 
   // Get the appropriate syntax highlighting style based on theme
@@ -133,66 +190,93 @@ export default function CodeSnippet({
       }}
     >
       {/* Header */}
-      {(filename || title) && (
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "10px 16px",
-            backgroundColor: theme.palette.mode === "dark"
-              ? "#2d333b"
-              : "#f6f8fa",
-            borderBottom: `1px solid ${theme.palette.divider}`,
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            {filename && (
-              <Typography
-                variant="body2"
-                sx={{
-                  fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
-                  fontWeight: 600,
-                  color: theme.palette.text.primary,
-                  fontSize: "14px",
-                }}
-              >
-                {filename}
-              </Typography>
-            )}
-            {title && !filename && (
-              <Typography
-                variant="body2"
-                sx={{
-                  color: theme.palette.text.secondary,
-                  fontStyle: "italic",
-                  fontSize: "13px",
-                }}
-              >
-                {title}
-              </Typography>
-            )}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "10px 16px",
+          backgroundColor: theme.palette.mode === "dark"
+            ? "#2d333b"
+            : "#f6f8fa",
+          borderBottom: `1px solid ${theme.palette.divider}`,
+        }}
+      >
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          {/* Language Icon */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: theme.palette.text.secondary,
+              fontSize: "16px",
+            }}
+          >
+            {getLanguageIcon(language)}
           </Box>
 
-          {showViewRaw && (
-            <Tooltip title="View raw">
-              <IconButton
-                size="small"
-                onClick={handleViewRaw}
-                sx={{
-                  color: theme.palette.text.secondary,
-                  fontSize: "12px",
-                  "&:hover": {
-                    color: theme.palette.primary.main,
-                  },
-                }}
-              >
-                <OpenInNewIcon sx={{ fontSize: 16 }} />
-              </IconButton>
-            </Tooltip>
+          {filename && (
+            <Typography
+              variant="body2"
+              sx={{
+                fontFamily: "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace",
+                fontWeight: 600,
+                color: theme.palette.text.primary,
+                fontSize: "14px",
+              }}
+            >
+              {filename}
+            </Typography>
           )}
+          {title && !filename && (
+            <Typography
+              variant="body2"
+              sx={{
+                color: theme.palette.text.secondary,
+                fontStyle: "italic",
+                fontSize: "13px",
+              }}
+            >
+              {title}
+            </Typography>
+          )}
+
+          {/* Language Label */}
+          <Typography
+            variant="caption"
+            sx={{
+              color: theme.palette.text.secondary,
+              fontSize: "11px",
+              backgroundColor: theme.palette.mode === "dark"
+                ? "rgba(255, 255, 255, 0.08)"
+                : "rgba(0, 0, 0, 0.06)",
+              padding: "2px 6px",
+              borderRadius: "3px",
+              fontWeight: 500,
+            }}
+          >
+            {getLanguageDisplay(language)}
+          </Typography>
         </Box>
-      )}
+
+        {showViewRaw && (
+          <Tooltip title="View raw">
+            <IconButton
+              size="small"
+              onClick={handleViewRaw}
+              sx={{
+                color: theme.palette.text.secondary,
+                fontSize: "12px",
+                "&:hover": {
+                  color: theme.palette.primary.main,
+                },
+              }}
+            >
+              <OpenInNewIcon sx={{ fontSize: 16 }} />
+            </IconButton>
+          </Tooltip>
+        )}
+      </Box>
 
       {/* Code Content with Syntax Highlighting */}
       <Box
