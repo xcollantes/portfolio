@@ -1,7 +1,7 @@
 /** Toast component using Sonner. */
 
 import { AlertColor } from '@mui/material';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { toast as sonnerToast, Toaster } from 'sonner';
 import { useToast } from '../contexts/toastContext';
 
@@ -23,6 +23,9 @@ export const Toast = ({
 }: ToastProps) => {
   const { toast, hideToast } = useToast();
 
+  // Track the last toast message to prevent duplicates
+  const lastToastRef = useRef<{ message: string; severity: AlertColor; timestamp: number } | null>(null);
+
   // Map MUI severity to Sonner toast type
   const mapSeverityToType = (severity: AlertColor) => {
     switch (severity) {
@@ -38,13 +41,33 @@ export const Toast = ({
   // Show Sonner toast when toast context changes
   useEffect(() => {
     if (toast.open && toast.message) {
-      const toastType = mapSeverityToType(toast.severity);
+      const currentToast = {
+        message: toast.message,
+        severity: toast.severity,
+        timestamp: Date.now()
+      };
 
-      // Use the appropriate Sonner toast type
-      sonnerToast[toastType](toast.message, {
-        duration: autoHideDuration,
-        onDismiss: hideToast,
-      });
+      // Check if this is the same toast as the last one (within 100ms to prevent duplicates)
+      const isDuplicate = lastToastRef.current &&
+        lastToastRef.current.message === currentToast.message &&
+        lastToastRef.current.severity === currentToast.severity &&
+        (currentToast.timestamp - lastToastRef.current.timestamp) < 100;
+
+      if (!isDuplicate) {
+        const toastType = mapSeverityToType(toast.severity);
+
+        // Store reference to this toast
+        lastToastRef.current = currentToast;
+
+        // Show the Sonner toast
+        sonnerToast[toastType](toast.message, {
+          duration: autoHideDuration,
+          onDismiss: hideToast,
+        });
+
+        // Immediately reset the context state to prevent re-rendering issues
+        hideToast();
+      }
     }
   }, [toast, autoHideDuration, hideToast]);
 
