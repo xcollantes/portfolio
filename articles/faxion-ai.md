@@ -6,7 +6,7 @@ cardPageLink: "articles/faxion-ai"
 cardButtonText: "See more"
 author: "Xavier Collantes"
 dateWritten: 2025-07-01
-dateLastUpdated: 2024-07-01
+dateLastUpdated: 2025-07-15
 articleType: WORKEXP
 tagIds:
   - python
