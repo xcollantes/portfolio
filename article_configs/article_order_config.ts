@@ -34,6 +34,7 @@ export const orderedIncludeBlogs: string[] = [
   "json-python.md",
   "sql-cheatsheet.md",
   "radio.md",
+  // "easter-eggs.md",  // Unlisted.
 ]
 
 export const orderedIncludeArticlesConfig = [
