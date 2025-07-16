@@ -112,8 +112,24 @@ export default function App({
               name="keywords"
               content="resume,consulting,ai,llm,google,portfolio,career,projects,xavier,collantes"
             />
-            <meta name="og:title" content="Xavier Collantes" />
-            <meta name="og:image" content="/preview_image/front.jpeg" />
+
+            {/* Open Graph meta tags for social sharing */}
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://xaviercollantes.dev" />
+            <meta property="og:title" content="Xavier Collantes" />
+            <meta property="og:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
+            <meta property="og:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:alt" content="Xavier Collantes" />
+            <meta property="og:site_name" content="Xavier Collantes" />
+
+            {/* Twitter Card meta tags */}
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="Xavier Collantes" />
+            <meta name="twitter:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
+            <meta name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
+            <meta name="twitter:image:alt" content="Xavier Collantes" />
 
             <GoogleAnalytics gaId="G-HB7D403D67" />
 

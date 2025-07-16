@@ -1,15 +1,5 @@
 /** Statically generated article page. */
 
-import Head from "next/head"
-import { GetStaticPropsContext, GetStaticPropsResult } from "next"
-import { ParsedUrlQuery } from "querystring"
-import ReactMarkdown from "react-markdown"
-import rehypeRaw from "rehype-raw"
-import {
-  ArticleDataType,
-  getArticle,
-  getArticlePathsAsProps,
-} from "../../article_configs/process_articles"
 import {
   Box,
   Container,
@@ -18,9 +8,19 @@ import {
   Typography,
   useTheme,
 } from "@mui/material"
+import { GetStaticPropsContext, GetStaticPropsResult } from "next"
+import Head from "next/head"
+import { ParsedUrlQuery } from "querystring"
+import ReactMarkdown from "react-markdown"
+import rehypeRaw from "rehype-raw"
+import {
+  ArticleDataType,
+  getArticle,
+  getArticlePathsAsProps,
+} from "../../article_configs/process_articles"
+import ArticleAnalytics from "../../components/ArticleAnalytics"
 import Footer from "../../components/Footer"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
-import ArticleAnalytics from "../../components/ArticleAnalytics"
 
 import { useRouter } from "next/router"
 
@@ -88,6 +88,31 @@ export default function article({
     <>
       <Head>
         <meta name="robots" content="noindex" />
+
+        {/* Dynamic Open Graph meta tags for article sharing */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://xaviercollantes.dev/articles/${articleId}`} />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
+        <meta property="og:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.jpeg"} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={`${metadata.title} - Xavier Collantes`} />
+        <meta property="og:site_name" content="Xavier Collantes" />
+        {metadata.author && <meta property="article:author" content={metadata.author} />}
+        {metadata.dateWritten && <meta property="article:published_time" content={new Date(metadata.dateWritten).toISOString()} />}
+        {metadata.dateLastUpdated && <meta property="article:modified_time" content={new Date(metadata.dateLastUpdated).toISOString()} />}
+
+        {/* Dynamic Twitter Card meta tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metadata.title} />
+        <meta name="twitter:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
+        <meta name="twitter:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.jpeg"} />
+        <meta name="twitter:image:alt" content={`${metadata.title} - Xavier Collantes`} />
+
+        {/* Article-specific meta tags */}
+        <meta name="description" content={metadata.cardDescription || metadata.subTitle || `${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
+        <title>{metadata.title} - Xavier Collantes</title>
       </Head>
 
       {/* Include ArticleAnalytics to track article engagement */}
