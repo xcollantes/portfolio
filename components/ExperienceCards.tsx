@@ -37,7 +37,7 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
     } else {
       setSelected(
         metadata.filter((card: MetadataType) =>
-          card.tagIds.some((cardTag: string) => selectedTags.includes(cardTag))
+          card.tagIds?.some((cardTag: string) => selectedTags.includes(cardTag))
         )
       )
     }
