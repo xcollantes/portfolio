@@ -44,6 +44,16 @@ Visit a non-existent page such as
 
 Visit server error page such at <https://xaviercollantes.dev/500>.
 
+### Cat Facts
+
+1. Long press (hold down) on the name "Xavier Collantes" on the home page.
+1. Or long press on the GitHub icon in the social media section.
+1. A random cat fact will appear as a toast notification.
+
+The portfolio includes 30 different cat facts ranging from biological trivia to
+behavioral insights. Each long press displays a different random fact, so you
+can discover new information about our feline friends with each interaction.
+
 ## Conclusion
 
 My personal portfolio reflects a comprehensive software design lifecycle. The
