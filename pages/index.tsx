@@ -21,6 +21,7 @@ import DarkModeSwitch from "../components/DarkMode"
 import ExperienceCards from "../components/ExperienceCards"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import FilterBar from "../components/FilterBar"
+import HiddenPreviewImage from "../components/HiddenPreviewImage"
 import LongPressWrapper from "../components/LongPressWrapper"
 import RecommendationSlides from "../components/RecommendationSlides"
 import SocialMedia from "../components/SocialMedia"
@@ -101,6 +102,10 @@ export default function Page(props: IndexPropTypes) {
 
   return (
     <>
+
+      {/* Hidden image for RCS preview workaround when OG tags aren't respected. */}
+      <HiddenPreviewImage />
+
       <Grid container>
         <Grid xs={12} sm={5} sx={{ display: "flex" }}>
           <Box sx={{ m: 4, ...namePositionContainer }}>

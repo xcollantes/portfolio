@@ -20,6 +20,7 @@ import {
 } from "../../article_configs/process_articles"
 import ArticleAnalytics from "../../components/ArticleAnalytics"
 import Footer from "../../components/Footer"
+import HiddenPreviewImage from "../../components/HiddenPreviewImage"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
 
 import { useRouter } from "next/router"
@@ -121,6 +122,9 @@ export default function article({
         articleTitle={metadata.title}
         articleType={metadata.articleType || "BLOG"}
       />
+
+      {/* Hidden image for RCS preview workaround when OG tags aren't respected. */}
+      <HiddenPreviewImage />
 
       <Container maxWidth={"md"}>
         <Box

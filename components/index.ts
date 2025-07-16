@@ -8,6 +8,8 @@ export type { GistProps } from './Gist'
 
 export * from './GistUtils'
 
+export { default as HiddenPreviewImage } from './HiddenPreviewImage'
+
 export { default as LongPressWrapper } from './LongPressWrapper'
 
 // Re-export other commonly used components
