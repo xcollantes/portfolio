@@ -2,6 +2,7 @@
 
 import { KeyboardArrowUp } from "@mui/icons-material"
 import { Box, Button, Stack, Typography } from "@mui/material"
+import { useRouter } from "next/router"
 import { useEffect, useMemo, useState } from "react"
 import { filterDataConfig } from "../article_configs/filters_config"
 import { MetadataType } from "../article_configs/process_articles"
@@ -18,6 +19,7 @@ export interface ExperienceCardsPropType {
 }
 
 export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
+  const router = useRouter()
   const [selected, setSelected] = useState<MetadataType[]>(metadata)
   const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
     useSelectedFilterTagContext()
@@ -122,7 +124,7 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
               minWidth: "200px",
             }}
             onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" })
+              router.push("/articles/easter-eggs")
             }}
           >
             (Not so) Hidden Easter Eggs

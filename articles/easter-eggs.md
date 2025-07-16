@@ -1,7 +1,7 @@
 ---
 title: Portfolio Easter Eggs
-cardDescription: ""
-cardPageLink: ""
+cardDescription: "\"So, pretty please... with sugar on top.\""
+cardPageLink: "/articles/easter-eggs"
 imagePath: ""
 articleType: BLOG
 author: Xavier Collantes
