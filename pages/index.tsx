@@ -16,10 +16,12 @@ import {
 } from "../article_configs/process_articles"
 import AuthButton from "../components/AuthButton"
 import { isUserSignedIn } from "../components/AuthUtils"
+import showCatFact from "../components/CatFacts"
 import DarkModeSwitch from "../components/DarkMode"
 import ExperienceCards from "../components/ExperienceCards"
 import ExperienceCardsPlaceholder from "../components/ExperienceCardsPlaceholder"
 import FilterBar from "../components/FilterBar"
+import LongPressWrapper from "../components/LongPressWrapper"
 import RecommendationSlides from "../components/RecommendationSlides"
 import SocialMedia from "../components/SocialMedia"
 import {
@@ -117,16 +119,18 @@ export default function Page(props: IndexPropTypes) {
                 <DarkModeSwitch />
               </Box>
 
-              <Typography
-                variant="h1"
-                sx={{
-                  [theme.breakpoints.down(1290)]: { fontSize: 75 },
-                  [theme.breakpoints.down("sm")]: { fontSize: 50 },
-                }}
-                align="right"
-              >
-                Xavier Collantes
-              </Typography>
+              <LongPressWrapper elementName="Xavier Collantes" onLongPress={showCatFact}>
+                <Typography
+                  variant="h1"
+                  sx={{
+                    [theme.breakpoints.down(1290)]: { fontSize: 75 },
+                    [theme.breakpoints.down("sm")]: { fontSize: 50 },
+                  }}
+                  align="right"
+                >
+                  Xavier Collantes
+                </Typography>
+              </LongPressWrapper>
 
               {oneLiner && (
                 <Typography variant="subtitle1" align="right">
