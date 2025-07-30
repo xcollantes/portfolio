@@ -194,6 +194,50 @@ const pCustom = (props) => {
   return <Typography component="p" sx={{ my: 2 }}>{children}</Typography>
 }
 
+const blockquoteCustom = (props) => {
+  const { children } = props
+
+  return (
+    <Box
+      component="blockquote"
+      sx={{
+        margin: 0,
+        marginY: 3,
+        padding: 2,
+        paddingLeft: 3,
+        borderLeft: (theme) => `4px solid ${theme.palette.mode === 'dark'
+          ? 'var(--primary-dark)'
+          : 'var(--primary-light)'
+          }`,
+        backgroundColor: (theme) => theme.palette.mode === 'dark'
+          ? 'rgba(59, 130, 246, 0.1)'
+          : 'rgba(37, 99, 235, 0.05)',
+        borderRadius: '0 8px 8px 0',
+        position: 'relative',
+
+        '& > *:first-of-type': {
+          marginTop: 1,
+        },
+        '& > *:last-child': {
+          marginBottom: 0,
+        },
+      }}
+    >
+      <Typography
+        component="div"
+        sx={{
+          fontStyle: 'italic',
+          color: (theme) => theme.palette.mode === 'dark'
+            ? 'var(--text-primary-dark)'
+            : 'var(--text-primary-light)',
+        }}
+      >
+        {children}
+      </Typography>
+    </Box>
+  )
+}
+
 const ReactMarkdownRules = () => ({
   h1: h1Custom,
   h6: h6Custom,
@@ -202,6 +246,7 @@ const ReactMarkdownRules = () => ({
   p: pCustom,
   pre: preCustom,
   code: codeCustom,
+  blockquote: blockquoteCustom,
 })
 
 export default ReactMarkdownRules
