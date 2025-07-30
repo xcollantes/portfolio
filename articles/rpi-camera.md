@@ -1,6 +1,6 @@
 ---
 title: Raspberry Pi motion camera
-cardDescription: Homemade internet-of-things private cloud connected motion-detecting camera.
+cardDescription: Homemade internet-of-things private cloud motion-detecting camera.
 cardPageLink: "/articles/rpi-camera"
 author: Xavier Collantes
 articleType: BLOG
@@ -10,15 +10,13 @@ tagIds: ["electronics", "iot", "python"]
 
 ## A homemade solution
 
+![Video sample {priority}](/articles/images/rpi_camera/sample.gif)
+
 _Why not just buy a system?_
 
 I was browsing for a motion detection camera and found products such as the
 Amazon Ring, Google Home, and Blink. As a privacy conscious person, I didn't
 want to hand over personal home video to large tech companies.
-
-\# TODO: Add video screenshot
-
-![{priority}]()
 
 _"I could do that!"_
 
@@ -29,6 +27,21 @@ creating my own software for a motion detector but **integrating** several
 existing technologies to achieve my requirements.
 
 ![{h: 300}](/articles/images/rpi_camera/zucc.webp)
+
+There were many challenges such as:
+
+- How to make the video application start on Raspberry Pi power up -> By
+  creating a cron job to run on startup
+- Deciding which cloud storage I trusted enough -> I went with the free tier for
+  zero-trust pCloud
+- What threshold settings to use -> I experimented with my specfiic setting
+  given the lights
+
+![Challenges gif](/articles/images/rpi_camera/blurry.gif)
+
+_Example where video was triggered by movement of the sun. The settings were too
+sensitive since the sun's light would change too many pixels which resulted in
+triggering the video._
 
 ## Requirements
 

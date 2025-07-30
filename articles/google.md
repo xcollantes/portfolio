@@ -1,5 +1,5 @@
 ---
-title: Software Solutions Engineer, Google Search
+title: Software Engineering, Google Search
 cardDescription: Improving Google Search for 2.7 billion users globally.
 cardPageLink: articles/google
 imagePath: ""

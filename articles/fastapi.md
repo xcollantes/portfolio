@@ -1,6 +1,6 @@
 ---
-title: Build your own APIs with FastAPI
-cardDescription: "Production ready API serving"
+title: "FastAPI: Build your own APIs"
+cardDescription: "Production ready API with code examples."
 cardPageLink: "/articles/fastapi"
 imagePath: ""
 articleType: BLOG
@@ -12,7 +12,7 @@ tagIds:
   - apis
 ---
 
-## FastAPI: Python web framework for heavy duty APIs
+## FastAPI: Python Web Framework for Heavy Duty APIs
 
 FastAPI isn't just fast by name, it's legitimately one of the fastest Python
 frameworks out there, rivaling Node.js and Go in performance. But speed isn't
@@ -29,10 +29,12 @@ My favorite features:
 - Type hint support improves code quality and reduces runtime errors
 - Built-in support for async/await ensures scalability
 
-## Getting started
+![Image error meme](/articles/images/fastapi/pass.webp)
 
-Let's build something playful to see FastAPI in action. How about a random cat
-fact API? Because why not?
+## Getting Started
+
+Let's build something to see FastAPI in action. How about a random cat
+fact API?
 
 ```bash
 # Set up your environment.
@@ -44,7 +46,7 @@ pip install fastapi uvicorn
 Now let's build our cat fact API service:
 
 ```python
-"""The most important API you'll ever build."""
+"""Backend API service that returns a random cat fact."""
 
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
@@ -114,7 +116,7 @@ so I can see what the API endpoint is called and what arguments is takes?_
 Navigate to `http://localhost:8000/docs` and BAM! You've got interactive API
 documentation.
 
-## Real-world patterns that actually matter
+## Real-World Patterns That Actually Matter
 
 Let's graduate from cat facts to something more enterprise-y. Here's how you
 handle different HTTP methods like a pro:
@@ -148,7 +150,7 @@ async def create_user(user: UserRequest):
     return {"message": f"Created user {user.name} with email {user.email}"}
 ```
 
-## File uploads
+## File Uploads
 
 Need to handle file uploads?
 
@@ -180,12 +182,14 @@ async def upload_file(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail=f"Upload failed: {e}")
 ```
 
-## Bridging Python and JavaScript like a boss
+## Bridging Python (Backend) and JavaScript (Frontend)
 
 Python programmers will usually use snake_case or camelCase where JavaScript
 programmers will usually use camelCase for everything... so if data is moving
 between a Python backend and JavaScript frontend... do we all now have to choose
 the same case? Not with FastAPI.
+
+![Image of frontend backend meme {h: 400}](/articles/images/fastapi/cases.webp)
 
 Working with a JavaScript frontend? FastAPI plays nice with camelCase while
 keeping your Python snake_case:
@@ -226,36 +230,10 @@ async def get_user():
 # Frontend receives: {"firstName": "Winston", "lastName": "Wolf", "birthDate": "1994-10-14"}
 ```
 
-## Advanced patterns for serious infrastructure
+## Development Workflow Without Refreshing
 
-When you're ready to build production-grade services, FastAPI has your back:
-
-```python
-import asyncio
-from contextlib import asynccontextmanager
-from fastapi import FastAPI
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Setup and teardown for your app."""
-
-    # Startup: Initialize databases, message queues, etc.
-    print("🚀 Starting up the spaceship...")
-    # await setup_database()
-    # await setup_kafka_consumers()
-
-    yield  # Your app runs here
-
-    # Shutdown: Clean up resources
-    print("🛬 Landing the spaceship...")
-    # await cleanup_resources()
-
-app = FastAPI(lifespan=lifespan)
-```
-
-## Development workflow that doesn't suck
-
-Enable auto-reload during development and thank me later:
+Enable auto-reload during development and thank me later. This will avoid
+stopping and starting the Python command for every change:
 
 ```python
 if __name__ == "__main__":
@@ -273,7 +251,7 @@ Or run it from the command line:
 uvicorn main:app --reload --port 8000
 ```
 
-## Why your Python infrastructure needs FastAPI
+## Why Your Python Infrastructure Needs FastAPI
 
 Building microservices? FastAPI makes service-to-service communication a breeze
 with automatic request/response validation. Building a monolith? The performance
@@ -284,3 +262,11 @@ The real win is developer productivity. Type hints catch errors at development
 time, automatic docs mean your API is self-documenting, and the async support
 means you can integrate with modern Python tools like SQLAlchemy 2.0, httpx, and
 async Redis clients.
+
+## Further Reading
+
+https://fastapi.tiangolo.com
+
+https://github.com/mjhea0/awesome-fastapi
+
+![Image of servers meme {h: 600}](/articles/images/fastapi/server.jpg)

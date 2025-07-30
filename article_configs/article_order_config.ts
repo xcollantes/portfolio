@@ -18,7 +18,6 @@ export const orderedIncludeWorkExp: string[] = [
   "rx-blockchain.md",
   "itron.md",
   "housing.md",
-  "rpi-camera.md",
   //  "amazon-price.md",
   //  "google-home.md",
 ]
@@ -32,6 +31,7 @@ export const orderedIncludeBlogs: string[] = [
   // "gist-example.md",
   "web-opt.md",
   // "pandas-styling-cheatsheet.md",
+  "rpi-camera.md",
   "streamlit-cheatsheet.md",
   "json-python.md",
   // "sql-cheatsheet.md",
