@@ -12,7 +12,7 @@ tagIds:
   - apis
 ---
 
-![FastAPI Logo](/articles/images/fastapi/logo-teal.webp)
+![FastAPI Logo {priority}](/articles/images/fastapi/logo-teal.webp)
 
 ## FastAPI: Python Web Framework for Heavy Duty APIs
 
