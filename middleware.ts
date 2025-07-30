@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { shouldBypassVerification } from "./article_configs/article_exceptions_config"
 /** Middleware for NextJS which routes pages. */
 
 // Not adding a `config` variable will secure all pages in web application.
@@ -6,6 +7,17 @@ import { NextRequest, NextResponse } from "next/server"
 
 export function middleware(request: NextRequest) {
   const CLICK_CHECK_KEY = "XAVIER_WAS_HERE"
+
+  // Check if this is an article that should bypass verification
+  const url = new URL(request.url)
+  const pathMatch = url.pathname.match(/^\/articles\/(.+)$/)
+  if (pathMatch) {
+    const articleId = pathMatch[1]
+    if (shouldBypassVerification(articleId)) {
+      console.log(`MIDDLEWARE: BYPASSING verification for article: ${articleId}`)
+      return NextResponse.next()
+    }
+  }
 
   // Coming from simple "CAPTCHA", rewrite to destination
   // Add cookie to let checked users through

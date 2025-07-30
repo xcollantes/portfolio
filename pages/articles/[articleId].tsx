@@ -13,6 +13,7 @@ import Head from "next/head"
 import { ParsedUrlQuery } from "querystring"
 import ReactMarkdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
+import { shouldAllowSearchIndexing } from "../../article_configs/article_exceptions_config"
 import {
   ArticleDataType,
   getArticle,
@@ -85,10 +86,12 @@ export default function article({
     dateWrittenL10n = new Date(metadata.dateWritten).toLocaleDateString()
   }
 
+  const allowIndexing = shouldAllowSearchIndexing(articleId as string)
+
   return (
     <>
       <Head>
-        <meta name="robots" content="noindex" />
+        {!allowIndexing && <meta name="robots" content="noindex" />}
 
         {/* Dynamic Open Graph meta tags for article sharing */}
         <meta property="og:type" content="article" />

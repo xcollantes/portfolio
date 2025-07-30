@@ -12,13 +12,13 @@ tagIds:
   - apis
 ---
 
+![FastAPI Logo](/articles/images/fastapi/logo-teal.webp)
+
 ## FastAPI: Python Web Framework for Heavy Duty APIs
 
 FastAPI isn't just fast by name, it's legitimately one of the fastest Python
 frameworks out there, rivaling Node.js and Go in performance. But speed isn't
 even the best part.
-
-![](https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png)
 
 My favorite features:
 
@@ -29,7 +29,7 @@ My favorite features:
 - Type hint support improves code quality and reduces runtime errors
 - Built-in support for async/await ensures scalability
 
-![Image error meme](/articles/images/fastapi/pass.webp)
+![Image error meme {h: 400}](/articles/images/fastapi/pass.webp)
 
 ## Getting Started
 
@@ -227,7 +227,12 @@ async def get_user():
         birth_date="1994-10-14"
     )
 
-# Frontend receives: {"firstName": "Winston", "lastName": "Wolf", "birthDate": "1994-10-14"}
+# Frontend receives:
+# {
+#   "firstName": "Winston",
+#   "lastName": "Wolf",
+#   "birthDate": "1994-10-14"
+# }
 ```
 
 ## Development Workflow Without Refreshing
@@ -241,7 +246,7 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=8000,
-        reload=True,  # Auto-restart on file changes
+        reload=True,  # Auto-restart on file changes.
     )
 ```
 
@@ -265,8 +270,8 @@ async Redis clients.
 
 ## Further Reading
 
-https://fastapi.tiangolo.com
+[FastAPI Documentation](https://fastapi.tiangolo.com)
 
-https://github.com/mjhea0/awesome-fastapi
+[Awesome FastAPI](https://github.com/mjhea0/awesome-fastapi)
 
-![Image of servers meme {h: 600}](/articles/images/fastapi/server.jpg)
+![Image of servers meme {h: 600}](/articles/images/fastapi/server.webp)
