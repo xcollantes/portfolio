@@ -152,6 +152,58 @@ The system automatically:
 
 For more details, see `docs/gist-usage.md`.
 
+## Article access control and exceptions
+
+By default, all articles require human verification and are not indexed by
+search engines. This protects sensitive or personal content from public access.
+However, certain articles can be configured as exceptions to bypass these
+restrictions and become fully public.
+
+### When to make articles public
+
+Only add articles to the exception list if they meet **ALL** of the following criteria:
+
+✅ **Safe for exceptions:**
+
+- Portfolio pieces showcasing professional work
+- Educational tutorials and technical guides
+- Public-facing work experiences and achievements
+- Blog posts intended for broader audience reach
+
+❌ **Do NOT make public:**
+
+- Personal stories or experiences
+- Content with sensitive company information
+- Experimental or draft content
+- Content meant only for specific individuals
+
+### Adding article exceptions
+
+**Important:** Exception articles bypass ALL access controls and become fully
+public. Search engines will index and cache the content permanently.
+
+1. **Review criteria:** Ensure your article meets all exception criteria above
+2. **Edit config:** Add entry to `articleExceptions` object in `article_configs/article_exceptions_config.ts`
+3. **Configure settings:**
+
+   ```typescript
+   "your-article.md": {
+     bypassVerification: true,        // Skip human verification
+     allowSearchIndexing: true,       // Allow search engine indexing
+     reason: "Clear explanation of why this should be public"
+   }
+   ```
+
+4. **Test accessibility:** Verify the article works in development
+5. **Monitor indexing:** Check search engine indexing after deployment
+
+### Security considerations
+
+- Exception articles become permanently public and searchable
+- Content will appear in search results and social media previews
+- Consider data privacy implications before adding exceptions
+- Review the detailed security guidelines in `article_configs/article_exceptions_config.ts`
+
 ## Adding new recommendation
 
 You can add recommendations to boost credibility and give insight to your
