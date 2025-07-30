@@ -1,6 +1,6 @@
 ---
-title: "Large Language Models: For non-techies"
-cardDescription: "A non-techies's guide to understanding LLMs, RAG, and when to use what"
+title: "Large Language Models: For Non-Techies"
+cardDescription: "LLMs translated for Non-Techie's. When to use what."
 cardPageLink: "/articles/llms-for-non-techies"
 imagePath: ""
 articleType: BLOG
@@ -15,42 +15,40 @@ tagIds:
   - embeddings
 ---
 
-There are already thousands of explanations online what LLMs are so if you're
-here, then you must really be struggling. But that's okay! At one point, I asked
-the same exact questions as we're all on different paths. I'll explain in my way
-what all these LLMs and RAGs are.
+![Woman playing chess {priority}](/articles/images/llm-for-non-techies/chess.webp)
 
 ## What Are Large Language Models?
 
 Large Language Models (LLMs) are like the autocomplete feature on your phone.
+
 But in comparison your phone autocomplete is like a toaster compared to an LLM
 which is like a Komatsu D575A Super Dozer.
 
-![Komatsu D575A Super Dozer](/articles/images/llm-for-non-techies/komatsu.jpg)
+![Komatsu D575A Super Dozer {h: 400}](/articles/images/llm-for-non-techies/komatsu.webp)
 
 _Toaster not shown._
 
-They've been trained on massive amounts of text data books, articles, code,
-basically most of the internet to understand patterns in language and generate
+LLMs are trained on massive amounts of text data books, articles, code,
+and on the internet to understand patterns in language and generate
 human-like responses.
 
-Think of them like brains that can:
+Think of them as brains that can:
 
 - Answer questions
 - Write code
 - Summarize documents
 - Translate languages
-- Generate creative content
+- Generate content
 
-But unlike humans, they don't actually "understand" anything. Computers have
+But unlike humans, they do not actually "understand" anything. Computers have
 always been and are still dumb; they can only do what humans make them do.
-They're predicting what comes next based on patterns they've learned.
+They are predicting what comes next based on patterns they have learned.
 
-![baby logic meme](/articles/images/llm-for-non-techies/babylogic.webp)
+![baby logic meme {h: 700}](/articles/images/llm-for-non-techies/babylogic.webp)
 
 For early LLMs, such a calculation as in the meme would have been
 difficult because the statement "my baby is twice as big in 3 months so in 10
-years, he'll be 7.5 trillion pounds" is logically sound but invalid because of
+years, he will be 7.5 trillion pounds" is logically sound but invalid because of
 linear/exponential extrapolation fallacy or assuming that a pattern over
 a short period will continue unchanged indefinitely without considering limiting
 factors. In this case: human babies will slow growing and stop after a time.
@@ -59,7 +57,7 @@ factors. In this case: human babies will slow growing and stop after a time.
 
 ### Parameters: The Brain Size
 
-> When you say "hi" to another human, you're unconsciously taking in dozens of
+> When you say "hi" to another human, you are unconsciously taking in dozens of
 > factors.
 
 - Who they are
@@ -71,13 +69,13 @@ factors. In this case: human babies will slow growing and stop after a time.
 Then you make a decision on how your tone is when you speak, on what subject to
 speak about, on which emotion to convey to the other person.
 
-![People meeting](/articles/images/llm-for-non-techies/male-friends-meeting-restaurant.jpg)
+![People meeting {h: 400}](/articles/images/llm-for-non-techies/male-friends-meeting-restaurant.webp)
 
-**Parameters work the same way**: Each factor is an input of the situation where
-you make a decision based on learned biases and prior knowledge.
+> **Parameters work the same way**: Each factor is an input of the situation where
+> you make a decision based on learned biases and prior knowledge.
 
-Now imagine you only use half the factors listed above. If you can't tell the
-other person's mood or don't know who they are, you may not make an appropriate
+Now imagine you only use half the factors listed above. If you cannot tell the
+other person's mood or do not know who they are, you may not make an appropriate
 decision on your interaction.
 
 Parameters are the learned weights and biases in a neural network that determine
@@ -88,25 +86,23 @@ we read books and watch movies and learn patterns which we may later refer to.
 Generally speaking, the parameter the higher the count the higher the capability
 but also the higher the resource requirements:
 
-| Parameter Count | Capability         | Hardware Needs                   | Best For                                                                                                    |
-| --------------- | ------------------ | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| 1B              | Basic tasks        | CPU will do, GPU would be great  | Simple Q&A                                                                                                  |
-| 7B              | Generally good     | Common GPUs                      | Sweet spot for most applications, decent reasoning (most used models are in this range, as of 15 July 2025) |
-| 13B             | Advanced responses | More GPUs, using hosted services | Complex tasks past Q&A                                                                                      |
-| 70B+            | State-of-the-art   | Heavy GPU investment             | Highest level of analytics                                                                                  |
+- **1B parameters**: Basic tasks capability, CPU will do (GPU would be great), best for simple Q&A
+- **7B parameters**: Generally good capability, common GPUs needed, sweet spot for most applications with decent reasoning (most used models are in this range, as of 15 July 2025)
+- **13B parameters**: Advanced responses capability, more GPUs or hosted services needed, best for complex tasks past Q&A
+- **70B+ parameters**: State-of-the-art capability, heavy GPU investment required, highest level of analytics
 
 _As of 15 July 2025. Advancements are made weekly._
 
 ### Context Window: The Amount I Can Understand For Now
 
-> Has anyone ever talked so fast and said so much you didn't have time to write it
-> down or process what was being said? That's like a **context window** for LLMs.
+> Has anyone ever talked so fast and said so much you did not have time to write it
+> down or process what was being said? That is like a **context window** for LLMs.
 
-The context window is how much text an LLM can "remember" at once. It's like
+The context window is how much text an LLM can "remember" at once. It is like
 short-term memory everything the model considers when generating a single
 response.
 
-You'll also hear the term **token** which means the single chunks of data fed
+You will also hear the term **token** which means a single chunk of data fed
 into the context window. For example, ChatGPT may have a _context window_ of
 120,000 _tokens_.
 
@@ -115,8 +111,12 @@ syllable but depends on the LLM and the infrastructure around the LLM. But in
 general we can assume a token anywhere between a syllable to full word.
 
 You should start caring about tokens if you plan to feed 2,000 legal
-documents or entire books into an LLM but if you're only asking questions to an
+documents or entire books into an LLM but if you are only asking questions to an
 LLM, then not so much.
+
+[![Infographic on context windows for LLMs](/articles/images/llm-for-non-techies/contextwindow.webp)](https://www.artfish.ai/p/long-context-llms)
+
+_[artfish.ai](https://www.artfish.ai/p/long-context-llms)_
 
 ### Training Stages: School for LLMs
 
@@ -133,10 +133,10 @@ The same with LLMs. LLMs go through two main training phases:
 
 In terms of resource, Pre-training is cost-prohibitive for most businesses.
 Gemini 1.0 cost Google $192 million to train. So as you can imagine, not many
-companies train their own model. But that's okay, because there are far cheaper
+companies train their own model. But that is okay, because there are far cheaper
 and easier ways to give the effect of specializing your model.
 
-[![training visual](/articles/images/llm-for-non-techies/costllm.jpg)](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
+[![training visual](/articles/images/llm-for-non-techies/costllm.webp)](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
 
 [_VisualCapitalist.com_](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
 
@@ -147,12 +147,16 @@ options:
 
 ### RAG (Retrieval Augmented Generation)
 
-RAG is like giving your LLM a test but the test is open-book.
+> RAG is like giving your LLM a test but the test is open-book.
 
 When you ask a question, it first searches a database for relevant information,
 then uses that context to generate an answer. The point where the data is
 injected is the context window like you would when you type questions into
 ChatGPT. RAG would find the relevant data and append the data to your question.
+
+[![RAG diagram](/articles/images/llm-for-non-techies/awsrag.webp)](https://aws.amazon.com/what-is/retrieval-augmented-generation)
+
+[_AWS_](https://aws.amazon.com/what-is/retrieval-augmented-generation)
 
 **Pros:**
 
@@ -240,15 +244,33 @@ your specific data.
 [Quantplex.AI](https://quantplex.ai) for end-to-end local LLMs for your
 business.
 
+## Further Reading
+
+[Introduction to Large Language Models, Google](https://developers.google.com/machine-learning/resources/intro-llms)
+
+[arXiv Paper: A Survey on RAG Meets LLMs](https://arxiv.org/abs/2408.04693)
+
+[What is a Large Language Model? Cloudflare](https://www.cloudflare.com/learning/ai/what-is-large-language-model)
+
+[What is a Neural Network? Cloudflare](https://www.cloudflare.com/learning/ai/what-is-neural-network)
+
+[Long Context LLMs, Artfish AI](https://www.artfish.ai/p/long-context-llms)
+
+[What are Large Language Models? Elastic](https://www.elastic.co/what-is/large-language-models)
+
+[What is Retrieval Augmented Generation? AWS](https://aws.amazon.com/what-is/retrieval-augmented-generation)
+
 ## Beyond the Hype
 
-LLMs are powerful automation machines but not magic. They don't truly
-"understand" anything and they're predicting what text should come next based on
+![iRobot meme {h: 600}](/articles/images/llm-for-non-techies/irobot.webp)
+
+LLMs are powerful automation machines but not magic. They do not truly
+"understand" anything and they are predicting what text should come next based on
 patterns.
 
-Despite its flaws, pattern matching is so sophisticated that it's useful for a
-huge range of tasks. The trick is understanding what they're good at (pattern
-recognition, text generation, reasoning over provided context) and what they're
+Despite its flaws, pattern matching is so sophisticated that it is useful for a
+huge range of tasks. The trick is understanding what they are good at (pattern
+recognition, text generation, reasoning over provided context) and what they are
 not (factual accuracy without confirming, consistent logic).
 
 Start simple, experiment with the tools, and gradually build complexity as you
