@@ -6,7 +6,7 @@ cardDescription: Xavier's published cheat sheet for styling Pandas DataFrames.
 cardPageLink: "/articles/pandas-styling-cheatsheet"
 imagePath: ""
 articleType: BLOG
-tagIds: ["frontend", "ux", "ui", "webdev", "bi", "python", "datascience"]
+tagIds: ["bi", "python", "datascience"]
 ---
 
 ## Format the values in the cells

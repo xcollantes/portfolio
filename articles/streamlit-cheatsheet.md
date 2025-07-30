@@ -6,7 +6,7 @@ cardDescription: Xavier's published cheat sheet for Streamlit data platform.
 cardPageLink: "/articles/streamlit-cheatsheet"
 imagePath: ""
 articleType: BLOG
-tagIds: ["frontend", "ux", "ui", "webdev", "bi", "python", "datascience"]
+tagIds: ["frontend", "webdev", "bi", "python", "datascience"]
 ---
 
 Quickly create front ends from Python data notebooks. Official cheat sheet:

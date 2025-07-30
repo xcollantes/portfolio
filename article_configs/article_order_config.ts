@@ -25,14 +25,16 @@ export const orderedIncludeWorkExp: string[] = [
 
 // BLOGS
 export const orderedIncludeBlogs: string[] = [
+  "llms-for-non-techies.md",
+  "fastapi.md",
   "bulldog-band.md",
   "anderson-podcast.md",
-  "gist-example.md",
+  // "gist-example.md",
   "web-opt.md",
-  "pandas-styling-cheatsheet.md",
+  // "pandas-styling-cheatsheet.md",
   "streamlit-cheatsheet.md",
   "json-python.md",
-  "sql-cheatsheet.md",
+  // "sql-cheatsheet.md",
   "radio.md",
   "easter-eggs.md",
 ]
