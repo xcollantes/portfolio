@@ -1,6 +1,6 @@
 ---
 title: "LLM Leaderboards"
-description: "My personal fave LLM leaderboards."
+cardDescription: "My personal fave LLM leaderboards."
 imagePath: ""
 cardPageLink: "/articles/llm-leaderboards"
 articleType: BLOG
