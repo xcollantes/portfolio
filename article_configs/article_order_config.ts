@@ -29,9 +29,11 @@ export const orderedIncludeBlogs: string[] = [
   "measuring-tokens.md",
 
   "ai-ide.md",
-  "choosing-embeddings-for-production.md",
-  "vector-database-comparison.md",
-  "aws-gpu-selection-guide.md",
+
+  // IN PROGRESS.
+  // "choosing-embeddings.md",
+  // "vector-databases.md",
+  // "aws-gpu-selection-guide.md",
 
   "llm-leaderboards.md",
 
