@@ -25,6 +25,7 @@ export const orderedIncludeWorkExp: string[] = [
 // BLOGS
 export const orderedIncludeBlogs: string[] = [
   "llms-for-non-techies.md",
+  "measuring-tokens.md",
   "llm-leaderboards.md",
   "fastapi.md",
   "bulldog-band.md",

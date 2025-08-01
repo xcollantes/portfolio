@@ -77,6 +77,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
 
   // EDUCATIONAL AND TECHNICAL CONTENT
   // These provide value to the broader technical community.
+  "measuring-tokens.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about LLM tokens that benefits the technical community"
+  },
+
   "llms-for-non-techies.md": {
     bypassVerification: true,
     allowSearchIndexing: true,
