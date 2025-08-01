@@ -4,12 +4,19 @@ import { Box, Container, Theme, Typography, useTheme } from "@mui/material"
 import DarkModeSwitch from "./DarkMode"
 import Drawer from "./Drawer"
 import { MaterialLink } from "./MaterialLink"
+import { MetadataType } from "../article_configs/process_articles"
 
 interface NavbarProps {
   containerWidth?: "xs" | "sm" | "md" | "lg" | "xl"
+  currentArticle?: MetadataType | null
+  allArticles?: MetadataType[]
 }
 
-export default function Navbar({ containerWidth = "md" }: NavbarProps) {
+export default function Navbar({ 
+  containerWidth = "md", 
+  currentArticle = null, 
+  allArticles = [] 
+}: NavbarProps) {
   const theme: Theme = useTheme()
 
   return (
@@ -63,7 +70,10 @@ export default function Navbar({ containerWidth = "md" }: NavbarProps) {
             }}
           >
             <DarkModeSwitch />
-            <Drawer />
+            <Drawer 
+              currentArticle={currentArticle} 
+              allArticles={allArticles}
+            />
           </Box>
         </Box>
       </Container>

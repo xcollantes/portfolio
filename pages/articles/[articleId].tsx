@@ -16,12 +16,15 @@ import rehypeRaw from "rehype-raw"
 import { shouldAllowSearchIndexing } from "../../article_configs/article_exceptions_config"
 import {
   ArticleDataType,
+  MetadataType,
   getArticle,
   getArticlePathsAsProps,
+  getHeaderMetadata,
 } from "../../article_configs/process_articles"
 import ArticleAnalytics from "../../components/ArticleAnalytics"
 import Footer from "../../components/Footer"
 import HiddenPreviewImage from "../../components/HiddenPreviewImage"
+import Navbar from "../../components/Navbar"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
 
 import { useRouter } from "next/router"
@@ -50,15 +53,22 @@ interface ContextParamsType extends ParsedUrlQuery {
  */
 export async function getStaticProps(
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<ArticleDataType>> {
+): Promise<GetStaticPropsResult<ArticleDataType & { allArticles: MetadataType[] }>> {
   // Add type, otherwise undefined pages will cause error:
   // https://github.com/vercel/next.js/discussions/16522#discussioncomment-130070
   const params = context.params! as ContextParamsType
   const article: ArticleDataType = await getArticle(params.articleId)
 
+  // Get all articles metadata for related blogs functionality.
+  const allArticlesMetadata: string[] = await getHeaderMetadata()
+  const allArticles: MetadataType[] = allArticlesMetadata.map(
+    (unparsedMetadata: string) => JSON.parse(unparsedMetadata)
+  )
+
   const articleProps = {
     ...article,
     metadata: JSON.parse(article.metadata),
+    allArticles,
   }
 
   return { props: articleProps }
@@ -69,6 +79,7 @@ export default function article({
   markdownBody,
   htmlBody,
   metadata,
+  allArticles,
 }) {
   const theme: Theme = useTheme()
   const router = useRouter()
@@ -90,6 +101,11 @@ export default function article({
 
   return (
     <>
+      <Navbar 
+        currentArticle={metadata} 
+        allArticles={allArticles || []}
+        containerWidth="md"
+      />
       <Head>
         {!allowIndexing && <meta name="robots" content="noindex" />}
 
@@ -129,7 +145,7 @@ export default function article({
       {/* Hidden image for RCS preview workaround when OG tags aren't respected. */}
       <HiddenPreviewImage />
 
-      <Container maxWidth={"md"}>
+      <Container maxWidth={"md"} sx={{ pt: 10 }}>
         <Box
           sx={{
             display: "flex",
