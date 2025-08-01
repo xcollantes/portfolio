@@ -51,8 +51,8 @@ export default function Carousel({
       <Box className={emblaCss.embla}>
         <Box className={emblaCss.embla__viewport} ref={emblaRef}>
           <Box className={emblaCss.embla__container}>
-            {slidesData.map((slide) => (
-              <Box className={emblaCss.embla__slide}>{slide}</Box>
+            {slidesData.map((slide, index) => (
+              <Box key={index} className={emblaCss.embla__slide}>{slide}</Box>
             ))}
           </Box>
 
