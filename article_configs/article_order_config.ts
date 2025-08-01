@@ -27,7 +27,16 @@ export const orderedIncludeBlogs: string[] = [
   "rag-langchain.md",
   "llms-for-non-techies.md",
   "measuring-tokens.md",
+
+  "ai-ide.md",
+
+  // IN PROGRESS.
+  // "choosing-embeddings.md",
+  // "vector-databases.md",
+  // "aws-gpu-selection-guide.md",
+
   "llm-leaderboards.md",
+
   "fastapi.md",
   "bulldog-band.md",
   "anderson-podcast.md",
