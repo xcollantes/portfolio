@@ -36,6 +36,7 @@ export const orderedIncludeBlogs: string[] = [
   // "aws-gpu-selection-guide.md",
 
   "llm-leaderboards.md",
+  "history-ai.md",
 
   "fastapi.md",
   "bulldog-band.md",
