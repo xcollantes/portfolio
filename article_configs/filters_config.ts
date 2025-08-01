@@ -11,6 +11,7 @@ export interface FilterDataConfigType {
 export const filterDataConfig: FilterDataConfigType[] = [
   { displayText: "Python", tagId: "python" },
   { displayText: "LLM", tagId: "llm" },
+  { displayText: "RAG", tagId: "rag" },
   { displayText: "Web dev", tagId: "webdev" },
   { displayText: "IoT", tagId: "iot" },
   // { displayText: "Cyber security", tagId: "security" },

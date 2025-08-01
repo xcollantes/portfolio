@@ -113,6 +113,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Public benchmark performance for LLM models"
   },
 
+  "rag-langchain.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about RAG implementation with LangChain"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
