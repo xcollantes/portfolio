@@ -101,6 +101,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Technical guide for web optimization best practices"
   },
 
+  "llm-leaderboards.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Public benchmark performance for LLM models"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
