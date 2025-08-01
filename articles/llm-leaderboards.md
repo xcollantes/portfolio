@@ -1,11 +1,11 @@
 ---
 title: "LLM Leaderboards"
-cardDescription: "My personal fave LLM leaderboards."
+cardDescription: "Easily compare LLM models by performance, price, and more."
 imagePath: ""
 cardPageLink: "/articles/llm-leaderboards"
 articleType: BLOG
 author: Xavier Collantes
-tags:
+tagIds:
   - ai
   - llm
   - rag
