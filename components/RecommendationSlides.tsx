@@ -16,13 +16,13 @@ export default function RecommendationSlides(recommendationData) {
     (recommendation: RecommendationType) => recommendation.showInSlides != false
   )
 
-  let key: number = 0
   return (
     <Box>
       <Carousel
         slidesData={filterEnabledToShow.map(
-          (recommendation: RecommendationType) => (
+          (recommendation: RecommendationType, index: number) => (
             <RecommendationCard
+              key={index}
               name={recommendation.name}
               headline={recommendation.headline}
               relationship={recommendation.relationship}
@@ -31,7 +31,6 @@ export default function RecommendationSlides(recommendationData) {
               linkedInLink={recommendation.linkedInLink}
               previewText={recommendation.previewText}
               fullRec={recommendation.fullRec}
-              key={key++}
             />
           )
         )}
