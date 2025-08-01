@@ -24,6 +24,10 @@ export const orderedIncludeWorkExp: string[] = [
 
 // BLOGS
 export const orderedIncludeBlogs: string[] = [
+  "ai-ide-comparison.md",
+  "choosing-embeddings-for-production.md", 
+  "vector-database-comparison.md",
+  "aws-gpu-selection-guide.md",
   "llms-for-non-techies.md",
   "llm-leaderboards.md",
   "fastapi.md",
