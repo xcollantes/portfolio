@@ -25,7 +25,7 @@ migrated to another form.
 Compares pricing, context window, pricing, and response time. This one I have
 seen the most commonly referred to.
 
-[https://huggingface.co/spaces/ArtificialAnalysis/LLM-Performance-Leaderboard](https://huggingface.co/spaces/ArtificialAnalysis/LLM-Performance-Leaderboard)
+[huggingface.co/LLM-Performance-Leaderboard](https://huggingface.co/spaces/ArtificialAnalysis/LLM-Performance-Leaderboard)
 
 ## MTEB Leaderboard
 
@@ -34,7 +34,7 @@ seen the most commonly referred to.
 This leaderboard compares 100+ text and image embedding models across 1000+
 languages. Great for finding many human languages.
 
-[https://huggingface.co/spaces/mteb/leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
+[huggingface.co/spaces/mteb/leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
 
 ## LLM Arena
 
@@ -42,7 +42,7 @@ languages. Great for finding many human languages.
 
 Great for ranking use-specific LLMs: Text, Image, Vision, Search, Text-to-Image.
 
-[https://lmarena.ai/leaderboard](https://lmarena.ai/leaderboard)
+[lmarena.ai/leaderboard](https://lmarena.ai/leaderboard)
 
 ## LLM Stats
 
@@ -50,7 +50,7 @@ Great for ranking use-specific LLMs: Text, Image, Vision, Search, Text-to-Image.
 
 Nice visual graph of LLM benchmarks. Contains the cutoff dates for training.
 
-[https://llm-stats.com/](https://llm-stats.com/)
+[llm-stats.com](https://llm-stats.com/)
 
 ## Vellum
 
@@ -59,4 +59,4 @@ Nice visual graph of LLM benchmarks. Contains the cutoff dates for training.
 Latest public benchmark performance for SOTA model versions released after April 2024. The data comes from model providers as well as independently run
 evaluations by Vellum or the open-source community.
 
-[https://www.vellum.ai/llm-leaderboard](https://www.vellum.ai/llm-leaderboard)
+[vellum.ai/llm-leaderboard](https://www.vellum.ai/llm-leaderboard)
