@@ -54,8 +54,47 @@ const imgCustom = (imageData) => {
   )
 }
 
+// Helper function to generate URL-friendly IDs from header text.
+const generateHeaderId = (children) => {
+  const text = Array.isArray(children)
+    ? children.map(child => typeof child === 'string' ? child : '').join('')
+    : typeof children === 'string' ? children : ''
+
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove non-word characters except spaces and hyphens
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .trim()
+}
+
+/**
+ * The matching is offset because the h1 is the main header and the rest are
+ * subheaders.
+ */
 const h1Custom = (h1) => {
-  return <Typography variant="h1">{h1.children}</Typography>
+  const id = generateHeaderId(h1.children)
+  return <Typography variant="h1" id={id}>{h1.children}</Typography>
+}
+
+const h2Custom = (h2) => {
+  const id = generateHeaderId(h2.children)
+  return <Typography variant="h3" id={id}>{h2.children}</Typography>
+}
+
+const h3Custom = (h3) => {
+  const id = generateHeaderId(h3.children)
+  return <Typography variant="h4" id={id}>{h3.children}</Typography>
+}
+
+const h4Custom = (h4) => {
+  const id = generateHeaderId(h4.children)
+  return <Typography variant="h5" id={id}>{h4.children}</Typography>
+}
+
+const h5Custom = (h5) => {
+  const id = generateHeaderId(h5.children)
+  return <Typography variant="h6" id={id}>{h5.children}</Typography>
 }
 
 /** Using H6 tag as a caption.
@@ -240,6 +279,10 @@ const blockquoteCustom = (props) => {
 
 const ReactMarkdownRules = () => ({
   h1: h1Custom,
+  h2: h2Custom,
+  h3: h3Custom,
+  h4: h4Custom,
+  h5: h5Custom,
   h6: h6Custom,
   img: imgCustom,
   a: aCustom,
