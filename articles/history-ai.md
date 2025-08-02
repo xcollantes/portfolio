@@ -17,9 +17,7 @@ tagIds:
 
 _AI generated movie poster for when this blog gets a movie deal._
 
-The journey from simple pattern-matching chatbots to sophisticated large
-language models represents one of the most remarkable technological
-transformations in computing history. This 60-year evolution fundamentally
+This 60-year AI evolution fundamentally
 changed how humans interact with machines and as you read you will notice how
 the milestones become closer to each other, highlighting the near-exponential
 pace of AI advancement.
@@ -46,7 +44,7 @@ then:
 Example of a woman using ELIZA seeking advice about her boyfriend (some things
 never change):
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/RMK9AphfLco?si=8UmolBaliS9R1KT5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="400" src="https://www.youtube-nocookie.com/embed/RMK9AphfLco?si=8UmolBaliS9R1KT5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ELIZA used a process of pattern matching and transformation rules on the
 "prompt" to generate outputs. As opposed to an alternative method such as
