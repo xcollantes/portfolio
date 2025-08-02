@@ -25,6 +25,7 @@ export const orderedIncludeWorkExp: string[] = [
 // BLOGS
 export const orderedIncludeBlogs: string[] = [
   "rag-langchain.md",
+  "history-ai.md",
   "llms-for-non-techies.md",
   "measuring-tokens.md",
 
@@ -36,7 +37,6 @@ export const orderedIncludeBlogs: string[] = [
   // "aws-gpu-selection-guide.md",
 
   "llm-leaderboards.md",
-  "history-ai.md",
 
   "fastapi.md",
   "bulldog-band.md",
