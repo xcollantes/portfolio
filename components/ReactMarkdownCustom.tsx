@@ -1,6 +1,6 @@
 /** Custom rules for ReactMarkdown converter. */
 
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material"
 import Image from "next/image"
 import Link from "next/link"
 import articleStyles from "../css/article.module.css"
@@ -14,7 +14,10 @@ const imgCustom = (imageData) => {
   const altTextSection = imageData.alt?.match(/^([a-zA-Z ]+)/)
   const altText = altTextSection ? altTextSection[1].trim() : ""
 
-  let fill: boolean = true
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  let fill: boolean = !isMobile
   let isPriority: boolean = false
   let width: number | undefined = undefined
   let height: number | undefined = undefined
@@ -30,10 +33,12 @@ const imgCustom = (imageData) => {
     // Only have user specify the height as the image will maintain ratio when
     // height is specified. Width does not change the image width.
     width = 3000
-    height = matchImageHeight[1]
-
-    // Either `width` and `height` are specified OR `fill` is specified; cannot
-    // have both.
+    height = parseInt(matchImageHeight[1])
+    fill = false
+  } else if (isMobile) {
+    // On mobile, use explicit dimensions for better height fitting
+    width = 800
+    height = 600
     fill = false
   }
 
@@ -48,14 +53,53 @@ const imgCustom = (imageData) => {
         height={height}
         priority={isPriority}
         placeholder="blur"
-        className={imageStyles.imageItem}
+        className={isMobile ? imageStyles.imageItemMobile : imageStyles.imageItem}
       />
     </Box>
   )
 }
 
+// Helper function to generate URL-friendly IDs from header text.
+const generateHeaderId = (children) => {
+  const text = Array.isArray(children)
+    ? children.map(child => typeof child === 'string' ? child : '').join('')
+    : typeof children === 'string' ? children : ''
+
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove non-word characters except spaces and hyphens
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .trim()
+}
+
+/**
+ * The matching is offset because the h1 is the main header and the rest are
+ * subheaders.
+ */
 const h1Custom = (h1) => {
-  return <Typography variant="h1">{h1.children}</Typography>
+  const id = generateHeaderId(h1.children)
+  return <Typography variant="h1" id={id}>{h1.children}</Typography>
+}
+
+const h2Custom = (h2) => {
+  const id = generateHeaderId(h2.children)
+  return <Typography variant="h3" id={id}>{h2.children}</Typography>
+}
+
+const h3Custom = (h3) => {
+  const id = generateHeaderId(h3.children)
+  return <Typography variant="h4" id={id}>{h3.children}</Typography>
+}
+
+const h4Custom = (h4) => {
+  const id = generateHeaderId(h4.children)
+  return <Typography variant="h5" id={id}>{h4.children}</Typography>
+}
+
+const h5Custom = (h5) => {
+  const id = generateHeaderId(h5.children)
+  return <Typography variant="h6" id={id}>{h5.children}</Typography>
 }
 
 /** Using H6 tag as a caption.
@@ -238,8 +282,99 @@ const blockquoteCustom = (props) => {
   )
 }
 
+// Custom iframe handler for responsive videos
+const iframeCustom = (props) => {
+  const { src, width, height, ...rest } = props
+
+  // Check if this is a video embed (YouTube, Vimeo, etc.)
+  const isVideoEmbed = src && (
+    src.includes('youtube.com') ||
+    src.includes('youtu.be') ||
+    src.includes('vimeo.com') ||
+    src.includes('twitch.tv') ||
+    src.includes('loom.com')
+  )
+
+  if (isVideoEmbed) {
+    return (
+      <Box className="responsive-iframe" sx={{ my: 2 }}>
+        <iframe
+          src={src}
+          {...rest}
+          style={{
+            border: 0,
+          }}
+          allowFullScreen
+        />
+      </Box>
+    )
+  }
+
+  // Regular iframe
+  return (
+    <Box sx={{ maxWidth: '100%', overflow: 'hidden', my: 2 }}>
+      <iframe
+        src={src}
+        width={width}
+        height={height}
+        {...rest}
+        style={{
+          maxWidth: '100%',
+        }}
+      />
+    </Box>
+  )
+}
+
+// Custom video handler for responsive videos
+const videoCustom = (props) => {
+  const { src, width, height, ...rest } = props
+
+  return (
+    <Box sx={{ maxWidth: '100%', my: 2 }}>
+      <video
+        src={src}
+        controls
+        {...rest}
+        style={{
+          maxWidth: '100%',
+        }}
+      />
+    </Box>
+  )
+}
+
+// Custom table handler for responsive tables
+const tableCustom = (props) => {
+  const { children, ...rest } = props
+
+  return (
+    <Box sx={{
+      maxWidth: '100%',
+      overflow: 'auto',
+      my: 2,
+      WebkitOverflowScrolling: 'touch',
+    }}>
+      <table
+        {...rest}
+        style={{
+          width: '100%',
+          borderCollapse: 'collapse',
+          minWidth: 'max-content',
+        }}
+      >
+        {children}
+      </table>
+    </Box>
+  )
+}
+
 const ReactMarkdownRules = () => ({
   h1: h1Custom,
+  h2: h2Custom,
+  h3: h3Custom,
+  h4: h4Custom,
+  h5: h5Custom,
   h6: h6Custom,
   img: imgCustom,
   a: aCustom,
@@ -247,6 +382,9 @@ const ReactMarkdownRules = () => ({
   pre: preCustom,
   code: codeCustom,
   blockquote: blockquoteCustom,
+  iframe: iframeCustom,
+  video: videoCustom,
+  table: tableCustom,
 })
 
 export default ReactMarkdownRules

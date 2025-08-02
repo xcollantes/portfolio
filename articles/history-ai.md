@@ -13,18 +13,16 @@ tagIds:
   - history
 ---
 
-![AI generated movie poster {priority} {h: 600}](/articles/images/history-ai/aimovie.webp)
+![AI generated movie poster {priority} {h: 500}](/articles/images/history-ai/aimovie.webp)
 
 _AI generated movie poster for when this blog gets a movie deal._
 
-The journey from simple pattern-matching chatbots to sophisticated large
-language models represents one of the most remarkable technological
-transformations in computing history. This 60-year evolution fundamentally
+This 60-year AI evolution fundamentally
 changed how humans interact with machines and as you read you will notice how
 the milestones become closer to each other, highlighting the near-exponential
 pace of AI advancement.
 
-## ELIZA: 1966
+## 1966: ELIZA
 
 [![IBM 7040 {h: 500}](/articles/images/history-ai/7040.jpg)](https://en.wikipedia.org/wiki/IBM_7040#/media/File:IBM_7040_front_panel.jpg)
 
@@ -46,7 +44,7 @@ then:
 Example of a woman using ELIZA seeking advice about her boyfriend (some things
 never change):
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/RMK9AphfLco?si=8UmolBaliS9R1KT5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="400" src="https://www.youtube-nocookie.com/embed/RMK9AphfLco?si=8UmolBaliS9R1KT5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ELIZA used a process of pattern matching and transformation rules on the
 "prompt" to generate outputs. As opposed to an alternative method such as
@@ -77,7 +75,7 @@ Human: It’s true. I am unhappy.
 
 You can read Weizenbaum's paper here: [ELIZA: A Computer Program For the Study of Natural Language Communication Between Man And Machine](https://web.stanford.edu/class/linguist238/p36-weizenabaum.pdf).
 
-## PARRY, Psychological Simulation: 1972
+## 1972: PARRY, Psychological Simulation
 
 Kenneth Mark Colby at Stanford University develops PARRY, described as "ELIZA
 with attitude", the first chatbot designed to model specific mental illness.
@@ -89,7 +87,7 @@ In early testing, psychiatrists could only correctly identify PARRY as
 a computer program 48% of the time, demonstrating successful simulation of
 human-like responses.
 
-## Shift from Hand Written Rules to Statistical Models: 1990s
+## 1990s: Shift from Hand Written Rules to Statistical Models
 
 ### The Old Way: Hand-Crafted Linguistic Rules (1960s-1980s)
 
@@ -136,7 +134,7 @@ processing power doubled approximately every two years throughout the
 - 1990: 25-33 MHz processors became common
 - 2000: 1+ GHz processors were standard
 
-## NVIDIA founded with gaming focus: 1993
+## 1993: NVIDIA founded with gaming focus
 
 Jensen Huang, Chris Malachowsky, and Curtis Priem found NVIDIA at a Denny's
 restaurant in East San Jose with $40,000 in capital. After near-bankruptcy in
@@ -145,7 +143,7 @@ restaurant in East San Jose with $40,000 in capital. After near-bankruptcy in
 
 [![NVIDIA RIVA 128](/articles/images/history-ai/riva.webp)](https://www.computer.org/publications/tech-news/chasing-pixels/famous-graphics-chips-nvidias-riva128)
 
-## NVIDIA Releases CUDA: 2006
+## 2006: NVIDIA Releases CUDA
 
 NVIDIA releases CUDA (Compute Unified Device Architecture), a parallel computing
 platform that fundamentally opened GPUs to general-purpose scientific computing.
@@ -155,7 +153,7 @@ languages (C, C++, Fortran, Python) to harness GPU parallel processing power.
 This starts the opportunity for non-video game developers to use GPUs for other
 means.
 
-## "Attention Is All You Need" transforms AI: 2017
+## 2017: "Attention Is All You Need" transforms AI
 
 Arguably the most important paper triggering the current AI revolution.
 
@@ -285,7 +283,7 @@ its location in the sequence.
 Instead of processing sequentially to maintain order, they encoded position
 information directly into the word representations.
 
-## OpenAI GPT-1: 2018
+## 2018: OpenAI GPT-1
 
 ![Sam Altman {h: 500}](/articles/images/history-ai/altman.webp)
 
@@ -296,7 +294,7 @@ This established the GPT paradigm of unsupervised pre-training followed by
 supervised fine-tuning, achieving state-of-the-art performance. Most LLMs today
 follow this pattern of pre-training and fine-tuning.
 
-## HuggingFace Transforms Model Accessibility: 2019
+## 2019: HuggingFace Transforms Model Accessibility
 
 HuggingFace launches the Transformers library, democratizing access to
 pre-trained models with simple APIs. The platform becomes the "GitHub of machine
@@ -304,7 +302,7 @@ learning," hosting over [500,000
 models](https://turingpost.substack.com/p/huggingfacechronicle)
 by 2024.
 
-## n8n Emerges as a Crucial Workflow Automation Platform: 2020
+## 2020: n8n Emerges as a Crucial Workflow Automation Platform
 
 [![Jan Oberhauser meetup {h: 500}](/articles/images/history-ai/n8n.webp)](https://community.n8n.io/t/berlin-august-2024-meetup-report/52706)
 
@@ -316,7 +314,7 @@ Oberhauser, n8n's visual workflow builder allows users to connect AI models to
 databases, APIs, and business applications without coding, opening up the
 capabilities to a new demographic of users.
 
-## ChatGPT Launches the Modern AI Era: November 2022
+## 2022: ChatGPT Launches the Modern AI Era
 
 [![Verge cover story {h: 400}](/articles/images/history-ai/verge.webp)](https://www.theverge.com/2022/12/8/23499728/ai-capability-accessibility-chatgpt-stable-diffusion-commercialization)
 
@@ -330,7 +328,7 @@ ChatGPT reached 1 million users in 5 days and 100 million users in 2 months,
 becoming the fastest-growing consumer application in history and bringing AI
 capabilities to mainstream awareness.
 
-## LangChain Launches Application Development: April 2023
+## 2023: LangChain Launches Application Development
 
 ![Harrison Chase {h: 500}](/articles/images/history-ai/chase-ng.webp)
 
@@ -349,14 +347,14 @@ reusable components and established patterns that significantly reduced
 development complexity. The framework enabled developers to focus on application
 logic rather than infrastructure concerns.
 
-## LlamaIndex Enables Document Intelligence: 2023
+## 2023: LlamaIndex Enables Document Intelligence
 
 Jerry Liu creates LlamaIndex (formerly GPT Index) to solve the "LLM + your data"
 problem. The framework specializes in ingesting, structuring, and querying large
 document collections, enabling applications like querying on your own data with
 RAG.
 
-## Meta's Open-Source Strategy: February 2023
+## 2023: Meta's Open-Source Strategy
 
 [![Llama Zuck {h: 500}](/articles/images/history-ai/llamazuck.jpg)](https://www.facebook.com/photo/?fbid=10103763476220329&set=pcb.10103763477013739)
 
@@ -366,13 +364,13 @@ commercial licensing and the April 2024 Llama 3 series democratized access to
 high-quality language models, with the 405B parameter Llama 3.1 matching
 closed-source model performance.
 
-## GPT-4 Introduces Multimodal Capabilities: March 2023
+## 2023: GPT-4 Introduces Multimodal Capabilities
 
 OpenAI releases GPT-4 with text and image inputs. The model underwent six
 months of iterative alignment using adversarial testing, demonstrating improved
 factuality, steerability, and safety.
 
-## Google's Bard Responds to ChatGPT: March 2023
+## 2023: Google's Bard Responds to ChatGPT
 
 ![Google Bard logo {h: 300}](/articles/images/history-ai/bard.webp)
 
@@ -384,7 +382,7 @@ billion](https://www.npr.org/2023/02/09/1155650909/google-chatbot--error-bard-sh
 in market value, highlighting the competitive pressure and stakes involved in
 the AI race.
 
-## What's Next? Model Context Protocol, The Universal Standard: November 2024
+## 2024: Model Context Protocol, The Universal Standard
 
 [Anthropic introduced the Model Context Protocol (MCP) in November
 2024](https://www.anthropic.com/news/model-context-protocol), representing the

@@ -15,4 +15,5 @@ export { default as LongPressWrapper } from './LongPressWrapper'
 // Re-export other commonly used components
 export { default as ReactMarkdownRules } from './ReactMarkdownCustom'
 export { default as ShareButton } from './ShareButton'
+export { default as TableOfContents } from './TableOfContents'
 

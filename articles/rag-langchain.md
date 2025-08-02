@@ -467,7 +467,7 @@ doesn't contain the answer.
 
 ## Further Reading
 
-[https://python.langchain.com/docs/tutorials/rag](https://python.langchain.com/docs/tutorials/rag)
+[python.langchain.com](https://python.langchain.com/docs/tutorials/rag)
 
 [LangChain: RAG](https://python.langchain.com/docs/concepts/rag/)
 

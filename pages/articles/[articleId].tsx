@@ -23,6 +23,7 @@ import ArticleAnalytics from "../../components/ArticleAnalytics"
 import Footer from "../../components/Footer"
 import HiddenPreviewImage from "../../components/HiddenPreviewImage"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
+import TableOfContents from "../../components/TableOfContents"
 
 import { useRouter } from "next/router"
 
@@ -129,56 +130,76 @@ export default function article({
       {/* Hidden image for RCS preview workaround when OG tags aren't respected. */}
       <HiddenPreviewImage />
 
-      <Container maxWidth={"md"}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            rowGap: 0.5,
-          }}
-        >
-          <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-            {metadata.title}
-          </Typography>
+      {/* Table of Contents - Desktop only, positioned absolutely to the left */}
+      <Box
+        sx={{
+          display: { xs: 'none', lg: 'block' },
+          position: 'fixed',
+          left: 40,
+          top: '50%',
+          transform: 'translateY(-50%)',
+          width: 300,
+          zIndex: 1000,
+        }}
+      >
+        <TableOfContents markdownContent={markdownBody} />
+      </Box>
 
-          {metadata.subTitle && (
-            <Typography variant="subtitle2">{metadata.subTitle}</Typography>
-          )}
-          {metadata.author && (
-            <Typography variant="body1" color={"gray"}>
-              Written by {metadata.author}
-            </Typography>
-          )}
-          {metadata.dateLastUpdated && metadata.dateWritten && (
-            <Typography variant="body1" color={"gray"}>
-              Created: {dateWrittenL10n}; Last updated: {dateLastUpdatedL10n}
-            </Typography>
-          )}
-          {metadata.dateLastUpdated && !metadata.dateWritten && (
-            <Typography variant="body1" color={"gray"}>
-              {dateLastUpdatedL10n}
-            </Typography>
-          )}
-          {!metadata.dateLastUpdated && metadata.dateWritten && (
-            <Typography variant="body1" color={"gray"}>
-              {dateWrittenL10n}
-            </Typography>
-          )}
+      <Container maxWidth={"xl"}>
+        <Box sx={{ position: "relative" }}>
+          {/* Main Article Content - Full width without offset */}
+          <Container maxWidth={"md"} sx={{ px: { xs: 2, sm: 3 } }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                rowGap: 0.5,
+              }}
+            >
+              <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+                {metadata.title}
+              </Typography>
+
+              {metadata.subTitle && (
+                <Typography variant="subtitle2">{metadata.subTitle}</Typography>
+              )}
+              {metadata.author && (
+                <Typography variant="body1" color={"gray"}>
+                  Written by {metadata.author}
+                </Typography>
+              )}
+              {metadata.dateLastUpdated && metadata.dateWritten && (
+                <Typography variant="body1" color={"gray"}>
+                  Created: {dateWrittenL10n}; Last updated: {dateLastUpdatedL10n}
+                </Typography>
+              )}
+              {metadata.dateLastUpdated && !metadata.dateWritten && (
+                <Typography variant="body1" color={"gray"}>
+                  {dateLastUpdatedL10n}
+                </Typography>
+              )}
+              {!metadata.dateLastUpdated && metadata.dateWritten && (
+                <Typography variant="body1" color={"gray"}>
+                  {dateWrittenL10n}
+                </Typography>
+              )}
+            </Box>
+
+            <Divider sx={{ my: 3 }} />
+
+            {/* `rehypeRaw` used for HTML elements to be understood as HTML.
+                  This includes iframes and ability to use HTML elements.
+                  https://stackoverflow.com/a/70548866/8278075 */}
+
+            <ReactMarkdown
+              components={ReactMarkdownRules()}
+              rehypePlugins={[rehypeRaw] as any}
+            >
+              {markdownBody}
+            </ReactMarkdown>
+            <Footer />
+          </Container>
         </Box>
-
-        <Divider sx={{ my: 3 }} />
-
-        {/* `rehypeRaw` used for HTML elements to be understood as HTML.
-            This includes iframes and ability to use HTML elements.
-            https://stackoverflow.com/a/70548866/8278075 */}
-
-        <ReactMarkdown
-          components={ReactMarkdownRules()}
-          rehypePlugins={[rehypeRaw] as any}
-        >
-          {markdownBody}
-        </ReactMarkdown>
-        <Footer />
       </Container>
     </>
   )
