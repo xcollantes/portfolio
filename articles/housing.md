@@ -24,7 +24,7 @@ look for a career job.
 ## Surrounded by Housing
 
 ![Image: Vacant dorms on campus during the
-summer](/articles/images/housing/buzz_apartments.webp)
+summer](/assets/images/housing/buzz_apartments.webp)
 
 So, I needed a place to stay. That's when I realized how empty the campus was
 during the summer with all the dorms vacant.

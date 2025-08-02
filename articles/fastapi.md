@@ -12,7 +12,7 @@ tagIds:
   - apis
 ---
 
-![FastAPI Logo {priority}](/articles/images/fastapi/logo-teal.webp)
+![FastAPI Logo {priority}](/assets/images/fastapi/logo-teal.webp)
 
 ## FastAPI: Python Web Framework for Heavy Duty APIs
 
@@ -29,7 +29,7 @@ My favorite features:
 - Type hint support improves code quality and reduces runtime errors
 - Built-in support for async/await ensures scalability
 
-![Image error meme {h: 400}](/articles/images/fastapi/pass.webp)
+![Image error meme {h: 400}](/assets/images/fastapi/pass.webp)
 
 ## Getting Started
 
@@ -189,7 +189,7 @@ programmers will usually use camelCase for everything... so if data is moving
 between a Python backend and JavaScript frontend... do we all now have to choose
 the same case? Not with FastAPI.
 
-![Image of frontend backend meme {h: 400}](/articles/images/fastapi/cases.webp)
+![Image of frontend backend meme {h: 400}](/assets/images/fastapi/cases.webp)
 
 Working with a JavaScript frontend? FastAPI plays nice with camelCase while
 keeping your Python snake_case:
@@ -274,4 +274,4 @@ async Redis clients.
 
 [Awesome FastAPI](https://github.com/mjhea0/awesome-fastapi)
 
-![Image of servers meme {h: 600}](/articles/images/fastapi/server.webp)
+![Image of servers meme {h: 600}](/assets/images/fastapi/server.webp)
