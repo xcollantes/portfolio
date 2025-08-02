@@ -24,7 +24,7 @@ pace of AI advancement.
 
 ## 1966: ELIZA
 
-[![IBM 7040 {h: 500}](/articles/images/history-ai/7040.jpg)](https://en.wikipedia.org/wiki/IBM_7040#/media/File:IBM_7040_front_panel.jpg)
+[![IBM 7040 {h: 500}](/articles/images/history-ai/7040.webp)](https://en.wikipedia.org/wiki/IBM_7040#/media/File:IBM_7040_front_panel.jpg)
 
 Developed in 1966 at MIT by Joseph Weizenbaum, ELIZA was the first chatbot
 written for the IBM 7091. It was a simple program that simulated a
