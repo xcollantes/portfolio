@@ -119,6 +119,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content about RAG implementation with LangChain"
   },
 
+  "history-ai.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Public history of AI development"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
