@@ -31,7 +31,7 @@ written for the IBM 7091. It was a simple program that simulated a
 psychotherapist.
 
 In Weizenbaum's paper, he describes how the program could be improved as
-"language abilities may be continually improved by a 'teacher'". He was trueely
+"language abilities may be continually improved by a 'teacher'". He was truly
 prophetic about how chatbots would be used today. The ELIZA program even back
 then:
 
@@ -89,7 +89,7 @@ human-like responses.
 
 ## 1990s: Shift from Hand Written Rules to Statistical Models
 
-### The Old Way: Hand-Crafted Linguistic Rules (1960s-1980s)
+### 1960s-1980s: The Old Way: Hand-Crafted Linguistic Rules
 
 Early NLP systems like ELIZA and PARRY were built using explicitly programmed
 rules written by linguists and programmers. These systems worked like elaborate
@@ -110,7 +110,7 @@ Example: ELIZA's DOCTOR script had about 200 rules. To handle even basic
 conversation, you'd need millions of rules covering every possible linguistic
 pattern.
 
-### The New Way: Statistical Approaches: 1990s
+### 1990s: The New Way: Statistical Approaches
 
 Instead of trying to manually encode language rules, why not let computers learn
 patterns from actual language data? This was revolutionary, moving from human
@@ -134,7 +134,7 @@ processing power doubled approximately every two years throughout the
 - 1990: 25-33 MHz processors became common
 - 2000: 1+ GHz processors were standard
 
-## 1993: NVIDIA founded with gaming focus
+## 1993: NVIDIA Founded With Gaming Focus
 
 Jensen Huang, Chris Malachowsky, and Curtis Priem found NVIDIA at a Denny's
 restaurant in East San Jose with $40,000 in capital. After near-bankruptcy in
@@ -153,7 +153,7 @@ languages (C, C++, Fortran, Python) to harness GPU parallel processing power.
 This starts the opportunity for non-video game developers to use GPUs for other
 means.
 
-## 2017: "Attention Is All You Need" transforms AI
+## 2017: "Attention Is All You Need"
 
 Arguably the most important paper triggering the current AI revolution.
 
@@ -180,7 +180,7 @@ Recurrent Neural Networks (RNNs):
 
 ![Google Hat image {h: 300}](/articles/images/history-ai/hat.webp)
 
-### Critical problems
+### Critical Problems
 
 - **Sequential bottleneck:** You could not process Word 5 until you would finish
   processing Word 4, making training extremely slow.
@@ -230,7 +230,7 @@ paper.
 
 ![Google lobby {h: 400}](/articles/images/history-ai/lobby.webp)
 
-_Me, really happy for my Googlers who wrote a cool paper._
+_Me, really happy for my fellowGooglers who wrote a cool paper._
 
 ### Transformer Architecture In Detail
 
