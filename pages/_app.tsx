@@ -131,6 +131,9 @@ export default function App({
             <meta name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
             <meta name="twitter:image:alt" content="Xavier Collantes" />
 
+            {/* Search Engine Optimization */}
+            <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
             <GoogleAnalytics gaId="G-HB7D403D67" />
 
             <title>Xavier Collantes</title>

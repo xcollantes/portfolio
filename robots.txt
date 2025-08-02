@@ -1,5 +1,13 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Block Internet Archive bots
 User-agent: archive.org_bot
 Disallow: /
 
 User-agent: ia_archiver
 Disallow: /
+
+# Sitemap
+Sitemap: https://xaviercollantes.dev/sitemap.xml

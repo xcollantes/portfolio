@@ -34,6 +34,15 @@ module.exports = {
     // Default locale when visiting a non-locale prefixed path e.g. `/hello`
     defaultLocale: "en-US",
   },
+  // Ensure sitemap.xml and robots.txt are served correctly
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ];
+  },
   async headers() {
     return [
       {
