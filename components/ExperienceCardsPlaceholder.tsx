@@ -5,7 +5,11 @@ import { MetadataType } from "../article_configs/process_articles"
 import FadeCustom from "./Fade"
 import LongCard from "./LongCard"
 
-export default function ExperienceCardsPlaceholder() {
+export interface ExperienceCardsPlaceholderPropType {
+  useBackgroundImages?: boolean
+}
+
+export default function ExperienceCardsPlaceholder({ useBackgroundImages = false }: ExperienceCardsPlaceholderPropType) {
   const dummyData = {
     title: "Please SignIn Verify",
     cardDescription: "Nice try. Using DevTools won't work here",
@@ -28,6 +32,7 @@ export default function ExperienceCardsPlaceholder() {
               cardPageLink={""}
               cardButtonText={card.cardButtonText}
               imagePath={card.imagePath}
+              useBackgroundImage={useBackgroundImages}
               key={key++}
               disabled={true}
             />

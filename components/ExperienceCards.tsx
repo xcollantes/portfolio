@@ -16,9 +16,10 @@ import LongCard from "./LongCard"
 
 export interface ExperienceCardsPropType {
   metadata: MetadataType[]
+  useBackgroundImages?: boolean
 }
 
-export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
+export default function ExperienceCards({ metadata, useBackgroundImages = false }: ExperienceCardsPropType) {
   const router = useRouter()
   const [selected, setSelected] = useState<MetadataType[]>(metadata)
   const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
@@ -60,7 +61,7 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
   const header = (text: string) => (
     <Typography variant="subtitle2">{text}</Typography>
   )
-  const renderCard = (card: MetadataType) => (
+  const renderCard = (card: MetadataType, useBackgroundImage: boolean = false) => (
     <FadeCustom key={key}>
       <div>
         <LongCard
@@ -69,6 +70,7 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
           cardPageLink={card.cardPageLink}
           cardButtonText={card.cardButtonText}
           imagePath={card.imagePath}
+          useBackgroundImage={useBackgroundImage}
           key={key++}
         />
       </div>
@@ -81,13 +83,13 @@ export default function ExperienceCards({ metadata }: ExperienceCardsPropType) {
       {workExps && header("Work experiences")}
       {workExps &&
         workExps.map((card: MetadataType) => {
-          return renderCard(card)
+          return renderCard(card, useBackgroundImages)
         })}
 
       {blogs && header("Blogs")}
       {blogs &&
         blogs.map((card: MetadataType) => {
-          return renderCard(card)
+          return renderCard(card, useBackgroundImages)
         })}
 
       {/* Button at the end of articles */}
