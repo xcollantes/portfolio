@@ -40,6 +40,7 @@ export const orderedIncludeBlogs: string[] = [
 
   "fastapi.md",
   "bulldog-band.md",
+  "gonzaga-speaker-infosys.md",
   "anderson-podcast.md",
   // "gist-example.md",
   "web-opt.md",

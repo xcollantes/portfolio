@@ -4,7 +4,7 @@ author: Xavier Collantes
 cardDescription: "Sponsored and mentored a Gonzaga University student engineering capstone project."
 cardPageLink: "/articles/rx-blockchain"
 articleType: WORKEXP
-imagePath: ""
+imagePath: "/articles/images/rx_blockchain/group.webp"
 tagIds:
   [
     "leadership",

@@ -3,7 +3,7 @@ title: Bulldog Band
 author: Xavier Collantes
 cardDescription: As the "Fungineer" of the Gonzaga University Bulldog Band, responsibilities include keeping morale up for the 80+ members on weekly trips nation for March Madness.
 cardPageLink: /articles/bulldog-band
-imagePath: ""
+imagePath: "/articles/images/bulldog_band/saxtv.gif"
 articleType: BLOG
 tagIds: ["interests", "gonzaga", "music"]
 ---

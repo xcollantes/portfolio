@@ -6,7 +6,7 @@ dateWritten: 2024-09-15
 dateLastUpdated: 2025-07-25
 cardPageLink: "/articles/rag-langchain"
 articleType: BLOG
-imagePath: ""
+imagePath: "/articles/images/bulldog_band/hug.webp"
 tagIds:
   - ai
   - langchain

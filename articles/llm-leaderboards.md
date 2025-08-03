@@ -1,7 +1,7 @@
 ---
 title: "LLM Leaderboards"
 cardDescription: "Easily compare LLM models by performance, price, and more."
-imagePath: ""
+imagePath: /articles/images/llm-leaderboards/vellum.webp
 cardPageLink: "/articles/llm-leaderboards"
 articleType: BLOG
 author: Xavier Collantes

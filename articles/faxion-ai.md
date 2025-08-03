@@ -1,7 +1,7 @@
 ---
 title: "Faxion AI: Building an AI Fashion Platform"
 cardDescription: "Architecting and leading the development of a groundbreaking AI fashion platform that reduced cloud costs by 80% and supports thousands of daily users."
-imagePath: ""
+imagePath: "/articles/images/faxion-ai/logo.png"
 cardPageLink: "articles/faxion-ai"
 cardButtonText: "See more"
 author: "Xavier Collantes"

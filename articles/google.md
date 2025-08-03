@@ -2,7 +2,7 @@
 title: Software Engineering, Google Search
 cardDescription: Improving Google Search for 2.7 billion users globally.
 cardPageLink: articles/google
-imagePath: ""
+imagePath: /articles/images/google/circle_group_preview.jpeg
 articleType: WORKEXP
 author: Xavier Collantes
 dateWritten: 2024-01-15

@@ -4,7 +4,7 @@ cardDescription: Homemade internet-of-things private cloud motion-detecting came
 cardPageLink: "/articles/rpi-camera"
 author: Xavier Collantes
 articleType: BLOG
-imagePath: ""
+imagePath: "/articles/images/rpi_camera/sample.gif"
 tagIds: ["electronics", "iot", "python"]
 ---
 
