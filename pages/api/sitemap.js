@@ -25,8 +25,6 @@ export default function handler(req, res) {
 
         // Add main pages
         xml += `  <url>\n    <loc>${baseUrl}/</loc>\n    <lastmod>${today}</lastmod>\n    <priority>1.0</priority>\n  </url>\n`;
-        xml += `  <url>\n    <loc>${baseUrl}/privacy</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.3</priority>\n  </url>\n`;
-        xml += `  <url>\n    <loc>${baseUrl}/terms</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.3</priority>\n  </url>\n`;
         xml += `  <url>\n    <loc>${baseUrl}/recs</loc>\n    <lastmod>${today}</lastmod>\n    <priority>0.7</priority>\n  </url>\n`;
 
         // Add article pages
