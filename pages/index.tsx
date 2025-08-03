@@ -180,7 +180,7 @@ export default function Page(props: IndexPropTypes) {
             <FilterBar disabled={!isUserSignedIn(session)} />
           </Box>
           {isUserSignedIn(session) ? (
-            <ExperienceCards metadata={props.metadataProps} />
+            <ExperienceCards metadata={props.metadataProps} useBackgroundImages={true} />
           ) : (
             <>
               <Box
@@ -203,7 +203,7 @@ export default function Page(props: IndexPropTypes) {
                 </Box>
               </Box>
 
-              <ExperienceCardsPlaceholder />
+              <ExperienceCardsPlaceholder useBackgroundImages={true} />
             </>
           )}
         </Grid>
