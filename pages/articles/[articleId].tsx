@@ -90,35 +90,37 @@ export default function article({
 
   const allowIndexing = shouldAllowSearchIndexing(articleId as string)
 
+  console.debug("metadata", metadata.imagePath)
+
   return (
     <>
       <Head>
         {!allowIndexing && <meta name="robots" content="noindex" />}
 
         {/* Dynamic Open Graph meta tags for article sharing */}
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://xaviercollantes.dev/articles/${articleId}`} />
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
-        <meta property="og:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.jpeg"} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content={`${metadata.title} - Xavier Collantes`} />
-        <meta property="og:site_name" content="Xavier Collantes" />
-        {metadata.author && <meta property="article:author" content={metadata.author} />}
-        {metadata.dateWritten && <meta property="article:published_time" content={new Date(metadata.dateWritten).toISOString()} />}
-        {metadata.dateLastUpdated && <meta property="article:modified_time" content={new Date(metadata.dateLastUpdated).toISOString()} />}
+        <meta key="og:type" property="og:type" content="article" />
+        <meta key="og:url" property="og:url" content={`https://xaviercollantes.dev/articles/${articleId}`} />
+        <meta key="og:title" property="og:title" content={metadata.title} />
+        <meta key="og:description" property="og:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
+        <meta key="og:image" property="og:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.jpeg"} />
+        <meta key="og:image:width" property="og:image:width" content="1200" />
+        <meta key="og:image:height" property="og:image:height" content="630" />
+        <meta key="og:image:alt" property="og:image:alt" content={`${metadata.title} - Xavier Collantes`} />
+        <meta key="og:site_name" property="og:site_name" content="Xavier Collantes" />
+        {metadata.author && <meta key="article:author" property="article:author" content={metadata.author} />}
+        {metadata.dateWritten && <meta key="article:published_time" property="article:published_time" content={new Date(metadata.dateWritten).toISOString()} />}
+        {metadata.dateLastUpdated && <meta key="article:modified_time" property="article:modified_time" content={new Date(metadata.dateLastUpdated).toISOString()} />}
 
         {/* Dynamic Twitter Card meta tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metadata.title} />
-        <meta name="twitter:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
-        <meta name="twitter:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.jpeg"} />
-        <meta name="twitter:image:alt" content={`${metadata.title} - Xavier Collantes`} />
+        <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+        <meta key="twitter:title" name="twitter:title" content={metadata.title} />
+        <meta key="twitter:description" name="twitter:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
+        <meta key="twitter:image" name="twitter:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.jpeg"} />
+        <meta key="twitter:image:alt" name="twitter:image:alt" content={`${metadata.title} - Xavier Collantes`} />
 
         {/* Article-specific meta tags */}
-        <meta name="description" content={metadata.cardDescription || metadata.subTitle || `${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
-        <title>{metadata.title} - Xavier Collantes</title>
+        <meta key="description" name="description" content={metadata.cardDescription || metadata.subTitle || `${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
+        <title key="title">{metadata.title} - Xavier Collantes</title>
       </Head>
 
       {/* Include ArticleAnalytics to track article engagement */}
