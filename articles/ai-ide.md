@@ -54,6 +54,9 @@ models like Sonnet, GPT-4o, Gemini, etc. along with their "thinking" variants.
 - AI which made diff changes but I still need to review and approve
 - Easily switch between models like Sonnet, GPT-4o, Gemini, etc. along with
   their "thinking" variants
+- Add images to help the LLM understand the context; for example, I gave the LLM
+  an image of a color palette and it was able to generate a Tailwind CSS class
+  based on the color palette
 
 - **Cons:**
 
@@ -102,12 +105,15 @@ password login and user management.
 - You can run on terminal so great for headless development or if you just
   prefer terminal editors like nano or vim
 - Part of Claude's Pro plan so no need to worry about pricing
+- Works best if your IDE has a terminal in which case, integrates better with
+  your workflow
 
 **Cons:**
 
 - There is no GUI so you have to use the terminal
 - You can have multiple terminals working on the same project but you may have
   to deal with merge conflicts
+- Text only input
 
 ## My Final Decision
 

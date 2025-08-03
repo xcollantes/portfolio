@@ -71,7 +71,7 @@ works](https://utilitiesone.com/the-role-of-amateur-radio-operators-in-emergency
 
 ![Emergency Communications {h: 500}](/assets/images/radio/emergency.webp)
 
-_Ham Radio Operators During Emergency Communications As Part of ARES._
+###### Ham Radio Operators During Emergency Communications As Part of ARES.
 
 - [Ham Radio Operators Replace Communications During 9/11](https://www.nyc-arecs.org/article-post-911.html)
 - [Ham Radio Operator Relays 911 Calls to Coast Guard Helicopters During Hurricane Katrina](https://www.lobservateur.com/2020/09/02/ham-radio-operator-reflects-on-hurricane-katrina-15-years-later)
@@ -188,7 +188,7 @@ orbit with your position on the planet.
 
 ![International Space Station {h: 300}](/assets/images/radio/satellite.webp)
 
-_Tracking a moving repeater: The ISS._
+###### Tracking a moving repeater: The ISS.
 
 Thogh I myself have not been able to talk with the ISS, here is an instance of
 Ham Radio Operator KB8M being able to talk with the ISS:
@@ -200,8 +200,7 @@ In case you are a licensed Ham and would like to try, here are the frequencies:
 
 ![Astronaut {h: 300}](/assets/images/radio/astronaut.webp)
 
-_NASA Astronaut and fellow Ham Radio Operator Col. Doug Wheelock (KF5BOC) on the
-ISS._
+###### NASA Astronaut and fellow Ham Radio Operator Col. Doug Wheelock (KF5BOC) on the ISS.
 
 ## I'm Interested in Ham Radio
 

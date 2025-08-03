@@ -27,6 +27,11 @@ export default function TableOfContents({ markdownContent }: TableOfContentsProp
       const level = match[1].length // Number of # characters
       const text = match[2].trim()
 
+      // Skip H6 headers as they are used for captions
+      if (level === 6) {
+        continue
+      }
+
       // Create a URL-friendly ID from the header text
       const id = text
         .toLowerCase()

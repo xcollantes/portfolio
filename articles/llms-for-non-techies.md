@@ -26,7 +26,7 @@ which is like a Komatsu D575A Super Dozer.
 
 ![Komatsu D575A Super Dozer {h: 400}](/assets/images/llm-for-non-techies/komatsu.webp)
 
-_Toaster not shown._
+###### Toaster not shown.
 
 LLMs are trained on massive amounts of text data books, articles, code,
 and on the internet to understand patterns in language and generate
@@ -116,7 +116,7 @@ LLM, then not so much.
 
 [![Infographic on context windows for LLMs](/assets/images/llm-for-non-techies/contextwindow.webp)](https://www.artfish.ai/p/long-context-llms)
 
-_[artfish.ai](https://www.artfish.ai/p/long-context-llms)_
+###### [artfish.ai](https://www.artfish.ai/p/long-context-llms)
 
 ### Training Stages: School for LLMs
 
@@ -138,7 +138,7 @@ and easier ways to give the effect of specializing your model.
 
 [![training visual](/assets/images/llm-for-non-techies/costllm.webp)](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
 
-[_VisualCapitalist.com_](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
+###### [VisualCapitalist.com](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
 
 ## RAG vs Fine-tuning: Which Approach to Use?
 
@@ -156,7 +156,7 @@ ChatGPT. RAG would find the relevant data and append the data to your question.
 
 [![RAG diagram](/assets/images/llm-for-non-techies/awsrag.webp)](https://aws.amazon.com/what-is/retrieval-augmented-generation)
 
-[_AWS_](https://aws.amazon.com/what-is/retrieval-augmented-generation)
+###### [AWS](https://aws.amazon.com/what-is/retrieval-augmented-generation)
 
 **Pros:**
 

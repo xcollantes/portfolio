@@ -15,8 +15,7 @@ tagIds:
 
 ![AI generated movie poster {priority} {h: 500}](/assets/images/history-ai/aimovie.webp)
 
-_AI generated movie poster for when this blog gets a movie deal (including both
-CEOs of Alphabet and Google, respectively)._
+###### AI generated movie poster for when this blog gets a movie deal (including both CEOs of Alphabet and Google, respectively).
 
 This 60-year AI evolution fundamentally
 changed how humans interact with machines and as you read you will notice how
@@ -231,7 +230,7 @@ paper.
 
 ![Google lobby {h: 400}](/assets/images/history-ai/lobby.webp)
 
-_Me, really happy for my fellowGooglers who wrote a cool paper._
+###### Me, really happy for my fellow Googlers who wrote a cool paper.
 
 ### Transformer Architecture In Detail
 

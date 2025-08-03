@@ -1,6 +1,6 @@
 ---
 title: "RAG with LangChain"
-cardDescription: "How to start with LLM orchestration."
+cardDescription: "How to embrace LLM orchestration for your documents."
 author: Xavier Collantes
 dateWritten: 2024-09-15
 dateLastUpdated: 2025-07-25
