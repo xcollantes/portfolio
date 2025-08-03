@@ -145,10 +145,10 @@ export default function article({
         <TableOfContents markdownContent={markdownBody} />
       </Box>
 
-      <Container maxWidth={"xl"}>
+      <Container maxWidth={"xl"} sx={{ px: { xs: 0 } }}>
         <Box sx={{ position: "relative" }}>
           {/* Main Article Content - Full width without offset */}
-          <Container maxWidth={"md"} sx={{ px: { xs: 2, sm: 3 } }}>
+          <Container maxWidth={"md"} sx={{ px: { xs: 0, sm: 3 } }}>
             <Box
               sx={{
                 display: "flex",
