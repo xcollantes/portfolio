@@ -28,8 +28,11 @@ export const orderedIncludeBlogs: string[] = [
   "history-ai.md",
   "llms-for-non-techies.md",
   "measuring-tokens.md",
-
+  "gonzaga-speaker-infosys.md",
+  "bulldog-band.md",
   "ai-ide.md",
+  "radio.md",
+  "rpi-camera.md",
 
   // IN PROGRESS.
   // "choosing-embeddings.md",
@@ -37,16 +40,12 @@ export const orderedIncludeBlogs: string[] = [
   // "aws-gpu-selection-guide.md",
 
   "llm-leaderboards.md",
-
   "fastapi.md",
-  "bulldog-band.md",
-  "gonzaga-speaker-infosys.md",
-  "radio.md",
   "anderson-podcast.md",
   // "gist-example.md",
   "web-opt.md",
   // "pandas-styling-cheatsheet.md",
-  "rpi-camera.md",
+
   "streamlit-cheatsheet.md",
   "json-python.md",
   // "sql-cheatsheet.md",
