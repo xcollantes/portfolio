@@ -1,6 +1,7 @@
 /** Card with project summary. */
 
 import { Box, Button, Card, CardContent, Typography } from "@mui/material"
+import { useState, useEffect } from "react"
 import { MaterialLink } from "./MaterialLink"
 
 export interface LongCardType {
@@ -22,48 +23,59 @@ export default function LongCard({
   disabled = false,
   useBackgroundImage = false,
 }: LongCardType) {
+  const [imageLoaded, setImageLoaded] = useState(false)
   const titleStyle = disabled ? "blurMedium" : ""
   const descStyle = disabled ? "blurHeavy" : ""
 
-  const cardStyles = useBackgroundImage && imagePath
+  /**
+   * Preload image to detect errors.
+   * If image is not loaded, act as if it is not a background image.
+   */
+  useEffect(() => {
+    if (useBackgroundImage && imagePath) {
+      const img = new Image()
+      img.onload = () => setImageLoaded(true)
+      img.onerror = () => setImageLoaded(false)
+      img.src = imagePath
+
+      // Reset state when imagePath changes.
+      setImageLoaded(false)
+    } else {
+      setImageLoaded(false)
+    }
+  }, [imagePath, useBackgroundImage])
+
+  const cardStyles = useBackgroundImage && imagePath && imageLoaded
     ? {
-        px: 0.5,
-        backgroundImage: `url(${imagePath})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        position: 'relative',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(128, 128, 128, 0.7)', // Grayish overlay
-          zIndex: 1,
-        }
+      px: 0.5,
+      backgroundImage: `url(${imagePath})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.48)', // Grayish overlay
+        zIndex: 1,
       }
+    }
     : { px: 0.5 }
 
-  const contentStyles = useBackgroundImage && imagePath
+  /**
+   * Different styles for background image and not.
+   */
+  const contentStyles = useBackgroundImage && imagePath && imageLoaded
     ? {
-        position: 'relative',
-        zIndex: 2,
-        color: 'white',
-      }
+      position: 'relative',
+      zIndex: 2,
+      color: 'white',
+    }
     : {}
-
-  const buttonStyles = useBackgroundImage && imagePath
-    ? {
-        mt: 2,
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        color: 'black',
-        '&:hover': {
-          backgroundColor: 'rgba(255, 255, 255, 1)',
-        }
-      }
-    : { mt: 2 }
 
   return (
     <Card raised sx={cardStyles} className={titleStyle}>
@@ -77,7 +89,7 @@ export default function LongCard({
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Button
             variant="contained"
-            sx={buttonStyles}
+            sx={{ mt: 2 }}
             component={MaterialLink}
             to={cardPageLink}
             disabled={disabled}
