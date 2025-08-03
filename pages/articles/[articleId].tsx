@@ -23,6 +23,7 @@ import ArticleAnalytics from "../../components/ArticleAnalytics"
 import Footer from "../../components/Footer"
 import HiddenPreviewImage from "../../components/HiddenPreviewImage"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
+import ShareButton from "../../components/ShareButton"
 import TableOfContents from "../../components/TableOfContents"
 
 import { useRouter } from "next/router"
@@ -156,21 +157,30 @@ export default function article({
                 rowGap: 0.5,
               }}
             >
-              <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-                {metadata.title}
-              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  mb: 1
+                }}
+              >
+                <Typography variant="h2" sx={{ fontWeight: "bold", flex: 1 }}>
+                  {metadata.title}
+                </Typography>
+              </Box>
 
               {metadata.subTitle && (
                 <Typography variant="subtitle2">{metadata.subTitle}</Typography>
               )}
               {metadata.author && (
                 <Typography variant="body1" color={"gray"}>
-                  Written by {metadata.author}
+                  By {metadata.author}
                 </Typography>
               )}
               {metadata.dateLastUpdated && metadata.dateWritten && (
                 <Typography variant="body1" color={"gray"}>
-                  Created: {dateWrittenL10n}; Last updated: {dateLastUpdatedL10n}
+                  Created: {dateWrittenL10n}; Updated: {dateLastUpdatedL10n}
                 </Typography>
               )}
               {metadata.dateLastUpdated && !metadata.dateWritten && (
@@ -184,6 +194,12 @@ export default function article({
                 </Typography>
               )}
             </Box>
+
+            <ShareButton
+              shareUrl={`https://xaviercollantes.dev/articles/${articleId}`}
+              title={metadata.title}
+              description={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`}
+            />
 
             <Divider sx={{ my: 3 }} />
 
