@@ -41,6 +41,7 @@ export const orderedIncludeBlogs: string[] = [
   "fastapi.md",
   "bulldog-band.md",
   "gonzaga-speaker-infosys.md",
+  "radio.md",
   "anderson-podcast.md",
   // "gist-example.md",
   "web-opt.md",
@@ -49,7 +50,6 @@ export const orderedIncludeBlogs: string[] = [
   "streamlit-cheatsheet.md",
   "json-python.md",
   // "sql-cheatsheet.md",
-  "radio.md",
   "easter-eggs.md",
 ]
 

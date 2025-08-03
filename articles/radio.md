@@ -5,13 +5,23 @@ dateLastUpdated: 2024-01-09
 articleType: BLOG
 cardDescription: FCC licensed and learning uses of radio for computer security and other applications.
 cardPageLink: "articles/radio"
-imagePath: ""
+imagePath: "/assets/images/radio/forest.gif"
 tagIds: ["interests", "radio", "blogs"]
 ---
 
-\# TODO: Include video of ham radio stuff
+<div style="position:relative; display:block; width: 100%">
+  <iframe
+    width="100%"
+    height="500"
+    src="https://www.youtube-nocookie.com/embed/A-nqhJ5r_Xw?si=jM4mHgBHlqbKLrmH"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position:absolute; top:0; left: 0">
+  </iframe>
+</div>
 
-## Radio is everywhere!
+## Radio Is Everywhere!
 
 - Wi-fi
 - Bluetooth
@@ -30,7 +40,7 @@ I started my foray into ham radio due a few reasons:
 1. Learning the "old technology" of radio waves is embedded in every aspect of
    our modern lives
 
-## Modern vulnerabilities
+## Modern Vulnerabilities
 
 Given technological progress in the last several years, the internet **IS** the
 infrastructure that holds up modern society. On average, a person spends [about
@@ -59,12 +69,17 @@ when regular forms of communications stop working.
 When all forms of communication fails, [radio still
 works](https://utilitiesone.com/the-role-of-amateur-radio-operators-in-emergency-communication).
 
-- [Ham radio operator relays 911 calls to Coast Guard helicopters during
-  2006
-  Hurricane Katrina](https://www.lobservateur.com/2020/09/02/ham-radio-operator-reflects-on-hurricane-katrina-15-years-later)
-- [Old man in danger uses ham radio to get help](https://www.arrl.org/news/amateur-radio-makes-the-connection-to-save-lives-in-wisconsin-and-idaho)
+![Emergency Communications {h: 500}](/assets/images/radio/emergency.webp)
 
-## Since 1897, a 100 year old technology thriving
+_Ham Radio Operators During Emergency Communications As Part of ARES._
+
+- [Ham Radio Operators Replace Communications During 9/11](https://www.nyc-arecs.org/article-post-911.html)
+- [Ham Radio Operator Relays 911 Calls to Coast Guard Helicopters During Hurricane Katrina](https://www.lobservateur.com/2020/09/02/ham-radio-operator-reflects-on-hurricane-katrina-15-years-later)
+- [Old Man in Danger Uses Ham Radio to Get Help](https://www.arrl.org/news/amateur-radio-makes-the-connection-to-save-lives-in-wisconsin-and-idaho)
+
+## Since 1897, a 100 Year Old Technology Thriving
+
+![Marconi {h: 500}](/assets/images/radio/marconi.webp)
 
 Since 1897 when Guglielmo Marconi sent the world's first radio message compared
 to today where [3
@@ -89,6 +104,8 @@ Low Energy protocol in the [keyless entry
 system](https://driving.ca/auto-news/driver-info/hacker-shows-off-way-to-unlock-start-teslas-remotely).
 Bluetooth uses the 2.4 GHz band of the radio spectrum.
 
+![Tesla hack {h: 500}](/assets/images/radio/tesla-hack.webp)
+
 Ham radio is an art more than a science. We use our knowledge of
 radio wave propagation, electrical systems, and physics to push our radios
 farther by experimenting with different power levels, antennas ([often
@@ -98,11 +115,19 @@ in exotic locations to get a signal, and attempt to reach as far as we can with
 as little resources. All of this just to get back on the radio and tell our ham
 radio buddies what we accomplished.
 
-## Community of radioheads
+![Making my own J-pole antenna](/assets/images/radio/copper.gif)
+
+I have made my own J-pole antenna out of a copper pipe. Cut at a length
+optimized for the 70cm band. Copper is a good conductor and can pick up radio
+transmissions.
+
+## Community of Radioheads
 
 Most important in the ham radio field is a sense of community among its
 operators. A ham radio operator can start transmitting and pick up another ham
 radio miles away whom they've never met and have a full conversation.
+
+![CQ {h: 600}](/assets/images/radio/cq.webp)
 
 All over the world there are what we call _repeaters_ which is a hub for radios
 to transmit on. Let's say your radio can only reach about 1 mile away but you
@@ -112,9 +137,31 @@ interference, etc.) thus carrying your transmission 10 to 30 miles away. There
 is even [a repeater on the International Space
 Station](https://www.ariss.org/contact-the-iss.html) which operators can use.
 
-![](/assets/images/radio/queen_anne.webp)
+![Repeater range {h: 500}](/assets/images/radio/range.webp)
+
+![Queen Anne](/assets/images/radio/queen_anne.webp)
 
 ###### Radio towers on Queen Anne Hill, Seattle, WA
+
+In radio, you can use even the cheapest of radios to talk to other ham radio
+operators. As we say "height is might" because the higher the antenna, the
+farther the signal can travel. Here I am in Boise, Idaho, talking with a man a
+couple miles away. But despite my weaker $15 radio, I was able to talk with him
+because of my increased altitude:
+
+![Boise](/assets/images/radio/boise.webp)
+
+<div style="position:relative; display:block; width: 100%">
+  <iframe
+    width="100%"
+    height="500"
+    src="https://www.youtube-nocookie.com/embed/XILmZNyKllE?si=JJgM1uuEf8zCjBBa"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position:absolute; top:0; left: 0">
+  </iframe>
+</div>
 
 These repeaters which are usually large, tall structures on mountains and other
 elevated features usually run by "repeater clubs" which are volunteer
@@ -124,7 +171,39 @@ with a few minutes to speak about any subject the operator wants.
 Think of it as Twitter before the internet except it's one person at a time
 talking.
 
-## I'm interested in ham radio
+![Thankful {h: 600}](/assets/images/radio/thankful.webp)
+
+## Space, The Final Frontier
+
+Ham Radio operations aboard the International Space Station through
+[ARISS](https://www.ariss.org/) represent one of
+humanity's most successful long-term space
+[communication
+experiments](https://www.nasa.gov/missions/station/iss-research/ham-radio-in-space-engaging-with-students-worldwide-for-40-years/).
+
+You can actually use the ISS as a repeater to talk to other ham radio operators
+on the ground or astronauts aboard the ISS which has a call sign of NA1SS. But
+you have to time its position in
+orbit with your position on the planet.
+
+![International Space Station {h: 300}](/assets/images/radio/satellite.webp)
+
+_Tracking a moving repeater: The ISS._
+
+Thogh I myself have not been able to talk with the ISS, here is an instance of
+Ham Radio Operator KB8M being able to talk with the ISS:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/xLt5Vvgc1vA?si=jh1EQ8loclKRVSjb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+In case you are a licensed Ham and would like to try, here are the frequencies:
+[ariss.org/contact-the-iss.html](https://www.ariss.org/contact-the-iss.html)
+
+![Astronaut {h: 300}](/assets/images/radio/astronaut.webp)
+
+_NASA Astronaut and fellow Ham Radio Operator Col. Doug Wheelock (KF5BOC) on the
+ISS._
+
+## I'm Interested in Ham Radio
 
 An extensive test needs to be taken to receive your FCC ham radio license. The
 best preparation resource out there is https://hamradioprep.com/license-courses.
@@ -140,3 +219,24 @@ conventions.
 All knowledge required is included in https://hamradioprep.com/license-courses.
 Just be happy the Morse Code requirement was [dropped in
 1993](https://www.savannahnow.com/story/news/2007/02/18/morse-code-being-eliminated-radio-license-test/13812059007).
+
+![License](/assets/images/radio/license.webp)
+
+## Further Reading
+
+[FCC: Amateur Radio Service](https://www.fcc.gov/wireless/bureau-divisions/mobility-division/amateur-radio-service)
+
+[NASA: Ham Radio on the International Space Station](https://hamradio.arc.nasa.gov/)
+
+[Emergency
+Communications](https://www.georgiahealthnews.com/2014/04/ham-radio-old-technology-lifesaver-emergency-field/)
+
+[Never Forget Seven Ham Radio Operators Who Died](https://www.reddit.com/r/amateurradio/comments/pmfafl/never_forget_seven_ham_radio_operators_who_died/)
+
+[Ham Radio Buffs Will Take Part in Annual Field Day in Southern Tier](https://www.stargazette.com/story/news/local/2023/06/22/ham-radio-buffs-will-take-part-in-annual-field-day-in-southern-tier/70341923007/)
+
+[ARRL: Getting Licensed](https://www.arrl.org/getting-licensed)
+
+[Ham Radio Prep](https://hamradioprep.com/)
+
+[ARRL: What is Ham Radio?](https://www.arrl.org/what-is-ham-radio)
