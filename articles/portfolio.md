@@ -4,7 +4,7 @@ author: Xavier Collantes
 dateWritten: 2024-01-24
 cardDescription: Evaluate technical trade-offs and code the website you're looking at.
 cardPageLink: "/articles/portfolio"
-imagePath: "/articles/images/portfolio/markdown.webp"
+imagePath: "/assets/images/portfolio/markdown.webp"
 articleType: WORKEXP
 tagIds:
   [
@@ -26,7 +26,7 @@ website, xaviercollantes.dev. Serving in the roles of Software Engineer, Project
 Manager, and UX designer, I share my journey from planning to execution,
 highlighting the technical trade-offs and decisions made during the process.
 
-![Image of Figma dashboard](/articles/images/portfolio/figma.webp)
+![Image of Figma dashboard](/assets/images/portfolio/figma.webp)
 
 Github repository:
 [github.com/xcollantes/portfolio](github.com/xcollantes/portfolio)
@@ -92,7 +92,7 @@ I employed tools like [Google
 Lighthouse](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring)
 and Chrome Browser DevTools to ensure optimal speed and technical efficiency.
 
-![Image of Lighthouse](/articles/images/portfolio/lighthouse.webp)
+![Image of Lighthouse](/assets/images/portfolio/lighthouse.webp)
 
 ### User satisfaction
 
@@ -159,7 +159,7 @@ designed and organized the sections of their site.
 
 ### Mock ups
 
-![Image of Figma dashboard](/articles/images/portfolio/figma.webp)
+![Image of Figma dashboard](/assets/images/portfolio/figma.webp)
 
 Based on inspiration from other Engineer's portfolios and about 25 other
 instances I found, I began a rough Figma diagram of what I wanted the site to
@@ -201,7 +201,7 @@ Other options considered:
 
 ### Ease of use for the developer (me)
 
-![Image of Obiwan Kenobi {h: 300}](/articles/images/portfolio/obiwan.webp)
+![Image of Obiwan Kenobi {h: 300}](/assets/images/portfolio/obiwan.webp)
 
 ###### My relationship with the developer
 
@@ -216,7 +216,7 @@ achieve this by:
 I employ the `remark` NPM package which converts my Markdown notes into Material
 UI components at build time.
 
-![Image of writing article {h: 600}](/articles/images/portfolio/markdown.webp)
+![Image of writing article {h: 600}](/assets/images/portfolio/markdown.webp)
 
 Each article is written in a Markdown with a YAML header which contains metadata
 for tags for the front page's filters, title, author, written date, and
@@ -234,7 +234,7 @@ into attributes for the Material UI's Typography component.
 So a Markdown tag in notes would be:
 
 ```markdown
-![Image of Obiwan Kenobi {priority} {h: 300}](/articles/images/portfolio/obiwan.webp)
+![Image of Obiwan Kenobi {priority} {h: 300}](/assets/images/portfolio/obiwan.webp)
 ```
 
 Translates into:
@@ -243,7 +243,7 @@ Translates into:
 <Image
   priority={true}
   height={300}
-  src={"/articles/images/portfolio/obiwan.webp"}
+  src={"/assets/images/portfolio/obiwan.webp"}
   alt={"Image of Obiwan Kenobi"}
 />
 ```
@@ -303,7 +303,7 @@ Vercel features:
 - Development deployments have a Google Docs-like editor where you can leave
   comments directly on features
 
-![Image of Vercel editor](/articles/images/portfolio/vercel.webp)
+![Image of Vercel editor](/assets/images/portfolio/vercel.webp)
 
 Other options considered:
 
@@ -329,7 +329,7 @@ role_](https://www.google.com/search?q=do+a+barrel+roll) and [_google in
 1998_](https://www.google.com/search?q=google+in+1998), I have created some
 easter eggs of my own.
 
-![Image of hackerman meme](/articles/images/portfolio/hackerman.webp)
+![Image of hackerman meme](/assets/images/portfolio/hackerman.webp)
 
 ### Hello Hackerman
 

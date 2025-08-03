@@ -112,7 +112,7 @@ interference, etc.) thus carrying your transmission 10 to 30 miles away. There
 is even [a repeater on the International Space
 Station](https://www.ariss.org/contact-the-iss.html) which operators can use.
 
-![](/articles/images/radio/queen_anne.webp)
+![](/assets/images/radio/queen_anne.webp)
 
 ###### Radio towers on Queen Anne Hill, Seattle, WA
 

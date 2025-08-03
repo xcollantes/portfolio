@@ -1,7 +1,7 @@
 ---
 title: "Guest Speaker Xavier at Gonzaga University"
 cardDescription: "Invited to speak at Gonzaga University about my career experience and provide advice to students."
-imagePath: "/articles/images/gonzaga-speaker-infosys/class.gif"
+imagePath: "/assets/images/gonzaga-speaker-infosys/class.gif"
 cardPageLink: "articles/gonzaga-speaker-infosys"
 author: "Xavier Collantes"
 dateWritten: 2024-11-01

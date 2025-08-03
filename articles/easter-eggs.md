@@ -20,7 +20,7 @@ role_](https://www.google.com/search?q=do+a+barrel+roll) and [_google in
 1998_](https://www.google.com/search?q=google+in+1998), I have created some
 easter eggs of my own.
 
-![Image of hackerman meme](/articles/images/portfolio/hackerman.webp)
+![Image of hackerman meme](/assets/images/portfolio/hackerman.webp)
 
 ### Hello Hackerman
 

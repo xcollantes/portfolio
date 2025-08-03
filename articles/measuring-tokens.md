@@ -2,7 +2,7 @@
 title: Measuring Tokens in LLMs
 cardDescription: "Tokens mean $$$ and how to measure them."
 cardPageLink: articles/measuring-tokens
-imagePath: /articles/images/measuring-tokens/chatgpt-preview.png
+imagePath: /assets/images/measuring-tokens/chatgpt-preview.png
 articleType: BLOG
 author: Xavier Collantes
 tagIds:
@@ -12,7 +12,7 @@ tagIds:
 
 ## What are Tokens in LLMs?
 
-![Tokens visualized {priority}](/articles/images/measuring-tokens/example.webp)
+![Tokens visualized {priority}](/assets/images/measuring-tokens/example.webp)
 
 Tokens are the fundamental units that large language models (LLMs) process text
 with. When you input text to an LLM, it first breaks down your text into
@@ -29,7 +29,7 @@ approximately 650-700 tokens.
 
 ## Why Tokens Matter
 
-![Token limits](/articles/images/measuring-tokens/max.webp)
+![Token limits](/assets/images/measuring-tokens/max.webp)
 
 - **Cost calculation**: Most API-based LLM services charge based on token
   usage.
@@ -40,7 +40,7 @@ approximately 650-700 tokens.
 
 ## The Ambiguity Problem of Tokens
 
-![Token limits](/articles/images/measuring-tokens/chatgpt.webp)
+![Token limits](/assets/images/measuring-tokens/chatgpt.webp)
 
 One of the most confusing aspects of working with different LLMs is that tokens
 **are not standardized across models**. Different LLMs have different
@@ -138,4 +138,4 @@ AI](https://blogs.nvidia.com/blog/ai-tokens-explained/)
 
 [Airbyte: LLM Tokenization](https://airbyte.com/data-engineering-resources/llm-tokenization)
 
-![Token prediction meme {h: 600}](/articles/images/measuring-tokens/predict.webp)
+![Token prediction meme {h: 600}](/assets/images/measuring-tokens/predict.webp)

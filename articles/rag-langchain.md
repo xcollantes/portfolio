@@ -6,7 +6,7 @@ dateWritten: 2024-09-15
 dateLastUpdated: 2025-07-25
 cardPageLink: "/articles/rag-langchain"
 articleType: BLOG
-imagePath: "/articles/images/bulldog_band/hug.webp"
+imagePath: "/assets/images/bulldog_band/hug.webp"
 tagIds:
   - ai
   - langchain
@@ -21,14 +21,14 @@ In this example, I will show you how to build a RAG pipeline with LangChain.
 This will guide you in making different technical decisions for different
 components given certain situations.
 
-[![Bulldog Band {priority} {h: 300}](/articles/images/bulldog_band/hug.webp)](/articles/bulldog-band)
+[![Bulldog Band {priority} {h: 300}](/assets/images/bulldog_band/hug.webp)](/articles/bulldog-band)
 
 We will be referencing my blog about my time in Bulldog Band as reference
 data.
 
 ## What Is RAG?
 
-![RAG {priority} {h: 600}](/articles/images/rag-langchain/doge.webp)
+![RAG {priority} {h: 600}](/assets/images/rag-langchain/doge.webp)
 
 Think of RAG like this: Using ChatGPT but it can see your documents folder so
 now you can ask what the documents are about.
@@ -416,7 +416,7 @@ The Bulldog Band traveled to a handful of cities across the United States, inclu
 
 Which is true, by the way. Confirm at [Bulldog Band](/articles/bulldog-band).
 
-![Commercial](/articles/images/bulldog_band/commercial.webp)
+![Commercial](/assets/images/bulldog_band/commercial.webp)
 
 ### LangGraph
 

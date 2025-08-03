@@ -1,7 +1,7 @@
 ---
 title: "LLM Leaderboards"
 cardDescription: "Easily compare LLM models by performance, price, and more."
-imagePath: /articles/images/llm-leaderboards/vellum.webp
+imagePath: /assets/images/llm-leaderboards/vellum.webp
 cardPageLink: "/articles/llm-leaderboards"
 articleType: BLOG
 author: Xavier Collantes
@@ -20,7 +20,7 @@ migrated to another form.
 
 ## HuggingFace Performance Leaderboard
 
-![HuggingFace Performance Leaderboard](/articles/images/llm-leaderboards/hg.webp)
+![HuggingFace Performance Leaderboard](/assets/images/llm-leaderboards/hg.webp)
 
 Compares pricing, context window, pricing, and response time. This one I have
 seen the most commonly referred to.
@@ -29,7 +29,7 @@ seen the most commonly referred to.
 
 ## MTEB Leaderboard
 
-![MTEB Leaderboard](/articles/images/llm-leaderboards/mteb.webp)
+![MTEB Leaderboard](/assets/images/llm-leaderboards/mteb.webp)
 
 This leaderboard compares 100+ text and image embedding models across 1000+
 languages. Great for finding many human languages.
@@ -38,7 +38,7 @@ languages. Great for finding many human languages.
 
 ## LLM Arena
 
-![LLM Arena](/articles/images/llm-leaderboards/arena.webp)
+![LLM Arena](/assets/images/llm-leaderboards/arena.webp)
 
 Great for ranking use-specific LLMs: Text, Image, Vision, Search, Text-to-Image.
 
@@ -46,7 +46,7 @@ Great for ranking use-specific LLMs: Text, Image, Vision, Search, Text-to-Image.
 
 ## LLM Stats
 
-![LLM Stats](/articles/images/llm-leaderboards/llmstats.webp)
+![LLM Stats](/assets/images/llm-leaderboards/llmstats.webp)
 
 Nice visual graph of LLM benchmarks. Contains the cutoff dates for training.
 
@@ -54,7 +54,7 @@ Nice visual graph of LLM benchmarks. Contains the cutoff dates for training.
 
 ## Vellum
 
-![Vellum](/articles/images/llm-leaderboards/vellum.webp)
+![Vellum](/assets/images/llm-leaderboards/vellum.webp)
 
 Latest public benchmark performance for SOTA model versions released after April 2024. The data comes from model providers as well as independently run
 evaluations by Vellum or the open-source community.

@@ -2,7 +2,7 @@
 title: "Large Language Models: For Non-Techies"
 cardDescription: "LLMs translated for Non-Techie's. When to use what."
 cardPageLink: "/articles/llms-for-non-techies"
-imagePath: "/articles/images/llm-for-non-techies/chess.webp"
+imagePath: "/assets/images/llm-for-non-techies/chess.webp"
 articleType: BLOG
 author: Xavier Collantes
 dateWritten: 2025-07-15
@@ -15,7 +15,7 @@ tagIds:
   - embeddings
 ---
 
-![Woman playing chess {priority}](/articles/images/llm-for-non-techies/chess.webp)
+![Woman playing chess {priority}](/assets/images/llm-for-non-techies/chess.webp)
 
 ## What Are Large Language Models?
 
@@ -24,7 +24,7 @@ Large Language Models (LLMs) are like the autocomplete feature on your phone.
 But in comparison your phone autocomplete is like a toaster compared to an LLM
 which is like a Komatsu D575A Super Dozer.
 
-![Komatsu D575A Super Dozer {h: 400}](/articles/images/llm-for-non-techies/komatsu.webp)
+![Komatsu D575A Super Dozer {h: 400}](/assets/images/llm-for-non-techies/komatsu.webp)
 
 _Toaster not shown._
 
@@ -44,7 +44,7 @@ But unlike humans, they do not actually "understand" anything. Computers have
 always been and are still dumb; they can only do what humans make them do.
 They are predicting what comes next based on patterns they have learned.
 
-![baby logic meme {h: 700}](/articles/images/llm-for-non-techies/babylogic.webp)
+![baby logic meme {h: 700}](/assets/images/llm-for-non-techies/babylogic.webp)
 
 For early LLMs, such a calculation as in the meme would have been
 difficult because the statement "my baby is twice as big in 3 months so in 10
@@ -69,7 +69,7 @@ factors. In this case: human babies will slow growing and stop after a time.
 Then you make a decision on how your tone is when you speak, on what subject to
 speak about, on which emotion to convey to the other person.
 
-![People meeting {h: 400}](/articles/images/llm-for-non-techies/male-friends-meeting-restaurant.webp)
+![People meeting {h: 400}](/assets/images/llm-for-non-techies/male-friends-meeting-restaurant.webp)
 
 > **Parameters work the same way**: Each factor is an input of the situation where
 > you make a decision based on learned biases and prior knowledge.
@@ -114,7 +114,7 @@ You should start caring about tokens if you plan to feed 2,000 legal
 documents or entire books into an LLM but if you are only asking questions to an
 LLM, then not so much.
 
-[![Infographic on context windows for LLMs](/articles/images/llm-for-non-techies/contextwindow.webp)](https://www.artfish.ai/p/long-context-llms)
+[![Infographic on context windows for LLMs](/assets/images/llm-for-non-techies/contextwindow.webp)](https://www.artfish.ai/p/long-context-llms)
 
 _[artfish.ai](https://www.artfish.ai/p/long-context-llms)_
 
@@ -136,7 +136,7 @@ Gemini 1.0 cost Google $192 million to train. So as you can imagine, not many
 companies train their own model. But that is okay, because there are far cheaper
 and easier ways to give the effect of specializing your model.
 
-[![training visual](/articles/images/llm-for-non-techies/costllm.webp)](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
+[![training visual](/assets/images/llm-for-non-techies/costllm.webp)](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
 
 [_VisualCapitalist.com_](https://www.visualcapitalist.com/the-surging-cost-of-training-ai-models)
 
@@ -154,7 +154,7 @@ then uses that context to generate an answer. The point where the data is
 injected is the context window like you would when you type questions into
 ChatGPT. RAG would find the relevant data and append the data to your question.
 
-[![RAG diagram](/articles/images/llm-for-non-techies/awsrag.webp)](https://aws.amazon.com/what-is/retrieval-augmented-generation)
+[![RAG diagram](/assets/images/llm-for-non-techies/awsrag.webp)](https://aws.amazon.com/what-is/retrieval-augmented-generation)
 
 [_AWS_](https://aws.amazon.com/what-is/retrieval-augmented-generation)
 
@@ -262,7 +262,7 @@ business.
 
 ## Beyond the Hype
 
-![iRobot meme {h: 600}](/articles/images/llm-for-non-techies/irobot.webp)
+![iRobot meme {h: 600}](/assets/images/llm-for-non-techies/irobot.webp)
 
 LLMs are powerful automation machines but not magic. They do not truly
 "understand" anything and they are predicting what text should come next based on

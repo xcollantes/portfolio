@@ -1,7 +1,7 @@
 ---
 title: "AI Chatbots: Giving relationship advice since 1966"
 cardDescription: "How AI development have changed exponentially and when we should expect our robot overlords."
-imagePath: /articles/images/history-ai/aimovie-preview.webp
+imagePath: /assets/images/history-ai/aimovie-preview.webp
 cardPageLink: "articles/history-ai"
 author: "Xavier Collantes"
 dateWritten: 2025-08-01
@@ -13,7 +13,7 @@ tagIds:
   - history
 ---
 
-![AI generated movie poster {priority} {h: 500}](/articles/images/history-ai/aimovie.webp)
+![AI generated movie poster {priority} {h: 500}](/assets/images/history-ai/aimovie.webp)
 
 _AI generated movie poster for when this blog gets a movie deal (including both
 CEOs of Alphabet and Google, respectively)._
@@ -25,7 +25,7 @@ pace of AI advancement.
 
 ## 1966: ELIZA
 
-[![IBM 7040 {h: 500}](/articles/images/history-ai/7040.webp)](https://en.wikipedia.org/wiki/IBM_7040#/media/File:IBM_7040_front_panel.jpg)
+[![IBM 7040 {h: 500}](/assets/images/history-ai/7040.webp)](https://en.wikipedia.org/wiki/IBM_7040#/media/File:IBM_7040_front_panel.jpg)
 
 Developed in 1966 at MIT by Joseph Weizenbaum, ELIZA was the first chatbot
 written for the IBM 7091. It was a simple program that simulated a
@@ -142,7 +142,7 @@ restaurant in East San Jose with $40,000 in capital. After near-bankruptcy in
 1996, the 1997 RIVA 128 became their breakthrough product, followed by the
 1999 invention of the GPU (Graphics Processing Unit) and successful IPO.
 
-[![NVIDIA RIVA 128](/articles/images/history-ai/riva.webp)](https://www.computer.org/publications/tech-news/chasing-pixels/famous-graphics-chips-nvidias-riva128)
+[![NVIDIA RIVA 128](/assets/images/history-ai/riva.webp)](https://www.computer.org/publications/tech-news/chasing-pixels/famous-graphics-chips-nvidias-riva128)
 
 ## 2006: NVIDIA Releases CUDA
 
@@ -158,7 +158,7 @@ means.
 
 Arguably the most important paper triggering the current AI revolution.
 
-![Google Brain logo {h: 300}](/articles/images/history-ai/brain.webp)
+![Google Brain logo {h: 300}](/assets/images/history-ai/brain.webp)
 
 Eight researchers at Google Brain publish the groundbreaking paper, [Attention
 Is All You Need](https://arxiv.org/abs/1706.03762), introducing the
@@ -179,7 +179,7 @@ Recurrent Neural Networks (RNNs):
 - Each word depends on the previous word's processing
 - Information flows like a chain: Word 1 → Word 2 → Word 3 → Word 4
 
-![Google Hat image {h: 300}](/articles/images/history-ai/hat.webp)
+![Google Hat image {h: 300}](/assets/images/history-ai/hat.webp)
 
 ### Critical Problems
 
@@ -229,7 +229,7 @@ interact with ChatGPT, Claude, or any modern AI assistant, you are interacting
 with a direct descendant of the transformer architecture introduced in this
 paper.
 
-![Google lobby {h: 400}](/articles/images/history-ai/lobby.webp)
+![Google lobby {h: 400}](/assets/images/history-ai/lobby.webp)
 
 _Me, really happy for my fellowGooglers who wrote a cool paper._
 
@@ -286,7 +286,7 @@ information directly into the word representations.
 
 ## 2018: OpenAI GPT-1
 
-![Sam Altman {h: 500}](/articles/images/history-ai/altman.webp)
+![Sam Altman {h: 500}](/assets/images/history-ai/altman.webp)
 
 OpenAI releases GPT-1, the first decoder-only transformer with 117 million
 parameters trained on BookCorpus.
@@ -305,7 +305,7 @@ by 2024.
 
 ## 2020: n8n Emerges as a Crucial Workflow Automation Platform
 
-[![Jan Oberhauser meetup {h: 500}](/articles/images/history-ai/n8n.webp)](https://community.n8n.io/t/berlin-august-2024-meetup-report/52706)
+[![Jan Oberhauser meetup {h: 500}](/assets/images/history-ai/n8n.webp)](https://community.n8n.io/t/berlin-august-2024-meetup-report/52706)
 
 n8n
 [emerges](https://techcrunch.com/2021/04/26/n8n-raises-12m-for-its-fair-code-approach-to-low-code-workflow-automation/)
@@ -317,7 +317,7 @@ capabilities to a new demographic of users.
 
 ## 2022: ChatGPT Launches the Modern AI Era
 
-[![Verge cover story {h: 400}](/articles/images/history-ai/verge.webp)](https://www.theverge.com/2022/12/8/23499728/ai-capability-accessibility-chatgpt-stable-diffusion-commercialization)
+[![Verge cover story {h: 400}](/assets/images/history-ai/verge.webp)](https://www.theverge.com/2022/12/8/23499728/ai-capability-accessibility-chatgpt-stable-diffusion-commercialization)
 
 OpenAI releases ChatGPT, built on GPT-3.5 and optimized using Reinforcement
 Learning from Human Feedback (RLHF), a three-step process including supervised
@@ -331,7 +331,7 @@ capabilities to mainstream awareness.
 
 ## 2023: LangChain Launches Application Development
 
-![Harrison Chase {h: 500}](/articles/images/history-ai/chase-ng.webp)
+![Harrison Chase {h: 500}](/assets/images/history-ai/chase-ng.webp)
 
 Harrison Chase creates LangChain, the first comprehensive framework for building
 applications with language models. LangChain addresses critical gaps in LLM
@@ -357,7 +357,7 @@ RAG.
 
 ## 2023: Meta's Open-Source Strategy
 
-[![Llama Zuck {h: 500}](/articles/images/history-ai/llamazuck.jpg)](https://www.facebook.com/photo/?fbid=10103763476220329&set=pcb.10103763477013739)
+[![Llama Zuck {h: 500}](/assets/images/history-ai/llamazuck.jpg)](https://www.facebook.com/photo/?fbid=10103763476220329&set=pcb.10103763477013739)
 
 Meta released LLaMA 1 to researchers, which subsequently leaked and enabled
 widespread open-source development. The July 2023 Llama 2 release with
@@ -373,7 +373,7 @@ factuality, steerability, and safety.
 
 ## 2023: Google's Bard Responds to ChatGPT
 
-![Google Bard logo {h: 300}](/articles/images/history-ai/bard.webp)
+![Google Bard logo {h: 300}](/assets/images/history-ai/bard.webp)
 
 Just 47 days after ChatGPT's launch, [Google announced
 Bard](https://www.reuters.com/technology/google-ai-chatbot-bard-offers-inaccurate-information-company-ad-2023-02-08/)
@@ -471,4 +471,4 @@ Computers] (in German) (1st ed.). Berlin: Projekt Verlag. pp. 53–70.
 
 [Exploring Topics: ChatGPT Users](https://explodingtopics.com/blog/chatgpt-users)
 
-![AI generated movie poster](/articles/images/history-ai/aimovie-alt.webp)
+![AI generated movie poster](/assets/images/history-ai/aimovie-alt.webp)
