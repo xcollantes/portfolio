@@ -357,7 +357,7 @@ RAG.
 
 ## 2023: Meta's Open-Source Strategy
 
-[![Llama Zuck {h: 500}](/assets/images/history-ai/llamazuck.jpg)](https://www.facebook.com/photo/?fbid=10103763476220329&set=pcb.10103763477013739)
+[![Llama Zuck {h: 500}](/assets/images/history-ai/llamazuck.webp)](https://www.facebook.com/photo/?fbid=10103763476220329&set=pcb.10103763477013739)
 
 Meta released LLaMA 1 to researchers, which subsequently leaked and enabled
 widespread open-source development. The July 2023 Llama 2 release with
