@@ -24,11 +24,6 @@ export function middleware(request: NextRequest) {
   if (request.url.match("verified=true")) {
     console.log("MIDDLEWARE: VERIFIED")
 
-    const cleanUrl = new URL(request.url)
-    cleanUrl.searchParams.delete("verified")
-    cleanUrl.searchParams.delete("intended")
-    cleanUrl.searchParams.delete("articleId")
-
     const response = NextResponse.next()
     const now = new Date()
     response.cookies.set(CLICK_CHECK_KEY, now.toDateString())

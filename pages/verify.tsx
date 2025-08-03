@@ -13,11 +13,26 @@ export default function Verify() {
   const [intendedUrl, setIntendedUrl] = useState<Url>()
 
   useEffect(() => {
-    const verifiedUrl = new URL(router.query.intended as string)
-    verifiedUrl.searchParams.set("verified", "true")
 
-    setIntendedUrl(verifiedUrl)
-  }, [router.isReady])
+    // Only process if router is ready and intended URL exists
+    if (!router.isReady || !router.query.intended) {
+      return
+    }
+
+    try {
+      const intendedUrlString = router.query.intended as string
+      const verifiedUrl = new URL(intendedUrlString)
+      verifiedUrl.searchParams.set("verified", "true")
+      setIntendedUrl(verifiedUrl)
+    } catch (error) {
+      console.error("Invalid intended URL:", router.query.intended, error)
+      // Fallback to home page if URL is invalid
+      const fallbackUrl = new URL("/", window.location.origin)
+      fallbackUrl.searchParams.set("verified", "true")
+      setIntendedUrl(fallbackUrl)
+    }
+
+  }, [router.isReady, router.query.intended])
 
   const whyMsg: string =
     "Simple solution to prevent scraping by search engines and bots."

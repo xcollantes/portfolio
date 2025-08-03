@@ -84,12 +84,12 @@ const h1Custom = (h1) => {
 
 const h2Custom = (h2) => {
   const id = generateHeaderId(h2.children)
-  return <Typography variant="h3" id={id}>{h2.children}</Typography>
+  return <Typography variant="h3" id={id} sx={{ mt: 5 }}>{h2.children}</Typography>
 }
 
 const h3Custom = (h3) => {
   const id = generateHeaderId(h3.children)
-  return <Typography variant="h4" id={id}>{h3.children}</Typography>
+  return <Typography variant="h4" id={id} sx={{ mt: 4 }}>{h3.children}</Typography>
 }
 
 const h4Custom = (h4) => {

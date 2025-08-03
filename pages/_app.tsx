@@ -105,6 +105,7 @@ export default function App({
           <Head>
             <link rel="icon" href="/icons/favicon.ico" />
             <meta
+              key="description"
               name="description"
               content="Career works of Xavier Collantes."
             />
@@ -114,29 +115,29 @@ export default function App({
             />
 
             {/* Open Graph meta tags for social sharing */}
-            <meta property="og:type" content="website" />
-            <meta property="og:url" content="https://xaviercollantes.dev" />
-            <meta property="og:title" content="Xavier Collantes" />
-            <meta property="og:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
-            <meta property="og:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="630" />
-            <meta property="og:image:alt" content="Xavier Collantes" />
-            <meta property="og:site_name" content="Xavier Collantes" />
+            <meta key="og:type" property="og:type" content="website" />
+            <meta key="og:url" property="og:url" content="https://xaviercollantes.dev" />
+            <meta key="og:title" property="og:title" content="Xavier Collantes" />
+            <meta key="og:description" property="og:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
+            <meta key="og:image" property="og:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
+            <meta key="og:image:width" property="og:image:width" content="1200" />
+            <meta key="og:image:height" property="og:image:height" content="630" />
+            <meta key="og:image:alt" property="og:image:alt" content="Xavier Collantes" />
+            <meta key="og:site_name" property="og:site_name" content="Xavier Collantes" />
 
             {/* Twitter Card meta tags */}
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content="Xavier Collantes" />
-            <meta name="twitter:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
-            <meta name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
-            <meta name="twitter:image:alt" content="Xavier Collantes" />
+            <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+            <meta key="twitter:title" name="twitter:title" content="Xavier Collantes" />
+            <meta key="twitter:description" name="twitter:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
+            <meta key="twitter:image" name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
+            <meta key="twitter:image:alt" name="twitter:image:alt" content="Xavier Collantes" />
 
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
             <GoogleAnalytics gaId="G-HB7D403D67" />
 
-            <title>Xavier Collantes</title>
+            <title key="title">Xavier Collantes</title>
           </Head>
 
           <CssBaseline />
