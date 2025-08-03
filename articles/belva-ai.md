@@ -1,7 +1,7 @@
 ---
 title: "Belva AI: Building LLM Microservices Infrastructure"
 cardDescription: "Developed API for LLM microservices."
-imagePath: "/assets/images/belva-ai/belva.png"
+imagePath: "/assets/images/belva-ai/belva.webp"
 cardPageLink: "articles/belva-ai"
 cardButtonText: "See more"
 author: "Xavier Collantes"
@@ -19,7 +19,7 @@ tagIds:
 At Belva AI I served as a Software Engineer building robust
 microservices infrastructure for AI-powered applications.
 
-![Belva AI](/assets/images/belva-ai/belva.png)
+![Belva AI](/assets/images/belva-ai/belva.webp)
 
 ### Technical Development and API Architecture
 

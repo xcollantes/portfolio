@@ -2,7 +2,7 @@
 title: Software Engineering, Google Search
 cardDescription: Improving Google Search for 2.7 billion users globally.
 cardPageLink: articles/google
-imagePath: /assets/images/google/circle_group_preview.jpeg
+imagePath: /assets/images/google/circle_group_preview.webp
 articleType: WORKEXP
 author: Xavier Collantes
 dateWritten: 2024-01-15
@@ -58,7 +58,7 @@ about 75% of time on Software Engineering tasks such as:
   Feature Engineers, UX designers, Program Managers, Product Managers, and Data
   Analysts
 
-![Image of group {priority}](/assets/images/google/circle_group.jpeg)
+![Image of group {priority}](/assets/images/google/circle_group.webp)
 
 Google uses mostly internal tools for the development of software but Google has
 made many available to the public. The following are the tools I am most
@@ -122,7 +122,7 @@ globally"_ was the catchphrase of a manager I once had, which summed up the
 complexity of issues at Google. Often in my work, it was not good enough to
 figure out a problem but how do you solve the issue for as many use cases?
 
-[![{h: 250}](/assets/images/google/xkcd.png)](https://xkcd.com/2797)
+[![{h: 250}](/assets/images/google/xkcd.webp)](https://xkcd.com/2797)
 
 Scaling at Google requires drawing lines in the project plan in scope. As a
 leader, you must say no to some features or functions which may over-extend the
