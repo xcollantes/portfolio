@@ -13,6 +13,7 @@ export default function Verify() {
   const [intendedUrl, setIntendedUrl] = useState<Url>()
 
   useEffect(() => {
+
     // Only process if router is ready and intended URL exists
     if (!router.isReady || !router.query.intended) {
       return
@@ -30,6 +31,7 @@ export default function Verify() {
       fallbackUrl.searchParams.set("verified", "true")
       setIntendedUrl(fallbackUrl)
     }
+
   }, [router.isReady, router.query.intended])
 
   const whyMsg: string =
