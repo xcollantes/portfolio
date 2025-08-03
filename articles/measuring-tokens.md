@@ -2,7 +2,7 @@
 title: Measuring Tokens in LLMs
 cardDescription: "Tokens mean $$$ and how to measure them."
 cardPageLink: articles/measuring-tokens
-imagePath: ""
+imagePath: /articles/images/measuring-tokens/chatgpt-preview.png
 articleType: BLOG
 author: Xavier Collantes
 tagIds:

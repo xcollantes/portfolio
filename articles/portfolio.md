@@ -4,7 +4,7 @@ author: Xavier Collantes
 dateWritten: 2024-01-24
 cardDescription: Evaluate technical trade-offs and code the website you're looking at.
 cardPageLink: "/articles/portfolio"
-imagePath: ""
+imagePath: "/articles/images/portfolio/markdown.webp"
 articleType: WORKEXP
 tagIds:
   [

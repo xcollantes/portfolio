@@ -2,7 +2,7 @@
 title: "Large Language Models: For Non-Techies"
 cardDescription: "LLMs translated for Non-Techie's. When to use what."
 cardPageLink: "/articles/llms-for-non-techies"
-imagePath: ""
+imagePath: "/articles/images/llm-for-non-techies/chess.webp"
 articleType: BLOG
 author: Xavier Collantes
 dateWritten: 2025-07-15
