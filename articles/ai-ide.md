@@ -6,7 +6,7 @@ dateWritten: 2025-05-01
 dateLastUpdated: 2025-07-30
 cardPageLink: "/articles/ai-ide"
 articleType: BLOG
-imagePath: ""
+imagePath: "/assets/images/ai-ide/replit.gif"
 tagIds:
   - ai
   - llm
@@ -27,12 +27,23 @@ My needs:
 - AI which made diff changes but I still need to review and approve
 - Close to what I was using, VSCode
 
+At this point, AI IDEs have matured significantly. But I am always a bit
+skeptical...
+
+![AI IDEs](/assets/images/ai-ide/sv.webp)
+
 ## The Contenders
 
 ### Cursor: VSCode Clone
 
+![Cursor](/assets/images/ai-ide/cursor.webp)
+
+[cursor.com](https://cursor.com/)
+
 Looks just like VSCode, but with AI assistance. You are able to switch between
 models like Sonnet, GPT-4o, Gemini, etc. along with their "thinking" variants.
+
+![Cursor chatbox](/assets/images/ai-ide/agent.webp)
 
 **Pros:**
 
@@ -52,6 +63,10 @@ models like Sonnet, GPT-4o, Gemini, etc. along with their "thinking" variants.
   discontent](https://www.reddit.com/r/singularity/comments/1ls951k/cursors_recent_pricing_change_was_met_with_strong/)
 
 ### Replit: For Non-Coders
+
+![Replit](/assets/images/ai-ide/replit.gif)
+
+[replit.com](https://replit.com/)
 
 I was shocked at how my friend who has no coding experience, was able to create
 a web app with a set of prompts. The app has a simple Tailwind UI with simple
@@ -76,21 +91,23 @@ password login and user management.
   debug it manually was a challenge because it would be the first time looking
   at the source code
 
-<!-- ### Claude Code: The Specialist
+### Claude Code: Terminal Lover's Dream
+
+![Claude Code](/assets/images/ai-ide/claude.webp)
+
+[claude.ai/code](https://claude.ai/code)
 
 **Pros:**
 
-- Purpose-built for LLM development with Claude integration
-- Excellent prompt engineering tools and testing workflows
-- Sophisticated conversation management and context handling
-- Clear focus on responsible AI development practices
+- You can run on terminal so great for headless development or if you just
+  prefer terminal editors like nano or vim
+- Part of Claude's Pro plan so no need to worry about pricing
 
 **Cons:**
 
-- Limited to Anthropic's ecosystem (though Claude is excellent)
-- Less flexibility for integrating other tools and frameworks
-- Still felt like an early-stage product with missing features
-- Collaboration features were basic compared to general-purpose IDEs -->
+- There is no GUI so you have to use the terminal
+- You can have multiple terminals working on the same project but you may have
+  to deal with merge conflicts
 
 ## My Final Decision
 
