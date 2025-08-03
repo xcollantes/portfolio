@@ -1,7 +1,7 @@
 ---
 title: "Faxion AI: Building an AI Fashion Platform"
 cardDescription: "Architecting and leading the development of a groundbreaking AI fashion platform that reduced cloud costs by 80% and supports thousands of daily users."
-imagePath: "/articles/images/faxion-ai/logo.png"
+imagePath: "/assets/images/faxion-ai/logo.png"
 cardPageLink: "articles/faxion-ai"
 cardButtonText: "See more"
 author: "Xavier Collantes"
@@ -14,8 +14,8 @@ tagIds:
 ---
 
 <div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
-  <img src="/articles/images/faxion-ai/girlmodel.png" alt="Faxion AI web app girl" style="height: 10%; max-height: 70px;" />
-  <img src="/articles/images/faxion-ai/memodel.png" alt="Faxion AI web app me" style="height: 10%; max-height: 70px;" />
+  <img src="/assets/images/faxion-ai/girlmodel.png" alt="Faxion AI web app girl" style="height: 10%; max-height: 70px;" />
+  <img src="/assets/images/faxion-ai/memodel.png" alt="Faxion AI web app me" style="height: 10%; max-height: 70px;" />
 </div>
 
 <p style="text-align:center;font-style:italic;">Find your next outfit with Faxion AI</p>
@@ -33,8 +33,8 @@ ready for market.
 ### Recognition & Traction
 
 <div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
-  <img src="/articles/images/faxion-ai/nvidia-inception-program.png" alt="Nvidia Inception Program" style="width: 45%; max-width: 350px;" />
-  <img src="/articles/images/faxion-ai/beta.png" alt="Beta Program" style="width: 45%; max-width: 350px;" />
+  <img src="/assets/images/faxion-ai/nvidia-inception-program.png" alt="Nvidia Inception Program" style="width: 45%; max-width: 350px;" />
+  <img src="/assets/images/faxion-ai/beta.png" alt="Beta Program" style="width: 45%; max-width: 350px;" />
 </div>
 
 Our product has rapidly progressed to beta testing stage and is available at

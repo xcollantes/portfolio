@@ -38,7 +38,7 @@ still achieving a Time to Interactive of 10 seconds or less.
 
 \# TODO: Lighthouse screenshot
 
-![Image of Lighthouse](/articles/images/web_opt/lighthouse.webp)
+![Image of Lighthouse](/assets/images/web_opt/lighthouse.webp)
 
 ### Chrome Devtools: Lighthouse
 

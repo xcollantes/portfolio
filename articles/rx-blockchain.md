@@ -4,7 +4,7 @@ author: Xavier Collantes
 cardDescription: "Sponsored and mentored a Gonzaga University student engineering capstone project."
 cardPageLink: "/articles/rx-blockchain"
 articleType: WORKEXP
-imagePath: "/articles/images/rx_blockchain/group.webp"
+imagePath: "/assets/images/rx_blockchain/group.webp"
 tagIds:
   [
     "leadership",
@@ -16,7 +16,7 @@ tagIds:
   ]
 ---
 
-![{h: 500} {priority}](/articles/images/rx_blockchain/signage.webp)
+![{h: 500} {priority}](/assets/images/rx_blockchain/signage.webp)
 
 In 2018, I sponsored a student engineering capstone team at Gonzaga University.
 Shortly after graduating, I wanted to continue making an impact in my community
@@ -80,15 +80,15 @@ introduce subject-matter experts if need be.
 
 ## Meeting on Senior Day
 
-![{h: 350}](/articles/images/rx_blockchain/group.webp)
+![{h: 350}](/assets/images/rx_blockchain/group.webp)
 
 As the close of their student careers, the students were all excited; especially
 our team. The exposition day for the senior projects was the first our team had
 met in person.
 
-![](/articles/images/rx_blockchain/busy.webp)
+![](/assets/images/rx_blockchain/busy.webp)
 
-![](/articles/images/rx_blockchain/mehek_explains.webp)
+![](/assets/images/rx_blockchain/mehek_explains.webp)
 
 When noon came, our team had reviewed other booths and I was delighted at the
 ingenuity of the other engineering student groups. I was so proud of our group
@@ -97,9 +97,9 @@ agree to have a sponsor as young as me.
 
 ## Winning 1st place
 
-![](/articles/images/rx_blockchain/judges.webp)
+![](/assets/images/rx_blockchain/judges.webp)
 
-![](/articles/images/rx_blockchain/show_judge.webp)
+![](/assets/images/rx_blockchain/show_judge.webp)
 
 ###### Panel composed of professors
 
@@ -107,4 +107,4 @@ The professors were impressed and our team was awarded 1st place in the
 Computer Science Department and 3rd out of 50 in the School of Engineering
 overall!
 
-![](/articles/images/rx_blockchain/cool.webp)
+![](/assets/images/rx_blockchain/cool.webp)

@@ -3,7 +3,7 @@ title: Bulldog Band
 author: Xavier Collantes
 cardDescription: As the "Fungineer" of the Gonzaga University Bulldog Band, responsibilities include keeping morale up for the 80+ members on weekly trips nation for March Madness.
 cardPageLink: /articles/bulldog-band
-imagePath: "/articles/images/bulldog_band/saxtv.gif"
+imagePath: "/assets/images/bulldog_band/saxtv.gif"
 articleType: BLOG
 tagIds: ["interests", "gonzaga", "music"]
 ---
@@ -32,13 +32,13 @@ let alone seats court-side.
 _What does one have to do for all this?_ Show up with an instrument and be
 prepared to cheer and dance around.
 
-![{priority} {h: 300}](/articles/images/bulldog_band/rafa.webp)
+![{priority} {h: 300}](/assets/images/bulldog_band/rafa.webp)
 
 ###### _Credit: [Rob Harris](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)_
 
 ## "Fungineer"
 
-![{h: 400}](/articles/images/bulldog_band/hug.webp)
+![{h: 400}](/assets/images/bulldog_band/hug.webp)
 
 ###### _Credit: [Gonzaga Bulletin](https://www.gonzaga.edu/student-life/student-affairs/our-departments-and-programs/student-media/gonzaga-bulletin)_
 
@@ -68,7 +68,7 @@ leader must be attuned to the temperature of the team and how the people in the
 team feel and reconciling the team's emotional temperature with desired feeling
 you want to convey or steer the group into.
 
-![{h: 300}](/articles/images/bulldog_band/tv.webp)
+![{h: 300}](/assets/images/bulldog_band/tv.webp)
 
 Imagine the last home game in before the tournament, the whole arena is glum,
 [Zags down
@@ -91,7 +91,7 @@ down... The band faces the crowd and transfers their war yell across the
 arena... You see the crowd of 6,000 stand up and the noise in the area reaches a
 fever pitch.
 
-![](/articles/images/bulldog_band/commercial.webp)
+![](/assets/images/bulldog_band/commercial.webp)
 
 Congratulations, you are a Fungineer. Like the drovers of the old Wild American
 West, herding cattle across miles and reining strays; you are a wrangler of
@@ -104,10 +104,10 @@ NCAA Final Four for the first time, the local news station requested an
 interview which can be seen here:
 [king5.com](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
-[![](/articles/images/bulldog_band/interview_krem.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+[![](/assets/images/bulldog_band/interview_krem.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
-[![](/articles/images/bulldog_band/sax_camera.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+[![](/assets/images/bulldog_band/sax_camera.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
-[![](/articles/images/bulldog_band/packing.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+[![](/assets/images/bulldog_band/packing.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
 
-[![](/articles/images/bulldog_band/courtside_snap.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)
+[![](/assets/images/bulldog_band/courtside_snap.webp)](https://www.king5.com/article/sports/gonzaga-bulldogs/bulldog-band-brings-energy-to-gonzaga-games/293-426827234)

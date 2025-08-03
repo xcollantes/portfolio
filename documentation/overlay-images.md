@@ -55,7 +55,7 @@ public/
 ### Directory Examples
 
 ```text
-public/articles/images/
+public/assets/images/
 ├── anderson-podcast/
 │   └── andersonpodcast.png
 ├── history-ai/
@@ -68,11 +68,11 @@ public/articles/images/
 
 ### 1. Create Image Directory
 
-Create a directory under `public/articles/images/` with the exact name of your
+Create a directory under `public/assets/images/` with the exact name of your
 article file (without the `.md` extension):
 
 ```bash
-mkdir public/articles/images/my-article-name
+mkdir public/assets/images/my-article-name
 ```
 
 ### 2. Add Your Image
@@ -80,7 +80,7 @@ mkdir public/articles/images/my-article-name
 Place your overlay image in the directory:
 
 ```bash
-cp my-overlay-image.webp public/articles/images/my-article-name/
+cp my-overlay-image.webp public/assets/images/my-article-name/
 ```
 
 ### 3. Update Article Metadata
@@ -93,7 +93,7 @@ articleType: "BLOG"
 title: "My Article Title"
 cardDescription: "Article description"
 cardPageLink: "/articles/my-article-name"
-imagePath: "/articles/images/my-article-name/my-overlay-image.webp"
+imagePath: "/assets/images/my-article-name/my-overlay-image.webp"
 tagIds:
   - tag1
   - tag2

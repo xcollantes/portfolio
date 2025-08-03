@@ -4,13 +4,13 @@ cardDescription: Homemade internet-of-things private cloud motion-detecting came
 cardPageLink: "/articles/rpi-camera"
 author: Xavier Collantes
 articleType: BLOG
-imagePath: "/articles/images/rpi_camera/sample.gif"
+imagePath: "/assets/images/rpi_camera/sample.gif"
 tagIds: ["electronics", "iot", "python"]
 ---
 
 ## A homemade solution
 
-![Video sample {priority}](/articles/images/rpi_camera/sample.gif)
+![Video sample {priority}](/assets/images/rpi_camera/sample.gif)
 
 _Why not just buy a system?_
 
@@ -26,7 +26,7 @@ functionality close to what existed commercially. The challenge would not be
 creating my own software for a motion detector but **integrating** several
 existing technologies to achieve my requirements.
 
-![{h: 300}](/articles/images/rpi_camera/zucc.webp)
+![{h: 300}](/assets/images/rpi_camera/zucc.webp)
 
 There were many challenges such as:
 
@@ -37,7 +37,7 @@ There were many challenges such as:
 - What threshold settings to use -> I experimented with my specfiic setting
   given the lights
 
-![Challenges gif](/articles/images/rpi_camera/blurry.gif)
+![Challenges gif](/assets/images/rpi_camera/blurry.gif)
 
 _Example where video was triggered by movement of the sun. The settings were too
 sensitive since the sun's light would change too many pixels which resulted in
@@ -70,7 +70,7 @@ functionalities by priority:
 
 ### Software
 
-![{h: 100}](/articles/images/rpi_camera/rclone.svg)
+![{h: 100}](/assets/images/rpi_camera/rclone.svg)
 
 My solution, MoCam, is an implementation of
 [motion-project.github.io](https://motion-project.github.io). I combined the
@@ -89,7 +89,7 @@ Required hardware is a Raspberry Pi, preferably at least 2 GB of RAM since
 processing the video puts strain on the machine. Lower RAM machines were not
 tested such as the Raspberry Pico.
 
-![{h: 200}](/articles/images/rpi_camera/rpi.webp)
+![{h: 200}](/assets/images/rpi_camera/rpi.webp)
 
 A camera is also needed. I found the best results with a USB camera since it's
 fairly easy to setup as well. There is a Raspberry Pis Module Camera
@@ -102,4 +102,4 @@ pitfalls"](https://github.com/xcollantes/mocam/blob/master/README.md#common-pitf
 There are some commands needed to find the ID of the camera as this is needed
 for the Docker image.
 
-![{h: 200}](/articles/images/rpi_camera/usb_camera.webp)
+![{h: 200}](/assets/images/rpi_camera/usb_camera.webp)

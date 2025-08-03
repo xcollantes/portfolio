@@ -3,7 +3,7 @@ title: Dean of the Gonzaga School of Business' podcast
 cardDescription: Weekly podcast hosted by Dr. Kenneth Anderson with guest Xavier Collantes.
 cardPageLink: articles/anderson-podcast
 cardButtonText: Watch video
-imagePath: /articles/images/anderson-podcast/andersonpodcast.png
+imagePath: /assets/images/anderson-podcast/andersonpodcast.png
 articleType: BLOG
 tagIds: ["interests", "gonzaga", "business", "podcast", "alumni"]
 ---
