@@ -5,9 +5,11 @@ dateWritten: 06/01/2016
 articleType: WORKEXP
 cardDescription: Constructing a data pipeline responsible for $500 million in finance sales.
 cardPageLink: "/articles/itron"
-imagePath: ""
+imagePath: "/assets/images/itron.webp"
 tagIds: ["itron", "internship", "engineering", "data", "business", "bi"]
 ---
+
+![Itron logo {priority} {h: 450}](/assets/images/itron.webp)
 
 Liberty Lake, WA in 2016, I had the opportunity to be an intern at Itron, Inc.,
 a technology company for utility meters, smart meters, and data management of
