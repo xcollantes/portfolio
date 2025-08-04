@@ -197,11 +197,17 @@ export default function article({
               )}
             </Box>
 
-            <ShareButton
-              shareUrl={`https://xaviercollantes.dev/articles/${articleId}`}
-              title={metadata.title}
-              description={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`}
-            />
+            {articleId && (
+              <ShareButton
+                shareUrl={`https://xaviercollantes.dev/articles/${articleId}`}
+                title={metadata.title}
+                description={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`}
+                pageType="article"
+                pageId={articleId as string}
+                campaign="article_share"
+                content={metadata.title}
+              />
+            )}
 
             <Divider sx={{ my: 3 }} />
 
