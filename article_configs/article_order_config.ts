@@ -40,6 +40,7 @@ export const orderedIncludeBlogs: string[] = [
   // "aws-gpu-selection-guide.md",
 
   "llm-leaderboards.md",
+  "llm-testing.md",
   "fastapi.md",
   "anderson-podcast.md",
   // "gist-example.md",

@@ -113,6 +113,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Public benchmark performance for LLM models"
   },
 
+  "llm-testing.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about LLM testing and quality control metrics"
+  },
+
   "rag-langchain.md": {
     bypassVerification: true,
     allowSearchIndexing: true,
