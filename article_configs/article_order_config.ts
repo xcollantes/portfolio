@@ -30,17 +30,20 @@ export const orderedIncludeBlogs: string[] = [
   "measuring-tokens.md",
   "gonzaga-speaker-infosys.md",
   "bulldog-band.md",
-  "ai-ide.md",
-  "radio.md",
+
   "rpi-camera.md",
+  "langchain.md",
+  "ollama.md",
+  "radio.md",
+  "ai-ide.md",
 
   // IN PROGRESS.
   // "choosing-embeddings.md",
   // "vector-databases.md",
   // "aws-gpu-selection-guide.md",
 
-  "llm-leaderboards.md",
   "llm-testing.md",
+  "llm-leaderboards.md",
   "fastapi.md",
   "anderson-podcast.md",
   // "gist-example.md",

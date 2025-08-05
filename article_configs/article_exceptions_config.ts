@@ -131,6 +131,18 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Public history of AI development"
   },
 
+  "langchain.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about LangChain framework pros and cons"
+  },
+
+  "ollama.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about Ollama local LLM deployment"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
