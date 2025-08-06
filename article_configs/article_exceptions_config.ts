@@ -143,6 +143,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content about Ollama local LLM deployment"
   },
 
+  "leadership.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Professional leadership experience suitable for career showcase"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {

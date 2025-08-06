@@ -33,6 +33,7 @@ export const orderedIncludeBlogs: string[] = [
 
   "rpi-camera.md",
   "langchain.md",
+  "leadership.md",
   "ollama.md",
   "radio.md",
   "ai-ide.md",
