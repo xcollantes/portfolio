@@ -3,7 +3,7 @@ title: "10x my productivity with AI IDEs"
 cardDescription: "My Journey Through Cursor, Replit, and VSCode"
 author: Xavier Collantes
 dateWritten: 2025-05-01
-dateLastUpdated: 2025-07-30
+dateLastUpdated: 2025-08-06
 cardPageLink: "/articles/ai-ide"
 articleType: BLOG
 imagePath: "/assets/images/ai-ide/replit.gif"
@@ -57,6 +57,7 @@ models like Sonnet, GPT-4o, Gemini, etc. along with their "thinking" variants.
 - Add images to help the LLM understand the context; for example, I gave the LLM
   an image of a color palette and it was able to generate a Tailwind CSS class
   based on the color palette
+- You can connect MCPs to your project
 
 - **Cons:**
 
@@ -107,30 +108,72 @@ password login and user management.
 - Part of Claude's Pro plan so no need to worry about pricing
 - Works best if your IDE has a terminal in which case, integrates better with
   your workflow
+- You can process images by dragging and dropping them [into the
+  terminal](https://docs.anthropic.com/en/docs/claude-code/common-workflows#work-with-images)
+- You can connect MCPs to your project
+- Customizable `CLAUDE.md` file to set up your project for programming
+  conventions, instructions, and how to structure your codebase
 
 **Cons:**
 
 - There is no GUI so you have to use the terminal
 - You can have multiple terminals working on the same project but you may have
   to deal with merge conflicts
-- Text only input
 
 ## My Final Decision
 
-I decided on Cursor.
+Previously...
 
-- ✅ AI which had context of my codebase
-- ✅ AI which made diff changes but I still need to review and approve
-- ✅ Close to what I was using, VSCode
+> I decided on Cursor.
+>
+> - ✅ AI which had context of my codebase
+> - ✅ AI which made diff changes but I still need to review and approve
+> - ✅ Close to what I was using, VSCode
 
-Cursor made some updates to their unclear pricing model which mitigated my
-reservations on their Byzantine pricing model.
+Now...
+
+I switched from Cursor to Claude Code. As I found out more about Claude Code
+features such as the `CLAUDE.md` file, ability to pull Github Issues and push
+Github PRs, along with fact Claude Code is part of Claude's Pro plan which I
+already had, the choice was more clear.
+
+I could still use Cursor or VSCode as an editor but now I can have Claude Code
+open in the in-editor terminal.
+
+### Price
+
+Cursor has always had friction and controversy with its pricing model.
+Personally, I was not sure when I would hit the token-based limit for my $20 /
+month tier plan. In the last month I did hit the limit and started paying at a
+variable rate.
+
+With Claude Code, the pricing is more straightforward. You pay $20 / month for
+the Pro plan and $20 / month which includes all the features of Claude Code.
+
+_These prices and tier terms are as of August 2025._
+
+### External Abilities
+
+Claude Code has external abilities which are not available in Cursor.
+
+Both Cursor and Claude Code can interface with MCPs, but Claude Code has a few
+more external abilities.
+
+- Pull Github Issues and push Github PRs
+- Use command line to run commands while restricting some dangerous commands
+  like `rm -rf`
+
+### Per Project Settings
+
+Optionally you can define a file called `CLAUDE.md` and this can contain your
+instructions for a project which may have differing coding conventions, variable
+naming, file structure, etc.
 
 ## Key Takeaways
 
-If you are working solo and value AI assistance, **Cursor** provides the best
-balance of power and usability. The learning curve is minimal if you are already
-comfortable with VSCode.
+If you are working solo and value AI assistance, **Claude Code** provides the
+best balance of power and usability. The learning curve is minimal if you are
+already comfortable with terminal.
 
 > But as all things in AI... this may all change in the next week or days. I
 > suggest buying only a monthly subscription and canceling if you are not happy.
