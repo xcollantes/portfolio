@@ -113,6 +113,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Public benchmark performance for LLM models"
   },
 
+  "llm-testing.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about LLM testing and quality control metrics"
+  },
+
   "rag-langchain.md": {
     bypassVerification: true,
     allowSearchIndexing: true,
@@ -123,6 +129,24 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     bypassVerification: true,
     allowSearchIndexing: true,
     reason: "Public history of AI development"
+  },
+
+  "langchain.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about LangChain framework pros and cons"
+  },
+
+  "ollama.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about Ollama local LLM deployment"
+  },
+
+  "leadership.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Professional leadership experience suitable for career showcase"
   },
 
   // TEMPLATE FOR NEW ADDITIONS
