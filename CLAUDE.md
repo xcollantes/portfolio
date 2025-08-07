@@ -18,6 +18,12 @@ npm start
 npm run lint
 ```
 
+## Good Practices
+
+- Suggest changes but don't write them yourself
+- Use TypeScript types
+- Never use the em-dash or the "—" character
+
 ## Project Architecture
 
 This is a Next.js portfolio website built with TypeScript, Material-UI, and a custom article management system.
@@ -25,24 +31,28 @@ This is a Next.js portfolio website built with TypeScript, Material-UI, and a cu
 ### Key Architectural Components
 
 **Article Management System**: The core feature is a sophisticated article processing system with access control:
+
 - Articles are stored as Markdown files in `articles/` directory with YAML frontmatter
 - `article_configs/process_articles.ts` handles Markdown processing and metadata extraction
 - Articles must be explicitly included in `article_configs/article_order_config.ts` to be accessible
 - Default security policy requires human verification for all articles
 - Exception system in `article_configs/article_exceptions_config.ts` allows specific articles to bypass verification and be publicly searchable
 
-**Access Control & Security**: 
+**Access Control & Security**:
+
 - `middleware.ts` implements verification system that requires users to pass a simple check before accessing articles
 - Articles can be configured as exceptions to bypass verification via `shouldBypassVerification()`
 - Only exception articles are indexed by search engines; others have `noindex`
 - NextAuth integration available but currently disabled in favor of simple verification
 
 **Content Types**:
+
 - Articles support two types: "BLOG" and "WORKEXP" (work experience)
 - Recommendations system with LinkedIn-style endorsements stored in `recommendations/ordered_recommendations.yaml`
 - Filter system allows tagging and categorization via `article_configs/filters_config.ts`
 
 **Component Architecture**:
+
 - Material-UI theming with custom dark mode (`themes/theme.ts`, `contexts/colorMode.tsx`)
 - Responsive design with different navbar configurations for different pages
 - Analytics integration with custom tracking (`components/AnalyticsUtils.ts`)
@@ -64,6 +74,7 @@ Copy `.env.production.example` to set up environment variables. Key variables in
 ### Article Access Control
 
 By default, articles require verification. To make articles public:
+
 - Add to `articleExceptions` with `bypassVerification: true` and `allowSearchIndexing: true`
 - Only add articles that meet criteria: professional work, educational content, no sensitive information
 - Use helper functions: `shouldBypassVerification()`, `shouldAllowSearchIndexing()`
