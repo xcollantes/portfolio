@@ -13,13 +13,10 @@ export const orderedIncludeWorkExp: string[] = [
   "faxion-ai.md",
   "google.md",
   "belva-ai.md",
-  // "cloud.md",
   "portfolio.md",
   "rx-blockchain.md",
   "itron.md",
   "housing.md",
-  //  "amazon-price.md",
-  //  "google-home.md",
 ]
 
 // BLOGS
@@ -45,11 +42,9 @@ export const orderedIncludeBlogs: string[] = [
   "anderson-podcast.md",
   // "gist-example.md",
   "web-opt.md",
-  // "pandas-styling-cheatsheet.md",
 
   "streamlit-cheatsheet.md",
   "json-python.md",
-  // "sql-cheatsheet.md",
   "easter-eggs.md",
 ]
 
