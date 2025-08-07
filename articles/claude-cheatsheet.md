@@ -3,7 +3,7 @@ title: "Claude Code Cheatsheet"
 author: Xavier Collantes
 dateWritten: 2025-08-06
 articleType: BLOG
-cardDescription: "Cheatsheet for Claude"
+cardDescription: "Quick guide to using Claude Code"
 cardPageLink: "/articles/claude-cheatsheet"
 imagePath: "/assets/images/claude/claude-code.webp"
 tagIds:
