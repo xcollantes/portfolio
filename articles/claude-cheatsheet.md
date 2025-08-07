@@ -5,7 +5,7 @@ dateWritten: 2025-08-06
 articleType: BLOG
 cardDescription: "Quick guide to using Claude Code"
 cardPageLink: "/articles/claude-cheatsheet"
-imagePath: "/assets/images/claude/claude-code.webp"
+imagePath: "/assets/images/claude/claude.gif"
 tagIds:
   - llm
   - ai
