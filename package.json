@@ -45,6 +45,7 @@
     "rehype-raw": "^7.0.0",
     "remark": "^14.0.3",
     "remark-html": "^15.0.2",
+    "resend": "^6.0.0",
     "sonner": "^2.0.6",
     "yaml": "^2.3.4"
   },
