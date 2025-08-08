@@ -175,10 +175,6 @@ export default function Recs(props: RecsProps) {
 
   if (!recommendations.length) return null
 
-  const currentRec = recommendations[currentIndex]
-  const nextRec = recommendations[(currentIndex + 1) % recommendations.length]
-  const prevRec = recommendations[currentIndex === 0 ? recommendations.length - 1 : currentIndex - 1]
-
   return (
     <>
       <Box 
@@ -213,257 +209,190 @@ export default function Recs(props: RecsProps) {
           alignItems: 'center', 
           justifyContent: 'center',
           position: 'relative',
+          overflow: 'hidden',
           px: 2
         }}>
           
-          {/* Previous character preview */}
+          {/* Carousel track that slides */}
           <Box
             sx={{
-              position: 'absolute',
-              left: isMobile ? 10 : 50,
-              zIndex: 1,
-              transform: 'scale(0.6)',
-              opacity: 0.4,
-              cursor: 'pointer',
-              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-              '&:hover': {
-                opacity: 0.8,
-                transform: 'scale(0.7)',
-              }
-            }}
-            onClick={prevRecommendation}
-          >
-            <Avatar
-              src={prevRec.metadataObject.profileImagePath}
-              alt={prevRec.metadataObject.name}
-              sx={{ 
-                width: 120, 
-                height: 120,
-                border: `3px solid ${theme.palette.common.white}`,
-                mb: 1,
-                transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                filter: isAnimating ? 'blur(2px)' : 'none',
-              }}
-            />
-            <Typography 
-              variant="caption" 
-              color="white" 
-              sx={{ 
-                display: 'block', 
-                textAlign: 'center',
-                fontSize: '0.7rem',
-                transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                opacity: isAnimating ? 0.2 : 1,
-              }}
-            >
-              {prevRec.metadataObject.name.split(' ')[0]}
-            </Typography>
-          </Box>
-
-          {/* Main character card */}
-          <Card 
-            key={`card-${currentRec.fileId}`}
-            sx={{ 
-              width: isMobile ? 320 : 480,
-              maxHeight: '80vh',
-              borderRadius: 4,
-              boxShadow: isAnimating 
-                ? '0 30px 60px rgba(0,0,0,0.4)' 
-                : '0 20px 40px rgba(0,0,0,0.3)',
-              transform: isAnimating 
-                ? 'translateY(-30px) scale(1.05) rotateX(2deg)' 
-                : 'translateY(-20px) scale(1) rotateX(0deg)',
-              background: theme.palette.background.paper,
-              overflow: 'hidden',
               display: 'flex',
-              flexDirection: 'column',
-              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-              transformStyle: 'preserve-3d',
-              animation: isAnimating ? 'none' : 'slideInFromBottom 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
-              '@keyframes slideInFromBottom': {
-                '0%': {
-                  opacity: 0,
-                  transform: 'translateY(50px) scale(0.9)',
-                },
-                '100%': {
-                  opacity: 1,
-                  transform: 'translateY(-20px) scale(1)',
-                },
-              },
+              alignItems: 'center',
+              transition: 'transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+              transform: `translateX(${-currentIndex * (isMobile ? 340 : 500)}px)`,
+              gap: isMobile ? '20px' : '40px',
             }}
           >
-            {/* Character image section */}
-            <Box sx={{ 
-              textAlign: 'center', 
-              p: 3, 
-              background: `linear-gradient(to bottom, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
-              color: 'white',
-            }}>
-              <Avatar
-                key={currentRec.fileId} // Force re-render for smooth image transition
-                src={currentRec.metadataObject.profileImagePath}
-                alt={currentRec.metadataObject.name}
-                sx={{ 
-                  width: isMobile ? 120 : 160, 
-                  height: isMobile ? 120 : 160,
-                  mx: 'auto',
-                  mb: 2,
-                  border: '4px solid white',
-                  boxShadow: isAnimating 
-                    ? '0 12px 24px rgba(0,0,0,0.4)' 
-                    : '0 8px 16px rgba(0,0,0,0.2)',
-                  transform: isAnimating ? 'scale(1.1)' : 'scale(1)',
-                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                  filter: isAnimating ? 'brightness(1.2) saturate(1.2)' : 'brightness(1) saturate(1)',
-                }}
-              />
-              <Typography 
-                key={`name-${currentRec.fileId}`}
-                variant="h5" 
-                gutterBottom 
-                sx={{ 
-                  fontWeight: 'bold',
-                  opacity: isAnimating ? 0.8 : 1,
-                  transform: isAnimating ? 'scale(1.05)' : 'scale(1)',
-                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                }}
-              >
-                {currentRec.metadataObject.name}
-              </Typography>
-              <Typography 
-                key={`headline-${currentRec.fileId}`}
-                variant="subtitle1" 
-                sx={{ 
-                  opacity: 0.9,
-                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                  transitionDelay: '0.1s',
-                }}
-              >
-                {currentRec.metadataObject.headline}
-              </Typography>
-              <Typography 
-                key={`relationship-${currentRec.fileId}`}
-                variant="body2" 
-                sx={{ 
-                  opacity: 0.8, 
-                  mt: 1,
-                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                  transitionDelay: '0.2s',
-                }}
-              >
-                {currentRec.metadataObject.relationship}
-              </Typography>
-              <Typography 
-                key={`date-${currentRec.fileId}`}
-                variant="caption" 
-                sx={{ 
-                  opacity: 0.7, 
-                  mt: 1, 
-                  display: 'block',
-                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                  transitionDelay: '0.3s',
-                }}
-              >
-                {new Date(currentRec.metadataObject.dateCreated).toLocaleDateString()}
-              </Typography>
-            </Box>
+            {recommendations.map((rec, index) => {
+              const offset = index - currentIndex;
+              const isCenter = offset === 0;
+              const isAdjacent = Math.abs(offset) === 1;
+              const isVisible = Math.abs(offset) <= 2;
+              
+              if (!isVisible) return null;
 
-            {/* Recommendation content */}
-            <CardContent sx={{ 
-              flex: 1, 
-              overflow: 'auto',
-              p: 3,
-              opacity: isAnimating ? 0.7 : 1,
-              transform: isAnimating ? 'scale(0.98)' : 'scale(1)',
-              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-              '&::-webkit-scrollbar': {
-                width: '6px',
-              },
-              '&::-webkit-scrollbar-track': {
-                background: '#f1f1f1',
-                borderRadius: '3px',
-              },
-              '&::-webkit-scrollbar-thumb': {
-                background: theme.palette.primary.main,
-                borderRadius: '3px',
-              },
-            }}>
-              <div 
-                key={`content-${currentRec.fileId}`}
-                dangerouslySetInnerHTML={{ __html: currentRec.htmlBody }} 
-                style={{ 
-                  lineHeight: 1.6,
-                  fontSize: isMobile ? '0.9rem' : '1rem',
-                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                }}
-              />
-            </CardContent>
+              const scale = isCenter ? 1 : isAdjacent ? 0.8 : 0.6;
+              const opacity = isCenter ? 1 : isAdjacent ? 0.7 : 0.4;
+              const zIndex = isCenter ? 3 : isAdjacent ? 2 : 1;
 
-            {/* Action buttons */}
-            <Box sx={{ p: 2, textAlign: 'center', borderTop: `1px solid ${theme.palette.divider}` }}>
-              <Stack direction="row" spacing={2} justifyContent="center">
-                <Tooltip title="Copy link to this recommendation">
-                  <IconButton
-                    onClick={() => copyRecommendationLink(currentRec.fileId)}
-                    color="primary"
-                  >
-                    <LinkIcon />
-                  </IconButton>
-                </Tooltip>
-                <Button
-                  variant="contained"
-                  component={MaterialLink}
-                  to="https://www.linkedin.com/in/xaviercollantes/details/recommendations"
-                  size="small"
+              return (
+                <Card 
+                  key={rec.fileId}
+                  onClick={() => !isCenter && goToRecommendation(index)}
+                  sx={{ 
+                    width: isMobile ? 320 : 480,
+                    maxHeight: '80vh',
+                    minWidth: isMobile ? 320 : 480,
+                    borderRadius: 4,
+                    cursor: isCenter ? 'default' : 'pointer',
+                    transform: `scale(${scale}) translateY(${isCenter ? '-20px' : '10px'})`,
+                    opacity,
+                    zIndex,
+                    boxShadow: isCenter 
+                      ? '0 30px 60px rgba(0,0,0,0.4)' 
+                      : '0 10px 30px rgba(0,0,0,0.2)',
+                    background: theme.palette.background.paper,
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transition: 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                    transformStyle: 'preserve-3d',
+                    filter: isCenter ? 'brightness(1) saturate(1)' : 'brightness(0.8) saturate(0.7)',
+                    '&:hover': {
+                      transform: isCenter 
+                        ? `scale(${scale}) translateY(-20px)` 
+                        : `scale(${scale + 0.05}) translateY(5px)`,
+                      opacity: isCenter ? 1 : Math.min(opacity + 0.2, 1),
+                    }
+                  }}
                 >
-                  LinkedIn
-                </Button>
-              </Stack>
-            </Box>
-          </Card>
+                  {/* Character image section */}
+                  <Box sx={{ 
+                    textAlign: 'center', 
+                    p: isCenter ? 3 : 2, 
+                    background: `linear-gradient(to bottom, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
+                    color: 'white',
+                  }}>
+                    <Avatar
+                      src={rec.metadataObject.profileImagePath}
+                      alt={rec.metadataObject.name}
+                      sx={{ 
+                        width: isCenter ? (isMobile ? 120 : 160) : (isMobile ? 80 : 120), 
+                        height: isCenter ? (isMobile ? 120 : 160) : (isMobile ? 80 : 120),
+                        mx: 'auto',
+                        mb: 2,
+                        border: '4px solid white',
+                        boxShadow: isCenter 
+                          ? '0 12px 24px rgba(0,0,0,0.4)' 
+                          : '0 6px 12px rgba(0,0,0,0.2)',
+                        transition: 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                      }}
+                    />
+                    <Typography 
+                      variant={isCenter ? "h5" : "h6"} 
+                      gutterBottom 
+                      sx={{ 
+                        fontWeight: 'bold',
+                        transition: 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                        fontSize: isCenter ? undefined : '1rem',
+                      }}
+                    >
+                      {rec.metadataObject.name}
+                    </Typography>
+                    {isCenter && (
+                      <>
+                        <Typography 
+                          variant="subtitle1" 
+                          sx={{ 
+                            opacity: 0.9,
+                            transition: 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                          }}
+                        >
+                          {rec.metadataObject.headline}
+                        </Typography>
+                        <Typography 
+                          variant="body2" 
+                          sx={{ 
+                            opacity: 0.8, 
+                            mt: 1,
+                            transition: 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                          }}
+                        >
+                          {rec.metadataObject.relationship}
+                        </Typography>
+                        <Typography 
+                          variant="caption" 
+                          sx={{ 
+                            opacity: 0.7, 
+                            mt: 1, 
+                            display: 'block',
+                            transition: 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                          }}
+                        >
+                          {new Date(rec.metadataObject.dateCreated).toLocaleDateString()}
+                        </Typography>
+                      </>
+                    )}
+                  </Box>
 
-          {/* Next character preview */}
-          <Box
-            sx={{
-              position: 'absolute',
-              right: isMobile ? 10 : 50,
-              zIndex: 1,
-              transform: 'scale(0.6)',
-              opacity: 0.4,
-              cursor: 'pointer',
-              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-              '&:hover': {
-                opacity: 0.8,
-                transform: 'scale(0.7)',
-              }
-            }}
-            onClick={nextRecommendation}
-          >
-            <Avatar
-              src={nextRec.metadataObject.profileImagePath}
-              alt={nextRec.metadataObject.name}
-              sx={{ 
-                width: 120, 
-                height: 120,
-                border: `3px solid ${theme.palette.common.white}`,
-                mb: 1,
-                transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                filter: isAnimating ? 'blur(2px)' : 'none',
-              }}
-            />
-            <Typography 
-              variant="caption" 
-              color="white" 
-              sx={{ 
-                display: 'block', 
-                textAlign: 'center',
-                fontSize: '0.7rem',
-                transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                opacity: isAnimating ? 0.2 : 1,
-              }}
-            >
-              {nextRec.metadataObject.name.split(' ')[0]}
-            </Typography>
+                  {/* Recommendation content - only show on center card */}
+                  {isCenter && (
+                    <>
+                      <CardContent sx={{ 
+                        flex: 1, 
+                        overflow: 'auto',
+                        p: 3,
+                        transition: 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                        '&::-webkit-scrollbar': {
+                          width: '6px',
+                        },
+                        '&::-webkit-scrollbar-track': {
+                          background: '#f1f1f1',
+                          borderRadius: '3px',
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                          background: theme.palette.primary.main,
+                          borderRadius: '3px',
+                        },
+                      }}>
+                        <div 
+                          dangerouslySetInnerHTML={{ __html: rec.htmlBody }} 
+                          style={{ 
+                            lineHeight: 1.6,
+                            fontSize: isMobile ? '0.9rem' : '1rem',
+                          }}
+                        />
+                      </CardContent>
+
+                      {/* Action buttons - only show on center card */}
+                      <Box sx={{ p: 2, textAlign: 'center', borderTop: `1px solid ${theme.palette.divider}` }}>
+                        <Stack direction="row" spacing={2} justifyContent="center">
+                          <Tooltip title="Copy link to this recommendation">
+                            <IconButton
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                copyRecommendationLink(rec.fileId);
+                              }}
+                              color="primary"
+                            >
+                              <LinkIcon />
+                            </IconButton>
+                          </Tooltip>
+                          <Button
+                            variant="contained"
+                            component={MaterialLink}
+                            to="https://www.linkedin.com/in/xaviercollantes/details/recommendations"
+                            size="small"
+                          >
+                            LinkedIn
+                          </Button>
+                        </Stack>
+                      </Box>
+                    </>
+                  )}
+                </Card>
+              );
+            })}
           </Box>
 
           {/* Navigation arrows */}
@@ -471,12 +400,12 @@ export default function Recs(props: RecsProps) {
             onClick={prevRecommendation}
             sx={{
               position: 'absolute',
-              left: isMobile ? -5 : 20,
+              left: 20,
               top: '50%',
               transform: 'translateY(-50%)',
               backgroundColor: 'rgba(255,255,255,0.1)',
               color: 'white',
-              zIndex: 2,
+              zIndex: 10,
               '&:hover': {
                 backgroundColor: 'rgba(255,255,255,0.2)',
               }
@@ -489,12 +418,12 @@ export default function Recs(props: RecsProps) {
             onClick={nextRecommendation}
             sx={{
               position: 'absolute',
-              right: isMobile ? -5 : 20,
+              right: 20,
               top: '50%',
               transform: 'translateY(-50%)',
               backgroundColor: 'rgba(255,255,255,0.1)',
               color: 'white',
-              zIndex: 2,
+              zIndex: 10,
               '&:hover': {
                 backgroundColor: 'rgba(255,255,255,0.2)',
               }
