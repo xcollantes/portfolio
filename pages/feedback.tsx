@@ -2,10 +2,7 @@ import { Box, Container, Typography } from '@mui/material'
 import Head from 'next/head'
 import { FeedbackForm } from '../components'
 
-export default function FeedbackPage(
-  onSuccess: () => void,
-  onError: (error: string) => void
-) {
+export default function FeedbackPage() {
   return (
     <>
       <Head>
@@ -28,12 +25,10 @@ export default function FeedbackPage(
           onSuccess={() => {
             // Could add additional success handling here if needed
             console.log('Feedback sent successfully')
-            onSuccess()
           }}
           onError={(error) => {
             // Could add additional error handling here if needed
             console.error('Feedback error:', error)
-            onError(error)
           }}
         />
       </Container>
