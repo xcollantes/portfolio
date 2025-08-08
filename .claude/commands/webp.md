@@ -7,8 +7,15 @@ WebP format.
 
 You can skip any non-image file, files that are already WebP, or GIFs.
 
+SKIP GIFs.
+
 Example:
 
 ```bash
-cwebp -q 70 input.png -o output.webp && rm input.png
+magick convert input.png -quality 70 output.webp && rm input.png
 ```
+
+You can delete the original file after converting to WebP.
+
+When you have finished, show the amounts and percentage of saved space of images
+converted.
