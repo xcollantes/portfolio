@@ -30,7 +30,7 @@ import {
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
 import { getRecommendationData } from "../recommendation_configs/process_recommendations"
-import { RecommendationType } from "../recommendation_configs/RecommendationTypes"
+import { RecommendationExtractedDataType } from "../recommendation_configs/RecommendationTypes"
 
 const oneLiner: string = process.env.NEXT_PUBLIC_ONE_LINER || ""
 
@@ -40,7 +40,7 @@ const oneLiner: string = process.env.NEXT_PUBLIC_ONE_LINER || ""
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{
     metadataProps: MetadataType[]
-    recommendationsProp: RecommendationType[]
+    recommendationsProp: RecommendationExtractedDataType[]
   }>
 > {
   // Article preview cards.
@@ -50,7 +50,7 @@ export async function getStaticProps(): Promise<
   )
 
   // Recommendation slides feature.
-  const recommendationData: RecommendationType[] = await getRecommendationData()
+  const recommendationData: RecommendationExtractedDataType[] = await getRecommendationData()
 
   return {
     props: { metadataProps: metadata, recommendationsProp: recommendationData },
@@ -59,7 +59,7 @@ export async function getStaticProps(): Promise<
 
 interface IndexPropTypes {
   metadataProps: MetadataType[]
-  recommendationsProp: RecommendationType[]
+  recommendationsProp: RecommendationExtractedDataType[]
 }
 
 export default function Page(props: IndexPropTypes) {

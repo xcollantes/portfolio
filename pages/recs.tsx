@@ -167,7 +167,7 @@ export default function Recs(props) {
   const handleCollapseAll = () => {
     const recommendations = props.recommendationsProp
     const initialExpandDict = recommendations.map(
-      (recommendation: RecommendationType) => ({
+      (recommendation: RecommendationExtractedDataType) => ({
         recId: recommendation.name,
         expand: false,
       })
@@ -241,7 +241,7 @@ export default function Recs(props) {
           </Button>
         </Stack>
 
-        {props.recommendationsProp.map((recommendation: RecommendationType) => (
+        {props.recommendationsProp.map((recommendation: RecommendationExtractedDataType) => (
           <Accordion
             // The expanded prop controls whether this accordion is open or
             // closed
@@ -286,7 +286,7 @@ export default function Recs(props) {
                 <Typography variant="body1">
                   {new Date(recommendation.dateCreated).toLocaleDateString()}
                 </Typography>
-                <Typography variant="body1" fontStyle={"italic"} sx={{ whiteSpace: 'pre-line' }}>
+                <Typography variant="body1" fontStyle={"italic"}>
                   {recommendation.fullRec}
                 </Typography>
               </Stack>

@@ -6,7 +6,7 @@ import path from "path"
 import { remark } from "remark"
 import html from "remark-html"
 import { orderedIncludeRecommendationsConfig } from "./recommendation_order_config"
-import { RecommendationMetadataType, RecommendationExtractedDataType } from "./RecommendationTypes"
+import { RecommendationMetadataType, RecommendationRawDataType, RecommendationExtractedDataType } from "./RecommendationTypes"
 
 const recommendationsDirectory: string = path.join(process.cwd(), "recommendations_md")
 
@@ -48,7 +48,7 @@ export function getRecommendationPathsAsProps(): Array<{
 /**
  * Read local file for one Markdown recommendation.
  */
-export async function getRecommendation(recommendationId: string): Promise<RecommendationExtractedDataType> {
+export async function getRecommendation(recommendationId: string): Promise<RecommendationRawDataType> {
   const fullFilePath: string = path.join(recommendationsDirectory, `${recommendationId}.md`)
   const fileContents: string = fs.readFileSync(fullFilePath, "utf8")
 
@@ -76,7 +76,7 @@ export async function getHeaderMetadata(): Promise<string[]> {
 
     recommendationPaths.map(async (recommendationPath: string) => {
 
-      const recommendation: RecommendationExtractedDataType = await getRecommendation(
+      const recommendation: RecommendationRawDataType = await getRecommendation(
         `${recommendationPath.replace(/\.md$/, "")}`
       )
 
@@ -100,7 +100,7 @@ export async function getRecommendationData(): Promise<RecommendationExtractedDa
 
     recommendationPaths.map(async (recommendationPath: string) => {
 
-      const recommendation: RecommendationExtractedDataType = await getRecommendation(
+      const recommendation: RecommendationRawDataType = await getRecommendation(
         `${recommendationPath.replace(/\.md$/, "")}`
       )
 
@@ -111,6 +111,7 @@ export async function getRecommendationData(): Promise<RecommendationExtractedDa
         fullMarkdown: recommendation.fullMarkdown,
         markdownBody: recommendation.markdownBody,
         htmlBody: recommendation.htmlBody,
+        metadata: recommendation.metadata, // Keep the original stringified metadata
         name: metadata.name,
         headline: metadata.headline,
         relationship: metadata.relationship,
@@ -118,7 +119,7 @@ export async function getRecommendationData(): Promise<RecommendationExtractedDa
         profileImagePath: metadata.profileImagePath,
         linkedInLink: metadata.linkedInLink,
         previewText: metadata.previewText,
-        fullRec: recommendation.markdownBody, // Use the markdown body as fullRec
+        fullRec: recommendation.markdownBody.replace(/\n/g, ' '), // Use the markdown body as fullRec, remove line breaks
         showInSlides: metadata.showInSlides !== false,
       }
 

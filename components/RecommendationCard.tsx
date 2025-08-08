@@ -14,7 +14,7 @@ import Link from "next/link"
 import { RecommendationExtractedDataType } from "../recommendation_configs/RecommendationTypes"
 import { MaterialLink } from "./MaterialLink"
 
-export interface RecommendationCardType extends RecommendationExtractedDataType { }
+export interface RecommendationCardType extends RecommendationExtractedDataType {}
 
 export default function RecommendationCard(props: RecommendationCardType) {
   const {
@@ -26,6 +26,7 @@ export default function RecommendationCard(props: RecommendationCardType) {
     linkedInLink,
     previewText,
     fullRec,
+    showInSlides,
   } = props
 
   return (
