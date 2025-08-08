@@ -2,7 +2,7 @@
 title: "FastAPI: Build your own APIs"
 cardDescription: "Production ready API with code examples."
 cardPageLink: "/articles/fastapi"
-imagePath: ""
+imagePath: "/assets/images/fastapi/terminal.gif"
 articleType: BLOG
 author: Xavier Collantes
 dateWritten: 2025-05-30
