@@ -32,15 +32,15 @@ export default function RecommendationCard(props: RecommendationCardType) {
     <Card raised sx={{ px: 0.5 }}>
       <CardContent>
         <Stack spacing={3}>
-          <Stack direction={"row"} alignItems={"center"} spacing={2.5}>
+          <Stack direction={"row"} alignItems={"center"} spacing={3}>
             <Link href={linkedInLink}>
               <Avatar
                 alt="LinkedIn image"
-                sx={{ width: 50, height: 50 }}
+                sx={{ width: 72, height: 72 }}
                 src={profileImagePath}
               />
             </Link>
-            <Typography variant="body2">{name}</Typography>
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>{name}</Typography>
           </Stack>
 
           <Typography variant="body1" sx={{ fontWeight: "bold" }}>
