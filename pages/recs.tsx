@@ -105,8 +105,8 @@ export default function Recs(props: RecsProps) {
    *   recommendation.
    */
   const initialExpandDictWithSelected = () => {
-    // Create initial dictionary with all recommendations collapsed
-    const initialExpandDict = filteredRecommendations.map(
+    // Create initial dictionary with ALL recommendations collapsed (not filtered)
+    const initialExpandDict = recommendations.map(
       (recommendation: RecommendationRawType) => ({
         recId: recommendation.fileId,
         expand: false,
@@ -162,14 +162,14 @@ export default function Recs(props: RecsProps) {
 
   // Update expand dictionary when filter changes
   useEffect(() => {
-    const newExpandDict = filteredRecommendations.map(
+    const newExpandDict = recommendations.map(
       (recommendation: RecommendationRawType) => ({
         recId: recommendation.fileId,
-        expand: false,
+        expand: router.query.recId === recommendation.fileId,
       })
     )
     setExpandDictionary(newExpandDict)
-  }, [selectedTags.length, filteredRecommendations.length])
+  }, [selectedTags.length, filteredRecommendations.length, router.query.recId])
 
   /**
    * Toggles the expansion state of a specific recommendation when clicked.
