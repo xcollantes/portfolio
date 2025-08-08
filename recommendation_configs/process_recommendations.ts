@@ -6,7 +6,7 @@ import path from "path"
 import { remark } from "remark"
 import html from "remark-html"
 import { orderedIncludeRecommendationsConfig } from "./recommendation_order_config"
-import { RecommendationMetadataType, RecommendationRawDataType, RecommendationExtractedDataType } from "./RecommendationTypes"
+import { RecommendationMetadataType, RecommendationRawType } from "./RecommendationTypes"
 
 const recommendationsDirectory: string = path.join(process.cwd(), "recommendations_md")
 
@@ -48,19 +48,26 @@ function getRecommendationPathsAsProps(): Array<{
 /**
  * Read local file for one Markdown recommendation.
  */
-async function getRecommendationFile(recommendationId: string): Promise<RecommendationRawDataType> {
+async function getRecommendationFile(recommendationId: string): Promise<RecommendationRawType> {
   const fullFilePath: string = path.join(recommendationsDirectory, `${recommendationId}.md`)
   const fileContents: string = fs.readFileSync(fullFilePath, "utf8")
 
   const recommendationMetadata: matter.GrayMatterFile<string> = matter(fileContents)
   let htmlBody = await remark().use(html).process(recommendationMetadata.content)
 
+  // Ensure dateCreated is converted to string to avoid NextJS static props type errors.
+  const metadata = recommendationMetadata.data as any
+  if (metadata.dateCreated) {
+    metadata.dateCreated = metadata.dateCreated.toString()
+  }
+
   return {
     fileId: recommendationId,
     fullMarkdown: fileContents,
     markdownBody: recommendationMetadata.content,
     htmlBody: htmlBody.value.toString(),
-    metadata: JSON.stringify(recommendationMetadata.data as RecommendationMetadataType),
+    // metadata: JSON.stringify(recommendationMetadata.data as RecommendationMetadataType),
+    metadataObject: metadata as RecommendationMetadataType,
   }
 }
 
@@ -69,59 +76,47 @@ async function getRecommendationFile(recommendationId: string): Promise<Recommen
  *
  * Deserialized metadata which is string then must be converted to object before use.
  */
-async function getHeaderMetadata(): Promise<string[]> {
-  const recommendationPaths: (string | undefined)[] = getRecommendationPaths()
+// async function getHeaderMetadata(): Promise<string[]> {
+//   const recommendationPaths: (string | undefined)[] = getRecommendationPaths()
 
-  const recommendations: string[] = await Promise.all(
+//   const recommendations: string[] = await Promise.all(
 
-    recommendationPaths.map(async (recommendationPath: string) => {
+//     recommendationPaths.map(async (recommendationPath: string) => {
 
-      const recommendation: RecommendationRawDataType = await getRecommendation(
-        `${recommendationPath.replace(/\.md$/, "")}`
-      )
+//       const recommendation: RecommendationRawType = await getRecommendationFile(
+//         `${recommendationPath.replace(/\.md$/, "")}`
+//       )
 
-      return recommendation.metadata
+//       return recommendation.metadata
 
-    })
-  )
+//     })
+//   )
 
-  return recommendations
-}
+//   return recommendations
+// }
 
 /**
- * Get all recommendation data formatted as the original RecommendationType.
- *
- * This provides backward compatibility with the existing recommendations page.
+ * Get all recommendation data.
  */
-export async function getRecommendationData(): Promise<RecommendationExtractedDataType[]> {
+export async function getRecommendationData(): Promise<RecommendationRawType[]> {
   const recommendationPaths: (string | undefined)[] = getRecommendationPaths()
 
   const recommendations = await Promise.all(
 
     recommendationPaths.map(async (recommendationPath: string) => {
 
-      const recommendation: RecommendationRawDataType = await getRecommendationFile(
+
+      /**
+       * Get the recommendation files asynchronously.
+       * The name of the Markdown file is the fileId.
+       *
+       * This includes the metadata and the markdown body.
+       */
+      const recommendation: RecommendationRawType = await getRecommendationFile(
         `${recommendationPath.replace(/\.md$/, "")}`
       )
 
-      const metadata = JSON.parse(recommendation.metadata) as RecommendationMetadataType
-
-      return {
-        fileId: recommendation.fileId,
-        fullMarkdown: recommendation.fullMarkdown,
-        markdownBody: recommendation.markdownBody,
-        htmlBody: recommendation.htmlBody,
-        metadata: recommendation.metadata, // Keep the original stringified metadata
-        name: metadata.name,
-        headline: metadata.headline,
-        relationship: metadata.relationship,
-        dateCreated: metadata.dateCreated, // Keep as string, let the frontend handle date conversion
-        profileImagePath: metadata.profileImagePath,
-        linkedInLink: metadata.linkedInLink,
-        previewText: metadata.previewText,
-        fullRec: recommendation.markdownBody.replace(/\n/g, ' '), // Use the markdown body as fullRec, remove line breaks
-        showInSlides: metadata.showInSlides !== false,
-      }
+      return recommendation
 
     })
 
