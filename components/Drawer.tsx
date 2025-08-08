@@ -61,21 +61,21 @@ export default function Drawer({ anchor = "right" }: DrawerPropType) {
             </ListItem>
 
             <ListItem key={key++} disablePadding>
-              <ListItemButton to="/" component={MaterialLink}>
+              <ListItemButton to="/" component={MaterialLink} onClick={toggleDrawer}>
                 <ListItemText primary="Home" />
                 <HomeRoundedIcon sx={{ mr: 1 }} />
               </ListItemButton>
             </ListItem>
 
             <ListItem key={key++} disablePadding>
-              <ListItemButton to="/recs" component={MaterialLink}>
+              <ListItemButton to="/recs" component={MaterialLink} onClick={toggleDrawer}>
                 <ListItemText primary="Recommendations" />
                 <StarRoundedIcon sx={{ mr: 1 }} />
               </ListItemButton>
             </ListItem>
 
             <ListItem key={key++} disablePadding>
-              <ListItemButton to="/feedback" component={MaterialLink}>
+              <ListItemButton to="/feedback" component={MaterialLink} onClick={toggleDrawer}>
                 <ListItemText primary="Feedback" />
                 <FeedbackRoundedIcon sx={{ mr: 1 }} />
               </ListItemButton>
