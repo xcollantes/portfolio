@@ -2,6 +2,8 @@
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import LinkIcon from "@mui/icons-material/Link"
+import UnfoldLessIcon from "@mui/icons-material/UnfoldLess"
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore"
 import {
   Accordion,
   AccordionDetails,
@@ -17,23 +19,23 @@ import {
   Typography,
   useTheme,
 } from "@mui/material"
+import { sendGAEvent } from "@next/third-parties/google"
 import { GetStaticPropsResult } from "next"
 import { NextRouter, useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import { trackUserInteraction } from "../components/AnalyticsUtils"
 import GenericFilterBar from "../components/GenericFilterBar"
 import { MaterialLink } from "../components/MaterialLink"
 import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import {
-  relationshipFilterConfig,
-  getMatchingRelationshipFilters,
-} from "../recommendation_configs/relationship_filters_config"
 import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
 import { getRecommendationData } from "../recommendation_configs/process_recommendations"
-import { sendGAEvent } from "@next/third-parties/google"
-import { trackUserInteraction } from "../components/AnalyticsUtils"
+import {
+  getMatchingRelationshipFilters,
+  relationshipFilterConfig,
+} from "../recommendation_configs/relationship_filters_config"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -75,9 +77,9 @@ export default function Recs(props: RecsProps) {
   // Filter recommendations based on selected relationship filters
   const filteredRecommendations = selectedTags.length > 0
     ? recommendations.filter((rec: RecommendationRawType) => {
-        const matchingFilters = getMatchingRelationshipFilters(rec.metadataObject.relationship)
-        return selectedTags.some(tag => matchingFilters.includes(tag))
-      })
+      const matchingFilters = getMatchingRelationshipFilters(rec.metadataObject.relationship)
+      return selectedTags.some(tag => matchingFilters.includes(tag))
+    })
     : recommendations
 
   // Track page visit when the page loads
@@ -268,22 +270,27 @@ export default function Recs(props: RecsProps) {
   return (
     <>
       <Box>
-        {/* Relationship filter bar */}
+        {/* Relationship filter bar with expand/collapse controls */}
         <Box sx={{ my: 3 }}>
           <GenericFilterBar
             filterConfig={relationshipFilterConfig}
             iconTooltip="Filter by relationship type"
+            rightContent={
+              <>
+                <Tooltip title="Expand all">
+                  <IconButton onClick={() => handleExpandAll()}>
+                    <UnfoldMoreIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Collapse all">
+                  <IconButton onClick={() => handleCollapseAll()}>
+                    <UnfoldLessIcon />
+                  </IconButton>
+                </Tooltip>
+              </>
+            }
           />
         </Box>
-
-        <Stack direction={"row"} spacing={2} sx={{ my: 3 }}>
-          <Button variant="contained" onClick={() => handleExpandAll()}>
-            Expand all
-          </Button>
-          <Button variant="contained" onClick={() => handleCollapseAll()}>
-            Collapse all
-          </Button>
-        </Stack>
 
         {filteredRecommendations.map((recommendation: RecommendationRawType) => (
           <Accordion
