@@ -16,6 +16,7 @@ import {
 } from "@mui/material"
 import { useState } from "react"
 import { useToastNotification } from "../hooks/useToastNotification"
+import { createTrackableShareUrl } from "../utils/utm"
 
 // Custom X icon component to replace Twitter icon.
 const XIcon = (props: any) => (
@@ -71,53 +72,84 @@ export default function ShareButton({ title, description, sx, shareUrl }: ShareB
   }
 
   const handleCopyToClipboard = async () => {
-    const success = await copyToClipboard(shareUrl)
-    if (success) {
-      toast.success("Link copied to clipboard")
-    } else {
-      toast.error("Failed to copy link")
+    try {
+      const trackableUrl = createTrackableShareUrl(shareUrl, 'copy')
+      const success = await copyToClipboard(trackableUrl)
+      if (success) {
+        toast.success("Link copied to clipboard")
+      } else {
+        toast.error("Failed to copy link")
+      }
+    } catch (error) {
+      console.error("Error creating trackable URL:", error)
+      toast.error("Failed to create share link")
     }
     handleClose()
   }
 
   const shareToFacebook = () => {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
-    window.open(facebookUrl, '_blank', 'width=600,height=400')
+    try {
+      const trackableUrl = createTrackableShareUrl(shareUrl, 'facebook')
+      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(trackableUrl)}`
+      window.open(facebookUrl, '_blank', 'width=600,height=400')
+    } catch (error) {
+      console.error("Error creating Facebook share URL:", error)
+      toast.error("Failed to create Facebook share link")
+    }
     handleClose()
   }
 
   const shareToLinkedIn = () => {
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`
-    window.open(linkedInUrl, '_blank', 'width=600,height=400')
+    try {
+      const trackableUrl = createTrackableShareUrl(shareUrl, 'linkedin')
+      const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(trackableUrl)}`
+      window.open(linkedInUrl, '_blank', 'width=600,height=400')
+    } catch (error) {
+      console.error("Error creating LinkedIn share URL:", error)
+      toast.error("Failed to create LinkedIn share link")
+    }
     handleClose()
   }
 
   const shareToX = () => {
-    const shareTitle = title || document.title
-    const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`
-    window.open(xUrl, '_blank', 'width=600,height=400')
+    try {
+      const shareTitle = title || document.title
+      const trackableUrl = createTrackableShareUrl(shareUrl, 'twitter')
+      const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(trackableUrl)}&text=${encodeURIComponent(shareTitle)}`
+      window.open(xUrl, '_blank', 'width=600,height=400')
+    } catch (error) {
+      console.error("Error creating X/Twitter share URL:", error)
+      toast.error("Failed to create X/Twitter share link")
+    }
     handleClose()
   }
 
   const handleNativeShare = async () => {
-    const shareTitle = title || document.title
-    const shareText = description || shareTitle
-
     try {
+      const shareTitle = title || document.title
+      const shareText = description || shareTitle
+      const trackableUrl = createTrackableShareUrl(shareUrl, 'native')
+
       await navigator.share({
         title: shareTitle,
         text: shareText,
-        url: shareUrl,
+        url: trackableUrl,
       })
       toast.success("Shared successfully")
     } catch (error) {
       console.error("Error sharing:", error)
       // Fall back to copy to clipboard
-      const success = await copyToClipboard(shareUrl)
-      if (success) {
-        toast.success("Link copied to clipboard")
-      } else {
-        toast.error("Failed to copy link")
+      try {
+        const trackableUrl = createTrackableShareUrl(shareUrl, 'native')
+        const success = await copyToClipboard(trackableUrl)
+        if (success) {
+          toast.success("Link copied to clipboard")
+        } else {
+          toast.error("Failed to copy link")
+        }
+      } catch (urlError) {
+        console.error("Error creating trackable URL for fallback:", urlError)
+        toast.error("Failed to create share link")
       }
     }
   }
