@@ -1,8 +1,8 @@
 ---
 title: Portfolio Easter Eggs
-cardDescription: "\"So, pretty please... with sugar on top.\""
+cardDescription: '"So, pretty please... with sugar on top."'
 cardPageLink: "/articles/easter-eggs"
-imagePath: ""
+imagePath: "/assets/images/eggs/pulp.gif"
 articleType: BLOG
 author: Xavier Collantes
 dateWritten: 2023-12-20
@@ -10,7 +10,7 @@ dateLastUpdated: 2025-07-15
 tagIds:
 ---
 
-## Easter eggs
+## Easter Eggs
 
 Thank you reading this far. You will now be rewarded with the secrets of my
 portfolio.
@@ -58,7 +58,9 @@ can discover new information about our feline friends with each interaction.
 
 My personal portfolio reflects a comprehensive software design lifecycle. The
 journey involved meticulous planning, user-centric testing, design inspiration,
-and technical decision-making. The resulting NextJS portfolio web application
-not only serves its purpose but also showcases my commitment to excellence in
-software engineering and user-centric design. The inclusion of easter eggs adds
-a personal and engaging touch to enhance the overall user experience.
+and technical decision-making.
+
+The resulting NextJS portfolio web application not only serves its purpose but
+also showcases my commitment to excellence in software engineering and
+user-centric design. The inclusion of easter eggs adds a personal and engaging
+touch to enhance the overall user experience.
