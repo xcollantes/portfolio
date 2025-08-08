@@ -1,8 +1,8 @@
 ---
 title: Gonzaga Housing Web Developer Consultant
-cardDescription: Web developer for hire for a place to stay.
+cardDescription: Web developer in exchange for a room.
 cardPageLink: articles/housing
-imagePath: ""
+imagePath: /assets/images/housing/tower.webp
 articleType: WORKEXP
 author: Xavier Collantes
 tagIds:
@@ -15,26 +15,36 @@ tagIds:
 
 ## Couch Surfing
 
+![Couch surfing {priority} {h: 500}](/assets/images/housing/couch-collage.webp)
+
 During the summer after my graduation, I was searching for a job. Instead of
 going back home to my parents, I decided I needed to stay active on my own. My
-situation felt like a rock and a hard place, as I didn't want to return to my
-parents' house (even though they invited me to stay) and I needed to actively
-look for a career job.
+situation felt like a rock and a hard place.
+
+But I looked around campus and saw 5,000 rooms of opportunity.
+
+![Admin office](/assets/images/housing/admin.webp)
+
+###### [internationalstudent.com](https://www.internationalstudent.com/school-search/1065/usa/washington/gonzaga-university/)
 
 ## Surrounded by Housing
 
 ![Image: Vacant dorms on campus during the
 summer](/assets/images/housing/buzz_apartments.webp)
 
-So, I needed a place to stay. That's when I realized how empty the campus was
-during the summer with all the dorms vacant.
+I needed a place to stay. Walking around campus, I noticed how thousands of dorm
+rooms were empty.
 
-Then an idea struck!
+Then an idea struck me!
+
+![Kennedy Apartments](/assets/images/housing/kennedy.webp)
+
+###### [gonzaga.edu](https://www.gonzaga.edu)
 
 I went to the Gonzaga Housing Department, notorious at the time for having a
 difficult-to-navigate website. Since students were required to live on campus
 for the first two years, every student at Gonzaga used the Housing website at
-least once.
+least once. I knew I could make a difference.
 
 **My proposal to the manager of the Housing Department was to redesign the
 Department's website in exchange for a dorm room.** The Director of the
@@ -57,5 +67,7 @@ the Department with questions like:
 
 The secretary's answers were a gold mine. She gave me the top pieces of
 information students were looking for and the biggest areas of impact my project
-could make. After all, when a student is frustrated with the website, they'll
+could make. After all, when a student is frustrated with the website, they will
 naturally call to talk to a human - just as I did during my time as a student.
+
+![Trade meme {h: 500}](/assets/images/housing/trade.webp)
