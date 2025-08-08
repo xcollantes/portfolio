@@ -1,5 +1,5 @@
 ---
-title: Handling JSON objects in Python
+title: Handling JSON Objects in Python
 author: Xavier Collantes
 dateWritten: 2024-01-26
 cardDescription: Xavier's cheat sheet for working with JSON in Python.

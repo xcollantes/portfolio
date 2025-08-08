@@ -1,5 +1,5 @@
 ---
-title: Amazon price graph
+title: Amazon Price Graph
 cardDescription: Built browser extension showing inline graphs price trends on Amazon products.
 cardPageLink: https://github.com/xcollantes/amazon_camel
 subTitle: Chrome Extension
