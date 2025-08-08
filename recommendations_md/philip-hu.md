@@ -3,7 +3,7 @@ name: Philip Hu
 headline: Solutions Consultant at Google
 relationship: Philip worked with Xavier on the same team
 dateCreated: 2020-02-19
-profileImagePath: "/recommendations/profile_pics/philip.jpeg"
+profileImagePath: "/recommendations/profile_pics/philip.webp"
 linkedInLink: https://www.linkedin.com/in/philip-hu
 previewText: >
   proven himself in just as little as 2 months that he's capable of driving team forward...

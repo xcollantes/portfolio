@@ -3,7 +3,7 @@ name: Edward Petkovicz
 headline: Senior Program Manager @ PlayStation
 relationship: Edward worked with Xavier
 dateCreated: 2020-01-28
-profileImagePath: "/recommendations/profile_pics/edward.jpeg"
+profileImagePath: "/recommendations/profile_pics/edward.webp"
 linkedInLink: https://www.linkedin.com/in/edwardpetkovicz
 previewText: >
   helped teach processes to new members. His ability to teach tech concepts to his and other teams helped teammates achieve their goals...

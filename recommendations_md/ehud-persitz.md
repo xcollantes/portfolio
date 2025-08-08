@@ -3,7 +3,7 @@ name: Ehud Persitz
 headline: Senior Program Manager II at Google
 relationship: Ehud managed Xavier directly
 dateCreated: 2024-01-22
-profileImagePath: "/recommendations/profile_pics/ehud.jpeg"
+profileImagePath: "/recommendations/profile_pics/ehud.webp"
 linkedInLink: https://www.linkedin.com/in/krehzen
 previewText: >
   showcasing deep technical knowledge and project management skills

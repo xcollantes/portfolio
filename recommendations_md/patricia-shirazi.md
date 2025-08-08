@@ -3,7 +3,7 @@ name: Patricia Shirazi
 headline: Software Engineer at Capital One
 relationship: Patricia worked with Xavier on the same team
 dateCreated: 2019-12-19
-profileImagePath: "/recommendations/profile_pics/patricia.jpeg"
+profileImagePath: "/recommendations/profile_pics/patricia.webp"
 linkedInLink: https://www.linkedin.com/in/patriciashirazi
 previewText: >
   helping me on the debugging process and suggesting Selenium features that would make the code faster. He is one of the most enthusiastic people...

@@ -3,7 +3,7 @@ name: Niklas Dorsch
 headline: Technical Solutions Consultant at Google
 relationship: Niklas worked with Xavier on the same team
 dateCreated: 2024-01-19
-profileImagePath: "/recommendations/profile_pics/nik.jpeg"
+profileImagePath: "/recommendations/profile_pics/nik.webp"
 linkedInLink: https://www.linkedin.com/in/niklas-dorsch
 previewText: >
   Xavier excels at end-to-end project management, consistently researching, planning, and executing tasks with a strong focus on user experience...

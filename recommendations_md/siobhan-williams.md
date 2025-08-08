@@ -3,7 +3,7 @@ name: Siobhan Williams, Ph.D.
 headline: Software Engineer Manager at Google
 relationship: Siobhan was Xavier's client stakeholder
 dateCreated: 2024-01-18
-profileImagePath: "/recommendations/profile_pics/siobhan.jpeg"
+profileImagePath: "/recommendations/profile_pics/siobhan.webp"
 linkedInLink: https://www.linkedin.com/in/sio-williams
 previewText: >
   Here's an example of Xavier's excellence... Xavier's original design was

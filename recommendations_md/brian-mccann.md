@@ -3,7 +3,7 @@ name: Brian McCann
 headline: First Vice President, Financial Advisor, CFP®, CEPA® at Morgan Stanley
 relationship: Brian was Xavier's teacher
 dateCreated: 2017-04-20
-profileImagePath: "/recommendations/profile_pics/brian.jpeg"
+profileImagePath: "/recommendations/profile_pics/brian.webp"
 linkedInLink: https://www.linkedin.com/in/briandmccann
 previewText: >
   His ability to consistently be prepared goes beyond the classroom as it demonstrates Xavier's demand for excellence...

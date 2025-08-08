@@ -3,7 +3,7 @@ name: Jay Pinnamaneni
 headline: Technical Program Manager at Google
 relationship: Jay worked with Xavier on the same team
 dateCreated: 2024-01-19
-profileImagePath: "/recommendations/profile_pics/jay.jpeg"
+profileImagePath: "/recommendations/profile_pics/jay.webp"
 linkedInLink: https://www.linkedin.com/in/jaypinnamaneni
 previewText: >
   Xavier's strong technical competencies in sql, javascript, python and data pipeline design enabled our team to prototype new solutions...
