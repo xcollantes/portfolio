@@ -1,8 +1,10 @@
-# Article check
+# Article checks
+
+Focus only on $ARGUMENTS.
 
 ## Format
 
-Format the new articles not yet committed.
+Format the articles at $ARGUMENTS not yet committed.
 
 Make sure articles have the correct grammar and punctuation.
 
