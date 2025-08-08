@@ -393,11 +393,11 @@ export default function Recs(props: RecsProps) {
                     }}
                     src={recommendation.metadataObject.profileImagePath}
                   />
-                  <Typography variant="h6" sx={{ fontWeight: "bold", textAlign: "center" }}>
-                    {recommendation.metadataObject.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ textAlign: "center", mb: 1 }}>
+                  <Typography variant="body1" sx={{ fontWeight: "bold", textAlign: "center" }}>
                     {recommendation.metadataObject.headline}
+                  </Typography>
+                  <Typography variant="h6" sx={{ fontWeight: "bold", textAlign: "center", mb: 1 }}>
+                    {recommendation.metadataObject.name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ textAlign: "center" }}>
                     {new Date(recommendation.metadataObject.dateCreated).toLocaleDateString()}
