@@ -2,7 +2,7 @@
 title: Software Engineering, Google Search
 cardDescription: Improving Google Search for 2.7 billion users globally.
 cardPageLink: articles/google
-imagePath: /assets/images/google/circle_group_preview.webp
+imagePath: /assets/images/google/circle-cut.gif
 articleType: WORKEXP
 author: Xavier Collantes
 dateWritten: 2024-01-15
@@ -27,6 +27,8 @@ seen my work.
 
 ## The ultimate web development experience
 
+![Xavier speaking to a group {priority}](/assets/images/google/circle_group.webp)
+
 With my time at Google, I am lucky enough to have contributed to one of the most
 recognizable products in history and hone my skills with the brightest minds in
 the world!
@@ -44,8 +46,8 @@ features for the 2.7 billion Google Search users globally<sup>1</sup>.
 
 ###### Mountain View, California
 
-The role varies depending on the needs of the team. In my case, I spent
-about 75% of time on Software Engineering tasks such as:
+The role varies depending on the needs of the team. In my case, I spent majority
+of my time on Software Engineering tasks such as:
 
 - Writing code
 - Asking for code to be reviewed and reviewing code
@@ -58,7 +60,19 @@ about 75% of time on Software Engineering tasks such as:
   Feature Engineers, UX designers, Program Managers, Product Managers, and Data
   Analysts
 
-![Image of group {priority}](/assets/images/google/circle_group.webp)
+<iframe width="560" height="400"
+src="https://www.youtube-nocookie.com/embed/SUkO5TLpgxY"
+title="YouTube video player"
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+
+![Fitness center {h: 400}](/assets/images/google/tgif.webp)
+
+###### Every Thursday is [TGIF!](https://nobl.io/changemaker/how-googles-tgif-meetings-empower-employees/)
+
+![Fitness center {h: 400}](/assets/images/google/fitness.webp)
+
+###### A peek into some of the legendary perks
 
 Google uses mostly internal tools for the development of software but Google has
 made many available to the public. The following are the tools I am most
@@ -95,7 +109,7 @@ A couple books I live by as an engineer are published by Google:
   </iframe>
 </div>
 
-The other 25% of my time is spent on strategic project goals.
+The other quarter of my time is spent on strategic project goals.
 
 In general, I create or optimize processes by running pilots with engineers
 and vendors. If there is traction and success in the process, the project can
@@ -104,11 +118,11 @@ scale up.
 A typical project for me would generally follow the process:
 
 1. Identify issue, pain points, or opportunity
-1. Scope requirements in time and resources
-1. Pilot program to discover new requirements and issues in practice
-1. Propose top solutions weighing cost and benefit for each
-1. Gain approval (funding if needed)
-1. Implement process by writing code, setting up IAM infrastructure, delegate
+2. Scope requirements in time and resources
+3. Pilot program to discover new requirements and issues in practice
+4. Propose top solutions weighing cost and benefit for each
+5. Gain approval (funding if needed)
+6. Implement process by writing code, setting up IAM infrastructure, delegate
    tasks
 
 Accomplishing these tasks requires meticulous documentation and well-defined
