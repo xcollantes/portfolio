@@ -60,7 +60,6 @@ export default function Recs(props: RecsProps) {
   const [copySuccess, setCopySuccess] = useState<boolean>(false)
   const [copyMessage, setCopyMessage] = useState<string>("")
   const [isAnimating, setIsAnimating] = useState<boolean>(false)
-  const [slideDirection, setSlideDirection] = useState<'left' | 'right' | null>(null)
 
   // Track page visit when the page loads
   useEffect(() => {
@@ -80,56 +79,41 @@ export default function Recs(props: RecsProps) {
     }
   }, [router.query.recId, recommendations])
 
-  // Navigation functions with animation
+  // Navigation functions
   const nextRecommendation = useCallback(() => {
     if (isAnimating) return
     setIsAnimating(true)
-    setSlideDirection('left')
     
-    setTimeout(() => {
-      setCurrentIndex((prev) => {
-        const newIndex = (prev + 1) % recommendations.length
-        trackUserInteraction("next", `recommendation_${recommendations[newIndex].fileId}`, "recommendation")
-        return newIndex
-      })
-      setTimeout(() => {
-        setIsAnimating(false)
-        setSlideDirection(null)
-      }, 300)
-    }, 150)
+    setCurrentIndex((prev) => {
+      const newIndex = (prev + 1) % recommendations.length
+      trackUserInteraction("next", `recommendation_${recommendations[newIndex].fileId}`, "recommendation")
+      return newIndex
+    })
+    
+    setTimeout(() => setIsAnimating(false), 600)
   }, [recommendations, isAnimating])
 
   const prevRecommendation = useCallback(() => {
     if (isAnimating) return
     setIsAnimating(true)
-    setSlideDirection('right')
     
-    setTimeout(() => {
-      setCurrentIndex((prev) => {
-        const newIndex = prev === 0 ? recommendations.length - 1 : prev - 1
-        trackUserInteraction("previous", `recommendation_${recommendations[newIndex].fileId}`, "recommendation")
-        return newIndex
-      })
-      setTimeout(() => {
-        setIsAnimating(false)
-        setSlideDirection(null)
-      }, 300)
-    }, 150)
+    setCurrentIndex((prev) => {
+      const newIndex = prev === 0 ? recommendations.length - 1 : prev - 1
+      trackUserInteraction("previous", `recommendation_${recommendations[newIndex].fileId}`, "recommendation")
+      return newIndex
+    })
+    
+    setTimeout(() => setIsAnimating(false), 600)
   }, [recommendations, isAnimating])
 
   const goToRecommendation = useCallback((index: number) => {
     if (isAnimating || index === currentIndex) return
     setIsAnimating(true)
-    setSlideDirection(index > currentIndex ? 'left' : 'right')
     
-    setTimeout(() => {
-      setCurrentIndex(index)
-      trackUserInteraction("jump_to", `recommendation_${recommendations[index].fileId}`, "recommendation")
-      setTimeout(() => {
-        setIsAnimating(false)
-        setSlideDirection(null)
-      }, 300)
-    }, 150)
+    setCurrentIndex(index)
+    trackUserInteraction("jump_to", `recommendation_${recommendations[index].fileId}`, "recommendation")
+    
+    setTimeout(() => setIsAnimating(false), 600)
   }, [recommendations, isAnimating, currentIndex])
 
   // Keyboard navigation
@@ -238,13 +222,13 @@ export default function Recs(props: RecsProps) {
               position: 'absolute',
               left: isMobile ? 10 : 50,
               zIndex: 1,
-              transform: `scale(0.6) ${isAnimating && slideDirection === 'right' ? 'translateX(20px)' : ''}`,
-              opacity: isAnimating && slideDirection === 'right' ? 0.2 : 0.4,
+              transform: 'scale(0.6)',
+              opacity: 0.4,
               cursor: 'pointer',
-              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
               '&:hover': {
-                opacity: isAnimating ? 0.2 : 0.7,
-                transform: `scale(${isAnimating ? 0.6 : 0.65}) ${isAnimating && slideDirection === 'right' ? 'translateX(20px)' : ''}`,
+                opacity: 0.8,
+                transform: 'scale(0.7)',
               }
             }}
             onClick={prevRecommendation}
@@ -257,7 +241,8 @@ export default function Recs(props: RecsProps) {
                 height: 120,
                 border: `3px solid ${theme.palette.common.white}`,
                 mb: 1,
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                filter: isAnimating ? 'blur(2px)' : 'none',
               }}
             />
             <Typography 
@@ -267,8 +252,8 @@ export default function Recs(props: RecsProps) {
                 display: 'block', 
                 textAlign: 'center',
                 fontSize: '0.7rem',
-                transition: 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                opacity: isAnimating && slideDirection === 'right' ? 0 : 1,
+                transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                opacity: isAnimating ? 0.2 : 1,
               }}
             >
               {prevRec.metadataObject.name.split(' ')[0]}
@@ -277,25 +262,34 @@ export default function Recs(props: RecsProps) {
 
           {/* Main character card */}
           <Card 
+            key={`card-${currentRec.fileId}`}
             sx={{ 
               width: isMobile ? 320 : 480,
               maxHeight: '80vh',
               borderRadius: 4,
-              boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-              transform: `translateY(-20px) ${
-                isAnimating 
-                  ? slideDirection === 'left' 
-                    ? 'translateX(-100px) rotateY(-10deg) scale(0.9)' 
-                    : 'translateX(100px) rotateY(10deg) scale(0.9)'
-                  : 'translateX(0) rotateY(0deg) scale(1)'
-              }`,
-              opacity: isAnimating ? 0.7 : 1,
+              boxShadow: isAnimating 
+                ? '0 30px 60px rgba(0,0,0,0.4)' 
+                : '0 20px 40px rgba(0,0,0,0.3)',
+              transform: isAnimating 
+                ? 'translateY(-30px) scale(1.05) rotateX(2deg)' 
+                : 'translateY(-20px) scale(1) rotateX(0deg)',
               background: theme.palette.background.paper,
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
-              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
               transformStyle: 'preserve-3d',
+              animation: isAnimating ? 'none' : 'slideInFromBottom 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)',
+              '@keyframes slideInFromBottom': {
+                '0%': {
+                  opacity: 0,
+                  transform: 'translateY(50px) scale(0.9)',
+                },
+                '100%': {
+                  opacity: 1,
+                  transform: 'translateY(-20px) scale(1)',
+                },
+              },
             }}
           >
             {/* Character image section */}
@@ -304,10 +298,9 @@ export default function Recs(props: RecsProps) {
               p: 3, 
               background: `linear-gradient(to bottom, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
               color: 'white',
-              transform: isAnimating ? 'scale(0.95)' : 'scale(1)',
-              transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
             }}>
               <Avatar
+                key={currentRec.fileId} // Force re-render for smooth image transition
                 src={currentRec.metadataObject.profileImagePath}
                 alt={currentRec.metadataObject.name}
                 sx={{ 
@@ -316,57 +309,59 @@ export default function Recs(props: RecsProps) {
                   mx: 'auto',
                   mb: 2,
                   border: '4px solid white',
-                  boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
-                  transform: isAnimating 
-                    ? slideDirection === 'left' 
-                      ? 'rotateY(-15deg) scale(0.9)' 
-                      : 'rotateY(15deg) scale(0.9)'
-                    : 'rotateY(0deg) scale(1)',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  opacity: isAnimating ? 0.6 : 1,
+                  boxShadow: isAnimating 
+                    ? '0 12px 24px rgba(0,0,0,0.4)' 
+                    : '0 8px 16px rgba(0,0,0,0.2)',
+                  transform: isAnimating ? 'scale(1.1)' : 'scale(1)',
+                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                  filter: isAnimating ? 'brightness(1.2) saturate(1.2)' : 'brightness(1) saturate(1)',
                 }}
               />
               <Typography 
+                key={`name-${currentRec.fileId}`}
                 variant="h5" 
                 gutterBottom 
                 sx={{ 
                   fontWeight: 'bold',
-                  transform: isAnimating ? 'translateY(10px)' : 'translateY(0)',
-                  opacity: isAnimating ? 0.7 : 1,
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  opacity: isAnimating ? 0.8 : 1,
+                  transform: isAnimating ? 'scale(1.05)' : 'scale(1)',
+                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
                 }}
               >
                 {currentRec.metadataObject.name}
               </Typography>
               <Typography 
+                key={`headline-${currentRec.fileId}`}
                 variant="subtitle1" 
                 sx={{ 
-                  opacity: isAnimating ? 0.5 : 0.9,
-                  transform: isAnimating ? 'translateY(10px)' : 'translateY(0)',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  opacity: 0.9,
+                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                  transitionDelay: '0.1s',
                 }}
               >
                 {currentRec.metadataObject.headline}
               </Typography>
               <Typography 
+                key={`relationship-${currentRec.fileId}`}
                 variant="body2" 
                 sx={{ 
-                  opacity: isAnimating ? 0.4 : 0.8, 
+                  opacity: 0.8, 
                   mt: 1,
-                  transform: isAnimating ? 'translateY(10px)' : 'translateY(0)',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                  transitionDelay: '0.2s',
                 }}
               >
                 {currentRec.metadataObject.relationship}
               </Typography>
               <Typography 
+                key={`date-${currentRec.fileId}`}
                 variant="caption" 
                 sx={{ 
-                  opacity: isAnimating ? 0.3 : 0.7, 
+                  opacity: 0.7, 
                   mt: 1, 
                   display: 'block',
-                  transform: isAnimating ? 'translateY(10px)' : 'translateY(0)',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                  transitionDelay: '0.3s',
                 }}
               >
                 {new Date(currentRec.metadataObject.dateCreated).toLocaleDateString()}
@@ -378,6 +373,9 @@ export default function Recs(props: RecsProps) {
               flex: 1, 
               overflow: 'auto',
               p: 3,
+              opacity: isAnimating ? 0.7 : 1,
+              transform: isAnimating ? 'scale(0.98)' : 'scale(1)',
+              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
               '&::-webkit-scrollbar': {
                 width: '6px',
               },
@@ -391,10 +389,12 @@ export default function Recs(props: RecsProps) {
               },
             }}>
               <div 
+                key={`content-${currentRec.fileId}`}
                 dangerouslySetInnerHTML={{ __html: currentRec.htmlBody }} 
                 style={{ 
                   lineHeight: 1.6,
-                  fontSize: isMobile ? '0.9rem' : '1rem'
+                  fontSize: isMobile ? '0.9rem' : '1rem',
+                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
                 }}
               />
             </CardContent>
@@ -428,13 +428,13 @@ export default function Recs(props: RecsProps) {
               position: 'absolute',
               right: isMobile ? 10 : 50,
               zIndex: 1,
-              transform: `scale(0.6) ${isAnimating && slideDirection === 'left' ? 'translateX(-20px)' : ''}`,
-              opacity: isAnimating && slideDirection === 'left' ? 0.2 : 0.4,
+              transform: 'scale(0.6)',
+              opacity: 0.4,
               cursor: 'pointer',
-              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+              transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
               '&:hover': {
-                opacity: isAnimating ? 0.2 : 0.7,
-                transform: `scale(${isAnimating ? 0.6 : 0.65}) ${isAnimating && slideDirection === 'left' ? 'translateX(-20px)' : ''}`,
+                opacity: 0.8,
+                transform: 'scale(0.7)',
               }
             }}
             onClick={nextRecommendation}
@@ -447,7 +447,8 @@ export default function Recs(props: RecsProps) {
                 height: 120,
                 border: `3px solid ${theme.palette.common.white}`,
                 mb: 1,
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                filter: isAnimating ? 'blur(2px)' : 'none',
               }}
             />
             <Typography 
@@ -457,8 +458,8 @@ export default function Recs(props: RecsProps) {
                 display: 'block', 
                 textAlign: 'center',
                 fontSize: '0.7rem',
-                transition: 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                opacity: isAnimating && slideDirection === 'left' ? 0 : 1,
+                transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                opacity: isAnimating ? 0.2 : 1,
               }}
             >
               {nextRec.metadataObject.name.split(' ')[0]}
@@ -516,7 +517,7 @@ export default function Recs(props: RecsProps) {
                   borderRadius: '50%',
                   backgroundColor: index === currentIndex ? 'white' : 'rgba(255,255,255,0.3)',
                   cursor: 'pointer',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transition: 'all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)',
                   transform: index === currentIndex ? 'scale(1.2)' : 'scale(1)',
                   boxShadow: index === currentIndex ? '0 0 8px rgba(255,255,255,0.6)' : 'none',
                   '&:hover': {
