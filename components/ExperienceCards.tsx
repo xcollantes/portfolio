@@ -13,6 +13,7 @@ import {
 import FadeCustom from "./Fade"
 import groupBy from "./GroupBy"
 import LongCard from "./LongCard"
+import TermsPrivacyLinks from "./TermsPrivacyLinks"
 
 export interface ExperienceCardsPropType {
   metadata: MetadataType[]
@@ -79,7 +80,7 @@ export default function ExperienceCards({ metadata, useBackgroundImages = false 
 
   let key: number = 0
   return (
-    <Stack direction="column" spacing={2} alignItems="stretch" sx={{ mb: 40 }}>
+    <Stack direction="column" spacing={2} alignItems="stretch" sx={{ mb: 10 }}>
       {workExps && header("Work experiences")}
       {workExps &&
         workExps.map((card: MetadataType) => {
@@ -111,9 +112,10 @@ export default function ExperienceCards({ metadata, useBackgroundImages = false 
               window.scrollTo({ top: 0, behavior: "smooth" })
             }}
           >
+            Back to Top
           </Button>
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "center", my: 3 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
           <Button
             variant="outlined"
             size="large"
@@ -132,6 +134,7 @@ export default function ExperienceCards({ metadata, useBackgroundImages = false 
             (Not so) Hidden Easter Eggs
           </Button>
         </Box>
+        <TermsPrivacyLinks pt={30} />
       </Stack>
     </Stack>
   )

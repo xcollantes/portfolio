@@ -20,6 +20,7 @@ import {
 import { useState } from "react"
 import DarkMode from "./DarkMode"
 import { MaterialLink } from "./MaterialLink"
+import TermsPrivacyLinks from "./TermsPrivacyLinks"
 
 interface DrawerPropType {
   anchor?: "left" | "right"
@@ -50,8 +51,8 @@ export default function Drawer({ anchor = "right" }: DrawerPropType) {
         onClose={toggleDrawer}
         anchor={anchor}
       >
-        <Box sx={boxWidth} role="presentation">
-          <List sx={{}}>
+        <Box sx={{ ...boxWidth, display: 'flex', flexDirection: 'column', height: '100vh' }} role="presentation">
+          <List sx={{ flexGrow: 1 }}>
             <ListItem key={key++} sx={{ pb: 1 }} disablePadding>
               <ListItemButton disableRipple>
                 <ListItemText>
@@ -88,6 +89,10 @@ export default function Drawer({ anchor = "right" }: DrawerPropType) {
               Related
             </ListItem> */}
           </List>
+          
+          <Box sx={{ p: 2, mt: 'auto' }}>
+            <TermsPrivacyLinks />
+          </Box>
         </Box>
       </SwipeableDrawer>
     </>
