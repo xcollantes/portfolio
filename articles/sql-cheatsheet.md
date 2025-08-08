@@ -1,5 +1,5 @@
 ---
-title: SQL optimizations cheat sheet
+title: SQL Optimizations Cheat Sheet
 author: Xavier Collantes
 dateWritten: 2023-09-10
 articleType: BLOG

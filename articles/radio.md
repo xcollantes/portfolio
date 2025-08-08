@@ -1,5 +1,5 @@
 ---
-title: Licensed ham radio operator
+title: Licensed Ham Radio Operator
 author: Xavier Collantes
 dateLastUpdated: 2024-01-09
 articleType: BLOG

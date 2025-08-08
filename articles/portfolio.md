@@ -1,5 +1,5 @@
 ---
-title: NextJS portfolio web application
+title: NextJS Portfolio Web Application
 author: Xavier Collantes
 dateWritten: 2024-01-24
 cardDescription: Evaluate technical trade-offs and code the website you're looking at.

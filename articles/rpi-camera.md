@@ -1,5 +1,5 @@
 ---
-title: Raspberry Pi motion camera
+title: Raspberry Pi Motion Camera
 cardDescription: Homemade internet-of-things private cloud motion-detecting camera.
 cardPageLink: "/articles/rpi-camera"
 author: Xavier Collantes

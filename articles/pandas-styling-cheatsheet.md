@@ -1,5 +1,5 @@
 ---
-title: Panda styling cheat sheet
+title: Pandas Styling Cheat Sheet
 author: Xavier Collantes
 dateWritten: 2024-01-26
 cardDescription: Xavier's published cheat sheet for styling Pandas DataFrames.
