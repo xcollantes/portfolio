@@ -30,22 +30,6 @@ function getRecommendationPaths(): (string | undefined)[] {
 }
 
 /**
- * Get recommendation paths as NextJS props.
- *
- * Remove the file extension and create object for getStaticPaths().
- */
-function getRecommendationPathsAsProps(): Array<{
-  params: { recommendationId: string }
-}> {
-  const fileNames: (string | undefined)[] = getRecommendationPaths()
-  return fileNames.map((fileName: string) => ({
-    params: {
-      recommendationId: `${fileName.replace(/\.md$/, "")}`,
-    },
-  }))
-}
-
-/**
  * Read local file for one Markdown recommendation.
  */
 async function getRecommendationFile(recommendationId: string): Promise<RecommendationRawType> {
@@ -66,34 +50,9 @@ async function getRecommendationFile(recommendationId: string): Promise<Recommen
     fullMarkdown: fileContents,
     markdownBody: recommendationMetadata.content,
     htmlBody: htmlBody.value.toString(),
-    // metadata: JSON.stringify(recommendationMetadata.data as RecommendationMetadataType),
     metadataObject: metadata as RecommendationMetadataType,
   }
 }
-
-/**
- * Get the YAML header with metadata for each recommendation.
- *
- * Deserialized metadata which is string then must be converted to object before use.
- */
-// async function getHeaderMetadata(): Promise<string[]> {
-//   const recommendationPaths: (string | undefined)[] = getRecommendationPaths()
-
-//   const recommendations: string[] = await Promise.all(
-
-//     recommendationPaths.map(async (recommendationPath: string) => {
-
-//       const recommendation: RecommendationRawType = await getRecommendationFile(
-//         `${recommendationPath.replace(/\.md$/, "")}`
-//       )
-
-//       return recommendation.metadata
-
-//     })
-//   )
-
-//   return recommendations
-// }
 
 /**
  * Get all recommendation data.
