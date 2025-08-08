@@ -292,80 +292,144 @@ export default function Recs(props: RecsProps) {
           />
         </Box>
 
-        {filteredRecommendations.map((recommendation: RecommendationRawType) => (
-          <Accordion
-            // The expanded prop controls whether this accordion is open or
-            // closed
-            // It finds the matching recId in the expandDictionary and checks
-            // its 'expand' value
-            expanded={
-              expandDictionary.find(
-                (setting) => setting.recId === recommendation.fileId
-              )?.expand
-            }
+        {filteredRecommendations.map((recommendation: RecommendationRawType) => {
+          const isExpanded = expandDictionary.find(
+            (setting) => setting.recId === recommendation.fileId
+          )?.expand
 
-            // When clicked, toggle this specific recommendation's expansion
-            // state
-            onChange={() => handleClick(recommendation.fileId)}
-            key={recommendation.fileId}
-
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-              id="panel1"
+          return (
+            <Accordion
+              expanded={isExpanded}
+              onChange={() => handleClick(recommendation.fileId)}
+              key={recommendation.fileId}
+              sx={{
+                position: "relative",
+                overflow: "hidden",
+                "& .MuiAccordionSummary-root": {
+                  transition: "all 0.3s ease-in-out",
+                },
+                "& .MuiAccordionDetails-root": {
+                  transition: "all 0.3s ease-in-out",
+                },
+              }}
             >
-              <Stack direction={"row"} alignItems={"center"} spacing={2.5}>
-                <Avatar
-                  alt="LinkedIn image"
-                  sx={{ width: 50, height: 50 }}
-                  src={recommendation.metadataObject.profileImagePath}
-                />
-
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                  {recommendation.metadataObject.headline}
-                </Typography>
-
-                <Typography variant="body1">
-                  {recommendation.metadataObject.relationship}
-                </Typography>
-              </Stack>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Stack spacing={3}>
-                <Typography variant="body1">{recommendation.metadataObject.name}</Typography>
-                <Typography variant="body1">
-                  {new Date(recommendation.metadataObject.dateCreated).toLocaleDateString()}
-                </Typography>
-                <div dangerouslySetInnerHTML={{ __html: recommendation.htmlBody }} />
-              </Stack>
-              <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
-                <Tooltip title="Copy link to this recommendation">
-                  <IconButton
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent accordion from toggling
-                      copyRecommendationLink(recommendation.fileId);
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1-content"
+                id="panel1"
+                sx={{
+                  "& .MuiAccordionSummary-content": {
+                    alignItems: "center",
+                  },
+                }}
+              >
+                <Stack direction={"row"} alignItems={"center"} spacing={2.5} sx={{ width: "100%" }}>
+                  {/* Avatar visible when collapsed */}
+                  <Avatar
+                    alt="LinkedIn image"
+                    sx={{
+                      width: 50,
+                      height: 50,
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      opacity: isExpanded ? 0 : 1,
+                      transform: isExpanded ? "scale(0) translateX(100px)" : "scale(1) translateX(0)",
                     }}
-                    sx={{ mr: 1 }}
-                  >
+                    src={recommendation.metadataObject.profileImagePath}
+                  />
 
-                    <LinkIcon />
-
-                  </IconButton>
-                </Tooltip>
-                <Button
-                  variant="contained"
-                  component={MaterialLink}
-                  to={
-                    "https://www.linkedin.com/in/xaviercollantes/details/recommendations"
-                  }
+                  <Box sx={{ flex: 1 }}>
+                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                      {recommendation.metadataObject.headline}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {recommendation.metadataObject.relationship}
+                    </Typography>
+                  </Box>
+                </Stack>
+              </AccordionSummary>
+              
+              <AccordionDetails sx={{ pt: 0 }}>
+                {/* Header section with animated avatar when expanded */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    mb: 3,
+                    opacity: isExpanded ? 1 : 0,
+                    transform: isExpanded ? "translateY(0)" : "translateY(-20px)",
+                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s",
+                  }}
                 >
-                  See in LinkedIn
-                </Button>
-              </Box>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+                  <Avatar
+                    alt="LinkedIn image"
+                    sx={{
+                      width: isExpanded ? 80 : 50,
+                      height: isExpanded ? 80 : 50,
+                      mb: 2,
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      boxShadow: isExpanded ? "0 4px 20px rgba(0,0,0,0.1)" : "none",
+                    }}
+                    src={recommendation.metadataObject.profileImagePath}
+                  />
+                  <Typography variant="h6" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                    {recommendation.metadataObject.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ textAlign: "center", mb: 1 }}>
+                    {recommendation.metadataObject.headline}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ textAlign: "center" }}>
+                    {new Date(recommendation.metadataObject.dateCreated).toLocaleDateString()}
+                  </Typography>
+                </Box>
+
+                {/* Content */}
+                <Box
+                  sx={{
+                    opacity: isExpanded ? 1 : 0,
+                    transform: isExpanded ? "translateY(0)" : "translateY(20px)",
+                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s",
+                  }}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: recommendation.htmlBody }} />
+                </Box>
+
+                {/* Actions */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    mt: 3,
+                    opacity: isExpanded ? 1 : 0,
+                    transform: isExpanded ? "translateY(0)" : "translateY(20px)",
+                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s",
+                  }}
+                >
+                  <Tooltip title="Copy link to this recommendation">
+                    <IconButton
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        copyRecommendationLink(recommendation.fileId);
+                      }}
+                      sx={{ mr: 1 }}
+                    >
+                      <LinkIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Button
+                    variant="contained"
+                    component={MaterialLink}
+                    to={
+                      "https://www.linkedin.com/in/xaviercollantes/details/recommendations"
+                    }
+                  >
+                    See in LinkedIn
+                  </Button>
+                </Box>
+              </AccordionDetails>
+            </Accordion>
+          )
+        })}
         <Snackbar
           open={copySuccess}
           autoHideDuration={3000}
