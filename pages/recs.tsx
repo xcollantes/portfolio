@@ -21,7 +21,7 @@ import { GetStaticPropsResult } from "next"
 import { NextRouter, useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { MaterialLink } from "../components/MaterialLink"
-import { RecommendationExtractedDataType } from "../recommendation_configs/RecommendationTypes"
+import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
 import { getRecommendationData } from "../recommendation_configs/process_recommendations"
 import { sendGAEvent } from "@next/third-parties/google"
 import { trackUserInteraction } from "../components/AnalyticsUtils"
@@ -31,18 +31,23 @@ import { trackUserInteraction } from "../components/AnalyticsUtils"
  */
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{
-    recommendationsProp: RecommendationExtractedDataType[]
+    recommendationsProp: RecommendationRawType[]
   }>
 > {
   // Recommendations data.
-  const recommendationData: RecommendationExtractedDataType[] = await getRecommendationData()
+  const recommendationData: RecommendationRawType[] = await getRecommendationData()
+  console.log(recommendationData)
 
   return {
     props: { recommendationsProp: recommendationData },
   }
 }
 
-export default function Recs(props) {
+interface RecsProps {
+  recommendationsProp: RecommendationRawType[]
+}
+
+export default function Recs(props: RecsProps) {
   const theme: Theme = useTheme()
   // Access the router to get URL query parameters, specifically 'recId'.
   // This allows direct linking to a specific recommendation.
@@ -79,7 +84,7 @@ export default function Recs(props) {
   const initialExpandDictWithSelected = () => {
     // Create initial dictionary with all recommendations collapsed
     const initialExpandDict = recommendations.map(
-      (recommendation: RecommendationExtractedDataType) => ({
+      (recommendation: RecommendationRawType) => ({
         recId: recommendation.fileId,
         expand: false,
       })
@@ -167,8 +172,8 @@ export default function Recs(props) {
   const handleCollapseAll = () => {
     const recommendations = props.recommendationsProp
     const initialExpandDict = recommendations.map(
-      (recommendation: RecommendationExtractedDataType) => ({
-        recId: recommendation.name,
+      (recommendation: RecommendationRawType) => ({
+        recId: recommendation.fileId,
         expand: false,
       })
     )
@@ -241,7 +246,7 @@ export default function Recs(props) {
           </Button>
         </Stack>
 
-        {props.recommendationsProp.map((recommendation: RecommendationExtractedDataType) => (
+        {props.recommendationsProp.map((recommendation: RecommendationRawType) => (
           <Accordion
             // The expanded prop controls whether this accordion is open or
             // closed
@@ -249,14 +254,14 @@ export default function Recs(props) {
             // its 'expand' value
             expanded={
               expandDictionary.find(
-                (setting) => setting.recId === recommendation.name
+                (setting) => setting.recId === recommendation.fileId
               )?.expand
             }
 
             // When clicked, toggle this specific recommendation's expansion
             // state
-            onChange={() => handleClick(recommendation.name)}
-            key={recommendation.name}
+            onChange={() => handleClick(recommendation.fileId)}
+            key={recommendation.fileId}
 
           >
             <AccordionSummary
@@ -268,34 +273,32 @@ export default function Recs(props) {
                 <Avatar
                   alt="LinkedIn image"
                   sx={{ width: 50, height: 50 }}
-                  src={recommendation.profileImagePath}
+                  src={recommendation.metadataObject.profileImagePath}
                 />
 
                 <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                  {recommendation.headline}
+                  {recommendation.metadataObject.headline}
                 </Typography>
 
                 <Typography variant="body1">
-                  {recommendation.relationship}
+                  {recommendation.metadataObject.relationship}
                 </Typography>
               </Stack>
             </AccordionSummary>
             <AccordionDetails>
               <Stack spacing={3}>
-                <Typography variant="body1">{recommendation.name}</Typography>
+                <Typography variant="body1">{recommendation.metadataObject.name}</Typography>
                 <Typography variant="body1">
-                  {new Date(recommendation.dateCreated).toLocaleDateString()}
+                  {new Date(recommendation.metadataObject.dateCreated).toLocaleDateString()}
                 </Typography>
-                <Typography variant="body1" fontStyle={"italic"}>
-                  {recommendation.fullRec}
-                </Typography>
+                <div dangerouslySetInnerHTML={{ __html: recommendation.htmlBody }} />
               </Stack>
               <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
                 <Tooltip title="Copy link to this recommendation">
                   <IconButton
                     onClick={(e) => {
                       e.stopPropagation(); // Prevent accordion from toggling
-                      copyRecommendationLink(recommendation.name);
+                      copyRecommendationLink(recommendation.fileId);
                     }}
                     sx={{ mr: 1 }}
                   >
