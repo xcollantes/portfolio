@@ -13,6 +13,7 @@ import {
 import FadeCustom from "./Fade"
 import groupBy from "./GroupBy"
 import LongCard from "./LongCard"
+import MadeWithHeart from "./MadeWithHeart"
 import TermsPrivacyLinks from "./TermsPrivacyLinks"
 
 export interface ExperienceCardsPropType {
@@ -134,7 +135,11 @@ export default function ExperienceCards({ metadata, useBackgroundImages = false 
             (Not so) Hidden Easter Eggs
           </Button>
         </Box>
-        <TermsPrivacyLinks pt={30} />
+
+        <Stack sx={{ pt: 30, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+          <MadeWithHeart />
+          <TermsPrivacyLinks />
+        </Stack>
       </Stack>
     </Stack>
   )
