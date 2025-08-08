@@ -3,7 +3,7 @@ name: Ankit Adhikari
 headline: Solutions Consultant at Google
 relationship: Ankit worked with Xavier on the same team
 dateCreated: 2024-01-19
-profileImagePath: "/recommendations/profile_pics/ankit.jpeg"
+profileImagePath: "/recommendations/profile_pics/ankit.webp"
 linkedInLink: https://www.linkedin.com/in/ankitadhikari
 previewText: >
   Had the privilege to work with Xavier on a high impact, high velocity project at Google and was the first hand witness to the high quality professionalism and technical skillsets...

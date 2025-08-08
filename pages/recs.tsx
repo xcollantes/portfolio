@@ -2,6 +2,8 @@
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import LinkIcon from "@mui/icons-material/Link"
+import UnfoldLessIcon from "@mui/icons-material/UnfoldLess"
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore"
 import {
   Accordion,
   AccordionDetails,
@@ -17,14 +19,23 @@ import {
   Typography,
   useTheme,
 } from "@mui/material"
+import { sendGAEvent } from "@next/third-parties/google"
 import { GetStaticPropsResult } from "next"
 import { NextRouter, useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import { trackUserInteraction } from "../components/AnalyticsUtils"
+import GenericFilterBar from "../components/GenericFilterBar"
 import { MaterialLink } from "../components/MaterialLink"
+import {
+  SelectFilterTagContextType,
+  useSelectedFilterTagContext,
+} from "../contexts/selectFilterTag"
 import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
 import { getRecommendationData } from "../recommendation_configs/process_recommendations"
-import { sendGAEvent } from "@next/third-parties/google"
-import { trackUserInteraction } from "../components/AnalyticsUtils"
+import {
+  getMatchingRelationshipFilters,
+  relationshipFilterConfig,
+} from "../recommendation_configs/relationship_filters_config"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -59,6 +70,18 @@ export default function Recs(props: RecsProps) {
   const [copySuccess, setCopySuccess] = useState<boolean>(false)
   const [copyMessage, setCopyMessage] = useState<string>("")
 
+  // Use filter context for relationship filtering
+  const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
+    useSelectedFilterTagContext()
+
+  // Filter recommendations based on selected relationship filters
+  const filteredRecommendations = selectedTags.length > 0
+    ? recommendations.filter((rec: RecommendationRawType) => {
+      const matchingFilters = getMatchingRelationshipFilters(rec.metadataObject.relationship)
+      return selectedTags.some(tag => matchingFilters.includes(tag))
+    })
+    : recommendations
+
   // Track page visit when the page loads
   useEffect(() => {
     // Track recommendations page view with count of recommendations
@@ -82,7 +105,7 @@ export default function Recs(props: RecsProps) {
    *   recommendation.
    */
   const initialExpandDictWithSelected = () => {
-    // Create initial dictionary with all recommendations collapsed
+    // Create initial dictionary with ALL recommendations collapsed (not filtered)
     const initialExpandDict = recommendations.map(
       (recommendation: RecommendationRawType) => ({
         recId: recommendation.fileId,
@@ -137,6 +160,17 @@ export default function Recs(props: RecsProps) {
     }
   }, [router.query.recId]);
 
+  // Update expand dictionary when filter changes
+  useEffect(() => {
+    const newExpandDict = recommendations.map(
+      (recommendation: RecommendationRawType) => ({
+        recId: recommendation.fileId,
+        expand: router.query.recId === recommendation.fileId,
+      })
+    )
+    setExpandDictionary(newExpandDict)
+  }, [selectedTags.length, filteredRecommendations.length, router.query.recId])
+
   /**
    * Toggles the expansion state of a specific recommendation when clicked.
    *
@@ -170,8 +204,7 @@ export default function Recs(props: RecsProps) {
    * Sets all 'expand' values to false in the expansion dictionary.
    */
   const handleCollapseAll = () => {
-    const recommendations = props.recommendationsProp
-    const initialExpandDict = recommendations.map(
+    const initialExpandDict = filteredRecommendations.map(
       (recommendation: RecommendationRawType) => ({
         recId: recommendation.fileId,
         expand: false,
@@ -236,90 +269,252 @@ export default function Recs(props: RecsProps) {
 
   return (
     <>
-      <Box>
-        <Stack direction={"row"} spacing={2} sx={{ my: 3 }}>
-          <Button variant="contained" onClick={() => handleExpandAll()}>
-            Expand all
-          </Button>
-          <Button variant="contained" onClick={() => handleCollapseAll()}>
-            Collapse all
-          </Button>
-        </Stack>
-
-        {props.recommendationsProp.map((recommendation: RecommendationRawType) => (
-          <Accordion
-            // The expanded prop controls whether this accordion is open or
-            // closed
-            // It finds the matching recId in the expandDictionary and checks
-            // its 'expand' value
-            expanded={
-              expandDictionary.find(
-                (setting) => setting.recId === recommendation.fileId
-              )?.expand
-            }
-
-            // When clicked, toggle this specific recommendation's expansion
-            // state
-            onChange={() => handleClick(recommendation.fileId)}
-            key={recommendation.fileId}
-
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-              id="panel1"
-            >
-              <Stack direction={"row"} alignItems={"center"} spacing={2.5}>
-                <Avatar
-                  alt="LinkedIn image"
-                  sx={{ width: 50, height: 50 }}
-                  src={recommendation.metadataObject.profileImagePath}
-                />
-
-                <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-                  {recommendation.metadataObject.headline}
-                </Typography>
-
-                <Typography variant="body1">
-                  {recommendation.metadataObject.relationship}
-                </Typography>
-              </Stack>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Stack spacing={3}>
-                <Typography variant="body1">{recommendation.metadataObject.name}</Typography>
-                <Typography variant="body1">
-                  {new Date(recommendation.metadataObject.dateCreated).toLocaleDateString()}
-                </Typography>
-                <div dangerouslySetInnerHTML={{ __html: recommendation.htmlBody }} />
-              </Stack>
-              <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
-                <Tooltip title="Copy link to this recommendation">
-                  <IconButton
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent accordion from toggling
-                      copyRecommendationLink(recommendation.fileId);
-                    }}
-                    sx={{ mr: 1 }}
-                  >
-
-                    <LinkIcon />
-
+      <Box sx={{ pb: 10 }}>
+        {/* Relationship filter bar with expand/collapse controls */}
+        <Box sx={{ my: 3 }}>
+          <GenericFilterBar
+            filterConfig={relationshipFilterConfig}
+            iconTooltip="Filter by relationship type"
+            rightContent={
+              <>
+                <Tooltip title="Expand all">
+                  <IconButton onClick={() => handleExpandAll()}>
+                    <UnfoldMoreIcon />
                   </IconButton>
                 </Tooltip>
-                <Button
-                  variant="contained"
-                  component={MaterialLink}
-                  to={
-                    "https://www.linkedin.com/in/xaviercollantes/details/recommendations"
-                  }
+                <Tooltip title="Collapse all">
+                  <IconButton onClick={() => handleCollapseAll()}>
+                    <UnfoldLessIcon />
+                  </IconButton>
+                </Tooltip>
+              </>
+            }
+          />
+        </Box>
+
+        {filteredRecommendations.map((recommendation: RecommendationRawType) => {
+          const isExpanded = expandDictionary.find(
+            (setting) => setting.recId === recommendation.fileId
+          )?.expand
+
+          return (
+            <Accordion
+              expanded={isExpanded}
+              onChange={() => handleClick(recommendation.fileId)}
+              key={recommendation.fileId}
+              sx={{
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: "12px !important",
+                mb: 2,
+                boxShadow: "0px 0px 10px 2px rgba(0, 0, 0, 0.08)",
+                "&:hover": {
+                  boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.12)",
+                },
+                "&:before": {
+                  display: "none",
+                },
+                "& .MuiAccordionSummary-root": {
+                  transition: "all 0.3s ease-in-out",
+                  borderRadius: "12px 12px 0 0",
+                },
+                "& .MuiAccordionDetails-root": {
+                  transition: "all 0.3s ease-in-out",
+                  borderRadius: "0 0 12px 12px",
+                },
+                "&.Mui-expanded": {
+                  "& .MuiAccordionSummary-root": {
+                    borderRadius: "12px 12px 0 0",
+                  },
+                },
+              }}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1-content"
+                id="panel1"
+                sx={{
+                  "& .MuiAccordionSummary-content": {
+                    alignItems: "center",
+                  },
+                }}
+              >
+                <Stack direction={"row"} alignItems={"center"} spacing={2.5} sx={{ width: "100%" }}>
+                  {/* Avatar visible when collapsed */}
+                  <Avatar
+                    alt="LinkedIn image"
+                    sx={{
+                      width: 50,
+                      height: 50,
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      opacity: isExpanded ? 0 : 1,
+                      transform: isExpanded ? "scale(0) translateX(100px)" : "scale(1) translateX(0)",
+                    }}
+                    src={recommendation.metadataObject.profileImagePath}
+                  />
+
+                  <Box sx={{ flex: 1 }}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontWeight: "bold",
+                        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                        opacity: isExpanded ? 0 : 1,
+                        transform: isExpanded ? "translateX(-50px)" : "translateX(0)",
+                      }}
+                    >
+                      {recommendation.metadataObject.headline}
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          ml: 3,
+                          fontWeight: "normal",
+                          [theme.breakpoints.down("sm")]: {
+                            display: "block",
+                            ml: 0,
+                            mt: 0.5,
+                          },
+                        }}
+                      >
+                        {recommendation.metadataObject.relationship}
+                      </Typography>
+                    </Typography>
+                  </Box>
+                </Stack>
+              </AccordionSummary>
+
+              <AccordionDetails sx={{ pt: 0 }}>
+                {/* Header section with animated avatar when expanded */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    mb: 1,
+                    opacity: isExpanded ? 1 : 0,
+                    transform: isExpanded ? "translateY(0)" : "translateY(-20px)",
+                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s",
+                  }}
                 >
-                  See in LinkedIn
-                </Button>
-              </Box>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+                  <Avatar
+                    alt="LinkedIn image"
+                    sx={{
+                      width: isExpanded ? 80 : 50,
+                      height: isExpanded ? 80 : 50,
+                      mb: 2,
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      boxShadow: isExpanded ? "0 4px 20px rgba(0,0,0,0.1)" : "none",
+                    }}
+                    src={recommendation.metadataObject.profileImagePath}
+                  />
+                  <Typography variant="body1" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                    {recommendation.metadataObject.headline}
+                  </Typography>
+                  <Typography variant="h6" sx={{ fontWeight: "bold", textAlign: "center", mb: 1 }}>
+                    {recommendation.metadataObject.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ textAlign: "center" }}>
+                    {new Date(recommendation.metadataObject.dateCreated).toLocaleDateString()}
+                  </Typography>
+                </Box>
+
+                {/* Content */}
+                <Box
+                  sx={{
+                    opacity: isExpanded ? 1 : 0,
+                    transform: isExpanded ? "translateY(0)" : "translateY(20px)",
+                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s",
+                  }}
+                >
+                  <div dangerouslySetInnerHTML={{ __html: recommendation.htmlBody }} />
+                </Box>
+
+                {/* Actions */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    mt: 3,
+                    opacity: isExpanded ? 1 : 0,
+                    transform: isExpanded ? "translateY(0)" : "translateY(20px)",
+                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s",
+                  }}
+                >
+                  <Tooltip title="Copy link to this recommendation">
+                    <IconButton
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        copyRecommendationLink(recommendation.fileId);
+                      }}
+                      sx={{ mr: 1 }}
+                    >
+                      <LinkIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Button
+                    variant="contained"
+                    component={MaterialLink}
+                    to={
+                      "https://www.linkedin.com/in/xaviercollantes/details/recommendations"
+                    }
+                    sx={{
+                      background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+                      boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .3)",
+                      color: "white",
+                      fontWeight: "bold",
+                      transition: "all 0.3s ease-in-out",
+                      position: "relative",
+                      overflow: "hidden",
+                      "&:hover": {
+                        background: "linear-gradient(45deg, #1976D2 30%, #0288D1 90%)",
+                        boxShadow: "0 6px 10px 4px rgba(33, 203, 243, .4)",
+                        transform: "translateY(-2px)",
+                      },
+                      "&:before": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: "-100%",
+                        width: "100%",
+                        height: "100%",
+                        background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)",
+                        transition: "left 0.5s",
+                        animation: "autoShine 2.5s ease-in-out infinite",
+                      },
+                      "&:hover:before": {
+                        left: "100%",
+                      },
+                      animation: "pulse 0.5s ease-in-out infinite alternate",
+                      "@keyframes pulse": {
+                        "0%": {
+                          boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .3)",
+                        },
+                        "100%": {
+                          boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .6)",
+                        },
+                      },
+                      "@keyframes autoShine": {
+                        "0%": {
+                          left: "-100%",
+                        },
+                        "20%": {
+                          left: "100%",
+                        },
+                        "100%": {
+                          left: "100%",
+                        },
+                      },
+                    }}
+                  >
+                    See in LinkedIn
+                  </Button>
+                </Box>
+              </AccordionDetails>
+            </Accordion>
+          )
+        })}
         <Snackbar
           open={copySuccess}
           autoHideDuration={3000}

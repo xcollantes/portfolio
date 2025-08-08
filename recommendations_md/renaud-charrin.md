@@ -3,7 +3,7 @@ name: Renaud Charrin
 headline: Founder and CEO @AiEngine, providing AI solutions
 relationship: Renaud worked with Xavier on the same team
 dateCreated: 2019-12-12
-profileImagePath: "/recommendations/profile_pics/renaud.jpeg"
+profileImagePath: "/recommendations/profile_pics/renaud.webp"
 linkedInLink: https://www.linkedin.com/in/renaud-charrin-20a65011b
 previewText: >
   Xavier proved to be a very effective member of the team, taking a major initiative from scratch to production...

@@ -26,32 +26,50 @@ export default function RecommendationCard(props: RecommendationCardType) {
     linkedInLink,
     previewText,
     showInSlides,
-   } = props.metadataObject
+  } = props.metadataObject
 
   return (
     <Card raised sx={{ px: 0.5 }}>
       <CardContent>
-        <Stack spacing={3}>
-          <Stack direction={"row"} alignItems={"center"} spacing={2.5}>
+        <Stack spacing={3} alignItems="center">
+
+          {/* Centered prominent avatar */}
+          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+
             <Link href={linkedInLink}>
               <Avatar
                 alt="LinkedIn image"
-                sx={{ width: 50, height: 50 }}
+                sx={{
+                  width: 96,
+                  height: 96,
+                  mb: 2,
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+                  transition: "transform 0.3s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  }
+                }}
                 src={profileImagePath}
               />
             </Link>
-            <Typography variant="body2">{name}</Typography>
-          </Stack>
 
-          <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-            {headline}
-          </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
 
-          <Typography variant="body1" fontStyle={"italic"}>
+              <Typography variant="h6" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                {headline}
+              </Typography>
+              <Typography variant="body1" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                {name}
+              </Typography>
+            </Box>
+
+          </Box>
+
+          <Typography variant="body1" fontStyle={"italic"} sx={{ textAlign: "center" }}>
             {previewText}
           </Typography>
 
-          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <Button
               variant="contained"
               component={MaterialLink}

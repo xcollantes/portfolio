@@ -3,7 +3,7 @@ name: Jeffrey Roth
 headline: Director. Program Management, Core Search at Google
 relationship: Jeffrey was Senior Director to Xavier
 dateCreated: 2024-01-26
-profileImagePath: "/recommendations/profile_pics/jeff.jpeg"
+profileImagePath: "/recommendations/profile_pics/jeff.webp"
 linkedInLink: https://www.linkedin.com/in/jeffrey-roth-a374b61
 previewText: >
   When starting a new process, Xavier was able to engage stakeholders in

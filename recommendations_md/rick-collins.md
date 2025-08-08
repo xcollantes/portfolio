@@ -3,7 +3,7 @@ name: Rick Collins
 headline: Sales, Advisory, and Business Development Services
 relationship: Rick was Xavier's mentor
 dateCreated: 2017-04-26
-profileImagePath: "/recommendations/profile_pics/rick.jpeg"
+profileImagePath: "/recommendations/profile_pics/rick.webp"
 linkedInLink: https://www.linkedin.com/in/rick-collins-22573
 previewText: >
   With this skill set and strong personal character, I have no doubt that Xavier will be a great addition to any organization...

@@ -11,7 +11,7 @@
  * ---
  * name: Siobhan Williams, Ph.D.
  * headline: Software Engineer at Google
- * relationship: Siobhan worked with Xavier but on different teams
+ * relationship: Siobhan worked with Xavier
  * dateCreated: 2024-01-18
  * profileImagePath: "/recommendations/profile_pics/siobhan.jpeg".
  * linkedInLink: https://www.linkedin.com/in/sio-williams
