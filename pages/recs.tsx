@@ -269,7 +269,7 @@ export default function Recs(props: RecsProps) {
 
   return (
     <>
-      <Box>
+      <Box sx={{ pb: 10 }}>
         {/* Relationship filter bar with expand/collapse controls */}
         <Box sx={{ my: 3 }}>
           <GenericFilterBar
