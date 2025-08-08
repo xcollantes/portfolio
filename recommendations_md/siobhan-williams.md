@@ -1,6 +1,6 @@
 ---
 name: Siobhan Williams, Ph.D.
-headline: Software Engineer at Google
+headline: Software Engineer Manager at Google
 relationship: Siobhan worked with Xavier but on different teams
 dateCreated: 2024-01-18
 profileImagePath: "/recommendations/profile_pics/siobhan.jpeg"
