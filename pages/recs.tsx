@@ -22,7 +22,7 @@ import { NextRouter, useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { MaterialLink } from "../components/MaterialLink"
 import { RecommendationType } from "../recommendations/RecommendationType"
-import { getRecommendationData } from "../recommendations/process_recommendations"
+import { getRecommendationData } from "../recommendation_configs/process_recommendations"
 import { sendGAEvent } from "@next/third-parties/google"
 import { trackUserInteraction } from "../components/AnalyticsUtils"
 
@@ -284,7 +284,7 @@ export default function Recs(props) {
               <Stack spacing={3}>
                 <Typography variant="body1">{recommendation.name}</Typography>
                 <Typography variant="body1">
-                  {recommendation.dateCreated.toLocaleString()}
+                  {new Date(recommendation.dateCreated).toLocaleString()}
                 </Typography>
                 <Typography variant="body1" fontStyle={"italic"}>
                   {recommendation.fullRec}
