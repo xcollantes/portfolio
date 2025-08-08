@@ -338,16 +338,37 @@ export default function Recs(props: RecsProps) {
                   />
 
                   <Box sx={{ flex: 1 }}>
-                    <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontWeight: "bold",
+                        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                        opacity: isExpanded ? 0 : 1,
+                        transform: isExpanded ? "translateX(-50px)" : "translateX(0)",
+                      }}
+                    >
                       {recommendation.metadataObject.headline}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {recommendation.metadataObject.relationship}
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          ml: 3,
+                          fontWeight: "normal",
+                          [theme.breakpoints.down("sm")]: {
+                            display: "block",
+                            ml: 0,
+                            mt: 0.5,
+                          },
+                        }}
+                      >
+                        {recommendation.metadataObject.relationship}
+                      </Typography>
                     </Typography>
                   </Box>
                 </Stack>
               </AccordionSummary>
-              
+
               <AccordionDetails sx={{ pt: 0 }}>
                 {/* Header section with animated avatar when expanded */}
                 <Box
@@ -355,7 +376,7 @@ export default function Recs(props: RecsProps) {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    mb: 3,
+                    mb: 1,
                     opacity: isExpanded ? 1 : 0,
                     transform: isExpanded ? "translateY(0)" : "translateY(-20px)",
                     transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s",
