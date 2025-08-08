@@ -25,7 +25,7 @@ seen my work.
 
 [![Google logo {priority}](/assets/images/google/google_logo.webp)](https://www.google.com/search?q=google+in+1998)
 
-## The ultimate web development experience
+## The Ultimate Web Development Experience
 
 ![Xavier speaking to a group {priority}](/assets/images/google/circle_group.webp)
 
@@ -40,7 +40,7 @@ As Google is diverse and far reaching in its products, so has been my experience
 in honing my skills in software engineering and product management to improve
 features for the 2.7 billion Google Search users globally<sup>1</sup>.
 
-## Software engineering
+## Software Engineering
 
 ![Image of me {priority}](/assets/images/google/front.webp)
 
