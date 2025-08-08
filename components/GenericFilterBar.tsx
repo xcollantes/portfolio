@@ -2,6 +2,7 @@
 
 import FilterAltIcon from "@mui/icons-material/FilterAlt"
 import { Box, Stack } from "@mui/material"
+import { ReactNode } from "react"
 import { useToastNotification } from "../hooks/useToastNotification"
 import FilterButton from "./FilterButton"
 
@@ -14,12 +15,14 @@ interface GenericFilterBarProps {
   filterConfig: GenericFilterConfigType[]
   disabled?: boolean
   iconTooltip?: string
+  rightContent?: ReactNode
 }
 
 export default function GenericFilterBar({
   filterConfig,
   disabled = false,
-  iconTooltip = "Filter"
+  iconTooltip = "Filter",
+  rightContent
 }: GenericFilterBarProps) {
   const toast = useToastNotification()
 
@@ -29,9 +32,9 @@ export default function GenericFilterBar({
 
   let key: number = 0
   return (
-    <Stack direction={"row"} alignItems={"center"} spacing={1}>
+    <Stack direction={"row"} alignItems={"center"} spacing={1} sx={{ width: "100%" }}>
       <FilterAltIcon color={"disabled"} onClick={handleFilterIconClick} />
-      <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "start" }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "start", flex: 1 }}>
         {filterConfig.map((filter: GenericFilterConfigType) => (
           <FilterButton
             displayText={filter.displayText}
@@ -41,6 +44,11 @@ export default function GenericFilterBar({
           />
         ))}
       </Box>
+      {rightContent && (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          {rightContent}
+        </Box>
+      )}
     </Stack>
   )
 }
