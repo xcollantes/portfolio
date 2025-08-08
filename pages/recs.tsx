@@ -20,7 +20,16 @@ import {
 import { GetStaticPropsResult } from "next"
 import { NextRouter, useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import GenericFilterBar from "../components/GenericFilterBar"
 import { MaterialLink } from "../components/MaterialLink"
+import {
+  SelectFilterTagContextType,
+  useSelectedFilterTagContext,
+} from "../contexts/selectFilterTag"
+import {
+  relationshipFilterConfig,
+  getMatchingRelationshipFilters,
+} from "../recommendation_configs/relationship_filters_config"
 import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
 import { getRecommendationData } from "../recommendation_configs/process_recommendations"
 import { sendGAEvent } from "@next/third-parties/google"
@@ -59,6 +68,18 @@ export default function Recs(props: RecsProps) {
   const [copySuccess, setCopySuccess] = useState<boolean>(false)
   const [copyMessage, setCopyMessage] = useState<string>("")
 
+  // Use filter context for relationship filtering
+  const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
+    useSelectedFilterTagContext()
+
+  // Filter recommendations based on selected relationship filters
+  const filteredRecommendations = selectedTags.length > 0
+    ? recommendations.filter((rec: RecommendationRawType) => {
+        const matchingFilters = getMatchingRelationshipFilters(rec.metadataObject.relationship)
+        return selectedTags.some(tag => matchingFilters.includes(tag))
+      })
+    : recommendations
+
   // Track page visit when the page loads
   useEffect(() => {
     // Track recommendations page view with count of recommendations
@@ -83,7 +104,7 @@ export default function Recs(props: RecsProps) {
    */
   const initialExpandDictWithSelected = () => {
     // Create initial dictionary with all recommendations collapsed
-    const initialExpandDict = recommendations.map(
+    const initialExpandDict = filteredRecommendations.map(
       (recommendation: RecommendationRawType) => ({
         recId: recommendation.fileId,
         expand: false,
@@ -137,6 +158,17 @@ export default function Recs(props: RecsProps) {
     }
   }, [router.query.recId]);
 
+  // Update expand dictionary when filter changes
+  useEffect(() => {
+    const newExpandDict = filteredRecommendations.map(
+      (recommendation: RecommendationRawType) => ({
+        recId: recommendation.fileId,
+        expand: false,
+      })
+    )
+    setExpandDictionary(newExpandDict)
+  }, [selectedTags.length, filteredRecommendations.length])
+
   /**
    * Toggles the expansion state of a specific recommendation when clicked.
    *
@@ -170,8 +202,7 @@ export default function Recs(props: RecsProps) {
    * Sets all 'expand' values to false in the expansion dictionary.
    */
   const handleCollapseAll = () => {
-    const recommendations = props.recommendationsProp
-    const initialExpandDict = recommendations.map(
+    const initialExpandDict = filteredRecommendations.map(
       (recommendation: RecommendationRawType) => ({
         recId: recommendation.fileId,
         expand: false,
@@ -237,6 +268,14 @@ export default function Recs(props: RecsProps) {
   return (
     <>
       <Box>
+        {/* Relationship filter bar */}
+        <Box sx={{ my: 3 }}>
+          <GenericFilterBar
+            filterConfig={relationshipFilterConfig}
+            iconTooltip="Filter by relationship type"
+          />
+        </Box>
+
         <Stack direction={"row"} spacing={2} sx={{ my: 3 }}>
           <Button variant="contained" onClick={() => handleExpandAll()}>
             Expand all
@@ -246,7 +285,7 @@ export default function Recs(props: RecsProps) {
           </Button>
         </Stack>
 
-        {props.recommendationsProp.map((recommendation: RecommendationRawType) => (
+        {filteredRecommendations.map((recommendation: RecommendationRawType) => (
           <Accordion
             // The expanded prop controls whether this accordion is open or
             // closed
