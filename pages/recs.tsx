@@ -229,6 +229,85 @@ export default function Recs(props) {
     setCopySuccess(false);
   };
 
+  /**
+   * Renders recommendation text with proper paragraph breaks.
+   * 
+   * YAML folded block scalars (>) convert paragraph breaks to single newlines,
+   * so we need to split on single newlines and detect paragraph boundaries
+   * by looking for content patterns (sentence endings, etc.).
+   * 
+   * @param text - The recommendation text with newline characters
+   * @returns JSX elements with proper paragraph breaks
+   */
+  const renderRecommendationText = (text: string) => {
+    // Split on single newlines first
+    const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+    
+    if (lines.length <= 1) {
+      // Single paragraph or empty
+      return (
+        <Typography variant="body1" fontStyle="italic">
+          {text.trim()}
+        </Typography>
+      );
+    }
+    
+    // Group lines into paragraphs by detecting paragraph boundaries
+    const paragraphs: string[] = [];
+    let currentParagraph = lines[0];
+    
+    for (let i = 1; i < lines.length; i++) {
+      const currentLine = lines[i];
+      const previousLine = lines[i - 1];
+      
+      // Paragraph boundary indicators:
+      // 1. Previous line ends with a sentence-ending punctuation
+      // 2. Current line starts with a capital letter or quote
+      // 3. Current line looks like a new thought/section
+      const isParagraphBoundary = (
+        // Previous line ends with period, exclamation, or question mark
+        /[.!?]$/.test(previousLine) &&
+        // Current line starts with capital letter, quote, or number
+        /^[A-Z"'0-9]/.test(currentLine) &&
+        // Not a continuation word (like "Additionally", "However", etc.)
+        !/^(Additionally|However|Furthermore|Moreover|Therefore|Thus|Also|But|And|Or|So|Yet|Still|Then|Next|Finally|Meanwhile|Subsequently|Consequently|Nevertheless|Nonetheless|Indeed|In fact|For example|For instance|Similarly|Likewise|On the other hand|In contrast|Despite|Although|While|Since|Because|As a result)/i.test(currentLine)
+      ) || (
+        // Special case: Line starts with "Here's", "This", "The", etc. after a complete sentence
+        /[.!?]$/.test(previousLine) && 
+        /^(Here's|Here is|This|The|My|Our|His|Her|When|Where|Why|How|What|Xavier|In|At|During|After|Before|Large|Small)/i.test(currentLine)
+      );
+      
+      if (isParagraphBoundary) {
+        // Start new paragraph
+        paragraphs.push(currentParagraph);
+        currentParagraph = currentLine;
+      } else {
+        // Continue current paragraph
+        currentParagraph += ' ' + currentLine;
+      }
+    }
+    
+    // Add the last paragraph
+    if (currentParagraph) {
+      paragraphs.push(currentParagraph);
+    }
+    
+    return (
+      <>
+        {paragraphs.map((paragraph, index) => (
+          <Typography 
+            key={index} 
+            variant="body1" 
+            fontStyle="italic"
+            sx={{ mb: index < paragraphs.length - 1 ? 2 : 0 }}
+          >
+            {paragraph.trim()}
+          </Typography>
+        ))}
+      </>
+    );
+  };
+
   return (
     <>
       <Box>
@@ -286,9 +365,7 @@ export default function Recs(props) {
                 <Typography variant="body1">
                   {recommendation.dateCreated.toLocaleString()}
                 </Typography>
-                <Typography variant="body1" fontStyle={"italic"}>
-                  {recommendation.fullRec}
-                </Typography>
+                {renderRecommendationText(recommendation.fullRec)}
               </Stack>
               <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
                 <Tooltip title="Copy link to this recommendation">
