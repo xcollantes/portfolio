@@ -16,7 +16,7 @@ const recommendationsDirectory: string = path.join(process.cwd(), "recommendatio
  *
  * Include recommendation files which have been explicitly included.
  */
-export function getRecommendationPaths(): (string | undefined)[] {
+function getRecommendationPaths(): (string | undefined)[] {
   const fileNames: string[] = fs.readdirSync(recommendationsDirectory)
 
   const showRecommendations: (string | undefined)[] = orderedIncludeRecommendationsConfig.map(
@@ -34,7 +34,7 @@ export function getRecommendationPaths(): (string | undefined)[] {
  *
  * Remove the file extension and create object for getStaticPaths().
  */
-export function getRecommendationPathsAsProps(): Array<{
+function getRecommendationPathsAsProps(): Array<{
   params: { recommendationId: string }
 }> {
   const fileNames: (string | undefined)[] = getRecommendationPaths()
@@ -48,7 +48,7 @@ export function getRecommendationPathsAsProps(): Array<{
 /**
  * Read local file for one Markdown recommendation.
  */
-export async function getRecommendation(recommendationId: string): Promise<RecommendationRawDataType> {
+async function getRecommendationFile(recommendationId: string): Promise<RecommendationRawDataType> {
   const fullFilePath: string = path.join(recommendationsDirectory, `${recommendationId}.md`)
   const fileContents: string = fs.readFileSync(fullFilePath, "utf8")
 
@@ -69,7 +69,7 @@ export async function getRecommendation(recommendationId: string): Promise<Recom
  *
  * Deserialized metadata which is string then must be converted to object before use.
  */
-export async function getHeaderMetadata(): Promise<string[]> {
+async function getHeaderMetadata(): Promise<string[]> {
   const recommendationPaths: (string | undefined)[] = getRecommendationPaths()
 
   const recommendations: string[] = await Promise.all(
@@ -100,7 +100,7 @@ export async function getRecommendationData(): Promise<RecommendationExtractedDa
 
     recommendationPaths.map(async (recommendationPath: string) => {
 
-      const recommendation: RecommendationRawDataType = await getRecommendation(
+      const recommendation: RecommendationRawDataType = await getRecommendationFile(
         `${recommendationPath.replace(/\.md$/, "")}`
       )
 

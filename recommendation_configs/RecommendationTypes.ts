@@ -3,6 +3,9 @@
 /**
  * YAML metadata tags set in each Markdown recommendation file.
  *
+ * This is the deserialized metadata from the YAML header of each
+ * recommendation.
+ *
  * Example at the top of every recommendation Markdown file:
  * ```
  * ---
@@ -46,6 +49,11 @@ export interface RecommendationMetadataType {
   showInSlides?: boolean
 }
 
+/**
+ * Raw data from the recommendation file.
+ *
+ * This is the data that is read from the recommendation file.
+ */
 export interface RecommendationRawDataType {
   // Filename of the recommendation entry without any extension.
   fileId: string
@@ -59,7 +67,8 @@ export interface RecommendationRawDataType {
   // Does not have headers.
   htmlBody: any
   // YAML metadata at head of Markdown file.
-  // Must stringify to serialize first then deserialize when used.
+  // Must stringify to serialize first then deserialize when used because NextJS
+  // static props cannot handle objects.
   metadata: string
 }
 
