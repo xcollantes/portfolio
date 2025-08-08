@@ -17,3 +17,6 @@ export { default as ReactMarkdownRules } from './ReactMarkdownCustom'
 export { default as ShareButton } from './ShareButton'
 export { default as TableOfContents } from './TableOfContents'
 
+export { default as FeedbackForm } from './FeedbackForm'
+export type { FeedbackFormProps, FeedbackFormData } from './FeedbackForm'
+
