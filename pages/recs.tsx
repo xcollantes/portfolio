@@ -305,11 +305,27 @@ export default function Recs(props: RecsProps) {
               sx={{
                 position: "relative",
                 overflow: "hidden",
+                borderRadius: "12px !important",
+                mb: 2,
+                boxShadow: "0px 0px 10px 2px rgba(0, 0, 0, 0.08)",
+                "&:hover": {
+                  boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.12)",
+                },
+                "&:before": {
+                  display: "none",
+                },
                 "& .MuiAccordionSummary-root": {
                   transition: "all 0.3s ease-in-out",
+                  borderRadius: "12px 12px 0 0",
                 },
                 "& .MuiAccordionDetails-root": {
                   transition: "all 0.3s ease-in-out",
+                  borderRadius: "0 0 12px 12px",
+                },
+                "&.Mui-expanded": {
+                  "& .MuiAccordionSummary-root": {
+                    borderRadius: "12px 12px 0 0",
+                  },
                 },
               }}
             >
