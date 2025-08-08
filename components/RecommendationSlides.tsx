@@ -5,7 +5,7 @@
  */
 
 import { Box } from "@mui/material"
-import { RecommendationType } from "../recommendations/RecommendationType"
+import { RecommendationType } from "../recommendation_configs/RecommendationTypes"
 import RecommendationCard from "./RecommendationCard"
 import Carousel from "./carousel/Carousel"
 

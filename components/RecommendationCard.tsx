@@ -11,10 +11,10 @@ import {
   Typography,
 } from "@mui/material"
 import Link from "next/link"
-import { RecommendationType } from "../recommendations/RecommendationType"
+import { RecommendationExtractedDataType } from "../recommendation_configs/RecommendationTypes"
 import { MaterialLink } from "./MaterialLink"
 
-export interface RecommendationCardType extends RecommendationType { }
+export interface RecommendationCardType extends RecommendationExtractedDataType { }
 
 export default function RecommendationCard(props: RecommendationCardType) {
   const {

@@ -46,7 +46,7 @@ export interface RecommendationMetadataType {
   showInSlides?: boolean
 }
 
-export interface RecommendationDataType {
+export interface RecommendationExtractedDataType {
   // Filename of the recommendation entry without any extension.
   fileId: string
   // Raw text to be placed in the body.

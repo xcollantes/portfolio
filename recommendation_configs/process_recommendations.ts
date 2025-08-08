@@ -6,7 +6,7 @@ import path from "path"
 import { remark } from "remark"
 import html from "remark-html"
 import { orderedIncludeRecommendationsConfig } from "./recommendation_order_config"
-import { RecommendationMetadataType, RecommendationDataType } from "./RecommendationTypes"
+import { RecommendationMetadataType, RecommendationExtractedDataType } from "./RecommendationTypes"
 
 const recommendationsDirectory: string = path.join(process.cwd(), "recommendations_md")
 
@@ -48,7 +48,7 @@ export function getRecommendationPathsAsProps(): Array<{
 /**
  * Read local file for one Markdown recommendation.
  */
-export async function getRecommendation(recommendationId: string): Promise<RecommendationDataType> {
+export async function getRecommendation(recommendationId: string): Promise<RecommendationExtractedDataType> {
   const fullFilePath: string = path.join(recommendationsDirectory, `${recommendationId}.md`)
   const fileContents: string = fs.readFileSync(fullFilePath, "utf8")
 
@@ -73,11 +73,15 @@ export async function getHeaderMetadata(): Promise<string[]> {
   const recommendationPaths: (string | undefined)[] = getRecommendationPaths()
 
   const recommendations: string[] = await Promise.all(
+
     recommendationPaths.map(async (recommendationPath: string) => {
-      const recommendation: RecommendationDataType = await getRecommendation(
+
+      const recommendation: RecommendationExtractedDataType = await getRecommendation(
         `${recommendationPath.replace(/\.md$/, "")}`
       )
+
       return recommendation.metadata
+
     })
   )
 
@@ -89,17 +93,24 @@ export async function getHeaderMetadata(): Promise<string[]> {
  *
  * This provides backward compatibility with the existing recommendations page.
  */
-export async function getRecommendationData(): Promise<any[]> {
+export async function getRecommendationData(): Promise<RecommendationExtractedDataType[]> {
   const recommendationPaths: (string | undefined)[] = getRecommendationPaths()
 
   const recommendations = await Promise.all(
+
     recommendationPaths.map(async (recommendationPath: string) => {
-      const recommendation: RecommendationDataType = await getRecommendation(
+
+      const recommendation: RecommendationExtractedDataType = await getRecommendation(
         `${recommendationPath.replace(/\.md$/, "")}`
       )
+
       const metadata = JSON.parse(recommendation.metadata) as RecommendationMetadataType
 
       return {
+        fileId: recommendation.fileId,
+        fullMarkdown: recommendation.fullMarkdown,
+        markdownBody: recommendation.markdownBody,
+        htmlBody: recommendation.htmlBody,
         name: metadata.name,
         headline: metadata.headline,
         relationship: metadata.relationship,
@@ -110,7 +121,9 @@ export async function getRecommendationData(): Promise<any[]> {
         fullRec: recommendation.markdownBody, // Use the markdown body as fullRec
         showInSlides: metadata.showInSlides !== false,
       }
+
     })
+
   )
 
   return recommendations

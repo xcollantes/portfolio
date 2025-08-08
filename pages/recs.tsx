@@ -21,7 +21,7 @@ import { GetStaticPropsResult } from "next"
 import { NextRouter, useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { MaterialLink } from "../components/MaterialLink"
-import { RecommendationType } from "../recommendations/RecommendationType"
+import { RecommendationExtractedDataType } from "../recommendation_configs/RecommendationTypes"
 import { getRecommendationData } from "../recommendation_configs/process_recommendations"
 import { sendGAEvent } from "@next/third-parties/google"
 import { trackUserInteraction } from "../components/AnalyticsUtils"
@@ -31,11 +31,11 @@ import { trackUserInteraction } from "../components/AnalyticsUtils"
  */
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{
-    recommendationsProp: RecommendationType[]
+    recommendationsProp: RecommendationExtractedDataType[]
   }>
 > {
   // Recommendations data.
-  const recommendationData: RecommendationType[] = await getRecommendationData()
+  const recommendationData: RecommendationExtractedDataType[] = await getRecommendationData()
 
   return {
     props: { recommendationsProp: recommendationData },
@@ -79,8 +79,8 @@ export default function Recs(props) {
   const initialExpandDictWithSelected = () => {
     // Create initial dictionary with all recommendations collapsed
     const initialExpandDict = recommendations.map(
-      (recommendation: RecommendationType) => ({
-        recId: recommendation.name,
+      (recommendation: RecommendationExtractedDataType) => ({
+        recId: recommendation.fileId,
         expand: false,
       })
     )
@@ -286,7 +286,7 @@ export default function Recs(props) {
                 <Typography variant="body1">
                   {new Date(recommendation.dateCreated).toLocaleDateString()}
                 </Typography>
-                <Typography variant="body1" fontStyle={"italic"}>
+                <Typography variant="body1" fontStyle={"italic"} sx={{ whiteSpace: 'pre-line' }}>
                   {recommendation.fullRec}
                 </Typography>
               </Stack>
