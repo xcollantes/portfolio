@@ -6,32 +6,36 @@ imagePath: "/assets/images/eggs/pulp.gif"
 articleType: BLOG
 author: Xavier Collantes
 dateWritten: 2023-12-20
-dateLastUpdated: 2025-07-15
+dateLastUpdated: 2025-08-07
 tagIds:
+   - interests
 ---
 
 ## Easter Eggs
 
-Thank you reading this far. You will now be rewarded with the secrets of my
+Thank you for reading this far. You will now be rewarded with the secrets of my
 portfolio.
 
 In classic Googler fashion such as [_do a barrel
-role_](https://www.google.com/search?q=do+a+barrel+roll) and [_google in
+roll_](https://www.google.com/search?q=do+a+barrel+roll) and [_google in
 1998_](https://www.google.com/search?q=google+in+1998), I have created some
 easter eggs of my own.
 
-![Image of hackerman meme](/assets/images/portfolio/hackerman.webp)
+List of all Google Easter Eggs:
+[wikipedia.org/wiki/List_of_Google_Easter_eggs](https://en.wikipedia.org/wiki/List_of_Google_Easter_eggs)
+
+![Image of hackerman meme {priority}](/assets/images/portfolio/hackerman.webp)
 
 ### Hello Hackerman
 
-1. Open Chrome Console by pressing `F12` on `ctrl + shift + i`.
+1. Open Chrome Console by pressing `F12` or `ctrl + shift + i`.
 1. Click on `Console`.
 
 You will see the messages
 
 ### The Dark Side
 
-1. Open Chrome Console by pressing `F12` on `ctrl + shift + i`.
+1. Open Chrome Console by pressing `F12` or `ctrl + shift + i`.
 1. Flip the switch on the page and see which side you switch to.
    - You might need to open the menu on the top of articles
 
@@ -42,7 +46,11 @@ Visit a non-existent page such as
 
 ### 500 Office Space
 
-Visit server error page such at <https://xaviercollantes.dev/500>.
+Visit server error page at <https://xaviercollantes.dev/500>.
+
+### Every Article Has a Pulp Fiction Reference
+
+![Pulp Fiction](/assets/images/eggs/pulp.gif)
 
 ### Cat Facts
 
