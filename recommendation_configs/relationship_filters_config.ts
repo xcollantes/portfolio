@@ -11,6 +11,16 @@ export interface RelationshipFilterConfigType {
 
 // List of relationship filters based on semantic analysis of relationship descriptions.
 export const relationshipFilterConfig: RelationshipFilterConfigType[] = [
+  // {
+  //   displayText: "Clients",
+  //   tagId: "clients",
+  //   matchKeywords: ["client", "stakeholder", "customer"]
+  // },
+  {
+    displayText: "Colleagues",
+    tagId: "colleagues",
+    matchKeywords: ["worked with", "same team", "colleague", "colleagues"]
+  },
   {
     displayText: "Mentors",
     tagId: "mentors",
@@ -20,16 +30,6 @@ export const relationshipFilterConfig: RelationshipFilterConfigType[] = [
     displayText: "Managers",
     tagId: "managers",
     matchKeywords: ["managed", "director", "senior", "manager", "manager of"]
-  },
-  {
-    displayText: "Colleagues",
-    tagId: "colleagues",
-    matchKeywords: ["worked with", "same team", "colleague", "colleagues"]
-  },
-  {
-    displayText: "Clients",
-    tagId: "clients",
-    matchKeywords: ["client", "stakeholder", "customer"]
   },
 ]
 
