@@ -1,10 +1,10 @@
 ---
-title: NextJS web app optimizations
+title: NextJS Web App Optimizations
 author: Xavier Collantes
 dateWritten: 2024-01-26
 cardDescription: Techniques to optimize web applications for NextJS
 cardPageLink: "/articles/web-opt"
-imagePath: ""
+imagePath: "/assets/images/portfolio/lighthouse.webp"
 articleType: BLOG
 tagIds:
   [
@@ -36,17 +36,15 @@ still achieving a Time to Interactive of 10 seconds or less.
 
 ## Chrome Browser DevTools
 
-\# TODO: Lighthouse screenshot
+![Image of Lighthouse {priority}](/assets/images/portfolio/lighthouse.webp)
 
-![Image of Lighthouse](/assets/images/web_opt/lighthouse.webp)
-
-### Chrome Devtools: Lighthouse
+### Chrome DevTools: Lighthouse
 
 1. Open Devtools panel
 1. Go to Lighthouse
 1. Run Analysis
 
-### Chrome Devtools: Performance
+### Chrome DevTools: Performance
 
 1. Open Devtools panel
 1. Go to Performance
@@ -90,7 +88,7 @@ npx depcheck
 Default NextJS will split code based on components needed for the route.
 
 Use `const BigComponent = dynamic(() => import("../bigcomponent"))` when you
-don't need a dependency right away to avoid loading all dependencies.
+do not need a dependency right away to avoid loading all dependencies.
 
 ```js
 const ContentForm = dynamic(
@@ -109,9 +107,9 @@ const ContentForm = dynamic(
 Dynamic import with ES2020 also works with NextJS: `const Component = (await
 import("comp.js")).default`
 
-NOTE: use dynamic importing carefully since there are cases where you don't want
+NOTE: use dynamic importing carefully since there are cases where you do not want
 the content to be delayed on loading. For example, a metric used by Google is
 LCP which will count the time the largest image becomes renders to the user.
 
 These metrics must not be ignored since a low SEO score from Google means less
-likely the page will be showed to users.
+likely the page will be shown to users.
