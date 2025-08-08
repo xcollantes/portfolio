@@ -11,10 +11,10 @@ import {
   Typography,
 } from "@mui/material"
 import Link from "next/link"
-import { RecommendationType } from "../recommendations/RecommendationType"
+import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
 import { MaterialLink } from "./MaterialLink"
 
-export interface RecommendationCardType extends RecommendationType { }
+export interface RecommendationCardType extends RecommendationRawType { }
 
 export default function RecommendationCard(props: RecommendationCardType) {
   const {
@@ -25,8 +25,8 @@ export default function RecommendationCard(props: RecommendationCardType) {
     profileImagePath,
     linkedInLink,
     previewText,
-    fullRec,
-  } = props
+    showInSlides,
+   } = props.metadataObject
 
   return (
     <Card raised sx={{ px: 0.5 }}>
@@ -55,7 +55,7 @@ export default function RecommendationCard(props: RecommendationCardType) {
             <Button
               variant="contained"
               component={MaterialLink}
-              to={`/recs?recId=${name}`}
+              to={`/recs?recId=${props.fileId}`}
               startIcon={<Visibility />}
               sx={{
                 background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
