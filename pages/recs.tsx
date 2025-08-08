@@ -284,7 +284,7 @@ export default function Recs(props) {
               <Stack spacing={3}>
                 <Typography variant="body1">{recommendation.name}</Typography>
                 <Typography variant="body1">
-                  {new Date(recommendation.dateCreated).toLocaleString()}
+                  {new Date(recommendation.dateCreated).toLocaleDateString()}
                 </Typography>
                 <Typography variant="body1" fontStyle={"italic"}>
                   {recommendation.fullRec}
@@ -305,7 +305,7 @@ export default function Recs(props) {
                   </IconButton>
                 </Tooltip>
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   component={MaterialLink}
                   to={
                     "https://www.linkedin.com/in/xaviercollantes/details/recommendations"
