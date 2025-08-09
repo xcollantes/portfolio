@@ -3,7 +3,7 @@
 export default function HiddenPreviewImage() {
   return (
     <img
-      src="/preview_image/front.jpeg"
+      src="/preview_image/front.webp"
       alt=""
       style={{ display: "none" }}
     />

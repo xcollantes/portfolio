@@ -119,7 +119,7 @@ export default function App({
             <meta key="og:url" property="og:url" content="https://xaviercollantes.dev" />
             <meta key="og:title" property="og:title" content="Xavier Collantes" />
             <meta key="og:description" property="og:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
-            <meta key="og:image" property="og:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
+            <meta key="og:image" property="og:image" content="https://xaviercollantes.dev/preview_image/front.webp" />
             <meta key="og:image:width" property="og:image:width" content="1200" />
             <meta key="og:image:height" property="og:image:height" content="630" />
             <meta key="og:image:alt" property="og:image:alt" content="Xavier Collantes" />
@@ -129,7 +129,7 @@ export default function App({
             <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
             <meta key="twitter:title" name="twitter:title" content="Xavier Collantes" />
             <meta key="twitter:description" name="twitter:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
-            <meta key="twitter:image" name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.jpeg" />
+            <meta key="twitter:image" name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.webp" />
             <meta key="twitter:image:alt" name="twitter:image:alt" content="Xavier Collantes" />
 
             {/* Search Engine Optimization */}

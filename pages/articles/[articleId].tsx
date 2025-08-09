@@ -135,7 +135,7 @@ export default function article({
         <meta key="og:url" property="og:url" content={`https://xaviercollantes.dev/articles/${articleId}`} />
         <meta key="og:title" property="og:title" content={metadata.title} />
         <meta key="og:description" property="og:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
-        <meta key="og:image" property="og:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.jpeg"} />
+        <meta key="og:image" property="og:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.webp"} />
         <meta key="og:image:width" property="og:image:width" content="1200" />
         <meta key="og:image:height" property="og:image:height" content="630" />
         <meta key="og:image:alt" property="og:image:alt" content={`${metadata.title} - Xavier Collantes`} />
@@ -148,7 +148,7 @@ export default function article({
         <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
         <meta key="twitter:title" name="twitter:title" content={metadata.title} />
         <meta key="twitter:description" name="twitter:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
-        <meta key="twitter:image" name="twitter:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.jpeg"} />
+        <meta key="twitter:image" name="twitter:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.webp"} />
         <meta key="twitter:image:alt" name="twitter:image:alt" content={`${metadata.title} - Xavier Collantes`} />
 
         {/* Article-specific meta tags */}
