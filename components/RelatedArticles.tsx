@@ -2,14 +2,14 @@
 
 import {
   Box,
-  Typography,
   Card,
-  CardContent,
   CardActionArea,
+  CardContent,
   Chip,
   Stack,
-  useTheme,
   Theme,
+  Typography,
+  useTheme,
 } from "@mui/material"
 import Link from "next/link"
 import { RelatedArticleType } from "../article_configs/related_articles"
@@ -43,7 +43,7 @@ export default function RelatedArticles({
         >
           Related Articles
         </Typography>
-        
+
         {commonTags.length > 0 && (
           <Box sx={{ mb: 2 }}>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
@@ -94,7 +94,7 @@ export default function RelatedArticles({
                     >
                       {article.title}
                     </Typography>
-                    
+
                     <Typography
                       variant="body2"
                       color="text.secondary"
@@ -123,7 +123,7 @@ export default function RelatedArticles({
                           By {article.author}
                         </Typography>
                       )}
-                      
+
                       {article.dateWritten && (
                         <Typography variant="caption" color="text.secondary">
                           {new Date(article.dateWritten).toLocaleDateString()}
