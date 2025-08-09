@@ -18,11 +18,19 @@ import {
   ArticleDataType,
   getArticle,
   getArticlePathsAsProps,
+  getHeaderMetadata,
+  MetadataType,
 } from "../../article_configs/process_articles"
+import {
+  getRelatedArticles,
+  getCommonTags,
+  RelatedArticleType,
+} from "../../article_configs/related_articles"
 import ArticleAnalytics from "../../components/ArticleAnalytics"
 import Footer from "../../components/Footer"
 import HiddenPreviewImage from "../../components/HiddenPreviewImage"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
+import RelatedArticles from "../../components/RelatedArticles"
 import ShareButton from "../../components/ShareButton"
 import TableOfContents from "../../components/TableOfContents"
 
@@ -50,17 +58,40 @@ interface ContextParamsType extends ParsedUrlQuery {
  * Requires return of
  * `{ props: <prop variable> }`
  */
+interface ArticlePageProps {
+  fileId: string
+  fullMarkdown: string
+  markdownBody: string
+  htmlBody: any
+  metadata: MetadataType  // Parsed metadata object instead of string
+  relatedArticles: RelatedArticleType[]
+  commonTags: string[]
+}
+
 export async function getStaticProps(
   context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<ArticleDataType>> {
+): Promise<GetStaticPropsResult<ArticlePageProps>> {
   // Add type, otherwise undefined pages will cause error:
   // https://github.com/vercel/next.js/discussions/16522#discussioncomment-130070
   const params = context.params! as ContextParamsType
   const article: ArticleDataType = await getArticle(params.articleId)
+  const currentMetadata: MetadataType = JSON.parse(article.metadata)
 
-  const articleProps = {
+  // Get all articles to find related ones
+  const allArticleMetadata: string[] = await getHeaderMetadata()
+  const allArticles: MetadataType[] = allArticleMetadata.map(
+    (unparsedMetadata: string) => JSON.parse(unparsedMetadata)
+  )
+
+  // Find related articles
+  const relatedArticles = getRelatedArticles(currentMetadata, allArticles, 3)
+  const commonTags = getCommonTags(currentMetadata, relatedArticles)
+
+  const articleProps: ArticlePageProps = {
     ...article,
-    metadata: JSON.parse(article.metadata),
+    metadata: currentMetadata,
+    relatedArticles,
+    commonTags,
   }
 
   return { props: articleProps }
@@ -71,7 +102,9 @@ export default function article({
   markdownBody,
   htmlBody,
   metadata,
-}) {
+  relatedArticles,
+  commonTags,
+}: ArticlePageProps) {
   const theme: Theme = useTheme()
   const router = useRouter()
   const { articleId } = router.query
@@ -215,6 +248,12 @@ export default function article({
             >
               {markdownBody}
             </ReactMarkdown>
+            
+            <RelatedArticles 
+              relatedArticles={relatedArticles}
+              commonTags={commonTags}
+            />
+            
             <Footer />
           </Container>
         </Box>
