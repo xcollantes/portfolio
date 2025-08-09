@@ -39,6 +39,7 @@ export const orderedIncludeBlogs: string[] = [
 
   "llm-leaderboards.md",
   "fastapi.md",
+  "tracking.md",
   "anderson-podcast.md",
   // "gist-example.md",
   "web-opt.md",

@@ -131,6 +131,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content about Claude Code that benefits the developer community"
   },
 
+  "tracking.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about user analytics and tracking tools that benefits the technical community"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
