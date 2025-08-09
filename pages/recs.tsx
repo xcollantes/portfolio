@@ -21,6 +21,7 @@ import {
 } from "@mui/material"
 import { sendGAEvent } from "@next/third-parties/google"
 import { GetStaticPropsResult } from "next"
+import Head from "next/head"
 import { NextRouter, useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { trackUserInteraction } from "../components/AnalyticsUtils"
@@ -269,6 +270,47 @@ export default function Recs(props: RecsProps) {
 
   return (
     <>
+      <Head>
+        {/* Page title */}
+        <title key="title">Professional Recommendations - Xavier Collantes</title>
+
+        {/* Meta description for search engines */}
+        <meta
+          key="description"
+          name="description"
+          content="Professional recommendations and testimonials for Xavier Collantes from colleagues, managers, and industry professionals. Read reviews from his work experience at Google, startups, and consulting projects."
+        />
+
+        {/* Keywords for SEO */}
+        <meta
+          name="keywords"
+          content="xavier collantes recommendations,professional testimonials,linkedin recommendations,software engineer reviews,google employee testimonials,ai specialist reviews,consulting testimonials"
+        />
+
+        {/* Open Graph meta tags for social sharing */}
+        <meta key="og:type" property="og:type" content="website" />
+        <meta key="og:url" property="og:url" content="https://xaviercollantes.dev/recs" />
+        <meta key="og:title" property="og:title" content="Professional Recommendations - Xavier Collantes" />
+        <meta key="og:description" property="og:description" content="Professional recommendations and testimonials for Xavier Collantes from colleagues, managers, and industry professionals. Read reviews from his work experience at Google, startups, and consulting projects." />
+        <meta key="og:image" property="og:image" content="https://xaviercollantes.dev/assets/images/google/circle.gif" />
+        <meta key="og:image:width" property="og:image:width" content="1200" />
+        <meta key="og:image:height" property="og:image:height" content="630" />
+        <meta key="og:image:alt" property="og:image:alt" content="Professional Recommendations - Xavier Collantes" />
+        <meta key="og:site_name" property="og:site_name" content="Xavier Collantes" />
+
+        {/* Twitter Card meta tags */}
+        <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+        <meta key="twitter:title" name="twitter:title" content="Professional Recommendations - Xavier Collantes" />
+        <meta key="twitter:description" name="twitter:description" content="Professional recommendations and testimonials for Xavier Collantes from colleagues, managers, and industry professionals." />
+        <meta key="twitter:image" name="twitter:image" content="https://xaviercollantes.dev/assets/images/google/circle.gif" />
+        <meta key="twitter:image:alt" name="twitter:image:alt" content="Professional Recommendations - Xavier Collantes" />
+
+        {/* Additional SEO meta tags */}
+        <meta name="author" content="Xavier Collantes" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://xaviercollantes.dev/recs" />
+      </Head>
+
       <Box sx={{ pb: 10 }}>
         {/* Relationship filter bar with expand/collapse controls */}
         <Box sx={{ my: 3 }}>

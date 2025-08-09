@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://xaviercollantes.dev/</loc>
-    <lastmod>2024-08-09</lastmod>
+    <lastmod>2025-08-09</lastmod>
   </url>
   <url>
     <loc>https://xaviercollantes.dev/recs</loc>
-    <lastmod>2024-08-09</lastmod>
-  </url>
-  <url>
-    <loc>https://xaviercollantes.dev/articles/rag-langchain</loc>
-    <lastmod>2024-08-09</lastmod>
-  </url>
-  <url>
-    <loc>https://xaviercollantes.dev/articles/portfolio</loc>
-    <lastmod>2024-08-09</lastmod>
-  </url>
-  <url>
-    <loc>https://xaviercollantes.dev/articles/measuring-tokens</loc>
-    <lastmod>2024-08-09</lastmod>
+    <lastmod>2025-08-09</lastmod>
   </url>
   <url>
     <loc>https://xaviercollantes.dev/articles/llms-for-non-techies</loc>
-    <lastmod>2024-08-09</lastmod>
+    <lastmod>2025-08-09</lastmod>
+  </url>
+  <url>
+    <loc>https://xaviercollantes.dev/articles/rag-langchain</loc>
+    <lastmod>2025-08-09</lastmod>
+  </url>
+  <url>
+    <loc>https://xaviercollantes.dev/articles/portfolio</loc>
+    <lastmod>2025-08-09</lastmod>
+  </url>
+  <url>
+    <loc>https://xaviercollantes.dev/articles/history-ai</loc>
+    <lastmod>2025-08-09</lastmod>
+  </url>
+  <url>
+    <loc>https://xaviercollantes.dev/articles/measuring-tokens</loc>
+    <lastmod>2025-08-09</lastmod>
   </url>
   <url>
     <loc>https://xaviercollantes.dev/articles/fastapi</loc>
-    <lastmod>2024-08-09</lastmod>
+    <lastmod>2025-08-09</lastmod>
   </url>
   <url>
     <loc>https://xaviercollantes.dev/articles/bulldog-band</loc>
-    <lastmod>2024-08-09</lastmod>
+    <lastmod>2025-08-09</lastmod>
   </url>
 </urlset>
