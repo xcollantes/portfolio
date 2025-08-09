@@ -211,12 +211,95 @@ quality of work.
 
 Tend to use LinkedIn Recommendations since recommendation givers can be verified.
 
+### Recommendations from YAML (Legacy)
+
 1. Copy and paste recommendation and relevant data in
    `recommendations/ordered_recommendations.yaml`. List is ordered.
 1. See `recommendations/RecommendationType.ts` for fields.
 1. Download the profile picture from LinkedIn of the recommendation giver and
    upload to `public/recommendations/profile_pics/`. Be sure to specify the
    picture in the ordered_recommendations.yaml.
+
+### Recommendations from Markdown (Current)
+
+Recommendations are now processed from individual Markdown files for better organization and type safety.
+
+1. Create a new Markdown file in `recommendations_md/` directory
+
+   - Use format: `firstname-lastname.md`
+   - Use all lowercase with hyphens
+
+1. Add YAML frontmatter with required fields:
+
+   ```yaml
+   ---
+   name: John Doe
+   headline: Senior Software Engineer at Company
+   relationship: John worked with Xavier on the same team
+   dateCreated: 2024-01-15
+   profileImagePath: "/recommendations/profile_pics/john.webp"
+   linkedInLink: https://www.linkedin.com/in/johndoe
+   previewText: >
+     Brief preview text that appears in carousel...
+   showInSlides: true
+   ---
+   ```
+
+1. Write the full recommendation content in Markdown below the frontmatter
+1. Add the profile picture to `public/recommendations/profile_pics/` in WebP format
+1. **Important**: Use paths from root with leading slash (e.g., `/recommendations/profile_pics/john.webp`)
+
+### Path Requirements
+
+All file paths in the portfolio should be specified from the root directory with a leading slash:
+
+✅ **Correct paths:**
+
+- `/recommendations/profile_pics/john.webp`
+- `/assets/images/article/diagram.webp`
+- `/articles/my-article`
+
+❌ **Incorrect paths:**
+
+- `recommendations/profile_pics/john.webp` (missing leading slash)
+- `../public/assets/images/diagram.webp` (relative path)
+- `public/assets/images/diagram.webp` (includes public directory)
+
+This ensures consistent path resolution across all components and proper Next.js static asset handling.
+
+## Related Articles System
+
+The portfolio automatically displays related articles at the bottom of each article page based on shared tags.
+
+### How Related Articles Work
+
+1. **Tag-based matching**: Articles are matched based on shared `tagIds` in their frontmatter
+1. **Relevance scoring**: Articles are ranked by the number of shared tags
+1. **Date sorting**: When relevance scores are equal, newer articles are prioritized
+1. **Automatic display**: Up to 3 related articles are shown automatically
+1. **Smart UI**: Common tags are highlighted to show the relationship basis
+
+### Optimizing Related Articles
+
+To improve related article suggestions:
+
+1. **Use consistent tags**: Ensure your `tagIds` are consistent across related articles
+1. **Add relevant tags**: Include 3-5 relevant tags per article for better matching
+1. **Tag standardization**: Check `article_configs/filters_config.ts` for available tags
+1. **Review matches**: Related articles are calculated at build time, so rebuild to see changes
+
+Example of good tagging for related articles:
+
+```yaml
+tagIds:
+  - ai
+  - llm
+  - python
+  - tutorial
+  - machine-learning
+```
+
+The system will find articles sharing these tags and display them with relevance indicators.
 
 ## NextAuth
 
