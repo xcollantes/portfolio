@@ -2,7 +2,7 @@
 title: "AI Chatbots: Giving relationship advice since 1966"
 cardDescription: "How AI development have changed exponentially and when we should expect our robot overlords."
 imagePath: /assets/images/history-ai/aimovie-preview.webp
-cardPageLink: "articles/history-ai"
+cardPageLink: "/articles/history-ai"
 author: "Xavier Collantes"
 dateWritten: 2025-08-01
 dateLastUpdated: 2025-08-01

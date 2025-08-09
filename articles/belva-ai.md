@@ -2,7 +2,7 @@
 title: "Belva AI: Building LLM Microservices Infrastructure"
 cardDescription: "Developed API for LLM microservices."
 imagePath: "/assets/images/belva-ai/belva.webp"
-cardPageLink: "articles/belva-ai"
+cardPageLink: "/articles/belva-ai"
 cardButtonText: "See more"
 author: "Xavier Collantes"
 dateWritten: 2025-03-20

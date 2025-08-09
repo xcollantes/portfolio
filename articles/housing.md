@@ -1,7 +1,7 @@
 ---
 title: Gonzaga Housing Web Developer Consultant
 cardDescription: Web developer in exchange for a room.
-cardPageLink: articles/housing
+cardPageLink: /articles/housing
 imagePath: /assets/images/housing/tower.webp
 articleType: WORKEXP
 author: Xavier Collantes
