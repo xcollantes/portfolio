@@ -9,14 +9,14 @@ Format the articles at $ARGUMENTS not yet committed.
 Make sure articles have the correct grammar and punctuation.
 
 Make sure images for new articles are converted to WebP if they are an image.
-
-Make sure unused images are deleted. Ask first before deleting.
+Leave GIFs, MP4s, and other videos as they are.
 
 Make sure the title headers are capital case for every word in the title.
 
 Make sure the language is succinct.
 
-Make sure the first image has the priority tag.
+Make sure the first image has the priority tag. Other images can have the
+priority tag.
 
 Avoid using contractions.
 
