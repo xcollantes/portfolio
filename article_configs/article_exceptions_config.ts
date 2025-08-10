@@ -131,6 +131,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content about Claude Code that benefits the developer community"
   },
 
+  "git-worktree.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about Git Worktrees and Claude Code that benefits the developer community"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {

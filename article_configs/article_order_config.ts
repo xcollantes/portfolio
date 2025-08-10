@@ -31,7 +31,7 @@ export const orderedIncludeBlogs: string[] = [
   "claude-cheatsheet.md",
   "radio.md",
   "rpi-camera.md",
-  "git-tree.md",
+  "git-worktree.md",
 
   // IN PROGRESS.
   // "choosing-embeddings.md",
