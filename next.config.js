@@ -34,19 +34,33 @@ module.exports = {
     // Default locale when visiting a non-locale prefixed path e.g. `/hello`
     defaultLocale: "en-US",
   },
-  // Ensure sitemap.xml and robots.txt are served correctly
+  // This is required to support PostHog trailing slash API requests
+  skipTrailingSlashRedirect: true,
+  // Ensure sitemap.xml and robots.txt are served correctly and add PostHog rewrites
   async rewrites() {
     return [
+      {
+        source: "/ingest/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/ingest/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+      {
+        source: "/ingest/flags",
+        destination: "https://us.i.posthog.com/flags",
+      },
       {
         source: '/sitemap.xml',
         destination: '/api/sitemap',
       },
-    ];
+    ]
   },
   async headers() {
     return [
       {
-        source: "/(.*)",
+        source: "(.*)",
         headers: [
           {
             key: "X-DNS-Prefetch-Control",
