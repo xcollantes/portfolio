@@ -5,6 +5,7 @@ import FeedbackRoundedIcon from "@mui/icons-material/FeedbackRounded"
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded"
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded"
 import StarRoundedIcon from "@mui/icons-material/StarRounded"
+import EmojiEmotionsRoundedIcon from "@mui/icons-material/EmojiEmotionsRounded"
 import {
   Box,
   List,
@@ -73,6 +74,13 @@ export default function Drawer({ anchor = "right" }: DrawerPropType) {
               <ListItemButton to="/recs" component={MaterialLink} onClick={toggleDrawer}>
                 <ListItemText primary="Recommendations" />
                 <StarRoundedIcon sx={{ mr: 1 }} />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem key={key++} disablePadding>
+              <ListItemButton to="/memes" component={MaterialLink} onClick={toggleDrawer}>
+                <ListItemText primary="Random Memes" />
+                <EmojiEmotionsRoundedIcon sx={{ mr: 1 }} />
               </ListItemButton>
             </ListItem>
 
