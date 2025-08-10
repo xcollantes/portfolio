@@ -24,14 +24,14 @@ export const orderedIncludeBlogs: string[] = [
   "rag-langchain.md",
   "history-ai.md",
   "llms-for-non-techies.md",
-  "measuring-tokens.md",
+  "git-worktree.md",
   "gonzaga-speaker-infosys.md",
   "bulldog-band.md",
-  "ai-ide.md",
+  "measuring-tokens.md",
   "claude-cheatsheet.md",
   "radio.md",
-  "rpi-camera.md",
-  "git-worktree.md",
+
+  "ai-ide.md",
 
   // IN PROGRESS.
   // "choosing-embeddings.md",
