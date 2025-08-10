@@ -306,16 +306,16 @@ unchecked. Keep the following lessons I have learned in mind:
   free to reference Github Issues and PRs to help Claude Code do the right
   thing.
 - Claude Code can see the internet so feel free to reference external resources.
+- If this is your first time using an LLM-based AI IDE, this will be a super
+  awkward experience but over time, you will get the hang of it.
 
 ![Obiwan at Kamino](/assets/images/git-tree/magnificent.gif)
 
 ![The Grand Army of the Republic](/assets/images/git-tree/army.gif)
 
 Claude Code + Git branching transforms you from a single-threaded developer
-into a parallel processing powerhouse. You are not just writing code faster, you
-are thinking about multiple problems simultaneously, experimenting with
-different approaches, and maintaining higher code quality through focused,
-context-aware development.
+into a parallel processing powerhouse. It is like you have a clone army of
+yourself.
 
 ## Common Pitfalls
 
