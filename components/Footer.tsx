@@ -2,6 +2,7 @@
 
 import { Box, Button, Divider, Theme, useTheme } from "@mui/material"
 import { MaterialLink } from "./MaterialLink"
+import { DarkModeClassNames } from "../hooks/useDarkMode"
 
 export default function Footer() {
   const theme: Theme = useTheme()
@@ -17,8 +18,9 @@ export default function Footer() {
 
   return (
     <>
-      <Divider sx={{ mt: 8 }} />
+      <Divider sx={{ mt: 8 }} className={DarkModeClassNames.divider} />
       <Box
+        className={DarkModeClassNames.bgPrimary}
         sx={{
           display: "flex",
           flexDirection: "row",

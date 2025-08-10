@@ -3,6 +3,7 @@
 import { Box, Button, Card, CardContent, Typography } from "@mui/material"
 import { useState, useEffect } from "react"
 import { MaterialLink } from "./MaterialLink"
+import { useDarkMode, DarkModeClassNames, combineDarkModeClasses } from "../hooks/useDarkMode"
 
 export interface LongCardType {
   title: string
@@ -24,8 +25,15 @@ export default function LongCard({
   useBackgroundImage = false,
 }: LongCardType) {
   const [imageLoaded, setImageLoaded] = useState(false)
+  const { isDark } = useDarkMode()
   const titleStyle = disabled ? "blurMedium" : ""
   const descStyle = disabled ? "blurHeavy" : ""
+  
+  // Combine blur classes with dark mode classes
+  const cardClasses = combineDarkModeClasses(
+    titleStyle,
+    DarkModeClassNames.card
+  )
 
   /**
    * Preload image to detect errors.
@@ -78,12 +86,20 @@ export default function LongCard({
     : {}
 
   return (
-    <Card raised sx={cardStyles} className={titleStyle}>
+    <Card raised sx={cardStyles} className={cardClasses}>
       <CardContent sx={contentStyles}>
-        <Typography variant="h4" className={descStyle} sx={{ fontWeight: 'bold' }}>
+        <Typography 
+          variant="h4" 
+          className={combineDarkModeClasses(descStyle, DarkModeClassNames.textPrimary)} 
+          sx={{ fontWeight: 'bold' }}
+        >
           {title}
         </Typography>
-        <Typography variant="body1" sx={{ mt: 2, fontWeight: 'medium' }}>
+        <Typography 
+          variant="body1" 
+          className={DarkModeClassNames.textSecondary}
+          sx={{ mt: 2, fontWeight: 'medium' }}
+        >
           {cardDescription}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
@@ -93,6 +109,7 @@ export default function LongCard({
             component={MaterialLink}
             to={cardPageLink}
             disabled={disabled}
+            className={DarkModeClassNames.button}
           >
             {cardButtonText}
           </Button>

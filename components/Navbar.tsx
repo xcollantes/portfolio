@@ -4,6 +4,7 @@ import { Box, Container, Theme, Typography, useTheme } from "@mui/material"
 import DarkModeSwitch from "./DarkMode"
 import Drawer from "./Drawer"
 import { MaterialLink } from "./MaterialLink"
+import { DarkModeClassNames } from "../hooks/useDarkMode"
 
 interface NavbarProps {
   containerWidth?: "xs" | "sm" | "md" | "lg" | "xl"
@@ -14,6 +15,7 @@ export default function Navbar({ containerWidth = "md" }: NavbarProps) {
 
   return (
     <Box
+      className={DarkModeClassNames.navbar}
       sx={{
         width: "100%",
         position: "fixed",
@@ -44,6 +46,7 @@ export default function Navbar({ containerWidth = "md" }: NavbarProps) {
           >
             <Typography
               variant="h1"
+              className={DarkModeClassNames.textPrimary}
               sx={{
                 fontSize: "28px",
                 [theme.breakpoints.up("sm")]: {

@@ -1,3 +1,6 @@
+/* Import dark mode styles */
+@import url('./darkmode.css');
+
 :root {
   /* Light mode colors */
   --primary-light: #2563eb;

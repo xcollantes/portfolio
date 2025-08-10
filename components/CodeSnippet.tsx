@@ -26,6 +26,7 @@ import {
   vscDarkPlus
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useToastNotification } from "../hooks/useToastNotification"
+import { DarkModeClassNames } from "../hooks/useDarkMode"
 
 export interface CodeSnippetProps {
   /** Code content to display. */
@@ -182,6 +183,7 @@ export default function CodeSnippet({
 
   return (
     <Box
+      className={DarkModeClassNames.code}
       sx={{
         border: `1px solid ${theme.palette.divider}`,
         borderRadius: "6px",

@@ -31,6 +31,7 @@ import {
 } from "../contexts/selectFilterTag"
 import { getRecommendationData } from "../recommendation_configs/process_recommendations"
 import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
+import { DarkModeClassNames } from "../hooks/useDarkMode"
 
 const oneLiner: string = process.env.NEXT_PUBLIC_ONE_LINER || ""
 
@@ -127,6 +128,7 @@ export default function Page(props: IndexPropTypes) {
               <LongPressWrapper elementName="Xavier Collantes" onLongPress={showCatFact}>
                 <Typography
                   variant="h1"
+                  className={DarkModeClassNames.textPrimary}
                   sx={{
                     [theme.breakpoints.down(1290)]: { fontSize: 75 },
                     [theme.breakpoints.down("sm")]: { fontSize: 50 },
@@ -138,7 +140,7 @@ export default function Page(props: IndexPropTypes) {
               </LongPressWrapper>
 
               {oneLiner && (
-                <Typography variant="subtitle1" align="right">
+                <Typography variant="subtitle1" className={DarkModeClassNames.textSecondary} align="right">
                   {oneLiner}
                 </Typography>
               )}

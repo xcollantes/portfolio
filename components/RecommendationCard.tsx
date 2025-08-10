@@ -13,6 +13,7 @@ import {
 import Link from "next/link"
 import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
 import { MaterialLink } from "./MaterialLink"
+import { DarkModeClassNames } from "../hooks/useDarkMode"
 
 export interface RecommendationCardType extends RecommendationRawType { }
 
@@ -29,7 +30,7 @@ export default function RecommendationCard(props: RecommendationCardType) {
   } = props.metadataObject
 
   return (
-    <Card raised sx={{ px: 0.5 }}>
+    <Card raised className={DarkModeClassNames.card} sx={{ px: 0.5 }}>
       <CardContent>
         <Stack spacing={3} alignItems="center">
 
@@ -55,17 +56,17 @@ export default function RecommendationCard(props: RecommendationCardType) {
 
             <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
 
-              <Typography variant="h6" sx={{ fontWeight: "bold", textAlign: "center" }}>
+              <Typography variant="h6" className={DarkModeClassNames.textPrimary} sx={{ fontWeight: "bold", textAlign: "center" }}>
                 {headline}
               </Typography>
-              <Typography variant="body1" sx={{ fontWeight: "bold", textAlign: "center" }}>
+              <Typography variant="body1" className={DarkModeClassNames.textPrimary} sx={{ fontWeight: "bold", textAlign: "center" }}>
                 {name}
               </Typography>
             </Box>
 
           </Box>
 
-          <Typography variant="body1" fontStyle={"italic"} sx={{ textAlign: "center" }}>
+          <Typography variant="body1" className={DarkModeClassNames.textSecondary} fontStyle={"italic"} sx={{ textAlign: "center" }}>
             {previewText}
           </Typography>
 
