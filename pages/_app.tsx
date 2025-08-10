@@ -8,6 +8,8 @@ import { AppProps } from "next/app"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
+import posthog from "posthog-js"
+import { PostHogProvider } from "posthog-js/react"
 import { trackNavigation, trackPageView, trackTimeOnPage } from "../components/AnalyticsUtils"
 import { LoadingOverlay } from "../components/LoadingOverlay"
 import { MOTD } from "../components/MsgOfDay"
@@ -27,6 +29,17 @@ export default function App({
   const router = useRouter()
   const isHomePage = router.pathname === "/"
   const [loading, setLoading] = useState(false)
+
+  // Initialize PostHog client
+  useEffect(() => {
+    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+      api_host: "/ingest",
+      ui_host: "https://us.posthog.com",
+      defaults: "2025-05-24",
+      capture_exceptions: true, // This enables capturing exceptions using Error Tracking, set to false if you don't want this
+      debug: process.env.NODE_ENV === "development",
+    })
+  }, [])
 
   // Track time spent on page
   const pageLoadTimeRef = useRef<number>(Date.now())
@@ -96,75 +109,85 @@ export default function App({
       default:
         return <Navbar containerWidth="md" />
     }
-  })();
+  })()
 
   return (
-    <SessionProvider session={session}>
-      <ColorModeProvider theme={base}>
-        <ToastProvider>
-          <Head>
-            <link rel="icon" href="/icons/favicon.ico" />
-            <meta
-              key="description"
-              name="description"
-              content="Career works of Xavier Collantes."
-            />
-            <meta
-              name="keywords"
-              content="resume,consulting,ai,llm,google,portfolio,career,projects,xavier,collantes"
-            />
+    <PostHogProvider client={posthog}>
+      <SessionProvider session={session}>
+        <ColorModeProvider theme={base}>
+          <ToastProvider>
+            <Head>
+              <link rel="icon" href="/icons/favicon.ico" />
+              <meta
+                key="description"
+                name="description"
+                content="Career works of Xavier Collantes."
+              />
+              <meta
+                name="keywords"
+                content="resume,consulting,ai,llm,google,portfolio,career,projects,xavier,collantes"
+              />
 
-            {/* Open Graph meta tags for social sharing */}
-            <meta key="og:type" property="og:type" content="website" />
-            <meta key="og:url" property="og:url" content="https://xaviercollantes.dev" />
-            <meta key="og:title" property="og:title" content="Xavier Collantes" />
-            <meta key="og:description" property="og:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
-            <meta key="og:image" property="og:image" content="https://xaviercollantes.dev/preview_image/front.webp" />
-            <meta key="og:image:width" property="og:image:width" content="1200" />
-            <meta key="og:image:height" property="og:image:height" content="630" />
-            <meta key="og:image:alt" property="og:image:alt" content="Xavier Collantes" />
-            <meta key="og:site_name" property="og:site_name" content="Xavier Collantes" />
+              {/* Open Graph meta tags for social sharing */}
+              <meta key="og:type" property="og:type" content="website" />
+              <meta key="og:url" property="og:url" content="https://xaviercollantes.dev" />
+              <meta key="og:title" property="og:title" content="Xavier Collantes" />
+              <meta
+                key="og:description"
+                property="og:description"
+                content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups."
+              />
+              <meta key="og:image" property="og:image" content="https://xaviercollantes.dev/preview_image/front.webp" />
+              <meta key="og:image:width" property="og:image:width" content="1200" />
+              <meta key="og:image:height" property="og:image:height" content="630" />
+              <meta key="og:image:alt" property="og:image:alt" content="Xavier Collantes" />
+              <meta key="og:site_name" property="og:site_name" content="Xavier Collantes" />
 
-            {/* Twitter Card meta tags */}
-            <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
-            <meta key="twitter:title" name="twitter:title" content="Xavier Collantes" />
-            <meta key="twitter:description" name="twitter:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
-            <meta key="twitter:image" name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.webp" />
-            <meta key="twitter:image:alt" name="twitter:image:alt" content="Xavier Collantes" />
+              {/* Twitter Card meta tags */}
+              <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+              <meta key="twitter:title" name="twitter:title" content="Xavier Collantes" />
+              <meta
+                key="twitter:description"
+                name="twitter:description"
+                content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups."
+              />
+              <meta key="twitter:image" name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.webp" />
+              <meta key="twitter:image:alt" name="twitter:image:alt" content="Xavier Collantes" />
 
-            {/* Search Engine Optimization */}
-            <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+              {/* Search Engine Optimization */}
+              <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-            <GoogleAnalytics gaId="G-HB7D403D67" />
+              <GoogleAnalytics gaId="G-HB7D403D67" />
 
-            <title key="title">Xavier Collantes</title>
-          </Head>
+              <title key="title">Xavier Collantes</title>
+            </Head>
 
-          <CssBaseline />
+            <CssBaseline />
 
-          {/* Loading overlay */}
-          <LoadingOverlay loading={loading} />
+            {/* Loading overlay */}
+            <LoadingOverlay loading={loading} />
 
-          {/*
-            The navbar is fixed, so we need to account for it when calculating
-            the margin top so the page is not covered by the navbar.
-          */}
-          <Container
-            sx={{
-              mt: 2,
-              pt: !isHomePage ? { xs: 12, sm: 10 } : 0
-            }}
-            maxWidth="xl"
-          >
-            <SelectFilterTagContextProvider>
-              {navbar}
-              <Component {...pageProps} />
-              <Toast />
-              <Analytics />
-            </SelectFilterTagContextProvider>
-          </Container>
-        </ToastProvider>
-      </ColorModeProvider>
-    </SessionProvider>
+            {/*
+              The navbar is fixed, so we need to account for it when calculating
+              the margin top so the page is not covered by the navbar.
+            */}
+            <Container
+              sx={{
+                mt: 2,
+                pt: !isHomePage ? { xs: 12, sm: 10 } : 0
+              }}
+              maxWidth="xl"
+            >
+              <SelectFilterTagContextProvider>
+                {navbar}
+                <Component {...pageProps} />
+                <Toast />
+                <Analytics />
+              </SelectFilterTagContextProvider>
+            </Container>
+          </ToastProvider>
+        </ColorModeProvider>
+      </SessionProvider>
+    </PostHogProvider>
   )
 }
