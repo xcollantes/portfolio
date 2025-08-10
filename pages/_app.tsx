@@ -9,6 +9,7 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
 import { trackNavigation, trackPageView, trackTimeOnPage } from "../components/AnalyticsUtils"
+import { GADebugger } from "../components/GADebugger"
 import { LoadingOverlay } from "../components/LoadingOverlay"
 import { MOTD } from "../components/MsgOfDay"
 import Navbar from "../components/Navbar"
@@ -135,7 +136,41 @@ export default function App({
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-            <GoogleAnalytics gaId="G-HB7D403D67" />
+            <GoogleAnalytics 
+              gaId="G-HB7D403D67" 
+              dataLayerName="dataLayer"
+            />
+            
+            {/* Enhanced GA4 Configuration */}
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  
+                  // Configure GA4 with enhanced settings
+                  gtag('config', 'G-HB7D403D67', {
+                    page_title: document.title,
+                    page_location: window.location.href,
+                    debug_mode: ${process.env.NODE_ENV === 'development'},
+                    send_page_view: true,
+                    enhanced_measurement: true,
+                    allow_ad_personalization_signals: false,
+                    anonymize_ip: true
+                  });
+                  
+                  // Add custom dimensions if needed
+                  gtag('config', 'G-HB7D403D67', {
+                    custom_map: {
+                      'dimension1': 'article_type',
+                      'dimension2': 'page_category'
+                    }
+                  });
+                  
+                  console.log('🔍 GA4 initialized with ID: G-HB7D403D67');
+                `,
+              }}
+            />
 
             <title key="title">Xavier Collantes</title>
           </Head>
@@ -161,6 +196,8 @@ export default function App({
               <Component {...pageProps} />
               <Toast />
               <Analytics />
+              {/* Only show GA Debugger in development */}
+              {process.env.NODE_ENV === 'development' && <GADebugger />}
             </SelectFilterTagContextProvider>
           </Container>
         </ToastProvider>

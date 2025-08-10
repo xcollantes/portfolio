@@ -4,6 +4,15 @@ import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from "react"
 import { sendGAEvent } from "@next/third-parties/google"
 
+// Debug mode - set to true to enable console logging
+const DEBUG_GA = process.env.NODE_ENV === 'development'
+
+const logDebug = (eventName: string, parameters: any) => {
+  if (DEBUG_GA) {
+    console.log(`🔍 Article GA4 Event: ${eventName}`, parameters)
+  }
+}
+
 interface ArticleAnalyticsProps {
   articleId: string
   articleTitle: string
@@ -30,12 +39,16 @@ export default function ArticleAnalytics({
 
   // Track article view and scroll depth
   useEffect(() => {
-    // Track initial article view
-    sendGAEvent("article_view", {
-      article_id: articleId,
-      article_title: articleTitle,
+    // Track initial article view using standard GA4 event
+    const viewParameters = {
+      content_type: 'article',
+      content_id: articleId,
+      content_title: articleTitle,
       article_type: articleType,
-    })
+    }
+    
+    logDebug('view_item', viewParameters)
+    sendGAEvent("view_item", viewParameters)
 
     // Track scroll depth
     const handleScroll = () => {
@@ -62,16 +75,22 @@ export default function ArticleAnalytics({
     return () => {
       window.removeEventListener("scroll", handleScroll)
 
-      // Send final analytics data on unmount
+      // Send final analytics data on unmount using standard GA4 event
       const timeSpentSeconds = Math.round((Date.now() - startTimeRef.current) / 1000)
 
-      sendGAEvent("article_engagement", {
-        article_id: articleId,
-        article_title: articleTitle,
-        article_type: articleType,
-        time_spent_seconds: timeSpentSeconds,
-        max_scroll_percentage: maxScrollPercentage,
-      })
+      // Only track if user spent meaningful time (more than 10 seconds)
+      if (timeSpentSeconds >= 10) {
+        const engagementParameters = {
+          content_type: 'article',
+          content_id: articleId,
+          engagement_time_msec: timeSpentSeconds * 1000, // GA4 expects milliseconds
+          scroll_depth: maxScrollPercentage,
+          article_type: articleType,
+        }
+        
+        logDebug('user_engagement', engagementParameters)
+        sendGAEvent("user_engagement", engagementParameters)
+      }
     }
   }, [articleId, articleTitle, articleType])
 
