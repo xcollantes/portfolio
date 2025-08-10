@@ -3,7 +3,7 @@ title: "Git Worktrees + Claude Code: 5x Yourself as a Developer"
 cardDescription: "Guide to cloning yourself as a developer with AI."
 author: Xavier Collantes
 dateWritten: 2025-08-09
-cardPageLink: "/articles/git-tree"
+cardPageLink: "/articles/git-worktree"
 articleType: BLOG
 imagePath: "/assets/images/git-tree/army.gif"
 tagIds:
