@@ -42,7 +42,7 @@ Claude Code + Git branching creates a superpower:
 - **AI assistance:** Each workflow is like having a Software Engineer. You are
   now the Software Engineer Manager.
 - **Clean environments:** Each workflow is separate from the others.
-- **Shift in work:** You don't get rid of context switching altogether. Instead,
+- **Shift in work:** You do not get rid of context switching altogether. Instead,
   you review the code written by each AI agent, in effect, making you a reviewer
   instead of coder.
 
@@ -58,25 +58,25 @@ From my experience, the old quasi-parallel workflow was like this:
 6. Push branch: `git push origin feature/new`
 7. Create a PR: `gh pr create --base main --head feature/new`
 
-> What if I told you that Clade Code can do all of this for you?
+> What if I told you that Claude Code can do all of this for you?
 
-## What Are Git Trees?
+## What Are Git Worktrees?
 
 [![Git Tree](/assets/images/git-tree/worktree.webp)](https://www.gitkraken.com/learn/git/git-worktree)
 
 ###### [GitKraken.com](https://www.gitkraken.com/learn/git/git-worktree)
 
-Git Trees are a way to create a new branch of your repository that is a copy of
-your main branch but instead of switching branches,
+Git Worktrees are a way to create a new branch of your repository that is a copy of
+your main branch but instead of switching branches, you work in parallel directories.
 
 _Why use Git Worktrees and not just re-clone the repository?_
 
-Git Worktrees have the following benefits over re-cloning in a new directory due
-to Worktrees are spawned from the main repository, so they all share the same
-`.git`. Changes made in one worktree won't affect others, preventing Claude
+Git Worktrees have the following benefits over re-cloning in a new directory.
+Worktrees are spawned from the main repository, so they all share the same
+`.git`. Changes made in one worktree will not affect others, preventing Claude
 instances from interfering with each other.
 
-- Make a commit in any worktree and it's immediately visible to parent: No need
+- Make a commit in any worktree and it is immediately visible to parent: No need
   for pulling and pushing
 - Saves space since only changed files are duplicated
 - No accidental working on the same branch which could result in merge conflicts
@@ -107,8 +107,8 @@ experience, Claude will closely follow the prompts you give it.
 
 Install Claude Code: [Claude Code Setup](https://docs.anthropic.com/en/docs/claude-code/setup)
 
-Create a file called CLAUDE.md, which is read by Claude which contains
-instructions and conventions about how the project. This file or files can
+Create a file called CLAUDE.md, which is read by Claude and contains
+instructions and conventions about the project. This file or files can
 contain everything from coding conventions, testing procedures, Git/Github
 behavior, docstring styles, modularity, whether it should ask first for certain
 actions, etc.
@@ -119,7 +119,7 @@ actions, etc.
 2. `project-root/CLAUDE.md` (project-specific)
 3. `project-root/subdir/CLAUDE.md` (module-specific)
 
-#### Multiple global memory files
+#### Multiple Global Memory Files
 
 Primary file:
 
@@ -143,11 +143,11 @@ Issues:
 
 Add darkmode: [issues/128](https://github.com/xcollantes/portfolio/issues/128)
 
-![Darkmode](/assets/images/git-tree/dark-issue.webp)
+![Dark Mode Issue](/assets/images/git-tree/dark-issue.webp)
 
 Add memepage: [issues/129](https://github.com/xcollantes/portfolio/issues/129)
 
-![Memepage](/assets/images/git-tree/meme-issue.webp)
+![Meme Page Issue](/assets/images/git-tree/meme-issue.webp)
 
 The final structure of the repository will look like this:
 
@@ -216,8 +216,8 @@ git checkout darkmode
 # Open session.
 claude
 # OR trigger with prompt right away.
-claude "Create a darkmode feature for the website. use the darkmode.css file to style the website.
-When you're done, create a PR with complete documentation and testing procedures."
+claude "Create a dark mode feature for the website. Use the darkmode.css file to style the website.
+When you are done, create a PR with complete documentation and testing procedures."
 
 ```
 
@@ -241,11 +241,11 @@ git checkout memepage
 # Prompt Claude to create a new feature.
 claude
 # OR trigger with prompt right away.
-claude "create a new feature for the memepage. this is a new page which
+claude "Create a new feature for the meme page. This is a new page which
 displays random memes when you click on a button.
-use the API at https://github.com/D3vd/Meme_Api. make sure to look at the API response
+Use the API at https://github.com/D3vd/Meme_Api. Make sure to look at the API response
 structure in the README.md file and handle the data accordingly.
-When you're done, create a PR with complete documentation and testing procedures."
+When you are done, create a PR with complete documentation and testing procedures."
 ```
 
 ### 3. Prompt Engineering
@@ -294,7 +294,8 @@ Personally, this has been a game changer for me. I have turned myself into a
 small team of Software Engineers. A fix or feature which may have taken me a day
 or two to complete now takes me a two or three hours.
 
-The process is far from perfect but as tools improve, so will the process.
+The process is far from perfect and Claude Code has its bugs but as tools
+improve, so will the process.
 
 With the power of Claude Code, this process can spiral out of control when
 unchecked. Keep the following lessons I have learned in mind:
@@ -311,14 +312,14 @@ unchecked. Keep the following lessons I have learned in mind:
 ![The Grand Army of the Republic](/assets/images/git-tree/army.gif)
 
 Claude Code + Git branching transforms you from a single-threaded developer
-into a parallel processing powerhouse. You're not just writing code faster, you
+into a parallel processing powerhouse. You are not just writing code faster, you
 are thinking about multiple problems simultaneously, experimenting with
 different approaches, and maintaining higher code quality through focused,
 context-aware development.
 
 ## Common Pitfalls
 
-**Claude not not able to find dependencies; "Module not found", etc.**
+**Claude not able to find dependencies; "Module not found", etc.**
 
 Remember to install dependencies in the worktree, as it is similar to cloning to
 a new repository in that respect where the `.env` file, `node_modules`, and any
