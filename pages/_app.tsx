@@ -39,12 +39,6 @@ export default function App({
   // const pageLoadTimeRef = useRef<number>(Date.now())
   // const previousPathRef = useRef<string>("")
 
-  useEffect(() => {
-    init(AMPLITUDE_API_KEY, undefined, {
-      autocapture: true,
-    });
-  }, [])
-
   // Track page views and time spent when route changes
   // useEffect(() => {
   //   const handleRouteChangeStart = (url: string) => {
@@ -158,7 +152,7 @@ export default function App({
           {/* Loading overlay */}
           <LoadingOverlay loading={loading} />
 
-          {/* <AmplitudeContextProvider> */}
+          <AmplitudeContextProvider>
 
           {/*
             The navbar is fixed, so we need to account for it when calculating
@@ -180,7 +174,7 @@ export default function App({
               {process.env.NODE_ENV === 'development' && <GADebugger />}
             </SelectFilterTagContextProvider>
           </Container>
-          {/* </AmplitudeContextProvider> */}
+          </AmplitudeContextProvider>
         </ToastProvider>
       </ColorModeProvider>
     </SessionProvider>
