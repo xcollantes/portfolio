@@ -2,7 +2,7 @@
 title: User Metrics With Amplitude And NextJS
 cardDescription: Quick guide for getting started with Amplitude and NextJS.
 cardPageLink: /articles/amplitude
-imagePath: /assets/images/amplitude/heatmap.gif
+imagePath: /assets/images/amplitude/heat.gif
 articleType: BLOG
 author: Xavier Collantes
 dateWritten: 2025-08-11
@@ -75,7 +75,7 @@ months](https://umami.is/pricing) on Free tier.
 interactions and page views with a heatmap. Available
 with the Pro plan.
 
-![Heatmap](/assets/images/amplitude/heatmap.gif)
+![Heatmap](/assets/images/amplitude/heat.gif)
 
 ## How to Get Started with Amplitude with NextJS
 
