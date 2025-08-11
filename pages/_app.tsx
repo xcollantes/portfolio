@@ -148,10 +148,7 @@ export default function App({
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-            {/* <GoogleAnalytics
-              gaId="G-HB7D403D67"
-              dataLayerName="dataLayer"
-            /> */}
+            <GoogleAnalytics gaId="G-HB7D403D67" />
 
             <title key="title">Xavier Collantes</title>
           </Head>
