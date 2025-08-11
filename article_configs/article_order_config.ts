@@ -32,6 +32,7 @@ export const orderedIncludeBlogs: string[] = [
   "radio.md",
 
   "ai-ide.md",
+  "amplitude.md",
 
   // IN PROGRESS.
   // "choosing-embeddings.md",
