@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/xcollantes/portfolio#readme",
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.22.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/kumbh-sans": "^5.0.5",

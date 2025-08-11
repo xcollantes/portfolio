@@ -137,6 +137,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content about Git Worktrees and Claude Code that benefits the developer community"
   },
 
+  "amplitude.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Technical guide for Amplitude analytics integration that benefits the developer community"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
