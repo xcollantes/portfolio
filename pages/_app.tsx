@@ -24,6 +24,8 @@ import { base } from "../themes/theme"
 
 const AMPLITUDE_API_KEY: string = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY || '';
 
+console.log("STAGE: ", process.env.NODE_ENV)
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
@@ -161,26 +163,26 @@ export default function App({
 
           {/* <AmplitudeContextProvider> */}
 
-            {/*
+          {/*
             The navbar is fixed, so we need to account for it when calculating
             the margin top so the page is not covered by the navbar.
           */}
-            <Container
-              sx={{
-                mt: 2,
-                pt: !isHomePage ? { xs: 12, sm: 10 } : 0
-              }}
-              maxWidth="xl"
-            >
-              <SelectFilterTagContextProvider>
-                {navbar}
-                <Component {...pageProps} />
-                <Toast />
-                {/* <Analytics /> */}
-                {/* Only show GA Debugger in development */}
-                {process.env.NODE_ENV === 'development' && <GADebugger />}
-              </SelectFilterTagContextProvider>
-            </Container>
+          <Container
+            sx={{
+              mt: 2,
+              pt: !isHomePage ? { xs: 12, sm: 10 } : 0
+            }}
+            maxWidth="xl"
+          >
+            <SelectFilterTagContextProvider>
+              {navbar}
+              <Component {...pageProps} />
+              <Toast />
+              <Analytics />
+              {/* Only show GA Debugger in development */}
+              {process.env.NODE_ENV === 'development' && <GADebugger />}
+            </SelectFilterTagContextProvider>
+          </Container>
           {/* </AmplitudeContextProvider> */}
         </ToastProvider>
       </ColorModeProvider>
