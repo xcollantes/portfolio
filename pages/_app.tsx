@@ -148,6 +148,8 @@ export default function App({
 
             <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
 
+            <Script src="https://metricsloop.com/pixel/ZhNVupdLu2xSZ41u" />
+
             <title key="title">Xavier Collantes</title>
           </Head>
 
