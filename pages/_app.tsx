@@ -22,6 +22,7 @@ import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
 import { ToastProvider } from "../contexts/toastContext"
 import "../css/global.css"
 import { base } from "../themes/theme"
+import Script from "next/script"
 
 const GOOGLE_ANALYTICS_ID: string = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
 
@@ -144,6 +145,8 @@ export default function App({
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
             <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+
+            <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
 
             <title key="title">Xavier Collantes</title>
           </Head>
