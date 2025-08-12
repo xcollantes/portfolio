@@ -23,10 +23,7 @@ import { ToastProvider } from "../contexts/toastContext"
 import "../css/global.css"
 import { base } from "../themes/theme"
 
-const AMPLITUDE_API_KEY: string = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY || '';
-
 const GOOGLE_ANALYTICS_ID: string = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
-const GOOGLE_TAG_MANAGER_ID: string = process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID || '';
 
 console.log("STAGE: ", process.env.NODE_ENV)
 
@@ -147,7 +144,6 @@ export default function App({
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
             <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
-            <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />
 
             <title key="title">Xavier Collantes</title>
           </Head>
