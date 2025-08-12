@@ -25,6 +25,9 @@ import { base } from "../themes/theme"
 
 const AMPLITUDE_API_KEY: string = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY || '';
 
+const GOOGLE_ANALYTICS_ID: string = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
+const GOOGLE_TAG_MANAGER_ID: string = process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID || '';
+
 console.log("STAGE: ", process.env.NODE_ENV)
 
 export default function App({
@@ -143,8 +146,8 @@ export default function App({
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-            <GoogleAnalytics gaId="G-HB7D403D67" />
-            <GoogleTagManager gtmId="G-HB7D403D67" />
+            <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+            <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />
 
             <title key="title">Xavier Collantes</title>
           </Head>
@@ -156,26 +159,26 @@ export default function App({
 
           <AmplitudeContextProvider>
 
-          {/*
+            {/*
             The navbar is fixed, so we need to account for it when calculating
             the margin top so the page is not covered by the navbar.
           */}
-          <Container
-            sx={{
-              mt: 2,
-              pt: !isHomePage ? { xs: 12, sm: 10 } : 0
-            }}
-            maxWidth="xl"
-          >
-            <SelectFilterTagContextProvider>
-              {navbar}
-              <Component {...pageProps} />
-              <Toast />
-              <Analytics />
-              {/* Only show GA Debugger in development */}
-              {process.env.NODE_ENV === 'development' && <GADebugger />}
-            </SelectFilterTagContextProvider>
-          </Container>
+            <Container
+              sx={{
+                mt: 2,
+                pt: !isHomePage ? { xs: 12, sm: 10 } : 0
+              }}
+              maxWidth="xl"
+            >
+              <SelectFilterTagContextProvider>
+                {navbar}
+                <Component {...pageProps} />
+                <Toast />
+                <Analytics />
+                {/* Only show GA Debugger in development */}
+                {process.env.NODE_ENV === 'development' && <GADebugger />}
+              </SelectFilterTagContextProvider>
+            </Container>
           </AmplitudeContextProvider>
         </ToastProvider>
       </ColorModeProvider>
