@@ -3,6 +3,7 @@
 import { init } from "@amplitude/analytics-browser"
 import { Container, CssBaseline } from "@mui/material"
 import { GoogleAnalytics } from "@next/third-parties/google"
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Analytics } from "@vercel/analytics/next"
 import { SessionProvider } from "next-auth/react"
 import { AppProps } from "next/app"
@@ -143,6 +144,7 @@ export default function App({
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
             <GoogleAnalytics gaId="G-HB7D403D67" />
+            <GoogleTagManager gtmId="G-HB7D403D67" />
 
             <title key="title">Xavier Collantes</title>
           </Head>
