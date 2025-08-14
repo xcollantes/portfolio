@@ -102,9 +102,54 @@ are the size the model expects.
 Vector storage solutions exist on a spectrum from simple in-memory arrays to
 enterprise-grade distributed databases.
 
+### Vector Databases
+
+Embeddings turn regular text into coordinates in high-dimensional space where
+similar concepts end up close together.
+
+There are many choices for vector databases:
+
+![Chroma {h: 100}](/assets/images/vectorstores/chroma.svg)
+
+[Chroma](https://python.langchain.com/docs/integrations/vectorstores/chroma/)
+
+- Simple setup
+- Local storage in the form of a SQLite file
+
+![Pinecone {h: 100}](/assets/images/vectorstores/pinecone.svg)
+
+[Pinecone](https://python.langchain.com/docs/integrations/vectorstores/pinecone/)
+
+- Cloud store only with a [local emulator version](https://docs.pinecone.io/guides/operations/local-development)
+- Free tier then you pay for the storage
+- Pricing model is based off monthly minimum usage
+
+![FAISS {h: 100}](/assets/images/vectorstores/meta-color.svg)
+
+[FAISS](https://python.langchain.com/docs/integrations/vectorstores/faiss/)
+
+- Simple setup
+- Local vector store
+
+![Qdrant {h: 100}](/assets/images/vectorstores/q.svg)
+
+[Qdrant](https://python.langchain.com/docs/integrations/vectorstores/qdrant/)
+
+- Cloud vector store or locally hosted with Docker
+- Cloud managed service version has 1GB free
+- Cloud managed service has straight-forward pricing by the hour
+
+Generally speaking, all these services offer about the same features. The
+biggest differences are the adjacent features and ability how to deploy. For
+example, Qdrant can be run on Docker easily while Pinecone has an emulator for
+local development.
+
+For more complex use cases, you can use a cloud vector store like Pinecone or if
+you have a Docker Compose or Kubernetes setup, you can use Qdrant.
+
 ### Local File-Based Solutions: Quick for Experimentation
 
-**When To Use:** Medium datasets (100k-1M vectors), single-machine deployment,
+**When To Use:** Medium datasets (1-1M vectors), single-machine deployment,
 cost-sensitive projects
 
 **Pros:**
@@ -230,14 +275,12 @@ needs, distributed deployment
 - Advanced filtering and query capabilities
 - Horizontal scaling support
 - Built-in security and access controls
-- High availability and consistency guarantees
 
 **Cons:**
 
 - More complex setup and operations
 - Higher resource requirements
 - Steeper learning curve
-- Additional infrastructure costs
 
 ```python
 from qdrant_client import QdrantClient
