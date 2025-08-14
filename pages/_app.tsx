@@ -11,7 +11,6 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
 import { trackNavigation, trackPageView, trackTimeOnPage } from "../components/AnalyticsUtils"
-import { GADebugger } from "../components/GADebugger"
 import { LoadingOverlay } from "../components/LoadingOverlay"
 import { MOTD } from "../components/MsgOfDay"
 import Navbar from "../components/Navbar"
@@ -176,8 +175,6 @@ export default function App({
                 <Component {...pageProps} />
                 <Toast />
                 <Analytics />
-                {/* Only show GA Debugger in development */}
-                {process.env.NODE_ENV === 'development' && <GADebugger />}
               </SelectFilterTagContextProvider>
             </Container>
           </AmplitudeContextProvider>

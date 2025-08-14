@@ -20,7 +20,6 @@ If you're not seeing data in GA4, follow this checklist:
 - **Console errors**: Check browser console for GA-related errors
 
 ### 3. Debug Mode (Development Only)
-- GA Debugger appears in bottom-right corner in dev mode
 - Console logs show all GA events with `🔍 GA4 Event:` prefix
 - Debug mode is automatically enabled in development environment
 
@@ -150,7 +149,6 @@ All events now use GA4-compatible parameters:
 ### Debug Events (Development Only)
 
 - Console logging enabled with `🔍 GA4 Event:` prefix
-- GA Debugger component for real-time testing
 - Network request monitoring in DevTools
 
 ## Future Enhancements
@@ -169,14 +167,13 @@ Potential areas to expand analytics coverage:
 1. Consider what user interactions should be tracked
 2. Use the appropriate utility functions to track them
 3. Follow established patterns for consistency
-4. Test events using the GA Debugger in development
+4. Test events in development using browser DevTools
 
 ### After GA4 is confirmed working:
 
 1. **Remove test files**: Delete `/pages/analytics-test.tsx`
-2. **Remove debugger**: Remove GADebugger import from `_app.tsx`
-3. **Production testing**: Verify analytics work on live site
-4. **Set up alerts**: Configure GA4 alerts for data anomalies
+2. **Production testing**: Verify analytics work on live site
+3. **Set up alerts**: Configure GA4 alerts for data anomalies
 
 ### Regular Checks:
 
