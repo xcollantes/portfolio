@@ -28,6 +28,7 @@ interface ShareButtonProps {
   shareUrl: string
   title?: string
   description?: string
+  source?: string // UTM source - identifies which page the share was from
   sx?: any
 }
 
@@ -37,12 +38,23 @@ interface ShareOption {
   action: () => void
 }
 
-export default function ShareButton({ title, description, sx, shareUrl }: ShareButtonProps) {
+export default function ShareButton({ title, description, sx, shareUrl, source }: ShareButtonProps) {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const toast = useToastNotification()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
+
+  // Helper function to add UTM parameters to the share URL
+  const createUtmUrl = (medium: string): string => {
+    const url = new URL(shareUrl)
+    if (source) {
+      url.searchParams.set('utm_source', source)
+    }
+    url.searchParams.set('utm_medium', medium)
+    // url.searchParams.set('utm_campaign', 'social_share')
+    return url.toString()
+  }
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     // On mobile with native share support, use native sharing directly
@@ -71,7 +83,8 @@ export default function ShareButton({ title, description, sx, shareUrl }: ShareB
   }
 
   const handleCopyToClipboard = async () => {
-    const success = await copyToClipboard(shareUrl)
+    const urlWithUtm = createUtmUrl('link_copy')
+    const success = await copyToClipboard(urlWithUtm)
     if (success) {
       toast.success("Link copied to clipboard")
     } else {
@@ -81,20 +94,23 @@ export default function ShareButton({ title, description, sx, shareUrl }: ShareB
   }
 
   const shareToFacebook = () => {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
+    const urlWithUtm = createUtmUrl('facebook')
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(urlWithUtm)}`
     window.open(facebookUrl, '_blank', 'width=600,height=400')
     handleClose()
   }
 
   const shareToLinkedIn = () => {
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`
+    const urlWithUtm = createUtmUrl('linkedin')
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(urlWithUtm)}`
     window.open(linkedInUrl, '_blank', 'width=600,height=400')
     handleClose()
   }
 
   const shareToX = () => {
     const shareTitle = title || document.title
-    const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`
+    const urlWithUtm = createUtmUrl('twitter')
+    const xUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(urlWithUtm)}&text=${encodeURIComponent(shareTitle)}`
     window.open(xUrl, '_blank', 'width=600,height=400')
     handleClose()
   }
@@ -102,18 +118,19 @@ export default function ShareButton({ title, description, sx, shareUrl }: ShareB
   const handleNativeShare = async () => {
     const shareTitle = title || document.title
     const shareText = description || shareTitle
+    const urlWithUtm = createUtmUrl('native_share')
 
     try {
       await navigator.share({
         title: shareTitle,
         text: shareText,
-        url: shareUrl,
+        url: urlWithUtm,
       })
       toast.success("Shared successfully")
     } catch (error) {
       console.error("Error sharing:", error)
       // Fall back to copy to clipboard
-      const success = await copyToClipboard(shareUrl)
+      const success = await copyToClipboard(urlWithUtm)
       if (success) {
         toast.success("Link copied to clipboard")
       } else {
