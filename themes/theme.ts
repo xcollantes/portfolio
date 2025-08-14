@@ -5,15 +5,17 @@
  */
 
 import { createTheme, PaletteOptions, Theme, ThemeOptions } from "@mui/material"
-import { Kumbh_Sans, Outfit, Permanent_Marker } from "next/font/google"
+import { Poppins, Permanent_Marker } from "next/font/google"
 
 const permanentMarker = Permanent_Marker({
   subsets: ["latin"],
   weight: "400",
 })
-const kumbhSans = Kumbh_Sans({ subsets: ["latin"], weight: "400" })
-const outfit_font = Outfit({ subsets: ["latin"], weight: "300" })
-const outfit = outfit_font.style.fontFamily
+const poppins = Poppins({ 
+  subsets: ["latin"], 
+  weight: ["300", "400", "500", "600", "700"]
+})
+const poppinsFamily = poppins.style.fontFamily
 
 // Used as a util but not exported as its own theme.
 export const defaultTheme: Theme = createTheme()
@@ -112,24 +114,25 @@ export const darkPalette: PaletteOptions = {
 export const base: ThemeOptions = {
   typography: {
     fontFamily: [
+      poppinsFamily,
       "-apple-system",
       "BlinkMacSystemFont",
-      outfit,
       "Roboto",
       "Arial",
+      "sans-serif",
     ].join(","),
     fontSize: 16,
 
     h1: { fontFamily: permanentMarker.style.fontFamily, fontSize: 110 },
-    subtitle1: { fontFamily: kumbhSans.style.fontFamily, fontSize: 41 },
+    subtitle1: { fontFamily: poppinsFamily, fontSize: 41, fontWeight: 500 },
 
-    h2: { fontFamily: outfit, fontSize: 70 },
-    subtitle2: { fontFamily: outfit, fontSize: 28 },
+    h2: { fontFamily: poppinsFamily, fontSize: 70, fontWeight: 600 },
+    subtitle2: { fontFamily: poppinsFamily, fontSize: 28, fontWeight: 500 },
 
-    h3: { fontFamily: outfit, fontSize: 45 },
-    h4: { fontFamily: outfit, fontSize: 32, fontWeight: "bold" },
+    h3: { fontFamily: poppinsFamily, fontSize: 45, fontWeight: 600 },
+    h4: { fontFamily: poppinsFamily, fontSize: 32, fontWeight: 600 },
 
-    body1: { fontFamily: outfit, fontSize: 22 },
+    body1: { fontFamily: poppinsFamily, fontSize: 22, fontWeight: 400 },
   },
   palette: lightPalette,
   components: {
