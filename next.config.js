@@ -2,11 +2,11 @@
 
 const contentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://scripts.simpleanalyticscdn.com https://metricsloop.com;
-  connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com;
-  img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net;
-  font-src 'self' fonts.googleapis.com;
-  style-src 'self' 'unsafe-inline' fonts.googleapis.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.googleapis.com https://*.amplitude.com https://*.simpleanalyticscdn.com https://*.metricsloop.com;
+  connect-src 'self' https://*.google-analytics.com https://*.google.com https://*.doubleclick.net https://*.googletagmanager.com https://*.amplitude.com;
+  img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.doubleclick.net https://*.googleapis.com;
+  font-src 'self' https://*.googleapis.com;
+  style-src 'self' 'unsafe-inline' https://*.googleapis.com;
 `
 
 const securityHeaders = [
