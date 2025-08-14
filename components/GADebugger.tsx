@@ -7,6 +7,7 @@
 
 import { sendGAEvent } from "@next/third-parties/google"
 import { useEffect, useState } from "react"
+import { extractUTMParameters, getCurrentUTMParameters, hasUTMParameters } from "../utils/utmUtils"
 
 export function GADebugger() {
   const [logs, setLogs] = useState<string[]>([])
@@ -35,6 +36,22 @@ export function GADebugger() {
         addLog(`✅ Found ${gaScripts.length} GA script(s) loaded`)
       } else {
         addLog('❌ No GA scripts found in document')
+      }
+
+      // Check UTM parameters
+      if (hasUTMParameters()) {
+        const utmParams = extractUTMParameters()
+        addLog(`🏷️ Current UTM parameters: ${JSON.stringify(utmParams)}`)
+      } else {
+        addLog('🏷️ No UTM parameters in current URL')
+      }
+
+      // Check stored UTM parameters
+      const storedUtm = getCurrentUTMParameters()
+      if (Object.keys(storedUtm).length > 0) {
+        addLog(`💾 Stored UTM parameters: ${JSON.stringify(storedUtm)}`)
+      } else {
+        addLog('💾 No stored UTM parameters')
       }
     }
   }, [])
@@ -69,6 +86,18 @@ export function GADebugger() {
           content_id: "debug_button"
         })
         addLog('🎯 Sent: select_content event (standard GA4)')
+      }
+    },
+    {
+      name: "Test UTM Event",
+      action: () => {
+        const utmParams = getCurrentUTMParameters()
+        sendGAEvent("utm_debug_test", {
+          event_category: "utm_testing",
+          test_type: "manual_trigger",
+          ...utmParams
+        })
+        addLog(`🏷️ Sent: utm_debug_test with params: ${JSON.stringify(utmParams)}`)
       }
     }
   ]
