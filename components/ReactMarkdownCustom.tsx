@@ -42,8 +42,17 @@ const imgCustom = (imageData) => {
     fill = false
   }
 
+  // Use custom height container and styles when height is specified
+  const containerClass = matchImageHeight 
+    ? imageStyles.imageContainerCustomHeight 
+    : imageStyles.imageContainer
+  
+  const imageClass = matchImageHeight 
+    ? imageStyles.imageItemCustomHeight 
+    : (isMobile ? imageStyles.imageItemMobile : imageStyles.imageItem)
+
   return (
-    <Box component={"span"} className={imageStyles.imageContainer}>
+    <Box component={"span"} className={containerClass}>
       <Image
         src={imageData.src}
         alt={altText}
@@ -53,7 +62,7 @@ const imgCustom = (imageData) => {
         height={height}
         priority={isPriority}
         placeholder="blur"
-        className={isMobile ? imageStyles.imageItemMobile : imageStyles.imageItem}
+        className={imageClass}
       />
     </Box>
   )
