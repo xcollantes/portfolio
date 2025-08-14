@@ -33,7 +33,7 @@ export default function SocialMedia() {
           </IconButton>
         </LongPressWrapper>
       </Link>
-      <ShareButton sx={sx} shareUrl={process.env.NEXT_PUBLIC_SHARE_URL || ""} />
+      <ShareButton sx={sx} shareUrl={process.env.NEXT_PUBLIC_SHARE_URL || ""} source="homepage" />
     </Box>
   )
 }
