@@ -6,6 +6,7 @@ cardDescription: Evaluate technical trade-offs and code the website you're looki
 cardPageLink: "/articles/portfolio"
 imagePath: "/assets/images/portfolio/markdown.webp"
 articleType: WORKEXP
+dateLastUpdated: 2025-08-14
 tagIds:
   [
     "typescript",
@@ -26,9 +27,9 @@ website, xaviercollantes.dev. Serving in the roles of Software Engineer, Project
 Manager, and UX designer, I share my journey from planning to execution,
 highlighting the technical trade-offs and decisions made during the process.
 
-![Image of Figma dashboard](/assets/images/portfolio/figma.webp)
+![Image of Figma dashboard {priority}](/assets/images/portfolio/figma.webp)
 
-Github repository:
+GitHub repository:
 [github.com/xcollantes/portfolio](github.com/xcollantes/portfolio)
 
 ## Planning
@@ -37,7 +38,7 @@ The motivation for creating a portfolio website is driven by the need to show
 context of the diversity of interests and technical ability I have accumulated
 over the last 8+ years professionally and personally.
 
-### Collection of requirements through Critical User Journeys
+### Collection Of Requirements Through Critical User Journeys
 
 Collect [Critical User
 Journeys](https://www.reforge.com/blog/brief-critical-user-journeys-how-google-product-teams-react-when-growth-slows)
@@ -72,7 +73,7 @@ _As a developer..._
 - I should be able to add new articles in 15 minutes (overhead for new articles
   not counting time to write article)
 
-### Defining success metrics
+### Defining Success Metrics
 
 In a project, there must be a point where we can determine success. This must be
 measurable outcomes linked to the business case. The user determines these
@@ -84,9 +85,9 @@ outcomes through user interviews and testing throughout the development process.
 1. Exercise modern UX and UI practices
 1. Add new articles in 30 minutes (not counting time to write new articles)
 
-## Testing strategy
+## Testing Strategy
 
-### Speed and tech efficiency
+### Speed And Technical Efficiency
 
 I employed tools like [Google
 Lighthouse](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring)
@@ -94,37 +95,37 @@ and Chrome Browser DevTools to ensure optimal speed and technical efficiency.
 
 ![Image of Lighthouse](/assets/images/portfolio/lighthouse.webp)
 
-### User satisfaction
+### User Satisfaction
 
-1.  Gather people I personally know who are in the target demographic and send
-    them a link on desktop and mobile. The mix of people should represent
-    technical and non-technical since the site content and wording should give
-    both groups a sense of impact and depth in the projects. The Senior members
-    of this test group should have experience hiring reports.
+1. Gather people I personally know who are in the target demographic and send
+   them a link on desktop and mobile. The mix of people should represent
+   technical and non-technical since the site content and wording should give
+   both groups a sense of impact and depth in the projects. The Senior members
+   of this test group should have experience hiring reports.
 
-    - Senior Software Engineer Manager
-    - Peer level Software Engineer
-    - Non-technical Program Manager
-    - Technical recruiter
-    - Non-technical recruiter
-    - Someone's parent who knows nothing of the tech industry (if this person
-      can get a general idea of what Xavier does, then the message is proven to
-      be clear)
+   - Senior Software Engineer Manager
+   - Peer level Software Engineer
+   - Non-technical Program Manager
+   - Technical recruiter
+   - Non-technical recruiter
+   - Someone's parent who knows nothing of the tech industry (if this person
+     can get a general idea of what Xavier does, then the message is proven to
+     be clear)
 
-    **NOTE:** Notice this list is the same as the group from the Critical User
-    Journeys from the beginning of the process. If you are building for a group
-    of people, the same people should be the decision makers on the quality of
-    the solution.
+   **NOTE:** Notice this list is the same as the group from the Critical User
+   Journeys from the beginning of the process. If you are building for a group
+   of people, the same people should be the decision makers on the quality of
+   the solution.
 
-1.  Ask:
-    - How fast did you find detailed information on a project?
-    - Is the text easy to read?
-    - Are you able to understand in under 30 seconds the article's general gist?
-    - If you did not know this person, do you understand his capabilities?
-    - How does this profile rank with candidates you have seen in the past?
-    - Any other feedback?
+1. Ask:
+   - How fast did you find detailed information on a project?
+   - Is the text easy to read?
+   - Are you able to understand in under 30 seconds the article's general gist?
+   - If you did not know this person, do you understand his capabilities?
+   - How does this profile rank with candidates you have seen in the past?
+   - Any other feedback?
 
-## Design decisions
+## Design Decisions
 
 ### Inspirations
 
@@ -139,7 +140,7 @@ designed and organized the sections of their site.
   - Color scheme is reminiscent of my favorite VScode theme, [Solarized
     Dark](https://ethanschoonover.com/solarized)
   - UPDATE: Brittany has updated her website to the same format as
-    https://www.sarahdayan.dev; when I started my site, Brittany's site had a
+    <https://www.sarahdayan.dev>; when I started my site, Brittany's site had a
     full page scroll
 
 - <https://www.sarahdayan.dev>
@@ -157,7 +158,7 @@ designed and organized the sections of their site.
   - Color scheme is exactly Solarized Dark
   - Not a portfolio site; meant for blogs
 
-### Mock ups
+### Mockups
 
 ![Image of Figma dashboard](/assets/images/portfolio/figma.webp)
 
@@ -176,7 +177,7 @@ Upon my research, I learned more abstract approaches design such as using
 Sequences](https://3.7designs.co/blog/how-to-design-using-the-fibonacci-sequence)
 to space modules on a page.
 
-## Technical decisions
+## Technical Decisions
 
 Finally! The technical parts!
 
@@ -199,11 +200,11 @@ Other options considered:
 - TailwindCSS: Lots of docs on NextJS integration but I wanted a way a more
   compatible library for React.
 
-### Ease of use for the developer (me)
+### Ease Of Use For The Developer (Me)
 
-![Image of Obiwan Kenobi {h: 300}](/assets/images/portfolio/obiwan.webp)
+![Image of Obi-Wan Kenobi {h: 300}](/assets/images/portfolio/obiwan.webp)
 
-###### My relationship with the developer
+#### My Relationship With The Developer
 
 My goal as a developer is to leave my web application alone for months and years
 at a time and quickly make changes when I return to add articles or fix bugs. I
@@ -234,7 +235,7 @@ into attributes for the Material UI's Typography component.
 So a Markdown tag in notes would be:
 
 ```markdown
-![Image of Obiwan Kenobi {priority} {h: 300}](/assets/images/portfolio/obiwan.webp)
+![Image of Obi-Wan Kenobi {priority} {h: 300}](/assets/images/portfolio/obiwan.webp)
 ```
 
 Translates into:
@@ -244,14 +245,14 @@ Translates into:
   priority={true}
   height={300}
   src={"/assets/images/portfolio/obiwan.webp"}
-  alt={"Image of Obiwan Kenobi"}
+  alt={"Image of Obi-Wan Kenobi"}
 />
 ```
 
 [See full
 code](https://github.com/xcollantes/portfolio/blob/ee57cd5ef2724827cb3f4ac0e146caf94d4985e4/components/ReactMarkdownCustom.tsx#L9)
 
-### Asset optimization
+### Asset Optimization
 
 Each image in the web application has been optimized by compressing the image
 and converting to the webp format which on average reduces image size by ~70%.
@@ -263,8 +264,8 @@ caches.
 
 ### Auth
 
-Privacy is a personal concern and I'd like to impede OSINT efforts against me.
-Adverting a personal portfolio is the complete anthesis of the previous sentence
+Privacy is a personal concern and I would like to impede OSINT efforts against me.
+Advertising a personal portfolio is the complete antithesis of the previous sentence
 but I believe a balance can be achieved.
 
 **OAuth2:** At first I created an OAuth2 interface where the user is required to
@@ -284,7 +285,7 @@ conjunction with a CAPTCHA but simple enough that a bot could be stopped.
 
 ### Hosting
 
-Vercel is natural choice since Vercel also created NextJS. The decision to host
+Vercel is a natural choice since Vercel also created NextJS. The decision to host
 a NextJS application is hard because NextJS has middleware which cannot run as a
 static web page. For example, you would need to build a section of the NextJS
 code separately if you were hosting on Linux server: one for the web pages and
@@ -297,7 +298,7 @@ Vercel features:
 
 - Automatic creation of deployments for each branch
 - Fast rollback option
-- For for one project
+- Free for one project
 - ENV variables tracked in hosted platform for development and production
   deployments
 - Development deployments have a Google Docs-like editor where you can leave
@@ -319,13 +320,85 @@ Other options considered:
   - NextJS required Cloud Run instances to run middleware
   - Need to keep track of multiple instances for development testing
 
-## Easter eggs
+## Article Callout Component Showcase
 
-Thank you reading this far. You will now be rewarded with the secrets of my
+During the development of this portfolio, I created a flexible article callout
+system that enhances the reading experience by providing contextual information,
+recommendations, and interactive elements. Here's a showcase of all the
+different callout types available:
+
+<recommendationbox
+  type="article"
+  title="Best AI Development Practices"
+  description="Learn essential practices for AI-powered development, including prompt engineering, code review workflows, and maintaining security when using AI assistants."
+  url="/articles/claude-cheatsheet"
+  urltext="Read Claude Cheat Sheet">
+</recommendationbox>
+
+<recommendationbox
+  type="note"
+  title="Design System Consistency"
+  description="Throughout this portfolio, I maintained consistency with Material Design principles to ensure a cohesive user experience across all components and pages.">
+</recommendationbox>
+
+<recommendationbox
+  type="warning"
+  title="Development Dependencies"
+  description="Make sure to run npm install after cloning the repository. The build process requires all dependencies to be properly installed for optimal performance.">
+</recommendationbox>
+
+<recommendationbox
+  type="learning"
+  title="NextJS Documentation"
+  description="Master the fundamentals of NextJS development with the official documentation and interactive tutorials."
+  url="https://nextjs.org/docs"
+  urltext="Start Learning">
+</recommendationbox>
+
+<recommendationbox
+  type="sponsored"
+  title="Vercel Hosting Platform"
+  description="Vercel provides seamless NextJS deployment with automatic optimization and global CDN. Perfect for modern web applications."
+  url="https://vercel.com"
+  urltext="Try Vercel">
+</recommendationbox>
+
+<recommendationbox
+  type="tip"
+  title="Performance Optimization"
+  description="Always optimize images using next/image and convert them to WebP format for better loading times and user experience.">
+</recommendationbox>
+
+<recommendationbox
+  type="recommendation"
+  title="Software Engineer Manager at Google"
+  imageurl="/recommendations/profile_pics/siobhan.webp"
+  personname="Siobhan Williams, Ph.D."
+  quote="Here's an example of Xavier's excellence... Xavier's original design was
+  so well implemented, it scaled up (or down) seamlessly. That's impressive..."
+  url="/recs?siobhan-williams"
+  urltext="View Testimonial">
+</recommendationbox>
+
+## Technical Implementation
+
+These callout components are built using Material-UI components with:
+
+- **Responsive design** that adapts to different screen sizes
+- **Dark/light theme support** with automatic color adjustments
+- **Accessibility features** including proper ARIA labels and keyboard navigation
+- **Hover animations** for enhanced interactivity
+- **Type validation** to ensure consistent usage across articles
+
+The component system allows for easy content authoring while maintaining design consistency throughout the portfolio.
+
+## Easter Eggs
+
+Thank you for reading this far. You will now be rewarded with the secrets of my
 portfolio.
 
 In classic Googler fashion such as [_do a barrel
-role_](https://www.google.com/search?q=do+a+barrel+roll) and [_google in
+roll_](https://www.google.com/search?q=do+a+barrel+roll) and [_google in
 1998_](https://www.google.com/search?q=google+in+1998), I have created some
 easter eggs of my own.
 
@@ -351,7 +424,7 @@ Visit a non-existent page such as
 
 ### 500 Office Space
 
-Visit server error page such at <https://xaviercollantes.dev/500>.
+Visit server error page such as <https://xaviercollantes.dev/500>.
 
 ## Conclusion
 
