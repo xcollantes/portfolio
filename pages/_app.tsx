@@ -144,8 +144,6 @@ export default function App({
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-            <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
-
             <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
 
             <Script src="https://metricsloop.com/pixel/ZhNVupdLu2xSZ41u" />
@@ -157,6 +155,9 @@ export default function App({
 
           {/* Loading overlay */}
           <LoadingOverlay loading={loading} />
+
+          {/* Google Analytics should be in body, not head */}
+          <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
 
           <AmplitudeContextProvider>
 
