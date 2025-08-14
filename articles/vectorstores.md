@@ -5,7 +5,7 @@ author: Xavier Collantes
 dateWritten: 2025-08-14
 cardPageLink: "/articles/vectorstores"
 articleType: BLOG
-imagePath: ""
+imagePath: "/assets/images/vectorstores/vector.gif"
 tagIds:
   - ai
   - llm
@@ -53,6 +53,8 @@ Google's super secret algorithm: [PageRank](https://en.wikipedia.org/wiki/PageRa
 Embedding models which translates human-readable text to a hash which can be
 scored to indicate relationships. There are many types of encoding models, which
 vary speed and ability to interpret topics.
+
+![Embeddings](/assets/images/vectorstores/)
 
 For example, "dog" and "cat" may be given a score of 0.7 because they are
 both animals, both are common pets, but are different species as per the
@@ -217,7 +219,7 @@ from qdrant_client.models import Distance, VectorParams, PointStruct, Filter, Fi
 
 class ProductionVectorStore:
     def __init__(self, host: str = "localhost", port: int = 6333):
-        self.client = QdrantClient(host=host, port=port)
+        self.client: QdrantClient = QdrantClient(host=host, port=port)
         self.collection_name = "documents"
 
         # Create collection with optimized settings
@@ -477,3 +479,5 @@ performant vector-powered applications.
 ## Further Reading
 
 [https://www.vecdbs.com/](https://www.vecdbs.com/)
+
+[Vector Databases for Beginners](https://xomnia.com/post/an-introduction-to-vector-databases-for-beginners/)
