@@ -387,7 +387,7 @@ different callout types available:
   personname="Siobhan Williams, Ph.D."
   quote="Here's an example of Xavier's excellence... Xavier's original design was
   so well implemented, it scaled up (or down) seamlessly. That's impressive..."
-  url="/recs?siobhan-williams"
+  url="/recs?recId=siobhan-williams"
   urltext="View Testimonial">
 </callout>
 

@@ -114,8 +114,8 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
       return {
         icon: <Lightbulb />,
         label: "Tip",
-        color: "#f57c00",
-        bgColor: "rgba(245, 124, 0, 0.1)",
+        color: "#2e7d32",
+        bgColor: "rgba(46, 125, 50, 0.1)",
         showChip: false,
       }
     case "recommendation":
