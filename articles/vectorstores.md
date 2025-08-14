@@ -468,10 +468,6 @@ The vector storage landscape will continue evolving rapidly, but understanding
 these fundamentals will help you make informed decisions regardless of which
 specific technologies emerge.
 
-What vector storage challenges are you facing in your projects? The patterns and
-practices covered here should provide a solid foundation for building scalable,
-performant vector-powered applications.
-
 ## Further Reading
 
 [https://www.vecdbs.com/](https://www.vecdbs.com/)

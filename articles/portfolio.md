@@ -112,10 +112,13 @@ and Chrome Browser DevTools to ensure optimal speed and technical efficiency.
      can get a general idea of what Xavier does, then the message is proven to
      be clear)
 
-   **NOTE:** Notice this list is the same as the group from the Critical User
+<callout
+  type="note"
+  description="Notice this list is the same as the group from the Critical User
    Journeys from the beginning of the process. If you are building for a group
    of people, the same people should be the decision makers on the quality of
-   the solution.
+   the solution.">
+</callout>
 
 1. Ask:
    - How fast did you find detailed information on a project?
