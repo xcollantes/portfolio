@@ -27,6 +27,7 @@ import Script from "next/script"
 const GOOGLE_ANALYTICS_ID: string = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
 
 console.log("STAGE: ", process.env.NODE_ENV)
+console.log("GOOGLE_ANALYTICS_ID: ", GOOGLE_ANALYTICS_ID)
 
 export default function App({
   Component,
