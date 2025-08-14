@@ -30,13 +30,13 @@ export const orderedIncludeBlogs: string[] = [
   "measuring-tokens.md",
   "claude-cheatsheet.md",
   "radio.md",
+  "vectorstores.md",
 
   "ai-ide.md",
   "amplitude.md",
 
   // IN PROGRESS.
   // "choosing-embeddings.md",
-  // "vector-databases.md",
   // "aws-gpu-selection-guide.md",
 
   "llm-leaderboards.md",

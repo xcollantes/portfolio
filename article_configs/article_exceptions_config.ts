@@ -143,6 +143,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Technical guide for Amplitude analytics integration that benefits the developer community"
   },
 
+  "vectorstores.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about vector storage solutions that benefits the developer community"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
