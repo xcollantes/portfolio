@@ -60,6 +60,10 @@ cost prohibitive to train from the ground up. So to have a dynamic data
 reference, the RAG model leverages vector databases for searching for relevant
 data in a corpus.
 
+![RAG](/assets/images/vectorstores/flow.webp)
+
+###### [qwak.com](https://www.qwak.com/post/utilizing-llms-with-embedding-stores)
+
 Think of it as a student taking a test, but has access to the textbook along
 with the knowledge he or she already knows.
 
