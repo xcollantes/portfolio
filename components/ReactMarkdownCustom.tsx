@@ -8,7 +8,7 @@ import imageStyles from "../css/images.module.css"
 import CodeSnippet from "./CodeSnippet"
 import Gist from "./Gist"
 import { extractGistId } from "./GistUtils"
-import InlineRecommendationBox, { RecommendationType } from "./InlineRecommendationBox"
+import InlineArticleCallout, { ArticleCalloutType } from "./InlineArticleCallout"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
@@ -345,33 +345,36 @@ const videoCustom = (props) => {
   )
 }
 
-// Custom recommendation box handler
-const recommendationBoxCustom = (props) => {
-  const { type, title, description, url, urltext, children, ...rest } = props
+// Custom article callout handler
+const articleCalloutCustom = (props) => {
+  const { type, title, description, url, urltext, imageurl, personname, quote, children, ...rest } = props
 
   // Validate required props
   if (!type || !title || !description) {
-    console.warn('RecommendationBox missing required props:', { type, title, description })
+    console.warn('ArticleCallout missing required props:', { type, title, description })
     return null
   }
 
   // Validate type
-  const validTypes: RecommendationType[] = ['article', 'tool', 'code', 'learning', 'product', 'tip']
-  if (!validTypes.includes(type as RecommendationType)) {
-    console.warn(`Invalid recommendation type: ${type}. Valid types:`, validTypes)
+  const validTypes: ArticleCalloutType[] = ['article', 'tool', 'code', 'learning', 'sponsored', 'tip', 'recommendation']
+  if (!validTypes.includes(type as ArticleCalloutType)) {
+    console.warn(`Invalid callout type: ${type}. Valid types:`, validTypes)
     return null
   }
 
   return (
-    <InlineRecommendationBox
-      type={type as RecommendationType}
+    <InlineArticleCallout
+      type={type as ArticleCalloutType}
       title={title}
       description={description}
       url={url}
       urlText={urltext}
+      imageUrl={imageurl}
+      personName={personname}
+      quote={quote}
     >
       {children}
-    </InlineRecommendationBox>
+    </InlineArticleCallout>
   )
 }
 
@@ -416,7 +419,7 @@ const ReactMarkdownRules = () => ({
   iframe: iframeCustom,
   video: videoCustom,
   table: tableCustom,
-  recommendationbox: recommendationBoxCustom,
+  recommendationbox: articleCalloutCustom,
 })
 
 export default ReactMarkdownRules

@@ -170,7 +170,7 @@ export default function InlineArticleCallout({
               />
             )}
             <Box sx={{ flex: 1 }}>
-              {personName && (
+              {title && (
                 <Typography
                   variant="subtitle1"
                   sx={{
@@ -179,7 +179,7 @@ export default function InlineArticleCallout({
                     mb: 0.5,
                   }}
                 >
-                  {personName}
+                  {title}
                 </Typography>
               )}
               <Typography
@@ -189,7 +189,7 @@ export default function InlineArticleCallout({
                   color: isDarkMode ? "white" : "text.primary",
                 }}
               >
-                {title}
+                {personName}
               </Typography>
             </Box>
           </Box>
