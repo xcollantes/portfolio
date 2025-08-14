@@ -3,11 +3,12 @@
 import {
   Article,
   Book,
-  Code,
+  Lightbulb,
   Link as LinkIcon,
   Person,
   ShoppingCart,
   TipsAndUpdates,
+  Warning,
 } from "@mui/icons-material"
 import {
   Avatar,
@@ -24,12 +25,23 @@ import { ReactNode } from "react"
 // Article callout types and their associated icons
 export type ArticleCalloutType =
   | "article"
-  | "tool"
-  | "code"
+  | "note"
+  | "warning"
   | "learning"
   | "sponsored"
   | "tip"
   | "recommendation"
+
+// Valid types array for validation
+export const VALID_ARTICLE_CALLOUT_TYPES: ArticleCalloutType[] = [
+  'article',
+  'note',
+  'warning',
+  'learning',
+  'sponsored',
+  'tip',
+  'recommendation'
+]
 
 interface ArticleCalloutProps {
   type: ArticleCalloutType
@@ -52,19 +64,19 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
         color: "#1976d2",
         bgColor: "rgba(25, 118, 210, 0.1)",
       }
-    case "tool":
+    case "note":
       return {
         icon: <TipsAndUpdates />,
-        label: "Tool",
+        label: "Note",
         color: "#ed6c02",
         bgColor: "rgba(237, 108, 2, 0.1)",
       }
-    case "code":
+    case "warning":
       return {
-        icon: <Code />,
-        label: "Code Example",
-        color: "#2e7d32",
-        bgColor: "rgba(46, 125, 50, 0.1)",
+        icon: <Warning />,
+        label: "Warning",
+        color: "#d32f2f",
+        bgColor: "rgba(211, 47, 47, 0.1)",
       }
     case "learning":
       return {
@@ -82,7 +94,7 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
       }
     case "tip":
       return {
-        icon: <TipsAndUpdates />,
+        icon: <Lightbulb />,
         label: "Tip",
         color: "#f57c00",
         bgColor: "rgba(245, 124, 0, 0.1)",
@@ -169,8 +181,8 @@ export default function InlineArticleCallout({
                 src={imageUrl}
                 alt={personName || "Recommender"}
                 sx={{
-                  width: { xs: 64, sm: 56 },
-                  height: { xs: 64, sm: 56 },
+                  width: { xs: 80, sm: 72 },
+                  height: { xs: 80, sm: 72 },
                   border: `2px solid ${config.color}30`,
                   alignSelf: { xs: "center", sm: "flex-start" },
                 }}
@@ -185,7 +197,7 @@ export default function InlineArticleCallout({
             >
               {title && (
                 <Typography
-                  variant="subtitle1"
+                  variant="subtitle2"
                   sx={{
                     fontWeight: "bold",
                     color: isDarkMode ? "white" : "text.primary",
@@ -195,39 +207,45 @@ export default function InlineArticleCallout({
                   {title}
                 </Typography>
               )}
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  fontWeight: "bold",
-                  color: isDarkMode ? "white" : "text.primary",
-                }}
-              >
-                {personName}
-              </Typography>
             </Box>
           </Box>
 
           {/* Quote */}
           {quote && (
-            <Box
-              sx={{
-                position: "relative",
-                pl: 3,
-                mb: 2,
-                borderLeft: `3px solid ${config.color}30`,
-                fontStyle: "italic",
-              }}
-            >
-              <Typography
-                variant="body2"
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              <Box
                 sx={{
-                  color: isDarkMode ? "grey.300" : "text.secondary",
-                  lineHeight: 1.6,
                   position: "relative",
+                  pl: 3,
+                  mb: 1,
+                  borderLeft: `3px solid ${config.color}30`,
+                  fontStyle: "italic",
                 }}
               >
-                "{quote}"
-              </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: isDarkMode ? "grey.300" : "text.secondary",
+                    lineHeight: 1.6,
+                    position: "relative",
+                  }}
+                >
+                  "{quote}"
+                </Typography>
+
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontWeight: "bold",
+                    mb: 1,
+                    color: isDarkMode ? "white" : "text.primary",
+                  }}
+                >
+                  - {personName}
+                </Typography>
+              </Box>
             </Box>
           )}
 
@@ -240,7 +258,7 @@ export default function InlineArticleCallout({
 
           {/* Link */}
           {url && (
-            <Box sx={{ mt: 2 }}>
+            <Box sx={{ mt: 1 }}>
               <Link
                 href={url}
                 target="_blank"
@@ -251,7 +269,7 @@ export default function InlineArticleCallout({
                   gap: "4px",
                   color: config.color,
                   textDecoration: "none",
-                  fontSize: "0.875rem",
+                  fontSize: "1rem",
                   fontWeight: "medium",
                   transition: "opacity 0.2s ease-in-out",
                 }}
