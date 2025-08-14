@@ -11,6 +11,8 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
 import { trackNavigation, trackPageView, trackTimeOnPage } from "../components/AnalyticsUtils"
+import { extractUTMParameters, storeUTMParameters, hasUTMParameters } from "../utils/utmUtils"
+import { sendGAEvent } from "@next/third-parties/google"
 import { GADebugger } from "../components/GADebugger"
 import { LoadingOverlay } from "../components/LoadingOverlay"
 import { MOTD } from "../components/MsgOfDay"
@@ -37,6 +39,56 @@ export default function App({
   const router = useRouter()
   const isHomePage = router.pathname === "/"
   const [loading, setLoading] = useState(false)
+
+  // Track UTM parameters on app initialization and route changes
+  useEffect(() => {
+    // Check for UTM parameters on initial load
+    if (hasUTMParameters()) {
+      const utmParams = extractUTMParameters()
+      storeUTMParameters(utmParams)
+      
+      // Send UTM tracking event to GA4
+      if (GOOGLE_ANALYTICS_ID && Object.keys(utmParams).length > 0) {
+        const utmEvent = {
+          event_category: 'utm_tracking',
+          page_path: router.asPath,
+          page_title: document.title,
+          ...utmParams,
+        }
+        
+        console.log('🏷️ Global UTM tracking event:', utmEvent)
+        sendGAEvent("utm_app_load", utmEvent)
+      }
+    }
+  }, []) // Run only on initial mount
+
+  // Track route changes for UTM persistence
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      // If this is a new page load with UTM parameters, track it
+      if (hasUTMParameters()) {
+        const utmParams = extractUTMParameters()
+        storeUTMParameters(utmParams)
+        
+        if (GOOGLE_ANALYTICS_ID && Object.keys(utmParams).length > 0) {
+          const utmEvent = {
+            event_category: 'utm_tracking',
+            page_path: url,
+            ...utmParams,
+          }
+          
+          console.log('🏷️ Route change UTM tracking:', utmEvent)
+          sendGAEvent("utm_route_change", utmEvent)
+        }
+      }
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router])
 
   // Track time spent on page
   // const pageLoadTimeRef = useRef<number>(Date.now())

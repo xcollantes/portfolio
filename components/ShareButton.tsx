@@ -57,7 +57,7 @@ export default function ShareButton({ title, description, sx, shareUrl, source }
         url.searchParams.set('utm_source', source)
       }
       url.searchParams.set('utm_medium', medium)
-      // url.searchParams.set('utm_campaign', 'social_share')
+      url.searchParams.set('utm_campaign', 'social_share')
       return url.toString()
     } catch (error) {
       console.error('Invalid shareUrl:', shareUrl, error)

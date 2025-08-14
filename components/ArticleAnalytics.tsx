@@ -3,6 +3,7 @@
 import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from "react"
 import { sendGAEvent } from "@next/third-parties/google"
+import { extractUTMParameters, storeUTMParameters, getCurrentUTMParameters } from "../utils/utmUtils"
 
 // Debug mode - set to true to enable console logging
 const DEBUG_GA = process.env.NODE_ENV === 'development'
@@ -39,16 +40,39 @@ export default function ArticleAnalytics({
 
   // Track article view and scroll depth
   useEffect(() => {
-    // Track initial article view using standard GA4 event
+    // Extract and store UTM parameters if present
+    const utmParams = extractUTMParameters()
+    if (Object.keys(utmParams).length > 0) {
+      storeUTMParameters(utmParams)
+    }
+
+    // Get all UTM parameters (current + stored)
+    const allUtmParams = getCurrentUTMParameters()
+
+    // Track initial article view using standard GA4 event with UTM context
     const viewParameters = {
       content_type: 'article',
       content_id: articleId,
       content_title: articleTitle,
       article_type: articleType,
+      ...allUtmParams, // Include UTM parameters in the event
     }
     
     logDebug('view_item', viewParameters)
     sendGAEvent("view_item", viewParameters)
+
+    // If UTM parameters are present, send a specific UTM tracking event
+    if (Object.keys(allUtmParams).length > 0) {
+      const utmTrackingParameters = {
+        event_category: 'utm_tracking',
+        content_id: articleId,
+        content_title: articleTitle,
+        ...allUtmParams,
+      }
+      
+      logDebug('utm_page_view', utmTrackingParameters)
+      sendGAEvent("utm_page_view", utmTrackingParameters)
+    }
 
     // Track scroll depth
     const handleScroll = () => {
