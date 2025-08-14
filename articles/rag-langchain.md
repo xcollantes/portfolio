@@ -102,6 +102,10 @@ Depending on the model, you may need an API key.
 Encoding model which translates human-readable text to a hash which can be
 scored to indicate relationships.
 
+![Embeddings](/assets/images/vectorstores/vector.webp)
+
+###### [xomnia.com](https://xomnia.com/post/an-introduction-to-vector-databases-for-beginners/)
+
 For example, "dog" and "cat" may be given a score of 0.7 because they are
 both animals, both are common pets, but are different species as per the
 training data.
