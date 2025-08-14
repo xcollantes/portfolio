@@ -36,6 +36,10 @@ assign similarity scores based on the topic in the text.
 This way, querying the vector database can get results based off of topicality
 and similarity.
 
+![Vector Store](/assets/images/vectorstores/vector-space.webp)
+
+###### [xomnia.com](https://xomnia.com/post/an-introduction-to-vector-databases-for-beginners/)
+
 _Why is this useful?_
 
 Finding related pieces of data given an input text string is the basic function
@@ -48,13 +52,26 @@ documents have to be collected, embedded, and ranked.
 
 Google's super secret algorithm: [PageRank](https://en.wikipedia.org/wiki/PageRank)
 
+## LLM Connection
+
+Vector Stores have been integral in being the database for [RAG
+model](/articles/rag-langchain.md) implementations. This is because LLMs are
+cost prohibitive to train from the ground up. So to have a dynamic data
+reference, the RAG model leverages vector databases for searching for relevant
+data in a corpus.
+
+Think of it as a student taking a test, but has access to the textbook along
+with the knowledge he or she already knows.
+
 ## Embeddings
 
 Embedding models which translates human-readable text to a hash which can be
 scored to indicate relationships. There are many types of encoding models, which
 vary speed and ability to interpret topics.
 
-![Embeddings](/assets/images/vectorstores/)
+![Embeddings](/assets/images/vectorstores/vector.webp)
+
+###### [xomnia.com](https://xomnia.com/post/an-introduction-to-vector-databases-for-beginners/)
 
 For example, "dog" and "cat" may be given a score of 0.7 because they are
 both animals, both are common pets, but are different species as per the
@@ -81,7 +98,7 @@ are the size the model expects.
 Vector storage solutions exist on a spectrum from simple in-memory arrays to
 enterprise-grade distributed databases.
 
-### Local File-Based Solutions
+### Local File-Based Solutions: Quick for Experimentation
 
 **When To Use:** Medium datasets (100k-1M vectors), single-machine deployment,
 cost-sensitive projects
@@ -98,6 +115,11 @@ cost-sensitive projects
 - Single-machine limitation
 - No built-in concurrency control
 - Limited query flexibility (no complex filtering for post-query)
+
+In this example, we'll use FAISS to build a vector store. FAISS was developed
+and open-sourced by Facebook in 2017.
+
+[https://github.com/facebookresearch/faiss](https://github.com/facebookresearch/faiss)
 
 ```python
 import pickle
@@ -193,7 +215,7 @@ for similarity, meta in results:
     print(f"  Similarity: {similarity:.3f} - {meta['text']}")
 ```
 
-### Specialized Vector Databases
+### Specialized Vector Databases: Production-Ready
 
 **When To Use:** Production applications, multi-user systems, complex filtering
 needs, distributed deployment
@@ -385,88 +407,15 @@ for result in programming_results:
     print(f"  Score: {result['score']:.3f} - {result['text']}")
 ```
 
-## Choosing The Right Solution
-
-Your vector store choice depends on several key factors:
-
-### Dataset Size and Growth
-
-```python
-def recommend_vector_store(num_vectors: int, growth_rate: str, budget: str) -> str:
-    """Recommend vector store based on requirements."""
-
-    if num_vectors < 100_000:
-        if budget == "minimal":
-            return "In-memory with pickle persistence"
-        else:
-            return "FAISS local storage"
-
-    elif num_vectors < 1_000_000:
-        if growth_rate == "high":
-            return "Qdrant or Pinecone (for scaling)"
-        else:
-            return "FAISS or Chroma"
-
-    else:  # > 1M vectors
-        if budget == "high":
-            return "Pinecone or Qdrant Cloud"
-        else:
-            return "Self-hosted Qdrant or Weaviate"
-
-# Examples
-print(recommend_vector_store(50_000, "low", "minimal"))
-# Output: "In-memory with pickle persistence"
-
-print(recommend_vector_store(800_000, "high", "medium"))
-# Output: "Qdrant or Pinecone (for scaling)"
-```
-
-### Performance Requirements
-
-```python
-import time
-from typing import Dict, Any
-
-def benchmark_vector_store(store, test_vectors: List, num_queries: int = 100) -> Dict[str, Any]:
-    """Benchmark vector store performance."""
-
-    # Test insertion performance
-    start_time = time.time()
-    for i, vector in enumerate(test_vectors):
-        store.add(vector, {"id": i})
-    insertion_time = time.time() - start_time
-
-    # Test query performance
-    query_times = []
-    for _ in range(num_queries):
-        query_vector = test_vectors[0]  # Use first vector as query
-
-        start_time = time.time()
-        results = store.search(query_vector, top_k=10)
-        query_time = time.time() - start_time
-
-        query_times.append(query_time * 1000)  # Convert to milliseconds
-
-    return {
-        "insertion_time_seconds": insertion_time,
-        "avg_query_time_ms": sum(query_times) / len(query_times),
-        "p95_query_time_ms": sorted(query_times)[int(0.95 * len(query_times))],
-        "total_vectors": len(test_vectors)
-    }
-
-# Use this function to compare different stores with your actual data
-```
-
 ## Conclusion
 
 Vector stores are essential infrastructure for modern AI applications. The key
 is matching your choice to your specific requirements:
 
 - **Start simple** with in-memory solutions for prototyping
-- **Scale pragmatically** to FAISS for medium-sized datasets
+- **Scale pragmatically** to FAISS or equivalent for medium-sized datasets
 - **Go production-ready** with specialized vector databases for enterprise
   applications
-- **Plan for growth** from day one to avoid painful migrations
 
 The vector storage landscape will continue evolving rapidly, but understanding
 these fundamentals will help you make informed decisions regardless of which
@@ -481,3 +430,5 @@ performant vector-powered applications.
 [https://www.vecdbs.com/](https://www.vecdbs.com/)
 
 [Vector Databases for Beginners](https://xomnia.com/post/an-introduction-to-vector-databases-for-beginners/)
+
+[FAISS: Efficient Similarity Search](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/)
