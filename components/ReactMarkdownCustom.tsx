@@ -8,7 +8,7 @@ import imageStyles from "../css/images.module.css"
 import CodeSnippet from "./CodeSnippet"
 import Gist from "./Gist"
 import { extractGistId } from "./GistUtils"
-import InlineArticleCallout, { ArticleCalloutType } from "./InlineArticleCallout"
+import InlineArticleCallout, { ArticleCalloutType, VALID_ARTICLE_CALLOUT_TYPES } from "./InlineArticleCallout"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
@@ -356,9 +356,8 @@ const articleCalloutCustom = (props) => {
   }
 
   // Validate type
-  const validTypes: ArticleCalloutType[] = ['article', 'tool', 'code', 'learning', 'sponsored', 'tip', 'recommendation']
-  if (!validTypes.includes(type as ArticleCalloutType)) {
-    console.warn(`Invalid callout type: ${type}. Valid types:`, validTypes)
+  if (!VALID_ARTICLE_CALLOUT_TYPES.includes(type as ArticleCalloutType)) {
+    console.warn(`Invalid callout type: ${type}. Valid types:`, VALID_ARTICLE_CALLOUT_TYPES)
     return null
   }
 
