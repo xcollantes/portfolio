@@ -19,12 +19,13 @@ const logDebug = (eventName: string, parameters: any) => {
  * @param title The page title
  */
 export const trackPageView = (url: string, title?: string) => {
+
   const parameters = {
     page_path: url,
     page_title: title || (typeof document !== 'undefined' ? document.title : 'Unknown'),
     page_location: typeof window !== 'undefined' ? window.location.href : url,
   }
-  
+
   logDebug('page_view', parameters)
   sendGAEvent("page_view", parameters)
 }
@@ -41,12 +42,13 @@ export const trackUserInteraction = (
   label: string,
   category: string = "user_interaction"
 ) => {
+
   const parameters = {
     content_type: category,
     content_id: label,
     custom_action: action,
   }
-  
+
   logDebug('select_content', parameters)
   sendGAEvent("select_content", parameters)
 }
@@ -58,13 +60,14 @@ export const trackUserInteraction = (
  * @param to The destination page
  */
 export const trackNavigation = (from: string, to: string) => {
+
   const parameters = {
     page_path: to,
     page_location: typeof window !== 'undefined' ? window.location.href : to,
     previous_page: from,
     event_category: 'navigation',
   }
-  
+
   logDebug('navigation', parameters)
   sendGAEvent("page_view", parameters)
 }
@@ -78,12 +81,12 @@ export const trackNavigation = (from: string, to: string) => {
 export const trackTimeOnPage = (pageUrl: string, timeInSeconds: number) => {
   // Only track if user spent meaningful time (more than 5 seconds)
   if (timeInSeconds < 5) return
-  
+
   const parameters = {
     engagement_time_msec: timeInSeconds * 1000, // GA4 expects milliseconds
     page_path: pageUrl,
   }
-  
+
   logDebug('user_engagement', parameters)
   sendGAEvent("user_engagement", parameters)
 }
@@ -108,7 +111,7 @@ export const trackAmplitudeEvent = (eventName: string, eventProperties: any = {}
   }
 
   track(eventName, enrichedProperties)
-  
+
   if (process.env.NODE_ENV === 'development') {
     console.log(`🎯 Amplitude Event: ${eventName}`, enrichedProperties)
   }
