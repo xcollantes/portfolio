@@ -21,7 +21,7 @@ tagIds:
 ---
 
 After building production vector search systems with embeddings,
-I've discovered that the choice between Qdrant, Pinecone, and AWS OpenSearch
+I have discovered that the choice between Qdrant, Pinecone, and AWS OpenSearch
 Service fundamentally impacts your application's architecture, budget, and
 scalability. This technical deep-dive compares these three leading solutions
 across performance, pricing, and production readiness.
@@ -36,7 +36,7 @@ assign similarity scores based on the topic in the text.
 This way, querying the vector database can get results based off of topicality
 and similarity.
 
-![Vector Store](/assets/images/vectorstores/vector-space.webp)
+![Vector Store {priority}](/assets/images/vectorstores/vector-space.webp)
 
 ###### [xomnia.com](https://xomnia.com/post/an-introduction-to-vector-databases-for-beginners/)
 
@@ -45,7 +45,7 @@ _Why is this useful?_
 Finding related pieces of data given an input text string is the basic function
 of a search engine. The best example is a website called
 [www.google.com](https://www.google.com/search?q=google+in+1998).
-On a basic level, any search engine works with way: a user can give a text
+On a basic level, any search engine works this way: a user can give a text
 string and get a collection of "documents" based on how closely the text string
 is related on the input. But before the user can make any queries, a corpus of
 documents have to be collected, embedded, and ranked.
@@ -69,9 +69,9 @@ with the knowledge he or she already knows.
 
 ## Embeddings
 
-Embedding models which translates human-readable text to a hash which can be
+Embedding models translate human-readable text to a hash which can be
 scored to indicate relationships. There are many types of encoding models, which
-vary speed and ability to interpret topics.
+vary in speed and ability to interpret topics.
 
 ![Embeddings](/assets/images/vectorstores/vector.webp)
 
@@ -89,7 +89,7 @@ Similarity](https://tomhazledine.com/cosine-similarity-alternatives/#cosine-simi
 and [Euclidean
 Distance](https://tomhazledine.com/cosine-similarity-alternatives/#euclidean-distance).
 
-Technically embeddings and models are interchangeable as longs as the outputs
+Technically embeddings and models are interchangeable as long as the outputs
 are the size the model expects.
 
 - Embedding outputs match size (384, 1024, etc.)
@@ -147,9 +147,9 @@ local development.
 For more complex use cases, you can use a cloud vector store like Pinecone or if
 you have a Docker Compose or Kubernetes setup, you can use Qdrant.
 
-### Local File-Based Solutions: Quick for Experimentation
+### Local File-Based Solutions: Quick For Experimentation
 
-**When To Use:** Medium datasets (1-1M vectors), single-machine deployment,
+**When To Use:** Medium datasets (100k-1M vectors), single-machine deployment,
 cost-sensitive projects
 
 **Pros:**
@@ -165,7 +165,7 @@ cost-sensitive projects
 - No built-in concurrency control
 - Limited query flexibility (no complex filtering for post-query)
 
-In this example, we'll use FAISS to build a vector store. FAISS was developed
+In this example, we will use FAISS to build a vector store. FAISS was developed
 and open-sourced by Facebook in 2017.
 
 [https://github.com/facebookresearch/faiss](https://github.com/facebookresearch/faiss)
