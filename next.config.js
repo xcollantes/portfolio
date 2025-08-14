@@ -2,20 +2,24 @@
 
 const contentSecurityPolicy = `
   default-src 'self';
-  script-src 'unsafe-eval';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://scripts.simpleanalyticscdn.com https://metricsloop.com;
+  connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com;
+  img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net;
   font-src 'self' fonts.googleapis.com;
-  style-src 'unsafe-inline';
+  style-src 'self' 'unsafe-inline' fonts.googleapis.com;
 `
 
-const policy = {
-  // Helps prevent cross-site scripting (XSS), clickjacking, and other
-  // code injection attacks.
-  // Content Security Policy (CSP) can specify allowed origins for
-  // content including scripts, stylesheets, images, fonts, objects,
-  // media (audio, video), iframes, and more.
-  key: "Content-Security-Policy",
-  value: contentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
-}
+const securityHeaders = [
+  {
+    // Helps prevent cross-site scripting (XSS), clickjacking, and other
+    // code injection attacks.
+    // Content Security Policy (CSP) can specify allowed origins for
+    // content including scripts, stylesheets, images, fonts, objects,
+    // media (audio, video), iframes, and more.
+    key: "Content-Security-Policy",
+    value: contentSecurityPolicy.replace(/\s{2,}/g, " ").trim(),
+  },
+]
 
 module.exports = {
   images: {
@@ -48,6 +52,7 @@ module.exports = {
       {
         source: "/(.*)",
         headers: [
+          ...securityHeaders,
           {
             key: "X-DNS-Prefetch-Control",
             value: "on",

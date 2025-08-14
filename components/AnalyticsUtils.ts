@@ -14,11 +14,57 @@ const logDebug = (eventName: string, parameters: any) => {
 }
 
 /**
+ * Check if Google Analytics is properly initialized
+ */
+const isGAInitialized = (): boolean => {
+  if (typeof window === 'undefined') return false
+  
+  // Check if gtag is available globally
+  const hasGtag = typeof window.gtag !== 'undefined'
+  
+  // Check if GA dataLayer exists and has been configured
+  const hasDataLayer = window.dataLayer && Array.isArray(window.dataLayer) && window.dataLayer.length > 0
+  
+  // Check if GA config has been set (look for config command in dataLayer)
+  const hasConfig = hasDataLayer && window.dataLayer.some(item => 
+    Array.isArray(item) && item[0] === 'config'
+  )
+  
+  return hasGtag && hasDataLayer && hasConfig
+}
+
+/**
+ * Wait for GA to be initialized with retry mechanism
+ */
+const waitForGA = (callback: () => void, maxRetries: number = 10, delay: number = 100): void => {
+  if (isGAInitialized()) {
+    callback()
+    return
+  }
+  
+  if (maxRetries <= 0) {
+    if (DEBUG_GA) {
+      console.log('🔍 GA: Max retries reached, skipping event')
+    }
+    return
+  }
+  
+  setTimeout(() => {
+    waitForGA(callback, maxRetries - 1, delay)
+  }, delay)
+}
+
+/**
  * Track a page view in Google Analytics.
  * @param url The page URL to track
  * @param title The page title
  */
 export const trackPageView = (url: string, title?: string) => {
+  if (!isGAInitialized()) {
+    logDebug('page_view', 'GA not initialized, skipping event')
+    return
+  }
+
   const parameters = {
     page_path: url,
     page_title: title || (typeof document !== 'undefined' ? document.title : 'Unknown'),
@@ -41,6 +87,11 @@ export const trackUserInteraction = (
   label: string,
   category: string = "user_interaction"
 ) => {
+  if (!isGAInitialized()) {
+    logDebug('select_content', 'GA not initialized, skipping event')
+    return
+  }
+
   const parameters = {
     content_type: category,
     content_id: label,
@@ -58,6 +109,11 @@ export const trackUserInteraction = (
  * @param to The destination page
  */
 export const trackNavigation = (from: string, to: string) => {
+  if (!isGAInitialized()) {
+    logDebug('navigation', 'GA not initialized, skipping event')
+    return
+  }
+
   const parameters = {
     page_path: to,
     page_location: typeof window !== 'undefined' ? window.location.href : to,
@@ -78,6 +134,11 @@ export const trackNavigation = (from: string, to: string) => {
 export const trackTimeOnPage = (pageUrl: string, timeInSeconds: number) => {
   // Only track if user spent meaningful time (more than 5 seconds)
   if (timeInSeconds < 5) return
+  
+  if (!isGAInitialized()) {
+    logDebug('user_engagement', 'GA not initialized, skipping event')
+    return
+  }
   
   const parameters = {
     engagement_time_msec: timeInSeconds * 1000, // GA4 expects milliseconds
