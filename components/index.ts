@@ -20,3 +20,6 @@ export { default as TableOfContents } from './TableOfContents'
 export { default as FeedbackForm } from './FeedbackForm'
 export type { FeedbackFormProps, FeedbackFormData } from './FeedbackForm'
 
+export { default as InlineRecommendationBox } from './InlineRecommendationBox'
+export type { RecommendationType } from './InlineRecommendationBox'
+
