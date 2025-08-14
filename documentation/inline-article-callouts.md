@@ -1,10 +1,10 @@
-# Inline Recommendation Boxes
+# Inline Article Callouts
 
-The Inline Recommendation Box component allows you to embed contextual recommendations directly within blog articles. These boxes provide readers with relevant content, tools, and resources at strategic points in your articles.
+The Inline Article Callout component allows you to embed contextual callouts directly within blog articles. These callouts provide readers with relevant content, tools, and resources at strategic points in your articles.
 
 ## Usage
 
-Add recommendation boxes directly in your markdown articles using HTML syntax:
+Add article callouts directly in your markdown articles using HTML syntax:
 
 ```markdown
 <recommendationbox
@@ -16,9 +16,9 @@ Add recommendation boxes directly in your markdown articles using HTML syntax:
 </recommendationbox>
 ```
 
-## Recommendation Types
+## Callout Types
 
-The component supports six different recommendation types, each with its own styling and icon:
+The component supports seven different callout types, each with its own styling and icon:
 
 ### 1. Article (`type="article"`)
 
@@ -84,19 +84,19 @@ The component supports six different recommendation types, each with its own sty
 </recommendationbox>
 ```
 
-### 5. Product (`type="product"`)
+### 5. Sponsored (`type="sponsored"`)
 
 - **Icon**: Shopping Cart icon
 - **Color**: Red (#d32f2f)
-- **Use for**: Physical products, software products, books
+- **Use for**: Sponsored content, affiliate products, paid partnerships
 
 ```markdown
 <recommendationbox
-  type="product"
-  title="Recommended Book"
-  description="This book provides in-depth coverage of advanced techniques."
-  url="https://amazon.com/book"
-  urltext="Buy Now">
+  type="sponsored"
+  title="Recommended Tool"
+  description="This sponsored tool provides excellent value for development teams."
+  url="https://sponsor-tool.com"
+  urltext="Try Now">
 </recommendationbox>
 ```
 
@@ -116,11 +116,30 @@ The component supports six different recommendation types, each with its own sty
 </recommendationbox>
 ```
 
+### 7. Testimonial (`type="recommendation"`)
+
+- **Icon**: Person icon
+- **Color**: Blue (#1976d2)
+- **Use for**: Professional recommendations, testimonials, quotes
+
+```markdown
+<recommendationbox
+  type="recommendation"
+  title="Senior Developer at Company"
+  description="A professional testimonial about the topic discussed."
+  imageurl="/path/to/avatar.jpg"
+  personname="John Smith"
+  quote="This approach has significantly improved our team's productivity."
+  url="/testimonials"
+  urltext="View More Testimonials">
+</recommendationbox>
+```
+
 ## Properties
 
 ### Required Properties
 
-- `type`: One of "article", "tool", "code", "learning", "product", or "tip"
+- `type`: One of "article", "tool", "code", "learning", "sponsored", "tip", or "recommendation"
 - `title`: The title of the recommendation
 - `description`: A brief description explaining the recommendation
 
@@ -195,4 +214,4 @@ The component is implemented as a custom ReactMarkdown component that:
 - Includes smooth hover animations and transitions
 - Supports responsive design out of the box
 
-For technical details, see the component source code in `components/InlineRecommendationBox.tsx`.
+For technical details, see the component source code in `components/InlineArticleCallout.tsx`.
