@@ -34,7 +34,6 @@ export type ArticleCalloutType =
 interface ArticleCalloutProps {
   type: ArticleCalloutType
   title: string
-  description: string
   url?: string
   urlText?: string
   children?: ReactNode
@@ -78,8 +77,8 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
       return {
         icon: <ShoppingCart />,
         label: "Sponsored",
-        color: "#d32f2f",
-        bgColor: "rgba(211, 47, 47, 0.1)",
+        color: "#616161",
+        bgColor: "rgba(97, 97, 97, 0.1)",
       }
     case "tip":
       return {
@@ -101,7 +100,6 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
 export default function InlineArticleCallout({
   type,
   title,
-  description,
   url,
   urlText = "Learn more",
   children,
@@ -157,19 +155,34 @@ export default function InlineArticleCallout({
           </Box>
 
           {/* Header with avatar and person info */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              alignItems: { xs: "center", sm: "center" },
+              gap: 2,
+              mb: 2
+            }}
+          >
             {imageUrl && (
               <Avatar
                 src={imageUrl}
                 alt={personName || "Recommender"}
                 sx={{
-                  width: 56,
-                  height: 56,
+                  width: { xs: 64, sm: 56 },
+                  height: { xs: 64, sm: 56 },
                   border: `2px solid ${config.color}30`,
+                  alignSelf: { xs: "center", sm: "flex-start" },
                 }}
               />
             )}
-            <Box sx={{ flex: 1 }}>
+            <Box
+              sx={{
+                flex: 1,
+                textAlign: { xs: "center", sm: "left" },
+                minWidth: 0,
+              }}
+            >
               {title && (
                 <Typography
                   variant="subtitle1"
@@ -217,18 +230,6 @@ export default function InlineArticleCallout({
               </Typography>
             </Box>
           )}
-
-          {/* Description */}
-          <Typography
-            variant="body2"
-            sx={{
-              color: isDarkMode ? "grey.300" : "text.secondary",
-              lineHeight: 1.5,
-              mb: children ? 1 : 0,
-            }}
-          >
-            {description}
-          </Typography>
 
           {/* Children content */}
           {children && (
@@ -340,18 +341,6 @@ export default function InlineArticleCallout({
               }}
             >
               {title}
-            </Typography>
-
-            {/* Description */}
-            <Typography
-              variant="body2"
-              sx={{
-                color: isDarkMode ? "grey.300" : "text.secondary",
-                lineHeight: 1.5,
-                mb: children ? 1 : 0,
-              }}
-            >
-              {description}
             </Typography>
 
             {/* Children content */}

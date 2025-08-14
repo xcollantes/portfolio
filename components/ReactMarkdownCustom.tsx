@@ -347,11 +347,11 @@ const videoCustom = (props) => {
 
 // Custom article callout handler
 const articleCalloutCustom = (props) => {
-  const { type, title, description, url, urltext, imageurl, personname, quote, children, ...rest } = props
+  const { type, title, url, urltext, imageurl, personname, quote, children, ...rest } = props
 
   // Validate required props
-  if (!type || !title || !description) {
-    console.warn('ArticleCallout missing required props:', { type, title, description })
+  if (!type || !title) {
+    console.warn('ArticleCallout missing required props:', { type, title })
     return null
   }
 
@@ -366,7 +366,6 @@ const articleCalloutCustom = (props) => {
     <InlineArticleCallout
       type={type as ArticleCalloutType}
       title={title}
-      description={description}
       url={url}
       urlText={urltext}
       imageUrl={imageurl}
