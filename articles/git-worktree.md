@@ -91,9 +91,12 @@ We will use Claude Code's command line abilities to do the following:
 - Debug code for you
 - Create branches and PRs with appropriate documentation
 
-NOTE: Technically, any LLM-based AI IDE with terminal support can do this. But I
+<callout
+  type="note"
+  description="Technically, any LLM-based AI IDE with terminal support can do this. But I
 have chosen Claude Code because you can define per-project prompts and from my
-experience, Claude will closely follow the prompts you give it.
+experience, Claude will closely follow the prompts you give it.">
+</callout>
 
 ## Your New Workflow
 

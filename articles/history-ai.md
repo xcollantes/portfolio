@@ -50,8 +50,11 @@ ELIZA used a process of pattern matching and transformation rules on the
 "prompt" to generate outputs. As opposed to an alternative method such as
 Context-Free Grammars, which I learned about at [Google](/articles/google.md).
 
-Notice how the computer reuses words from the input prompt such as "BOYFRIEND",
-"DEPRESSED".
+<callout
+  type="note"
+  description="Notice how the computer reuses words from the input prompt such as
+  'BOYFRIEND', 'DEPRESSED'.">
+</callout>
 
 ```txt
 Human: Men are all alike.
@@ -106,9 +109,12 @@ The Problems:
 - Maintenance nightmare: Rules often conflicted with each other
 - Limited coverage: No system could handle the full complexity of natural language
 
-Example: ELIZA's DOCTOR script had about 200 rules. To handle even basic
+<callout
+  type="note"
+  description="Example: ELIZA's DOCTOR script had about 200 rules. To handle even basic
 conversation, you'd need millions of rules covering every possible linguistic
-pattern.
+pattern.">
+</callout>
 
 ### 1990s: The New Way: Statistical Approaches
 
