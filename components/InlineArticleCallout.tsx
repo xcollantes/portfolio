@@ -7,9 +7,11 @@ import {
   Link as LinkIcon,
   Person,
   ShoppingCart,
-  TipsAndUpdates,
   Warning,
+  Newspaper,
+  Error,
 } from "@mui/icons-material"
+// import NewspaperIcon from '@mui/icons-material/Newspaper';
 import {
   Avatar,
   Box,
@@ -27,6 +29,7 @@ export type ArticleCalloutType =
   | "article"
   | "note"
   | "warning"
+  | "pitfall"
   | "learning"
   | "sponsored"
   | "tip"
@@ -36,6 +39,7 @@ export type ArticleCalloutType =
 export const VALID_ARTICLE_CALLOUT_TYPES: ArticleCalloutType[] = [
   'article',
   'note',
+  'pitfall',
   'warning',
   'learning',
   'sponsored',
@@ -45,7 +49,8 @@ export const VALID_ARTICLE_CALLOUT_TYPES: ArticleCalloutType[] = [
 
 interface ArticleCalloutProps {
   type: ArticleCalloutType
-  title: string
+  title?: string
+  description?: string
   url?: string
   urlText?: string
   children?: ReactNode
@@ -59,17 +64,19 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
   switch (type) {
     case "article":
       return {
-        icon: <Article />,
+        icon: <Newspaper />,
         label: "Related Article",
         color: "#1976d2",
         bgColor: "rgba(25, 118, 210, 0.1)",
+        showChip: true,
       }
     case "note":
       return {
-        icon: <TipsAndUpdates />,
+        icon: <Article />,
         label: "Note",
-        color: "#ed6c02",
-        bgColor: "rgba(237, 108, 2, 0.1)",
+        color: "#1976d2",
+        bgColor: "rgba(25, 118, 210, 0.1)",
+        showChip: false,
       }
     case "warning":
       return {
@@ -77,6 +84,15 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
         label: "Warning",
         color: "#d32f2f",
         bgColor: "rgba(211, 47, 47, 0.1)",
+        showChip: false,
+      }
+    case "pitfall":
+      return {
+        icon: <Error />,
+        label: "Common Pitfall",
+        color: "#f57c00",
+        bgColor: "rgba(245, 124, 0, 0.1)",
+        showChip: false,
       }
     case "learning":
       return {
@@ -84,6 +100,7 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
         label: "Learning Resource",
         color: "#7b1fa2",
         bgColor: "rgba(123, 31, 162, 0.1)",
+        showChip: true,
       }
     case "sponsored":
       return {
@@ -91,6 +108,7 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
         label: "Sponsored",
         color: "#616161",
         bgColor: "rgba(97, 97, 97, 0.1)",
+        showChip: true,
       }
     case "tip":
       return {
@@ -98,6 +116,7 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
         label: "Tip",
         color: "#f57c00",
         bgColor: "rgba(245, 124, 0, 0.1)",
+        showChip: false,
       }
     case "recommendation":
       return {
@@ -105,6 +124,7 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
         label: "Professional Testimonial",
         color: "#1976d2",
         bgColor: "rgba(25, 118, 210, 0.1)",
+        showChip: true,
       }
   }
 }
@@ -112,6 +132,7 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
 export default function InlineArticleCallout({
   type,
   title,
+  description,
   url,
   urlText = "Learn more",
   children,
@@ -153,18 +174,20 @@ export default function InlineArticleCallout({
       >
         <CardContent sx={{ py: 2, "&:last-child": { pb: 2 } }}>
           {/* Type chip */}
-          <Box sx={{ mb: 1 }}>
-            <Chip
-              label={config.label}
-              size="small"
-              sx={{
-                backgroundColor: `${config.color}15`,
-                color: config.color,
-                fontWeight: "medium",
-                fontSize: "0.75rem",
-              }}
-            />
-          </Box>
+          {config.showChip && (
+            <Box sx={{ mb: 1 }}>
+              <Chip
+                label={config.label}
+                size="small"
+                sx={{
+                  backgroundColor: `${config.color}15`,
+                  color: config.color,
+                  fontWeight: "medium",
+                  fontSize: "0.75rem",
+                }}
+              />
+            </Box>
+          )}
 
           {/* Header with avatar and person info */}
           <Box
@@ -336,30 +359,47 @@ export default function InlineArticleCallout({
           {/* Content */}
           <Box sx={{ flex: 1, minWidth: 0 }}>
             {/* Type chip */}
-            <Box sx={{ mb: 1 }}>
-              <Chip
-                label={config.label}
-                size="small"
-                sx={{
-                  backgroundColor: `${config.color}15`,
-                  color: config.color,
-                  fontWeight: "medium",
-                  fontSize: "0.75rem",
-                }}
-              />
-            </Box>
+            {config.showChip && (
+              <Box sx={{ mb: 1 }}>
+                <Chip
+                  label={config.label}
+                  size="small"
+                  sx={{
+                    backgroundColor: `${config.color}15`,
+                    color: config.color,
+                    fontWeight: "medium",
+                    fontSize: "0.75rem",
+                  }}
+                />
+              </Box>
+            )}
 
             {/* Title */}
-            <Typography
-              variant="subtitle2"
-              sx={{
-                fontWeight: "bold",
-                color: isDarkMode ? "white" : "text.primary",
-                mb: 1,
-              }}
-            >
-              {title}
-            </Typography>
+            {title && (
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  fontWeight: "bold",
+                  color: isDarkMode ? "white" : "text.primary",
+                  mb: 1,
+                }}
+              >
+                {title}
+              </Typography>
+            )}
+
+            {/* Description */}
+            {description && (
+              <Typography
+                variant="body1"
+                sx={{
+                  color: isDarkMode ? "white" : "text.primary",
+                  mb: 1,
+                }}
+              >
+                {description}
+              </Typography>
+            )}
 
             {/* Children content */}
             {children && (

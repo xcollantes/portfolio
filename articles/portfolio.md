@@ -327,49 +327,60 @@ system that enhances the reading experience by providing contextual information,
 recommendations, and interactive elements. Here's a showcase of all the
 different callout types available:
 
-<recommendationbox
+<callout
   type="article"
   title="Best AI Development Practices"
   description="Learn essential practices for AI-powered development, including prompt engineering, code review workflows, and maintaining security when using AI assistants."
   url="/articles/claude-cheatsheet"
   urltext="Read Claude Cheat Sheet">
-</recommendationbox>
+</callout>
 
-<recommendationbox
+<callout
   type="note"
-  title="Design System Consistency"
+  title="Design System With Title"
   description="Throughout this portfolio, I maintained consistency with Material Design principles to ensure a cohesive user experience across all components and pages.">
-</recommendationbox>
+</callout>
 
-<recommendationbox
+<callout
+  type="note"
+  description="Throughout this portfolio, I maintained consistency with Material Design principles to ensure a cohesive user experience across all components and pages.">
+</callout>
+
+<callout
   type="warning"
   title="Development Dependencies"
   description="Make sure to run npm install after cloning the repository. The build process requires all dependencies to be properly installed for optimal performance.">
-</recommendationbox>
+</callout>
 
-<recommendationbox
+<callout
   type="learning"
   title="NextJS Documentation"
   description="Master the fundamentals of NextJS development with the official documentation and interactive tutorials."
   url="https://nextjs.org/docs"
   urltext="Start Learning">
-</recommendationbox>
+</callout>
 
-<recommendationbox
+<callout
   type="sponsored"
   title="Vercel Hosting Platform"
   description="Vercel provides seamless NextJS deployment with automatic optimization and global CDN. Perfect for modern web applications."
   url="https://vercel.com"
   urltext="Try Vercel">
-</recommendationbox>
+</callout>
 
-<recommendationbox
+<callout
   type="tip"
   title="Performance Optimization"
   description="Always optimize images using next/image and convert them to WebP format for better loading times and user experience.">
-</recommendationbox>
+</callout>
 
-<recommendationbox
+<callout
+  type="pitfall"
+  title="Common Pitfall"
+  description="Make sure to run npm install after cloning the repository. The build process requires all dependencies to be properly installed for optimal performance.">
+</callout>
+
+<callout
   type="recommendation"
   title="Software Engineer Manager at Google"
   imageurl="/recommendations/profile_pics/siobhan.webp"
@@ -378,7 +389,7 @@ different callout types available:
   so well implemented, it scaled up (or down) seamlessly. That's impressive..."
   url="/recs?siobhan-williams"
   urltext="View Testimonial">
-</recommendationbox>
+</callout>
 
 ## Technical Implementation
 
