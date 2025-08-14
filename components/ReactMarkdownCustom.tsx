@@ -8,6 +8,7 @@ import imageStyles from "../css/images.module.css"
 import CodeSnippet from "./CodeSnippet"
 import Gist from "./Gist"
 import { extractGistId } from "./GistUtils"
+import InlineRecommendationBox, { RecommendationType } from "./InlineRecommendationBox"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
@@ -235,7 +236,7 @@ const pCustom = (props) => {
   }
 
   // Regular paragraph
-  return <Typography component="p" sx={{ my: 2 }}>{children}</Typography>
+  return <Typography component="div" sx={{ my: 2 }}>{children}</Typography>
 }
 
 const blockquoteCustom = (props) => {
@@ -344,6 +345,36 @@ const videoCustom = (props) => {
   )
 }
 
+// Custom recommendation box handler
+const recommendationBoxCustom = (props) => {
+  const { type, title, description, url, urltext, children, ...rest } = props
+
+  // Validate required props
+  if (!type || !title || !description) {
+    console.warn('RecommendationBox missing required props:', { type, title, description })
+    return null
+  }
+
+  // Validate type
+  const validTypes: RecommendationType[] = ['article', 'tool', 'code', 'learning', 'product', 'tip']
+  if (!validTypes.includes(type as RecommendationType)) {
+    console.warn(`Invalid recommendation type: ${type}. Valid types:`, validTypes)
+    return null
+  }
+
+  return (
+    <InlineRecommendationBox
+      type={type as RecommendationType}
+      title={title}
+      description={description}
+      url={url}
+      urlText={urltext}
+    >
+      {children}
+    </InlineRecommendationBox>
+  )
+}
+
 // Custom table handler for responsive tables
 const tableCustom = (props) => {
   const { children, ...rest } = props
@@ -385,6 +416,7 @@ const ReactMarkdownRules = () => ({
   iframe: iframeCustom,
   video: videoCustom,
   table: tableCustom,
+  recommendationbox: recommendationBoxCustom,
 })
 
 export default ReactMarkdownRules
