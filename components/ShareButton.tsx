@@ -47,13 +47,22 @@ export default function ShareButton({ title, description, sx, shareUrl, source }
 
   // Helper function to add UTM parameters to the share URL
   const createUtmUrl = (medium: string): string => {
-    const url = new URL(shareUrl)
-    if (source) {
-      url.searchParams.set('utm_source', source)
+    if (!shareUrl) {
+      return window.location.href
     }
-    url.searchParams.set('utm_medium', medium)
-    // url.searchParams.set('utm_campaign', 'social_share')
-    return url.toString()
+    
+    try {
+      const url = new URL(shareUrl)
+      if (source) {
+        url.searchParams.set('utm_source', source)
+      }
+      url.searchParams.set('utm_medium', medium)
+      // url.searchParams.set('utm_campaign', 'social_share')
+      return url.toString()
+    } catch (error) {
+      console.error('Invalid shareUrl:', shareUrl, error)
+      return window.location.href
+    }
   }
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
