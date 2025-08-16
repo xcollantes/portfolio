@@ -72,6 +72,7 @@ export const orderedIncludeBlogSite: string[] = [
   "web-opt.md",
   "gonzaga-speaker-infosys.md",
   "anderson-podcast.md",
+  "easter-eggs.md",
 ]
 
 export const orderedIncludeArticlesConfig = [
