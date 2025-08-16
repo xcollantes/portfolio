@@ -31,6 +31,7 @@ export const orderedIncludeBlogs: string[] = [
   "claude-cheatsheet.md",
   "radio.md",
   "vectorstores.md",
+  "qdrant_awsvector.md",
 
   "ai-ide.md",
   "amplitude.md",
