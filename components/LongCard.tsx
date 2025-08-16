@@ -84,7 +84,8 @@ export default function LongCard({
       <Box
         sx={{
           display: "flex",
-          gap: 4,
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: { xs: 3, md: 4 },
           alignItems: "flex-start",
           mb: 6,
           '&:hover .image-card': {
@@ -99,8 +100,9 @@ export default function LongCard({
           className="image-card"
           raised
           sx={{
-            flex: '0 0 400px',
-            height: 280,
+            flex: { xs: 'none', md: '0 0 400px' },
+            width: { xs: '100%', md: '400px' },
+            height: { xs: 200, md: 280 },
             borderRadius: 2,
             overflow: 'hidden',
             transition: 'transform 0.2s ease-in-out',
@@ -122,14 +124,14 @@ export default function LongCard({
         </Card>
 
         {/* Content Area */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: { xs: 1.5, md: 2 } }}>
 
           <Typography
             variant="h3"
             className={descStyle}
             sx={{
               fontWeight: 'bold',
-              fontSize: { xs: 24, md: 32 },
+              fontSize: { xs: 20, sm: 24, md: 32 },
               lineHeight: 1.2,
               mb: 1
             }}
@@ -141,7 +143,7 @@ export default function LongCard({
             variant="body1"
             sx={{
               color: 'text.secondary',
-              fontSize: 16,
+              fontSize: { xs: 14, md: 16 },
               lineHeight: 1.6,
               mb: 2
             }}
@@ -156,7 +158,8 @@ export default function LongCard({
               textTransform: "none",
               borderRadius: 2,
               px: 3,
-              py: 1
+              py: 1,
+              fontSize: { xs: 14, md: 16 }
             }}
             component={MaterialLink}
             to={cardPageLink}
