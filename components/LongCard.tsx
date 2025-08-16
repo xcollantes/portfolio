@@ -125,11 +125,6 @@ export default function LongCard({
             justifyContent: 'center'
           }}
         >
-          {(!imagePath || !imageLoaded) && (
-            <Typography variant="body2" color="text.secondary">
-              No image available
-            </Typography>
-          )}
         </Card>
 
         {/* Content Area */}
@@ -140,7 +135,7 @@ export default function LongCard({
             className={descStyle}
             sx={{
               fontWeight: 'bold',
-              fontSize: { xs: 20, sm: 24, md: 32 },
+              fontSize: { xs: 20, sm: 24, md: 40 },
               lineHeight: 1.2,
               mb: 1
             }}
@@ -152,7 +147,7 @@ export default function LongCard({
             variant="body1"
             sx={{
               color: 'text.secondary',
-              fontSize: { xs: 14, md: 16 },
+              fontSize: { xs: 16, md: 25 },
               lineHeight: 1.6,
               mb: 2
             }}

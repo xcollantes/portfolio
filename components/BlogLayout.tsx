@@ -65,14 +65,14 @@ export default function BlogLayout({ metadataProps }: BlogLayoutProps) {
   return (
     <>
       <HiddenPreviewImage />
-      
+
       <Container maxWidth="lg" sx={{ mt: 4 }}>
-        <Grid container spacing={4}>
+        <Grid container spacing={1}>
           {/* Header Section */}
           <Grid xs={12}>
-            <Box sx={{ 
-              display: "flex", 
-              justifyContent: "space-between", 
+            <Box sx={{
+              display: "flex",
+              justifyContent: "space-between",
               alignItems: "flex-start",
               mb: 4
             }}>
@@ -85,20 +85,22 @@ export default function BlogLayout({ metadataProps }: BlogLayoutProps) {
                     mb: 1,
                   }}
                 >
-                  {siteConfig.title}
+                  Xavier's Blog
                 </Typography>
-                <Typography 
-                  variant="h2" 
+                {/* <Typography
+                  variant="h2"
                   color="text.secondary"
-                  sx={{ 
+                  sx={{
                     fontSize: { xs: 16, sm: 18, md: 20 },
                     fontWeight: "normal",
                     mb: 2
                   }}
                 >
-                  Technical insights on AI, software engineering, and technology
-                </Typography>
-                <SocialMedia />
+                  Technical on AI, software engineering, and technology
+                </Typography> */}
+
+                {/* <SocialMedia /> */}
+
               </Box>
               <DarkModeSwitch />
             </Box>
@@ -106,7 +108,7 @@ export default function BlogLayout({ metadataProps }: BlogLayoutProps) {
 
           {/* Filter Section */}
           <Grid xs={12}>
-            <Box sx={{ mb: 3 }}>
+            <Box sx={{ mb: 4 }}>
               <FilterBar disabled={!isUserSignedIn(session)} />
             </Box>
           </Grid>
@@ -114,8 +116,8 @@ export default function BlogLayout({ metadataProps }: BlogLayoutProps) {
           {/* Articles Section */}
           <Grid xs={12}>
             {isUserSignedIn(session) ? (
-              <ExperienceCards 
-                metadata={metadataProps} 
+              <ExperienceCards
+                metadata={metadataProps}
                 useBackgroundImages={true}
               />
             ) : (
