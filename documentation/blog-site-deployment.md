@@ -15,12 +15,14 @@ The blog-only site reuses 100% of the existing portfolio codebase but renders a 
 ## Site Modes
 
 ### Portfolio Mode (Default)
+
 - Full portfolio layout with personal branding
 - Experience cards and recommendations
 - Traditional portfolio structure
 - Domain: `xaviercollantes.dev`
 
 ### Blog-Only Mode
+
 - Blog-focused clean layout
 - Article-centric design
 - Simplified navigation
@@ -33,27 +35,24 @@ The blog-only site reuses 100% of the existing portfolio codebase but renders a 
 ```env
 # Site Configuration
 NEXT_PUBLIC_SITE_MODE=portfolio|blog-only
-NEXT_PUBLIC_SITE_TITLE=Xavier Collantes
-NEXT_PUBLIC_BLOG_TITLE=Xavier's Blog
-NEXT_PUBLIC_ONE_LINER=Software Engineer | AI Enthusiast
 
 # Authentication (same for both sites)
 NEXT_PUBLIC_AUTH_USERS=true
 
 # Google Analytics (same for both sites)
-NEXT_PUBLIC_GA_TRACKING_ID=G-HB7D403D67
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-HB7XXXXXXX
 ```
 
 ### Portfolio Site Configuration
+
 ```env
 NEXT_PUBLIC_SITE_MODE=portfolio
-NEXT_PUBLIC_SITE_TITLE=Xavier Collantes
 ```
 
 ### Blog Site Configuration
+
 ```env
 NEXT_PUBLIC_SITE_MODE=blog-only
-NEXT_PUBLIC_BLOG_TITLE=Xavier's Blog
 ```
 
 ## Vercel Deployment Setup
@@ -61,6 +60,7 @@ NEXT_PUBLIC_BLOG_TITLE=Xavier's Blog
 ### Step 1: Create Two Vercel Projects
 
 1. **Portfolio Project** (existing)
+
    - Project name: `portfolio`
    - Domain: `xaviercollantes.dev`
    - Git: Connect to your portfolio repository
@@ -73,26 +73,25 @@ NEXT_PUBLIC_BLOG_TITLE=Xavier's Blog
 ### Step 2: Configure Environment Variables
 
 #### Portfolio Project Settings
+
 ```
 NEXT_PUBLIC_SITE_MODE = portfolio
-NEXT_PUBLIC_SITE_TITLE = Xavier Collantes
-NEXT_PUBLIC_ONE_LINER = Software Engineer | AI Enthusiast
 NEXT_PUBLIC_AUTH_USERS = true
-NEXT_PUBLIC_GA_TRACKING_ID = G-HB7D403D67
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID = G-HB7XXXXXXX
 ```
 
 #### Blog Project Settings
+
 ```
 NEXT_PUBLIC_SITE_MODE = blog-only
-NEXT_PUBLIC_BLOG_TITLE = Xavier's Blog
-NEXT_PUBLIC_ONE_LINER = Technical insights on AI and software engineering
 NEXT_PUBLIC_AUTH_USERS = true
-NEXT_PUBLIC_GA_TRACKING_ID = G-HB7D403D67
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID = G-HB7XXXXXXX
 ```
 
 ### Step 3: Domain Configuration
 
 #### Set up custom domain for blog
+
 1. In Vercel dashboard, go to blog project
 2. Navigate to Settings → Domains
 3. Add custom domain: `blog.xaviercollantes.dev`
@@ -150,6 +149,7 @@ jobs:
 ## Local Development
 
 ### Testing Portfolio Mode
+
 ```bash
 # Default mode (portfolio)
 npm run dev
@@ -157,6 +157,7 @@ npm run dev
 ```
 
 ### Testing Blog Mode
+
 ```bash
 # Set environment variable for blog mode
 NEXT_PUBLIC_SITE_MODE=blog-only npm run dev
@@ -164,15 +165,17 @@ NEXT_PUBLIC_SITE_MODE=blog-only npm run dev
 ```
 
 ### Using .env.local for testing
+
 Create `.env.local` file:
+
 ```env
 NEXT_PUBLIC_SITE_MODE=blog-only
-NEXT_PUBLIC_BLOG_TITLE=Xavier's Blog
 ```
 
 ## How It Works
 
 ### Conditional Rendering
+
 The main `pages/index.tsx` uses conditional rendering:
 
 ```typescript
@@ -181,18 +184,21 @@ export default function Page(props: IndexPropTypes) {
   if (isBlogOnlyMode()) {
     return <BlogLayout {...props} />
   }
-  
+
   return <PortfolioLayout {...props} />
 }
 ```
 
 ### Layout Components
+
 - **PortfolioLayout**: Original design with recommendations and experience cards
 - **BlogLayout**: Clean blog-focused design
 - Both layouts use the same article components and functionality
 
 ### Dynamic Meta Tags
+
 Meta tags automatically adjust based on site configuration:
+
 - Title, description, and Open Graph tags
 - Different base URLs for each site
 - SEO optimization for both contexts
@@ -208,15 +214,18 @@ Meta tags automatically adjust based on site configuration:
 ## Troubleshooting
 
 ### Environment Variables Not Working
+
 - Ensure variables start with `NEXT_PUBLIC_` for client-side access
 - Clear `.next` cache: `rm -rf .next`
 - Restart development server
 
 ### Build Issues
+
 - Run `npm run build` to check for TypeScript errors
 - Verify all imports are correct in new components
 
 ### Domain Issues
+
 - Check DNS propagation (can take up to 24 hours)
 - Verify CNAME record points to `cname.vercel-dns.com`
 - Ensure SSL certificate is issued (automatic in Vercel)

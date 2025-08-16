@@ -21,16 +21,16 @@ export interface SiteConfig {
 export function getSiteConfig(): SiteConfig {
   const mode = (process.env.NEXT_PUBLIC_SITE_MODE || 'portfolio') as SiteMode
   const isPortfolio = mode === 'portfolio'
-  
+
   return {
     mode,
-    title: isPortfolio 
-      ? (process.env.NEXT_PUBLIC_SITE_TITLE || 'Xavier Collantes')
-      : (process.env.NEXT_PUBLIC_BLOG_TITLE || "Xavier's Blog"),
+    title: isPortfolio
+      ? 'Xavier Collantes'
+      : "Xavier's Blog",
     showPortfolioContent: isPortfolio,
     showRecommendations: isPortfolio,
     showExperienceCards: true, // Always show articles/experience cards
-    baseUrl: isPortfolio 
+    baseUrl: isPortfolio
       ? 'https://xaviercollantes.dev'
       : 'https://blog.xaviercollantes.dev',
     description: isPortfolio

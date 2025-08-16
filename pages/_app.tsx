@@ -39,7 +39,7 @@ export default function App({
   console.log(MOTD)
   const router = useRouter()
   const isHomePage = router.pathname === "/"
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
   const siteConfig = getSiteConfig()
 
   // Track UTM parameters on app initialization and route changes

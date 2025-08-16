@@ -36,9 +36,9 @@ interface PortfolioLayoutProps {
   recommendationsProp: RecommendationRawType[]
 }
 
-export default function PortfolioLayout({ 
-  metadataProps, 
-  recommendationsProp 
+export default function PortfolioLayout({
+  metadataProps,
+  recommendationsProp
 }: PortfolioLayoutProps) {
   const { data: session } = useSession()
   const router: NextRouter = useRouter()
