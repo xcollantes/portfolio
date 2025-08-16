@@ -82,15 +82,24 @@ export default function LongCard({
   if (isBlogOnlyMode()) {
     return (
       <Box
+        component={MaterialLink}
+        to={cardPageLink}
         sx={{
           display: "flex",
           flexDirection: { xs: 'column', md: 'row' },
           gap: { xs: 3, md: 4 },
           alignItems: "flex-start",
           mb: 6,
-          '&:hover .image-card': {
-            transform: 'scale(1.02)',
-            transition: 'transform 0.2s ease-in-out'
+          textDecoration: 'none',
+          color: 'inherit',
+          cursor: disabled ? 'default' : 'pointer',
+          '&:hover': {
+            textDecoration: 'none',
+            color: 'inherit',
+            '& .image-card': {
+              transform: 'scale(1.02)',
+              transition: 'transform 0.2s ease-in-out'
+            }
           }
         }}
         className={titleStyle}
@@ -151,22 +160,6 @@ export default function LongCard({
             {cardDescription}
           </Typography>
 
-          <Button
-            variant="outlined"
-            sx={{
-              alignSelf: 'flex-start',
-              textTransform: "none",
-              borderRadius: 2,
-              px: 3,
-              py: 1,
-              fontSize: { xs: 14, md: 16 }
-            }}
-            component={MaterialLink}
-            to={cardPageLink}
-            disabled={disabled}
-          >
-            {cardButtonText}
-          </Button>
         </Box>
       </Box>
     )
