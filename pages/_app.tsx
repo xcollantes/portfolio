@@ -24,6 +24,7 @@ import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
 import { ToastProvider } from "../contexts/toastContext"
 import "../css/global.css"
 import { base } from "../themes/theme"
+import { getSiteConfig } from "../config/siteConfig"
 import Script from "next/script"
 
 const GOOGLE_ANALYTICS_ID: string = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
@@ -38,7 +39,8 @@ export default function App({
   console.log(MOTD)
   const router = useRouter()
   const isHomePage = router.pathname === "/"
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const siteConfig = getSiteConfig()
 
   // Track UTM parameters on app initialization and route changes
   useEffect(() => {
@@ -169,37 +171,37 @@ export default function App({
             <meta
               key="description"
               name="description"
-              content="Career works of Xavier Collantes."
+              content={siteConfig.description}
             />
             <meta
               name="keywords"
-              content="resume,consulting,ai,llm,google,portfolio,career,projects,xavier,collantes"
+              content="resume,consulting,ai,llm,google,portfolio,career,projects,xavier,collantes,blog,technical,software,engineering"
             />
 
             {/* Open Graph meta tags for social sharing */}
             <meta key="og:type" property="og:type" content="website" />
-            <meta key="og:url" property="og:url" content="https://xaviercollantes.dev" />
-            <meta key="og:title" property="og:title" content="Xavier Collantes" />
-            <meta key="og:description" property="og:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
-            <meta key="og:image" property="og:image" content="https://xaviercollantes.dev/preview_image/front.webp" />
+            <meta key="og:url" property="og:url" content={siteConfig.baseUrl} />
+            <meta key="og:title" property="og:title" content={siteConfig.title} />
+            <meta key="og:description" property="og:description" content={siteConfig.description} />
+            <meta key="og:image" property="og:image" content={`${siteConfig.baseUrl}/preview_image/front.webp`} />
             <meta key="og:image:width" property="og:image:width" content="1200" />
             <meta key="og:image:height" property="og:image:height" content="630" />
-            <meta key="og:image:alt" property="og:image:alt" content="Xavier Collantes" />
-            <meta key="og:site_name" property="og:site_name" content="Xavier Collantes" />
+            <meta key="og:image:alt" property="og:image:alt" content={siteConfig.title} />
+            <meta key="og:site_name" property="og:site_name" content={siteConfig.title} />
 
             {/* Twitter Card meta tags */}
             <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
-            <meta key="twitter:title" name="twitter:title" content="Xavier Collantes" />
-            <meta key="twitter:description" name="twitter:description" content="Career works of Xavier Collantes, Software Engineer, AI specialist, and technical leader with experience at Google and startups." />
-            <meta key="twitter:image" name="twitter:image" content="https://xaviercollantes.dev/preview_image/front.webp" />
-            <meta key="twitter:image:alt" name="twitter:image:alt" content="Xavier Collantes" />
+            <meta key="twitter:title" name="twitter:title" content={siteConfig.title} />
+            <meta key="twitter:description" name="twitter:description" content={siteConfig.description} />
+            <meta key="twitter:image" name="twitter:image" content={`${siteConfig.baseUrl}/preview_image/front.webp`} />
+            <meta key="twitter:image:alt" name="twitter:image:alt" content={siteConfig.title} />
 
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
             <Script src="https://metricsloop.com/pixel/ZhNVupdLu2xSZ41u" />
 
-            <title key="title">Xavier Collantes</title>
+            <title key="title">{siteConfig.title}</title>
           </Head>
 
           <CssBaseline />

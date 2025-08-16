@@ -3,6 +3,7 @@
 import { Box, Button, Card, CardContent, Typography } from "@mui/material"
 import { useState, useEffect } from "react"
 import { MaterialLink } from "./MaterialLink"
+import { isBlogOnlyMode } from "../config/siteConfig"
 
 export interface LongCardType {
   title: string
@@ -77,6 +78,89 @@ export default function LongCard({
     }
     : {}
 
+  // Magazine-style layout for blog mode
+  if (isBlogOnlyMode()) {
+    return (
+      <Box
+        component={MaterialLink}
+        to={cardPageLink}
+        sx={{
+          display: "flex",
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: { xs: 3, md: 4 },
+          alignItems: "flex-start",
+          mb: 6,
+          textDecoration: 'none',
+          color: 'inherit',
+          cursor: disabled ? 'default' : 'pointer',
+          '&:hover': {
+            textDecoration: 'none',
+            color: 'inherit',
+            '& .image-card': {
+              transform: 'scale(1.02)',
+              transition: 'transform 0.2s ease-in-out'
+            }
+          }
+        }}
+        className={titleStyle}
+      >
+        {/* Image Card */}
+        <Card
+          className="image-card"
+          raised
+          sx={{
+            flex: { xs: 'none', md: '0 0 400px' },
+            width: { xs: '100%', md: '400px' },
+            height: { xs: 200, md: 280 },
+            borderRadius: 2,
+            overflow: 'hidden',
+            transition: 'transform 0.2s ease-in-out',
+            backgroundImage: imagePath && imageLoaded ? `url(${imagePath})` : 'none',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: imagePath && imageLoaded ? 'transparent' : 'grey.200',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+        </Card>
+
+        {/* Content Area */}
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: { xs: 1.5, md: 2 } }}>
+
+          <Typography
+            variant="h3"
+            className={descStyle}
+            sx={{
+              fontWeight: 'bold',
+              fontSize: { xs: 20, sm: 24, md: 40 },
+              lineHeight: 1.2,
+              mb: 1
+            }}
+          >
+            {title}
+          </Typography>
+
+          <Typography
+            variant="body1"
+            sx={{
+              color: 'text.secondary',
+              fontSize: { xs: 16, md: 25 },
+              lineHeight: 1.6,
+              mb: 2
+            }}
+          >
+            {cardDescription}
+          </Typography>
+
+        </Box>
+      </Box>
+    )
+  }
+
+  // Original card layout for portfolio mode
   return (
     <Card raised sx={cardStyles} className={titleStyle}>
       <CardContent sx={contentStyles}>

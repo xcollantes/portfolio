@@ -4,6 +4,7 @@ import { Box, Container, Theme, Typography, useTheme } from "@mui/material"
 import DarkModeSwitch from "./DarkMode"
 import Drawer from "./Drawer"
 import { MaterialLink } from "./MaterialLink"
+import { getSiteConfig } from "../config/siteConfig"
 
 interface NavbarProps {
   containerWidth?: "xs" | "sm" | "md" | "lg" | "xl"
@@ -11,6 +12,7 @@ interface NavbarProps {
 
 export default function Navbar({ containerWidth = "md" }: NavbarProps) {
   const theme: Theme = useTheme()
+  const siteConfig = getSiteConfig()
 
   return (
     <Box
@@ -51,7 +53,7 @@ export default function Navbar({ containerWidth = "md" }: NavbarProps) {
                 },
               }}
             >
-              xavier collantes
+              {siteConfig.title.toLowerCase()}
             </Typography>
           </Box>
 

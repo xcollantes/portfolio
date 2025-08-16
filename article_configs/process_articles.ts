@@ -5,7 +5,8 @@ import fs from "fs"
 import matter from "gray-matter"
 import { remark } from "remark"
 import html from "remark-html"
-import { orderedIncludeArticlesConfig } from "./article_order_config"
+import { orderedIncludeArticlesConfig, orderedIncludeBlogSite } from "./article_order_config"
+import { isBlogOnlyMode } from "../config/siteConfig"
 
 const articlesDirectory: string = path.join(process.cwd(), "articles")
 
@@ -89,8 +90,13 @@ export interface ArticleDataType {
  */
 export function getArticlePaths(): (string | undefined)[] {
   const fileNames: string[] = fs.readdirSync(articlesDirectory)
+  
+  // Use blog site order if in blog-only mode, otherwise use full config
+  const articlesToInclude = isBlogOnlyMode() 
+    ? orderedIncludeBlogSite 
+    : orderedIncludeArticlesConfig
 
-  const showArticles: (string | undefined)[] = orderedIncludeArticlesConfig.map(
+  const showArticles: (string | undefined)[] = articlesToInclude.map(
     (includedArticleFileName: string) => {
       if (fileNames.includes(includedArticleFileName)) {
         return includedArticleFileName
