@@ -51,6 +51,29 @@ export const orderedIncludeBlogs: string[] = [
   "easter-eggs.md",
 ]
 
+// BLOG SITE SPECIFIC ORDER (for blog-only mode).
+export const orderedIncludeBlogSite: string[] = [
+  "rag-langchain.md",
+  "qdrant_awsvector.md",
+  "history-ai.md",
+  "llms-for-non-techies.md",
+  "vectorstores.md",
+  "git-worktree.md",
+  "ai-ide.md",
+  "measuring-tokens.md",
+  "amplitude.md",
+  "bulldog-band.md",
+  "claude-cheatsheet.md",
+  "llm-leaderboards.md",
+  "radio.md",
+  "fastapi.md",
+  "streamlit-cheatsheet.md",
+  "json-python.md",
+  "web-opt.md",
+  "gonzaga-speaker-infosys.md",
+  "anderson-podcast.md",
+]
+
 export const orderedIncludeArticlesConfig = [
   ...orderedIncludeWorkExp,
   ...orderedIncludeBlogs,
