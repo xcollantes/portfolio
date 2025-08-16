@@ -81,10 +81,10 @@ export default function LongCard({
   // Magazine-style layout for blog mode
   if (isBlogOnlyMode()) {
     return (
-      <Box 
-        sx={{ 
-          display: "flex", 
-          gap: 4, 
+      <Box
+        sx={{
+          display: "flex",
+          gap: 4,
           alignItems: "flex-start",
           mb: 6,
           '&:hover .image-card': {
@@ -95,10 +95,10 @@ export default function LongCard({
         className={titleStyle}
       >
         {/* Image Card */}
-        <Card 
+        <Card
           className="image-card"
-          raised 
-          sx={{ 
+          raised
+          sx={{
             flex: '0 0 400px',
             height: 280,
             borderRadius: 2,
@@ -123,22 +123,11 @@ export default function LongCard({
 
         {/* Content Area */}
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Typography 
-            variant="caption" 
-            sx={{ 
-              color: 'primary.main',
-              textTransform: 'uppercase',
-              fontWeight: 'bold',
-              letterSpacing: 1
-            }}
-          >
-            Technical Article
-          </Typography>
 
-          <Typography 
-            variant="h3" 
-            className={descStyle} 
-            sx={{ 
+          <Typography
+            variant="h3"
+            className={descStyle}
+            sx={{
               fontWeight: 'bold',
               fontSize: { xs: 24, md: 32 },
               lineHeight: 1.2,
@@ -148,9 +137,9 @@ export default function LongCard({
             {title}
           </Typography>
 
-          <Typography 
-            variant="body1" 
-            sx={{ 
+          <Typography
+            variant="body1"
+            sx={{
               color: 'text.secondary',
               fontSize: 16,
               lineHeight: 1.6,
@@ -162,7 +151,7 @@ export default function LongCard({
 
           <Button
             variant="outlined"
-            sx={{ 
+            sx={{
               alignSelf: 'flex-start',
               textTransform: "none",
               borderRadius: 2,
