@@ -76,7 +76,11 @@ export default function Recs(props: RecsProps) {
     useSelectedFilterTagContext()
 
   // Filter recommendations based on selected relationship filters
-  const filteredRecommendations = selectedTags.length > 0
+  // If a specific recId is provided in URL, show all recommendations (don't filter)
+  // so the targeted recommendation can be found and expanded
+  const filteredRecommendations = router.query.recId 
+    ? recommendations // Show all when recId is specified
+    : selectedTags.length > 0
     ? recommendations.filter((rec: RecommendationRawType) => {
       const matchingFilters = getMatchingRelationshipFilters(rec.metadataObject.relationship)
       return selectedTags.some(tag => matchingFilters.includes(tag))

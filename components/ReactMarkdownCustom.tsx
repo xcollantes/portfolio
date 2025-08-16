@@ -8,6 +8,7 @@ import imageStyles from "../css/images.module.css"
 import CodeSnippet from "./CodeSnippet"
 import Gist from "./Gist"
 import { extractGistId } from "./GistUtils"
+import InlineArticleCallout, { ArticleCalloutType, VALID_ARTICLE_CALLOUT_TYPES } from "./InlineArticleCallout"
 
 const imgCustom = (imageData) => {
   /** Looking for `![some alt text](/the/image/path.png)` => some alt text */
@@ -235,7 +236,7 @@ const pCustom = (props) => {
   }
 
   // Regular paragraph
-  return <Typography component="p" sx={{ my: 2 }}>{children}</Typography>
+  return <Typography component="div" sx={{ my: 2 }}>{children}</Typography>
 }
 
 const blockquoteCustom = (props) => {
@@ -344,6 +345,38 @@ const videoCustom = (props) => {
   )
 }
 
+// Custom article callout handler
+const articleCalloutCustom = (props) => {
+  const { type, title, description, url, urltext, imageurl, personname, quote, children, ...rest } = props
+
+  // Validate required props
+  if (!type) {
+    console.warn('ArticleCallout missing required props:', { type })
+    return null
+  }
+
+  // Validate type
+  if (!VALID_ARTICLE_CALLOUT_TYPES.includes(type as ArticleCalloutType)) {
+    console.warn(`Invalid callout type: ${type}. Valid types:`, VALID_ARTICLE_CALLOUT_TYPES)
+    return null
+  }
+
+  return (
+    <InlineArticleCallout
+      type={type as ArticleCalloutType}
+      title={title}
+      description={description}
+      url={url}
+      urlText={urltext}
+      imageUrl={imageurl}
+      personName={personname}
+      quote={quote}
+    >
+      {children}
+    </InlineArticleCallout>
+  )
+}
+
 // Custom table handler for responsive tables
 const tableCustom = (props) => {
   const { children, ...rest } = props
@@ -385,6 +418,7 @@ const ReactMarkdownRules = () => ({
   iframe: iframeCustom,
   video: videoCustom,
   table: tableCustom,
+  callout: articleCalloutCustom,
 })
 
 export default ReactMarkdownRules

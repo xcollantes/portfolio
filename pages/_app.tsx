@@ -1,7 +1,9 @@
 /** Applies to all pages. */
 
+import { init } from "@amplitude/analytics-browser"
 import { Container, CssBaseline } from "@mui/material"
 import { GoogleAnalytics } from "@next/third-parties/google"
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Analytics } from "@vercel/analytics/next"
 import { SessionProvider } from "next-auth/react"
 import { AppProps } from "next/app"
@@ -9,16 +11,26 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
 import { trackNavigation, trackPageView, trackTimeOnPage } from "../components/AnalyticsUtils"
+import { extractUTMParameters, storeUTMParameters, hasUTMParameters } from "../utils/utmUtils"
+import { sendGAEvent } from "@next/third-parties/google"
+import { GADebugger } from "../components/GADebugger"
 import { LoadingOverlay } from "../components/LoadingOverlay"
 import { MOTD } from "../components/MsgOfDay"
 import Navbar from "../components/Navbar"
 import { Toast } from "../components/Toast"
+import { AmplitudeContextProvider } from "../contexts/amplitudeContext"
 import { ColorModeProvider } from "../contexts/colorMode"
 import { SelectFilterTagContextProvider } from "../contexts/selectFilterTag"
 import { ToastProvider } from "../contexts/toastContext"
 import "../css/global.css"
 import { base } from "../themes/theme"
 import { getSiteConfig } from "../config/siteConfig"
+import Script from "next/script"
+
+const GOOGLE_ANALYTICS_ID: string = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
+
+console.log("STAGE: ", process.env.NODE_ENV)
+console.log("GOOGLE_ANALYTICS_ID: ", GOOGLE_ANALYTICS_ID)
 
 export default function App({
   Component,
@@ -30,63 +42,113 @@ export default function App({
   const [loading, setLoading] = useState(false)
   const siteConfig = getSiteConfig()
 
-  // Track time spent on page
-  const pageLoadTimeRef = useRef<number>(Date.now())
-  const previousPathRef = useRef<string>("")
-
-  // Track page views and time spent when route changes
+  // Track UTM parameters on app initialization and route changes
   useEffect(() => {
-    const handleRouteChangeStart = (url: string) => {
-      setLoading(true)
-      const currentPath = router.pathname
-      // Record time spent on the previous page before navigating
-      const timeSpentSeconds = Math.round((Date.now() - pageLoadTimeRef.current) / 1000)
+    // Check for UTM parameters on initial load
+    if (hasUTMParameters()) {
+      const utmParams = extractUTMParameters()
+      storeUTMParameters(utmParams)
 
-      if (previousPathRef.current) {
-        trackTimeOnPage(previousPathRef.current, timeSpentSeconds)
-        trackNavigation(previousPathRef.current, url)
+      // Send UTM tracking event to GA4
+      if (GOOGLE_ANALYTICS_ID && Object.keys(utmParams).length > 0) {
+        const utmEvent = {
+          event_category: 'utm_tracking',
+          page_path: router.asPath,
+          page_title: document.title,
+          ...utmParams,
+        }
+
+        console.log('🏷️ Global UTM tracking event:', utmEvent)
+        sendGAEvent("utm_app_load", utmEvent)
       }
+    }
+  }, []) // Run only on initial mount
 
-      previousPathRef.current = currentPath
+  // Track route changes for UTM persistence
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      // If this is a new page load with UTM parameters, track it
+      if (hasUTMParameters()) {
+        const utmParams = extractUTMParameters()
+        storeUTMParameters(utmParams)
+
+        if (GOOGLE_ANALYTICS_ID && Object.keys(utmParams).length > 0) {
+          const utmEvent = {
+            event_category: 'utm_tracking',
+            page_path: url,
+            ...utmParams,
+          }
+
+          console.log('🏷️ Route change UTM tracking:', utmEvent)
+          sendGAEvent("utm_route_change", utmEvent)
+        }
+      }
     }
 
-    const handleRouteChangeComplete = (url: string) => {
-      setLoading(false)
-      // Reset timer for the new page
-      pageLoadTimeRef.current = Date.now()
-      // Track page view for the new page
-      trackPageView(url)
-    }
+    router.events.on('routeChangeComplete', handleRouteChange)
 
-    const handleRouteChangeError = () => {
-      setLoading(false)
-    }
-
-    // Track initial page load
-    if (typeof window !== "undefined") {
-      const currentUrl = window.location.pathname + window.location.search
-      previousPathRef.current = currentUrl
-      trackPageView(currentUrl)
-    }
-
-    // Track route changes
-    router.events.on("routeChangeStart", handleRouteChangeStart)
-    router.events.on("routeChangeComplete", handleRouteChangeComplete)
-    router.events.on("routeChangeError", handleRouteChangeError)
-
-    // Cleanup event listeners and track time when component unmounts
     return () => {
-      router.events.off("routeChangeStart", handleRouteChangeStart)
-      router.events.off("routeChangeComplete", handleRouteChangeComplete)
-      router.events.off("routeChangeError", handleRouteChangeError)
-
-      // Track time spent on final page when user leaves the site
-      const finalTimeSpent = Math.round((Date.now() - pageLoadTimeRef.current) / 1000)
-      if (previousPathRef.current) {
-        trackTimeOnPage(previousPathRef.current, finalTimeSpent)
-      }
+      router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router])
+
+  // Track time spent on page
+  // const pageLoadTimeRef = useRef<number>(Date.now())
+  // const previousPathRef = useRef<string>("")
+
+  // Track page views and time spent when route changes
+  // useEffect(() => {
+  //   const handleRouteChangeStart = (url: string) => {
+  //     setLoading(true)
+  //     const currentPath = router.pathname
+  //     // Record time spent on the previous page before navigating
+  //     const timeSpentSeconds = Math.round((Date.now() - pageLoadTimeRef.current) / 1000)
+
+  //     if (previousPathRef.current) {
+  //       trackTimeOnPage(previousPathRef.current, timeSpentSeconds)
+  //       trackNavigation(previousPathRef.current, url)
+  //     }
+
+  //     previousPathRef.current = currentPath
+  //   }
+
+  //   const handleRouteChangeComplete = (url: string) => {
+  //     setLoading(false)
+  //     // Reset timer for the new page
+  //     pageLoadTimeRef.current = Date.now()
+  //     // Track page view for the new page
+  //     trackPageView(url)
+  //   }
+
+  //   const handleRouteChangeError = () => {
+  //     setLoading(false)
+  //   }
+
+  //   // Track initial page load
+  //   if (typeof window !== "undefined") {
+  //     const currentUrl = window.location.pathname + window.location.search
+  //     previousPathRef.current = currentUrl
+  //     trackPageView(currentUrl)
+  //   }
+
+  //   // Track route changes
+  //   router.events.on("routeChangeStart", handleRouteChangeStart)
+  //   router.events.on("routeChangeComplete", handleRouteChangeComplete)
+  //   router.events.on("routeChangeError", handleRouteChangeError)
+
+  //   // Cleanup event listeners and track time when component unmounts
+  //   return () => {
+  //     router.events.off("routeChangeStart", handleRouteChangeStart)
+  //     router.events.off("routeChangeComplete", handleRouteChangeComplete)
+  //     router.events.off("routeChangeError", handleRouteChangeError)
+
+  //     // Track time spent on final page when user leaves the site
+  //     const finalTimeSpent = Math.round((Date.now() - pageLoadTimeRef.current) / 1000)
+  //     if (previousPathRef.current) {
+  //       trackTimeOnPage(previousPathRef.current, finalTimeSpent)
+  //     }
+  //   }
+  // }, [router])
 
   const navbar = (() => {
     switch (router.pathname) {
@@ -137,7 +199,7 @@ export default function App({
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-            <GoogleAnalytics gaId="G-HB7D403D67" />
+            <Script src="https://metricsloop.com/pixel/ZhNVupdLu2xSZ41u" />
 
             <title key="title">{siteConfig.title}</title>
           </Head>
@@ -147,24 +209,32 @@ export default function App({
           {/* Loading overlay */}
           <LoadingOverlay loading={loading} />
 
-          {/*
+          {/* Google Analytics should be in body, not head */}
+          <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+
+          <AmplitudeContextProvider>
+
+            {/*
             The navbar is fixed, so we need to account for it when calculating
             the margin top so the page is not covered by the navbar.
           */}
-          <Container
-            sx={{
-              mt: 2,
-              pt: !isHomePage ? { xs: 12, sm: 10 } : 0
-            }}
-            maxWidth="xl"
-          >
-            <SelectFilterTagContextProvider>
-              {navbar}
-              <Component {...pageProps} />
-              <Toast />
-              <Analytics />
-            </SelectFilterTagContextProvider>
-          </Container>
+            <Container
+              sx={{
+                mt: 2,
+                pt: !isHomePage ? { xs: 12, sm: 10 } : 0
+              }}
+              maxWidth="xl"
+            >
+              <SelectFilterTagContextProvider>
+                {navbar}
+                <Component {...pageProps} />
+                <Toast />
+                <Analytics />
+                {/* Only show GA Debugger in development */}
+                {process.env.NODE_ENV === 'development' && <GADebugger />}
+              </SelectFilterTagContextProvider>
+            </Container>
+          </AmplitudeContextProvider>
         </ToastProvider>
       </ColorModeProvider>
     </SessionProvider>

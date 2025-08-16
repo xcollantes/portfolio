@@ -15,8 +15,11 @@ It is hard to keep up with LLMs because major advancements happen weekly. These
 leaderboards help me track the latest models and their performance against each
 other.
 
-**NOTE:** LLM advancements are so fast, these leaderboards may not work or are
-migrated to another form.
+<callout
+  type="note"
+  description="LLM advancements are so fast, these leaderboards may not work or are
+migrated to another form.">
+</callout>
 
 ## HuggingFace Performance Leaderboard
 

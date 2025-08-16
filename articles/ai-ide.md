@@ -15,6 +15,12 @@ tagIds:
 
 ## Software Development Takes a Long Time
 
+<callout
+  type="note"
+  description="AI IDEs are changing drastically by the week. Always check the
+  latest features and pricing.">
+</callout>
+
 Building with LLMs is not just about writing Python scripts anymore. A Software
 Engineer or Developer is juggling API keys, managing different model providers,
 starting and stopping Docker containers, making sure you do not commit API keys,
@@ -150,7 +156,10 @@ variable rate.
 With Claude Code, the pricing is more straightforward. You pay $20 / month for
 the Pro plan and $20 / month which includes all the features of Claude Code.
 
-_These prices and tier terms are as of August 2025._
+<callout
+  type="warning"
+  description="These prices and tier terms are as of August 2025.">
+</callout>
 
 ### External Abilities
 
@@ -175,8 +184,11 @@ If you are working solo and value AI assistance, **Claude Code** provides the
 best balance of power and usability. The learning curve is minimal if you are
 already comfortable with terminal.
 
-> But as all things in AI... this may all change in the next week or days. I
-> suggest buying only a monthly subscription and canceling if you are not happy.
+<callout
+  type="warning"
+  description="But as all things in AI... this may all change in the next week or days. I
+  suggest buying only a monthly subscription and canceling if you are not happy.">
+</callout>
 
 ## Looking Forward
 

@@ -2,16 +2,59 @@
 
 This document outlines the Google Analytics implementation in the portfolio website to track user visits, page views, and engagement metrics.
 
+## 🚨 TROUBLESHOOTING CHECKLIST
+
+If you're not seeing data in GA4, follow this checklist:
+
+### 1. Quick Verification (2 minutes)
+- [ ] Visit `/analytics-test` page in development
+- [ ] Open browser DevTools → Network tab
+- [ ] Click test buttons and look for requests to `google-analytics.com/g/collect`
+- [ ] Check GA4 Real-time reports while testing
+
+### 2. Common Issues & Solutions
+- **No real-time data**: Wait 5-10 minutes, GA4 can be delayed
+- **No historical data**: GA4 takes 24-48 hours to populate reports
+- **Development vs Production**: Ensure GA tracking works on both
+- **Ad blockers**: Test with ad blockers disabled
+- **Console errors**: Check browser console for GA-related errors
+
+### 3. Debug Mode (Development Only)
+- GA Debugger appears in bottom-right corner in dev mode
+- Console logs show all GA events with `🔍 GA4 Event:` prefix
+- Debug mode is automatically enabled in development environment
+
 ## Implementation Overview
 
 Google Analytics 4 is implemented using the `@next/third-parties/google` library, which provides optimized components for Google Analytics integration.
 
 ### Core Setup
 
-The Google Analytics tracking code is initialized in `_app.tsx` using:
+The Google Analytics tracking code is initialized in `_app.tsx` with enhanced configuration:
 
 ```tsx
-<GoogleAnalytics gaId="G-HB7D403D67" />
+<GoogleAnalytics 
+  gaId="G-HB7D403D67" 
+  dataLayerName="dataLayer"
+/>
+
+{/* Enhanced GA4 Configuration */}
+<script dangerouslySetInnerHTML={{
+  __html: `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
+    gtag('config', 'G-HB7D403D67', {
+      page_title: document.title,
+      page_location: window.location.href,
+      debug_mode: ${process.env.NODE_ENV === 'development'},
+      send_page_view: true,
+      enhanced_measurement: true,
+      allow_ad_personalization_signals: false,
+      anonymize_ip: true
+    });
+  `
+}} />
 ```
 
 ## Tracked Metrics
@@ -88,18 +131,27 @@ Access your Google Analytics data:
 
 ## Event Types Reference
 
-### Standard Events
+### Standard GA4 Events (Recommended)
 
-- `page_view`: Page visits
-- `navigation`: User moving between pages
-- `engagement`: Time on page, scroll depth
-- `user_interaction`: UI element interactions
+- `page_view`: Page visits with enhanced parameters
+- `user_engagement`: Time on page, engagement metrics
+- `select_content`: UI element interactions  
+- `view_item`: Article and content views
 
-### Custom Events
+### Event Parameters
 
-- `article_view`: Article page loads
-- `article_engagement`: Article reading metrics
-- `recommendations_page_view`: Recommendations page loads
+All events now use GA4-compatible parameters:
+- `content_type`: Type of content (article, page, etc.)
+- `content_id`: Unique identifier
+- `engagement_time_msec`: Time in milliseconds
+- `page_path`: Current page path
+- `scroll_depth`: Percentage scrolled
+
+### Debug Events (Development Only)
+
+- Console logging enabled with `🔍 GA4 Event:` prefix
+- GA Debugger component for real-time testing
+- Network request monitoring in DevTools
 
 ## Future Enhancements
 
@@ -112,11 +164,25 @@ Potential areas to expand analytics coverage:
 
 ## Maintenance
 
-When adding new pages or features:
+### When adding new pages or features:
 
 1. Consider what user interactions should be tracked
 2. Use the appropriate utility functions to track them
 3. Follow established patterns for consistency
+4. Test events using the GA Debugger in development
+
+### After GA4 is confirmed working:
+
+1. **Remove test files**: Delete `/pages/analytics-test.tsx`
+2. **Remove debugger**: Remove GADebugger import from `_app.tsx`
+3. **Production testing**: Verify analytics work on live site
+4. **Set up alerts**: Configure GA4 alerts for data anomalies
+
+### Regular Checks:
+
+- Monthly: Review GA4 data quality and completeness
+- Quarterly: Audit tracked events for relevance
+- After deployments: Verify analytics still work correctly
 
 ## Resources
 

@@ -234,6 +234,7 @@ export default function article({
               shareUrl={`https://xaviercollantes.dev/articles/${articleId}`}
               title={metadata.title}
               description={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`}
+              source={`article_${articleId}`}
             />
 
             <Divider sx={{ my: 3 }} />

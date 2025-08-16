@@ -107,9 +107,12 @@ const ContentForm = dynamic(
 Dynamic import with ES2020 also works with NextJS: `const Component = (await
 import("comp.js")).default`
 
-NOTE: use dynamic importing carefully since there are cases where you do not want
+<callout
+  type="warning"
+  description="Use dynamic importing carefully since there are cases where you do not want
 the content to be delayed on loading. For example, a metric used by Google is
-LCP which will count the time the largest image becomes renders to the user.
+LCP which will count the time the largest image becomes renders to the user.">
+</callout>
 
 These metrics must not be ignored since a low SEO score from Google means less
 likely the page will be shown to users.

@@ -13,14 +13,11 @@ tagIds:
   - llm
 ---
 
-<div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
-  <img src="/assets/images/faxion-ai/girlmodel.webp" alt="Faxion AI web app girl" style="height: 10%; max-height: 70px;" />
-  <img src="/assets/images/faxion-ai/memodel.webp" alt="Faxion AI web app me" style="height: 10%; max-height: 70px;" />
-</div>
-
 <p style="text-align:center;font-style:italic;">Find your next outfit with Faxion AI</p>
 
-<p style="text-align:center;font-style:italic;"></p>
+![Faxion AI {priority}](/assets/images/faxion-ai/combine.webp)
+
+###### Trial and error with various AI models.
 
 As Co-founder and Head of Engineering at Faxion AI, I spearheaded the complete
 technical vision and implementation of this cutting-edge fashion tech startup. I
@@ -29,6 +26,11 @@ Stable Diffusion models and Large Language Models to create a platform that's
 positioned to disrupt the $3 trillion global fashion industry. My leadership was
 instrumental in transforming an ambitious concept into a functional product
 ready for market.
+
+<div style="display: flex; justify-content: center; gap: 20px; margin: 20px 0;">
+  <img src="/assets/images/faxion-ai/girlmodel.webp" alt="Faxion AI web app girl" style="height: 10%; max-height: 70px;" />
+  <img src="/assets/images/faxion-ai/memodel.webp" alt="Faxion AI web app me" style="height: 10%; max-height: 70px;" />
+</div>
 
 ### Recognition & Traction
 

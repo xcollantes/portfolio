@@ -102,6 +102,10 @@ Depending on the model, you may need an API key.
 Encoding model which translates human-readable text to a hash which can be
 scored to indicate relationships.
 
+![Embeddings](/assets/images/vectorstores/vector.webp)
+
+###### [xomnia.com](https://xomnia.com/post/an-introduction-to-vector-databases-for-beginners/)
+
 For example, "dog" and "cat" may be given a score of 0.7 because they are
 both animals, both are common pets, but are different species as per the
 training data.
@@ -242,7 +246,10 @@ This step included because about a year ago, LLMs did not have a big enough
 context window to work with. So if we did this then, we would have to split the
 documents into smaller chunks.
 
-**NOTE:** This might still be needed if your input is too long.
+<callout
+  type="note"
+  description="This might still be needed if your input is too long.">
+</callout>
 
 See my other blog on LLM Tokens if your input is too long for a specific LLM:
 [Measuring Tokens](/articles/measuring-tokens)
