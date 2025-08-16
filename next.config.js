@@ -2,7 +2,7 @@
 
 const contentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.googleapis.com https://*.amplitude.com https://*.simpleanalyticscdn.com https://*.metricsloop.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.googleapis.com https://*.amplitude.com https://*.metricsloop.com;
   connect-src 'self' https://*.google-analytics.com https://*.google.com https://*.doubleclick.net https://*.googletagmanager.com https://*.amplitude.com;
   img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.doubleclick.net https://*.googleapis.com;
   font-src 'self' https://*.googleapis.com;

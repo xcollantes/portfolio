@@ -46,7 +46,7 @@ export default function App({
     if (hasUTMParameters()) {
       const utmParams = extractUTMParameters()
       storeUTMParameters(utmParams)
-      
+
       // Send UTM tracking event to GA4
       if (GOOGLE_ANALYTICS_ID && Object.keys(utmParams).length > 0) {
         const utmEvent = {
@@ -55,7 +55,7 @@ export default function App({
           page_title: document.title,
           ...utmParams,
         }
-        
+
         console.log('🏷️ Global UTM tracking event:', utmEvent)
         sendGAEvent("utm_app_load", utmEvent)
       }
@@ -69,14 +69,14 @@ export default function App({
       if (hasUTMParameters()) {
         const utmParams = extractUTMParameters()
         storeUTMParameters(utmParams)
-        
+
         if (GOOGLE_ANALYTICS_ID && Object.keys(utmParams).length > 0) {
           const utmEvent = {
             event_category: 'utm_tracking',
             page_path: url,
             ...utmParams,
           }
-          
+
           console.log('🏷️ Route change UTM tracking:', utmEvent)
           sendGAEvent("utm_route_change", utmEvent)
         }
@@ -84,7 +84,7 @@ export default function App({
     }
 
     router.events.on('routeChangeComplete', handleRouteChange)
-    
+
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
@@ -196,8 +196,6 @@ export default function App({
 
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
-            <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
 
             <Script src="https://metricsloop.com/pixel/ZhNVupdLu2xSZ41u" />
 
