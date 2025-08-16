@@ -149,6 +149,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content about vector storage solutions that benefits the developer community"
   },
 
+  "qdrant_awsvector.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content comparing vector database solutions that benefits the developer community"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
