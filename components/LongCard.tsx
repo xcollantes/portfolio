@@ -3,6 +3,7 @@
 import { Box, Button, Card, CardContent, Typography } from "@mui/material"
 import { useState, useEffect } from "react"
 import { MaterialLink } from "./MaterialLink"
+import { isBlogOnlyMode } from "../config/siteConfig"
 
 export interface LongCardType {
   title: string
@@ -77,6 +78,109 @@ export default function LongCard({
     }
     : {}
 
+  // Magazine-style layout for blog mode
+  if (isBlogOnlyMode()) {
+    return (
+      <Box 
+        sx={{ 
+          display: "flex", 
+          gap: 4, 
+          alignItems: "flex-start",
+          mb: 6,
+          '&:hover .image-card': {
+            transform: 'scale(1.02)',
+            transition: 'transform 0.2s ease-in-out'
+          }
+        }}
+        className={titleStyle}
+      >
+        {/* Image Card */}
+        <Card 
+          className="image-card"
+          raised 
+          sx={{ 
+            flex: '0 0 400px',
+            height: 280,
+            borderRadius: 2,
+            overflow: 'hidden',
+            transition: 'transform 0.2s ease-in-out',
+            backgroundImage: imagePath && imageLoaded ? `url(${imagePath})` : 'none',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: imagePath && imageLoaded ? 'transparent' : 'grey.200',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          {(!imagePath || !imageLoaded) && (
+            <Typography variant="body2" color="text.secondary">
+              No image available
+            </Typography>
+          )}
+        </Card>
+
+        {/* Content Area */}
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <Typography 
+            variant="caption" 
+            sx={{ 
+              color: 'primary.main',
+              textTransform: 'uppercase',
+              fontWeight: 'bold',
+              letterSpacing: 1
+            }}
+          >
+            Technical Article
+          </Typography>
+
+          <Typography 
+            variant="h3" 
+            className={descStyle} 
+            sx={{ 
+              fontWeight: 'bold',
+              fontSize: { xs: 24, md: 32 },
+              lineHeight: 1.2,
+              mb: 1
+            }}
+          >
+            {title}
+          </Typography>
+
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              color: 'text.secondary',
+              fontSize: 16,
+              lineHeight: 1.6,
+              mb: 2
+            }}
+          >
+            {cardDescription}
+          </Typography>
+
+          <Button
+            variant="outlined"
+            sx={{ 
+              alignSelf: 'flex-start',
+              textTransform: "none",
+              borderRadius: 2,
+              px: 3,
+              py: 1
+            }}
+            component={MaterialLink}
+            to={cardPageLink}
+            disabled={disabled}
+          >
+            {cardButtonText}
+          </Button>
+        </Box>
+      </Box>
+    )
+  }
+
+  // Original card layout for portfolio mode
   return (
     <Card raised sx={cardStyles} className={titleStyle}>
       <CardContent sx={contentStyles}>
