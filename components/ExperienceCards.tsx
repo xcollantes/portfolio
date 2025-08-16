@@ -10,6 +10,7 @@ import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
+import { isBlogOnlyMode } from "../config/siteConfig"
 import FadeCustom from "./Fade"
 import groupBy from "./GroupBy"
 import LongCard from "./LongCard"
@@ -82,13 +83,14 @@ export default function ExperienceCards({ metadata, useBackgroundImages = false 
   let key: number = 0
   return (
     <Stack direction="column" spacing={2} alignItems="stretch" sx={{ mb: 10 }}>
-      {workExps && header("Work experiences")}
-      {workExps &&
+      {/* Show only blogs in blog mode, otherwise show both */}
+      {!isBlogOnlyMode() && workExps && header("Work experiences")}
+      {!isBlogOnlyMode() && workExps &&
         workExps.map((card: MetadataType) => {
           return renderCard(card, useBackgroundImages)
         })}
 
-      {blogs && header("Blogs")}
+      {blogs && !isBlogOnlyMode() && header("Blogs")}
       {blogs &&
         blogs.map((card: MetadataType) => {
           return renderCard(card, useBackgroundImages)
