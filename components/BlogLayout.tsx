@@ -2,7 +2,7 @@
  * Blog-focused layout component for blog-only site mode.
  */
 
-import { Box, Container, Theme, Typography, useTheme } from "@mui/material"
+import { Box, Container } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2"
 import { NextRouter, useRouter } from "next/router"
 import { useMemo } from "react"
@@ -15,17 +15,15 @@ import { MetadataType } from "../article_configs/process_articles"
 import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
 import AuthButton from "./AuthButton"
 import { isUserSignedIn } from "./AuthUtils"
-import DarkModeSwitch from "./DarkMode"
+import BlogNavbar from "./BlogNavbar"
 import ExperienceCards from "./ExperienceCards"
 import ExperienceCardsPlaceholder from "./ExperienceCardsPlaceholder"
 import FilterBar from "./FilterBar"
 import HiddenPreviewImage from "./HiddenPreviewImage"
-import SocialMedia from "./SocialMedia"
 import {
   SelectFilterTagContextType,
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
-import { getSiteConfig } from "../config/siteConfig"
 
 interface BlogLayoutProps {
   metadataProps: MetadataType[]
@@ -35,8 +33,6 @@ interface BlogLayoutProps {
 export default function BlogLayout({ metadataProps }: BlogLayoutProps) {
   const { data: session } = useSession()
   const router: NextRouter = useRouter()
-  const theme: Theme = useTheme()
-  const siteConfig = getSiteConfig()
 
   const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
     useSelectedFilterTagContext()
@@ -65,46 +61,10 @@ export default function BlogLayout({ metadataProps }: BlogLayoutProps) {
   return (
     <>
       <HiddenPreviewImage />
+      <BlogNavbar />
 
-      <Container maxWidth="lg" sx={{ mt: 4 }}>
+      <Container maxWidth="lg" sx={{ mt: 12, pt: 4 }}>
         <Grid container spacing={1}>
-          {/* Header Section */}
-          <Grid xs={12}>
-            <Box sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              mb: 4
-            }}>
-              <Box>
-                <Typography
-                  variant="h1"
-                  sx={{
-                    fontSize: { xs: 32, sm: 48, md: 56 },
-                    fontWeight: "bold",
-                    mb: 1,
-                  }}
-                >
-                  Xavier's Blog
-                </Typography>
-                {/* <Typography
-                  variant="h2"
-                  color="text.secondary"
-                  sx={{
-                    fontSize: { xs: 16, sm: 18, md: 20 },
-                    fontWeight: "normal",
-                    mb: 2
-                  }}
-                >
-                  Technical on AI, software engineering, and technology
-                </Typography> */}
-
-                {/* <SocialMedia /> */}
-
-              </Box>
-              <DarkModeSwitch />
-            </Box>
-          </Grid>
 
           {/* Filter Section */}
           <Grid xs={12}>

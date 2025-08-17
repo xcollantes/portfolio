@@ -89,7 +89,7 @@ export default function Drawer({ anchor = "right" }: DrawerPropType) {
               Related
             </ListItem> */}
           </List>
-          
+
           <Box sx={{ p: 2, mt: 'auto' }}>
             <TermsPrivacyLinks />
           </Box>
