@@ -89,7 +89,7 @@ export default function LongCard({
           flexDirection: { xs: 'column', md: 'row' },
           gap: { xs: 3, md: 4 },
           alignItems: "flex-start",
-          mb: 6,
+          mb: 1,
           textDecoration: 'none',
           color: 'inherit',
           cursor: disabled ? 'default' : 'pointer',

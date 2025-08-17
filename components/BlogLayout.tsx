@@ -63,12 +63,12 @@ export default function BlogLayout({ metadataProps }: BlogLayoutProps) {
       <HiddenPreviewImage />
       <BlogNavbar />
 
-      <Container maxWidth="lg" sx={{ mt: { xs: 16, md: 20 }, pt: 2 }}>
+      <Container maxWidth="lg" sx={{ mt: { xs: 16, md: 18 } }}>
         <Grid container spacing={1}>
 
           {/* Filter Section */}
           <Grid xs={12}>
-            <Box sx={{ mb: 4 }}>
+            <Box sx={{ mb: 2 }}>
               <FilterBar disabled={!isUserSignedIn(session)} />
             </Box>
           </Grid>
