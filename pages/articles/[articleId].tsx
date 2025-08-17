@@ -27,6 +27,7 @@ import {
   RelatedArticleType,
 } from "../../article_configs/related_articles"
 import ArticleAnalytics from "../../components/ArticleAnalytics"
+import EmojiReactions from "../../components/EmojiReactions"
 import Footer from "../../components/Footer"
 import HiddenPreviewImage from "../../components/HiddenPreviewImage"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
@@ -249,6 +250,12 @@ export default function article({
             >
               {markdownBody}
             </ReactMarkdown>
+
+            {/* Emoji Reactions */}
+            <EmojiReactions 
+              articleId={articleId as string}
+              showInBlogMode={true}
+            />
             
             <RelatedArticles 
               relatedArticles={relatedArticles}
