@@ -83,18 +83,27 @@ export default function ExperienceCards({ metadata, useBackgroundImages = false 
   let key: number = 0
   return (
     <Stack direction="column" spacing={2} alignItems="stretch" sx={{ mb: 10 }}>
-      {/* Show only blogs in blog mode, otherwise show both */}
-      {!isBlogOnlyMode() && workExps && header("Work experiences")}
-      {!isBlogOnlyMode() && workExps &&
-        workExps.map((card: MetadataType) => {
+      {isBlogOnlyMode() ? (
+        // Blog mode: Show all articles mixed together in order (no section headers)
+        selected.map((card: MetadataType) => {
           return renderCard(card, useBackgroundImages)
-        })}
+        })
+      ) : (
+        // Portfolio mode: Show separate sections for work experiences and blogs
+        <>
+          {workExps && header("Work experiences")}
+          {workExps &&
+            workExps.map((card: MetadataType) => {
+              return renderCard(card, useBackgroundImages)
+            })}
 
-      {blogs && !isBlogOnlyMode() && header("Blogs")}
-      {blogs &&
-        blogs.map((card: MetadataType) => {
-          return renderCard(card, useBackgroundImages)
-        })}
+          {blogs && header("Blogs")}
+          {blogs &&
+            blogs.map((card: MetadataType) => {
+              return renderCard(card, useBackgroundImages)
+            })}
+        </>
+      )}
 
       {/* Button at the end of articles */}
       <Stack direction="column" spacing={2} alignItems="center" sx={{ my: 8 }}>
