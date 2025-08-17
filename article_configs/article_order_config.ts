@@ -52,6 +52,9 @@ export const orderedIncludeBlogs: string[] = [
 ]
 
 // BLOG SITE SPECIFIC ORDER (for blog-only mode).
+//
+// Both WORKEXP and BLOG articles can be shown in blog-only mode. The order will
+// be maintained.
 export const orderedIncludeBlogSite: string[] = [
   "rag-langchain.md",
   "qdrant_awsvector.md",
@@ -59,17 +62,24 @@ export const orderedIncludeBlogSite: string[] = [
   "llms-for-non-techies.md",
   "vectorstores.md",
   "git-worktree.md",
+  "google.md",
   "ai-ide.md",
+  "faxion-ai.md",
   "measuring-tokens.md",
   "amplitude.md",
+  "belva-ai.md",
   "gonzaga-speaker-infosys.md",
   "bulldog-band.md",
+  "portfolio.md",
   "claude-cheatsheet.md",
   "llm-leaderboards.md",
   "radio.md",
   "fastapi.md",
+  "rx-blockchain.md",
+  "housing.md",
   "anderson-podcast.md",
   "streamlit-cheatsheet.md",
+  "itron.md",
   "web-opt.md",
   "easter-eggs.md",
 ]
