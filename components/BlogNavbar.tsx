@@ -1,10 +1,10 @@
-/** Navbar component specifically for blog-only mode. */
+/** Navbar component specifically for blog-only mode with scroll-responsive behavior. */
 
 import { Box, Container, Theme, Typography, useTheme } from "@mui/material"
+import { useEffect, useState } from "react"
 import DarkModeSwitch from "./DarkMode"
 import Drawer from "./Drawer"
 import { MaterialLink } from "./MaterialLink"
-import { getSiteConfig } from "../config/siteConfig"
 
 interface BlogNavbarProps {
   containerWidth?: "xs" | "sm" | "md" | "lg" | "xl"
@@ -12,7 +12,17 @@ interface BlogNavbarProps {
 
 export default function BlogNavbar({ containerWidth = "lg" }: BlogNavbarProps) {
   const theme: Theme = useTheme()
-  const siteConfig = getSiteConfig()
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 100) // Change navbar after scrolling 100px
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <Box
@@ -23,11 +33,16 @@ export default function BlogNavbar({ containerWidth = "lg" }: BlogNavbarProps) {
         left: 0,
         right: 0,
         zIndex: 1000,
-        bgcolor: theme.palette.mode === "dark" ? theme.palette.background.paper : "#ffffff",
+        bgcolor: isScrolled 
+          ? (theme.palette.mode === "dark" ? theme.palette.background.paper : "#ffffff")
+          : "transparent",
         color: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
-        p: 2,
-        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-        borderBottom: `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
+        p: isScrolled ? 2 : { xs: 2, md: 3 },
+        boxShadow: isScrolled ? "0 2px 8px rgba(0,0,0,0.1)" : "none",
+        borderBottom: isScrolled 
+          ? `1px solid ${theme.palette.mode === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`
+          : "none",
+        transition: "all 0.3s ease-in-out",
       }}
     >
       <Container maxWidth={containerWidth}>
@@ -52,9 +67,12 @@ export default function BlogNavbar({ containerWidth = "lg" }: BlogNavbarProps) {
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: "24px", sm: "28px", md: "32px" },
+                fontSize: isScrolled 
+                  ? { xs: "20px", sm: "24px", md: "28px" }
+                  : { xs: "32px", sm: "48px", md: "56px" },
                 fontWeight: "bold",
-                letterSpacing: "-0.02em"
+                letterSpacing: "-0.02em",
+                transition: "font-size 0.3s ease-in-out",
               }}
             >
               Xavier's Blog
