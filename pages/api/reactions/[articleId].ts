@@ -19,11 +19,11 @@ export default async function handler(
     if (!db) {
       return res.status(503).json({ error: 'Database not configured' })
     }
-    
+
     try {
       const docRef = doc(db, 'articleReactions', articleId)
       const docSnap = await getDoc(docRef)
-      
+
       if (docSnap.exists()) {
         const data = docSnap.data()
         const reactions: ArticleReactions = {
@@ -32,10 +32,12 @@ export default async function handler(
           totalReactions: data.totalReactions || 0,
           lastUpdated: data.lastUpdated?.toDate() || new Date(),
         }
-        
+
+        console.log('API Reactions:', reactions)
+
         res.status(200).json(reactions)
       } else {
-        // Return empty reactions if document doesn't exist
+        // Return empty reactions if document doesn't exist.
         const emptyReactions: ArticleReactions = {
           articleId,
           reactions: {
@@ -49,7 +51,10 @@ export default async function handler(
           totalReactions: 0,
           lastUpdated: new Date(),
         }
-        
+
+        console.log('Could not find reactions for article:', articleId)
+        console.log('API Reactions:', emptyReactions)
+
         res.status(200).json(emptyReactions)
       }
     } catch (error) {
