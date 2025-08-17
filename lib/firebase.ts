@@ -1,7 +1,6 @@
 /** Firebase configuration for client-side operations. */
 
 import { FirebaseApp, getApps, initializeApp } from 'firebase/app'
-import { Auth, getAuth } from 'firebase/auth'
 import { Firestore, getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -18,7 +17,6 @@ const isFirebaseConfigValid = Object.values(firebaseConfig).every(value => value
 
 let app: FirebaseApp | null = null
 let db: Firestore | null = null
-let auth: Auth | null = null
 
 if (isFirebaseConfigValid && typeof window !== 'undefined') {
   try {
@@ -27,13 +25,10 @@ if (isFirebaseConfigValid && typeof window !== 'undefined') {
 
     // Initialize Firestore
     db = getFirestore(app)
-
-    // Initialize Auth
-    auth = getAuth(app)
   } catch (error) {
     console.warn('Firebase initialization failed:', error)
   }
 }
 
-export { auth, db }
+export { db }
 export default app
