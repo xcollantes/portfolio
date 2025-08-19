@@ -32,6 +32,7 @@ export const orderedIncludeBlogs: string[] = [
   "radio.md",
   "vectorstores.md",
   "qdrant_awsvector.md",
+  "comfyui.md",
 
   "ai-ide.md",
   "amplitude.md",
@@ -71,6 +72,7 @@ export const orderedIncludeBlogSite: string[] = [
   "gonzaga-speaker-infosys.md",
   "bulldog-band.md",
   "portfolio.md",
+  "comfyui.md",
   "claude-cheatsheet.md",
   "llm-leaderboards.md",
   "radio.md",
