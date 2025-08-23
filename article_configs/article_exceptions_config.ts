@@ -155,6 +155,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content comparing vector database solutions that benefits the developer community"
   },
 
+  "academic-papers.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about reading academic papers that benefits the broader community"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {
