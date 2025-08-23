@@ -45,6 +45,7 @@ export const orderedIncludeBlogs: string[] = [
   "anderson-podcast.md",
   // "gist-example.md",
   "web-opt.md",
+  "reading-academic-papers.md",
 
   "streamlit-cheatsheet.md",
   "json-python.md",
@@ -81,6 +82,7 @@ export const orderedIncludeBlogSite: string[] = [
   "streamlit-cheatsheet.md",
   "itron.md",
   "web-opt.md",
+  "reading-academic-papers.md",
   "easter-eggs.md",
 ]
 
