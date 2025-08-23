@@ -1,11 +1,11 @@
 ---
-title: "Using MCP"
+title: "Connecting to MCP Servers"
 cardDescription: "How MCP can help you use LLMs more effectively"
 author: Xavier Collantes
-dateWritten: 2025-08-23
-cardPageLink: "/articles/using-mcps"
+dateWritten: 2025-08-24
+cardPageLink: "/articles/mcps-connect"
 articleType: BLOG
-imagePath: "/assets/images/using-mcps/"
+imagePath: "/assets/images/mcps-connect/"
 tagIds:
   - llm
   - ai
