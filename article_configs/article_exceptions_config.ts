@@ -161,7 +161,7 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content about MCP (Model Context Protocol) that benefits the developer community"
   },
 
-  "using-mcps.md": {
+  "mcps-connect.md": {
     bypassVerification: true,
     allowSearchIndexing: true,
     reason: "Educational content about using MCP (Model Context Protocol) that benefits the developer community"
