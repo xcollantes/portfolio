@@ -7,13 +7,13 @@ The Inline Article Callout component allows you to embed contextual callouts dir
 Add article callouts directly in your markdown articles using HTML syntax:
 
 ```markdown
-<recommendationbox
+<callout
   type="tool"
   title="Try This Amazing Tool"
   description="A brief description of what this tool does and why it's useful in this context."
   url="https://example.com"
   urltext="Get Started">
-</recommendationbox>
+</callout>
 ```
 
 ## Callout Types
@@ -27,13 +27,13 @@ The component supports seven different callout types, each with its own styling 
 - **Use for**: Related blog posts, tutorials, documentation
 
 ```markdown
-<recommendationbox
+<callout
   type="article"
   title="Related Reading"
   description="Learn more about this topic in our comprehensive guide."
   url="/articles/related-topic"
   urltext="Read Article">
-</recommendationbox>
+</callout>
 ```
 
 ### 2. Tool (`type="tool"`)
@@ -43,13 +43,13 @@ The component supports seven different callout types, each with its own styling 
 - **Use for**: Software tools, platforms, services
 
 ```markdown
-<recommendationbox
+<callout
   type="tool"
   title="Development Tool"
   description="This tool can help streamline your development workflow."
   url="https://tool-website.com"
   urltext="Try Tool">
-</recommendationbox>
+</callout>
 ```
 
 ### 3. Code (`type="code"`)
@@ -59,13 +59,13 @@ The component supports seven different callout types, each with its own styling 
 - **Use for**: Code repositories, examples, snippets
 
 ```markdown
-<recommendationbox
+<callout
   type="code"
   title="Code Example"
   description="Check out this implementation example on GitHub."
   url="https://github.com/user/repo"
   urltext="View Code">
-</recommendationbox>
+</callout>
 ```
 
 ### 4. Learning (`type="learning"`)
@@ -75,13 +75,13 @@ The component supports seven different callout types, each with its own styling 
 - **Use for**: Courses, tutorials, educational resources
 
 ```markdown
-<recommendationbox
+<callout
   type="learning"
   title="Master This Concept"
   description="Take this course to deepen your understanding of the topic."
   url="https://course-platform.com/course"
   urltext="Start Learning">
-</recommendationbox>
+</callout>
 ```
 
 ### 5. Sponsored (`type="sponsored"`)
@@ -91,13 +91,13 @@ The component supports seven different callout types, each with its own styling 
 - **Use for**: Sponsored content, affiliate products, paid partnerships
 
 ```markdown
-<recommendationbox
+<callout
   type="sponsored"
   title="Recommended Tool"
   description="This sponsored tool provides excellent value for development teams."
   url="https://sponsor-tool.com"
   urltext="Try Now">
-</recommendationbox>
+</callout>
 ```
 
 ### 6. Tip (`type="tip"`)
@@ -107,13 +107,13 @@ The component supports seven different callout types, each with its own styling 
 - **Use for**: Pro tips, best practices, quick advice
 
 ```markdown
-<recommendationbox
+<callout
   type="tip"
   title="Pro Tip"
   description="Here's a quick tip to make this process even easier."
   url="https://example.com/tip"
   urltext="Learn More">
-</recommendationbox>
+</callout>
 ```
 
 ### 7. Testimonial (`type="recommendation"`)
@@ -123,7 +123,7 @@ The component supports seven different callout types, each with its own styling 
 - **Use for**: Professional recommendations, testimonials, quotes
 
 ```markdown
-<recommendationbox
+<callout
   type="recommendation"
   title="Senior Developer at Company"
   description="A professional testimonial about the topic discussed."
@@ -132,7 +132,7 @@ The component supports seven different callout types, each with its own styling 
   quote="This approach has significantly improved our team's productivity."
   url="/testimonials"
   urltext="View More Testimonials">
-</recommendationbox>
+</callout>
 ```
 
 ## Properties
@@ -175,13 +175,13 @@ When explaining a complex concept, you might add:
 
 To configure advanced settings, you'll need to understand the underlying architecture.
 
-<recommendationbox
+<callout
   type="article"
   title="Architecture Deep Dive"
   description="Get a detailed understanding of the system architecture before proceeding with advanced configuration."
   url="/articles/system-architecture"
   urltext="Read Architecture Guide">
-</recommendationbox>
+</callout>
 
 Now, let's proceed with the configuration steps...
 ```
@@ -195,13 +195,13 @@ When reviewing development tools:
 
 After using Tool X for several months, I can confidently recommend it for...
 
-<recommendationbox
+<callout
   type="tool"
   title="Try Tool X Free"
   description="Start with their free tier to test if Tool X fits your workflow before committing to a paid plan."
   url="https://toolx.com/signup"
   urltext="Start Free Trial">
-</recommendationbox>
+</callout>
 ```
 
 ## Technical Implementation
