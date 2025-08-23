@@ -34,6 +34,11 @@ export const orderedIncludeBlogs: string[] = [
   "qdrant_awsvector.md",
 
   "ai-ide.md",
+
+  "mcp.md",
+  "using-mcps.md",
+  "mcp-servers.md",
+
   "amplitude.md",
 
   // IN PROGRESS.
@@ -65,12 +70,15 @@ export const orderedIncludeBlogSite: string[] = [
   "git-worktree.md",
   "ai-ide.md",
   "faxion-ai.md",
+  "using-mcps.md",
   "measuring-tokens.md",
   "amplitude.md",
   "belva-ai.md",
   "gonzaga-speaker-infosys.md",
   "bulldog-band.md",
+  "mcp.md",
   "portfolio.md",
+  "mcp-servers.md",
   "claude-cheatsheet.md",
   "llm-leaderboards.md",
   "radio.md",
