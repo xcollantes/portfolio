@@ -1,9 +1,9 @@
 /** API route for getting article reactions. */
 
-import { NextApiRequest, NextApiResponse } from 'next'
 import { doc, getDoc } from 'firebase/firestore'
+import { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '../../../lib/firebase'
-import { ArticleReactions, getEmptyReactions } from '../../../types/reactions'
+import { ArticleReactions, FirestoreReactions, getEmptyReactions } from '../../../types/reactions'
 
 export default async function handler(
   req: NextApiRequest,
@@ -28,10 +28,13 @@ export default async function handler(
 
       if (docSnap.exists()) {
         const data = docSnap.data()
-        const reactions: ArticleReactions = {
+
+        console.log('Reactions data:', data)
+
+        const reactions: FirestoreReactions = {
           articleId,
           reactions: data.reactions || {},
-          totalReactions: data.totalReactions || 0,
+          deprecatedReactions: data.deprecatedReactions || {},
           lastUpdated: data.lastUpdated?.toDate() || new Date(),
         }
 
@@ -43,7 +46,6 @@ export default async function handler(
         const emptyReactions: ArticleReactions = {
           articleId,
           reactions: getEmptyReactions(),
-          totalReactions: 0,
           lastUpdated: new Date(),
         }
 

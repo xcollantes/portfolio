@@ -19,15 +19,17 @@ export interface EmojiReaction {
   label: string
 }
 
-export interface ArticleReactions {
+export interface FirestoreReactions {
   articleId: string
   reactions: Record<EmojiId, number>
-  totalReactions: number
+  deprecatedReactions: Record<EmojiId, number>
   lastUpdated: Date
 }
 
-export interface ReactionCounts {
-  [key: string]: number // emoji -> count mapping
+export interface ArticleReactions {
+  articleId: string
+  reactions: Record<EmojiId, number>
+  lastUpdated: Date
 }
 
 export function getEmptyReactions(): Record<EmojiId, number> {

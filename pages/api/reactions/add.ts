@@ -62,7 +62,6 @@ export default async function handler(
       await setDoc(articleReactionsRef, {
         articleId,
         reactions: initialReactions,
-        totalReactions: 0,
         lastUpdated: serverTimestamp(),
       })
     }
@@ -70,7 +69,6 @@ export default async function handler(
     // Update reaction count
     await updateDoc(articleReactionsRef, {
       [`reactions.${emojiId as EmojiId}`]: increment(1),
-      totalReactions: increment(1),
       lastUpdated: serverTimestamp(),
     })
 
@@ -83,7 +81,6 @@ export default async function handler(
     res.status(200).json({
       success: true,
       reactions: updatedData?.reactions || {},
-      totalReactions: updatedData?.totalReactions || 0,
     })
   } catch (error) {
     console.error('Error adding reaction:', error)
