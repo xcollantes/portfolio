@@ -10,6 +10,7 @@ import {
   Warning,
   Newspaper,
   Error,
+  Visibility,
 } from "@mui/icons-material"
 // import NewspaperIcon from '@mui/icons-material/Newspaper';
 import {
@@ -29,6 +30,7 @@ export type ArticleCalloutType =
   | "article"
   | "note"
   | "warning"
+  | "example"
   | "pitfall"
   | "learning"
   | "sponsored"
@@ -39,6 +41,7 @@ export type ArticleCalloutType =
 export const VALID_ARTICLE_CALLOUT_TYPES: ArticleCalloutType[] = [
   'article',
   'note',
+  'example',
   'pitfall',
   'warning',
   'learning',
@@ -117,6 +120,14 @@ const getCalloutConfig = (type: ArticleCalloutType) => {
         color: "#2e7d32",
         bgColor: "rgba(46, 125, 50, 0.1)",
         showChip: false,
+      }
+    case "example":
+      return {
+        icon: <Visibility />,
+        label: "Example",
+        color: "#546e7a",
+        bgColor: "rgba(84, 110, 122, 0.1)",
+        showChip: true,
       }
     case "recommendation":
       return {
@@ -395,6 +406,7 @@ export default function InlineArticleCallout({
                 sx={{
                   color: isDarkMode ? "white" : "text.primary",
                   mb: 1,
+                  fontStyle: type === "example" ? "italic" : "normal",
                 }}
               >
                 {description}
@@ -403,7 +415,11 @@ export default function InlineArticleCallout({
 
             {/* Children content */}
             {children && (
-              <Box sx={{ mt: 1, color: isDarkMode ? "grey.300" : "text.secondary" }}>
+              <Box sx={{ 
+                mt: 1, 
+                color: isDarkMode ? "grey.300" : "text.secondary",
+                fontStyle: type === "example" ? "italic" : "normal",
+              }}>
                 {children}
               </Box>
             )}
