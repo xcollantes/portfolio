@@ -8,6 +8,7 @@ author: Xavier Collantes
 dateWritten: 2023-12-20
 dateLastUpdated: 2025-08-07
 tagIds:
+   - thingsIBuilt
    - interests
 ---
 

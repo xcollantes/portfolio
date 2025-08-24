@@ -19,11 +19,16 @@ export default function TableOfContents({ markdownContent }: TableOfContentsProp
 
   // Extract headers from markdown content.
   useEffect(() => {
+    // Remove code blocks (both fenced and indented) to avoid parsing # inside them
+    const contentWithoutCodeBlocks = markdownContent
+      .replace(/```[\s\S]*?```/g, '') // Remove fenced code blocks
+      .replace(/^\s{4,}.*$/gm, '') // Remove indented code blocks
+    
     const headerRegex = /^(#{1,6})\s+(.+)$/gm
     const items: TOCItem[] = []
     let match
 
-    while ((match = headerRegex.exec(markdownContent)) !== null) {
+    while ((match = headerRegex.exec(contentWithoutCodeBlocks)) !== null) {
       const level = match[1].length // Number of # characters
       const text = match[2].trim()
 

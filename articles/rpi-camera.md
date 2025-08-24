@@ -5,7 +5,7 @@ cardPageLink: "/articles/rpi-camera"
 author: Xavier Collantes
 articleType: BLOG
 imagePath: "/assets/images/rpi_camera/sample.gif"
-tagIds: ["electronics", "iot", "python"]
+tagIds: ["thingsIBuilt", "electronics", "iot", "python"]
 ---
 
 ## A homemade solution

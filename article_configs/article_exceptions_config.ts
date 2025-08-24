@@ -155,6 +155,30 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content comparing vector database solutions that benefits the developer community"
   },
 
+  "mcp.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about MCP (Model Context Protocol) that benefits the developer community"
+  },
+
+  "mcps-connect.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about using MCP (Model Context Protocol) that benefits the developer community"
+  },
+
+  "mcp-servers.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about popular MCP servers that benefits the developer community"
+  },
+
+  "mcp-server-built.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about building MCP servers that benefits the developer community"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {

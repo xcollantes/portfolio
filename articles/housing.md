@@ -6,6 +6,7 @@ imagePath: /assets/images/housing/tower.webp
 articleType: WORKEXP
 author: Xavier Collantes
 tagIds:
+  - thingsIBuilt
   - consulting
   - code
   - gonzaga

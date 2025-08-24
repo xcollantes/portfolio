@@ -7,6 +7,7 @@ articleType: WORKEXP
 imagePath: "/assets/images/rx_blockchain/group.webp"
 tagIds:
   [
+    "thingsIBuilt",
     "leadership",
     "volunteering",
     "gonzaga",
