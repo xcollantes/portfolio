@@ -19,6 +19,8 @@ tagIds:
 
 ## What is MCP?
 
+[![MCP Diagram {priority}](/assets/images/mcp/mcp-diagram.webp)](https://medium.com/@elisowski/mcp-explained-the-new-standard-connecting-ai-to-everything-79c5a1c98288)
+
 Model Context Protocol (MCP) is a way for LLMs to interact with external
 tools and services. There are times you may want to instruct or ask an LLM like
 ChatGPT about something that is not in its training data. MCPs act as a bridge

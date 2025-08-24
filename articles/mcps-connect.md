@@ -19,6 +19,11 @@ tagIds:
   - cursor
 ---
 
+<div style="display: flex; justify-content: center; gap: 20px; max-height: 150px;">
+  <img src="/assets/images/mcps-connect/claude-logo.svg" alt="Claude logo" priority="true" />
+  <img src="/assets/images/mcps-connect/mcp-logo.svg" alt="MCP logo" priority="true" />
+</div>
+
 The Model Context Protocol (MCP) enables LLM clients to connect to external
 tools and data sources. This guide covers the technical details of setting up
 MCP connections for Claude Desktop and Cursor.
