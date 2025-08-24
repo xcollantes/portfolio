@@ -266,6 +266,13 @@ npx @composio/mcp@latest setup "https://mcp.composio.dev/github" --client cursor
 - **Permission errors**: Check file paths and environment variables
 - **Node.js issues**: Verify LTS version installation
 
+<callout
+  type="pitfall"
+  description="Claude Code and Claude Desktop use different MCP server
+  configurations. You will need to configure both if you want to use an MCP for
+  each.">
+</callout>
+
 **Cursor:**
 
 - **MCP option missing**: Update to latest Cursor version
