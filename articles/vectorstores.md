@@ -7,7 +7,6 @@ cardPageLink: "/articles/vectorstores"
 articleType: BLOG
 imagePath: "/assets/images/vectorstores/vector.gif"
 tagIds:
-  - thingsIBuilt
   - ai
   - llm
   - ml
