@@ -173,6 +173,12 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
     reason: "Educational content about popular MCP servers that benefits the developer community"
   },
 
+  "mcp-server-built.md": {
+    bypassVerification: true,
+    allowSearchIndexing: true,
+    reason: "Educational content about building MCP servers that benefits the developer community"
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new exceptions:
   // "article-name.md": {

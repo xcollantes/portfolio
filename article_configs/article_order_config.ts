@@ -28,17 +28,14 @@ export const orderedIncludeBlogs: string[] = [
   "gonzaga-speaker-infosys.md",
   "bulldog-band.md",
   "measuring-tokens.md",
+  "mcp-server-built.md",
   "claude-cheatsheet.md",
   "radio.md",
   "vectorstores.md",
   "qdrant_awsvector.md",
-
-  "ai-ide.md",
-
   "mcp.md",
+  "ai-ide.md",
   "mcps-connect.md",
-  "mcp-servers.md",
-
   "amplitude.md",
 
   // IN PROGRESS.
@@ -48,6 +45,7 @@ export const orderedIncludeBlogs: string[] = [
   "llm-leaderboards.md",
   "fastapi.md",
   "anderson-podcast.md",
+  "mcp-servers.md",
   // "gist-example.md",
   "web-opt.md",
 
@@ -76,19 +74,20 @@ export const orderedIncludeBlogSite: string[] = [
   "belva-ai.md",
   "gonzaga-speaker-infosys.md",
   "bulldog-band.md",
-  "mcps-connect.md",
   "portfolio.md",
-  "mcp-servers.md",
+  "mcp-server-built.md",
   "claude-cheatsheet.md",
   "llm-leaderboards.md",
   "radio.md",
   "fastapi.md",
   "rx-blockchain.md",
   "housing.md",
+  "mcps-connect.md",
   "anderson-podcast.md",
   "streamlit-cheatsheet.md",
   "itron.md",
   "web-opt.md",
+  "mcp-servers.md",
   "easter-eggs.md",
 ]
 
