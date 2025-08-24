@@ -34,6 +34,19 @@ For this blog, I will be talking about popular MCP servers.
 
 [invideo.io: MCP](http://invideo.io/ai/mcp/) - Create videos from a text prompt.
 
+## Web Search
+
+Search engine capabilities.
+
+[Brave Search](https://www.pulsemcp.com/servers/modelcontextprotocol-brave-search) -
+For actions which need to search the web.
+
+<callout
+  type="note"
+  description="Google Search does not have an official external API. So many
+  developers use Brave Search or SerpAPI to get search results.">
+</callout>
+
 ## Software Infrastructure Management
 
 [Kubernetes MCP Server](https://github.com/flux159/mcp-server-kubernetes) -
