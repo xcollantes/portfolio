@@ -6,7 +6,7 @@ articleType: WORKEXP
 cardDescription: Constructing a data pipeline responsible for $500 million in finance sales.
 cardPageLink: "/articles/itron"
 imagePath: "/assets/images/itron/itron.webp"
-tagIds: ["itron", "internship", "engineering", "data", "business", "bi"]
+tagIds: ["thingsIBuilt", "itron", "internship", "engineering", "data", "business", "bi"]
 ---
 
 ![Itron logo {priority} {h: 450}](/assets/images/itron/itron.webp)

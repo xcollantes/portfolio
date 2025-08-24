@@ -7,6 +7,7 @@ cardPageLink: "/articles/vector-databases"
 articleType: BLOG
 imagePath: ""
 tagIds:
+  - thingsIBuilt
   - ai
   - llm
   - vector-database

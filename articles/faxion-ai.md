@@ -9,6 +9,7 @@ dateWritten: 2025-07-01
 dateLastUpdated: 2025-07-15
 articleType: WORKEXP
 tagIds:
+  - thingsIBuilt
   - python
   - llm
 ---
