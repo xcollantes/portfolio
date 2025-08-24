@@ -115,6 +115,10 @@ follow a certain pattern the receiving API expects.
   outputs have a high chance of error.">
 </callout>
 
+You want to use MCP versions of a service as opposed to LLM-native versions when
+you productionize your service. This will provide a standardized way for a
+specific action like searching the internet.
+
 ## Overlapping Capabilities
 
 At this point, you may have thought, _But ChatGPT can reference the internet and
