@@ -118,6 +118,8 @@ follow a certain pattern the receiving API expects.
 At this point, you may have thought, _But ChatGPT can reference the internet and
 current events, so why do I need MCP?_
 
+### Built-In Capabilities
+
 With products like ChatGPT and Gemini, OpenAI and Google respectively, put the
 LLM behind a layer which interacts with APIs such as NewsAPIs, Wikipedia, and
 Search Engine APIs. But if you want to use the LLM to perform tasks as YOU on
@@ -182,6 +184,9 @@ every step rather than automated execution.
 Just like your favorite web browser, there are MCP clients that you can use to
 connect to MCP servers.
 
+At the moment, most clients are chatbot interfaces like ChatGPT and code editing
+tools like Cursor.
+
 [pulsemcp.com: Clients](https://www.pulsemcp.com/clients) - A collection of
 common MCP clients.
 
@@ -211,10 +216,10 @@ favorite LLM client to the MCP server.
 
 ## Further Reading
 
-https://modelcontextprotocol.io/docs/getting-started/intro
+[Model Context Protocol: Getting Started](https://modelcontextprotocol.io/docs/getting-started/intro)
 
-https://www.anthropic.com/news/model-context-protocol
+[Anthropic: Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)
 
-https://www.datacamp.com/blog/top-mcp-servers-and-clients
+[DataCamp: Top MCP Servers and Clients](https://www.datacamp.com/blog/top-mcp-servers-and-clients)
 
-https://apidog.com/blog/top-10-mcp-servers/
+[API Dog: Top 10 MCP Servers](https://apidog.com/blog/top-10-mcp-servers/)
