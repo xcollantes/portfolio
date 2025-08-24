@@ -3,7 +3,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../../../lib/firebase'
-import { ArticleReactions } from '../../../types/reactions'
+import { ArticleReactions, getEmptyReactions } from '../../../types/reactions'
 
 export default async function handler(
   req: NextApiRequest,
@@ -19,6 +19,8 @@ export default async function handler(
     if (!db) {
       return res.status(503).json({ error: 'Database not configured' })
     }
+
+    console.log('Getting reactions for article:', articleId)
 
     try {
       const docRef = doc(db, 'articleReactions', articleId)
@@ -40,14 +42,7 @@ export default async function handler(
         // Return empty reactions if document doesn't exist.
         const emptyReactions: ArticleReactions = {
           articleId,
-          reactions: {
-            '👍': 0,
-            '❤️': 0,
-            '😄': 0,
-            '🤔': 0,
-            '🔥': 0,
-            '🎉': 0,
-          },
+          reactions: getEmptyReactions(),
           totalReactions: 0,
           lastUpdated: new Date(),
         }
@@ -56,13 +51,16 @@ export default async function handler(
         console.log('API Reactions:', emptyReactions)
 
         res.status(200).json(emptyReactions)
+
       }
     } catch (error) {
       console.error('Error getting reactions:', error)
       res.status(500).json({ error: 'Failed to get reactions' })
+
     }
   } else {
     res.setHeader('Allow', ['GET'])
     res.status(405).end(`Method ${req.method} Not Allowed`)
+
   }
 }

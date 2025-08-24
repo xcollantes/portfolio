@@ -29,3 +29,10 @@ export interface ArticleReactions {
 export interface ReactionCounts {
   [key: string]: number // emoji -> count mapping
 }
+
+export function getEmptyReactions(): Record<EmojiId, number> {
+  return REACTION_EMOJIS.reduce((acc, reaction) => {
+    acc[reaction.emojiId] = 0
+    return acc
+  }, {} as Record<EmojiId, number>)
+}
