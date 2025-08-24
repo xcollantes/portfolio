@@ -1,6 +1,6 @@
 ---
 title: "MCPs: Giving Your LLMs Tools To Work"
-cardDescription: "'Create a new branch and add the feature described in JIRA issue WEB-123 and create a PR on GitHub.'"
+cardDescription: "'Computer, update all my Jira tasks and create a PR on GitHub.'"
 author: Xavier Collantes
 dateWritten: 2025-08-23
 cardPageLink: "/articles/mcp"
@@ -45,22 +45,24 @@ capabilities of the LLM.
 
 <callout
   type="example"
-  description="Update the documentation page for the app deployment process in
-  Notion called 'How to deploy the app' with changes in the Github Actions.">
+  description="Update the documentation pages in Notion for the changes to our
+  MailChimp email template. Include the new Figma designs. Then ping my manager
+  Myles on Slack once the changes are live.">
 </callout>
 
 - [Notion MCP](https://developers.notion.com/docs/get-started-with-mcp)
-- [GitHub MCP](https://github.com/github/github-mcp-server/blob/main/README.md)
-
-<callout
-  type="example"
-  description="Update the MailChimp email template based on the new Figma designs
-  that were posted in Slack from the marketing team.">
-</callout>
-
 - [MailChimp MCP](https://zapier.com/mcp/mailchimp)
 - [Figma MCP](https://www.figma.com/blog/introducing-figmas-dev-mode-mcp-server/)
 - [Slack MCP](https://github.com/korotovsky/slack-mcp-server/blob/master/README.md)
+
+<callout
+  type="example"
+  description="Clean up my tasks in Jira under WEB. Add a note to each overdue
+  task that says 'This task is overdue due to Sprint 2 delayed.' Assign to
+  Jules Winfield on the WEB team.">
+</callout>
+
+- [Atlassian Jira MCP](https://www.atlassian.com/blog/announcements/remote-mcp-server)
 
 ## Why Bother With MCPs?
 
