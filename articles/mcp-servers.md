@@ -17,6 +17,8 @@ tagIds:
   - api
 ---
 
+![Global network connections representing MCP server ecosystem](/assets/images/mcp-servers/global-network.webp)
+
 In my last blog, I talked about the benefits and when to use Model Context
 Protocol (MCP) and how it can help you use LLMs more effectively.
 
@@ -36,6 +38,8 @@ For this blog, I will be talking about popular MCP servers.
 
 ## Web Search
 
+![API integration and web search capabilities](/assets/images/mcp-servers/api-integration.webp)
+
 Search engine capabilities.
 
 [Brave Search](https://www.pulsemcp.com/servers/modelcontextprotocol-brave-search) -
@@ -48,6 +52,8 @@ For actions which need to search the web.
 </callout>
 
 ## Software Infrastructure Management
+
+![Server network infrastructure and data management](/assets/images/mcp-servers/server-network.webp)
 
 [Kubernetes MCP Server](https://github.com/flux159/mcp-server-kubernetes) -
 For interacting with Kubernetes such as creating pods, services, and
@@ -63,6 +69,8 @@ repositories.
 interacting with your Vercel deployments.
 
 ## MCP Server Aggregators
+
+![Data center representing centralized MCP server collections](/assets/images/mcp-servers/data-center.webp)
 
 Collections of MCP servers.
 
