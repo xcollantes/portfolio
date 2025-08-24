@@ -1,11 +1,11 @@
 ---
 title: "Top MCP Servers"
-cardDescription: "My playlist of useful MCP servers"
+cardDescription: "My playlist of useful MCP servers."
 author: Xavier Collantes
 dateWritten: 2025-08-24
 cardPageLink: "/articles/mcp-servers"
 articleType: BLOG
-imagePath: "/assets/images/mcp-servers/"
+imagePath: "/assets/images/mcp-servers/vercelsdk.gif"
 tagIds:
   - llm
   - ai

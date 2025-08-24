@@ -5,7 +5,7 @@ author: Xavier Collantes
 dateWritten: 2025-08-24
 cardPageLink: "/articles/mcp-server-built"
 articleType: BLOG
-imagePath: "/assets/images/mcp-server-built/"
+imagePath: "/assets/images/mcp-server-built/mcp-half-11.gif"
 tagIds:
   - thingsIBuilt
   - llm

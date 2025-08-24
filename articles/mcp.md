@@ -5,7 +5,7 @@ author: Xavier Collantes
 dateWritten: 2025-08-23
 cardPageLink: "/articles/mcp"
 articleType: BLOG
-imagePath: "/assets/images/mcp/"
+imagePath: "/assets/images/mcp/server.gif"
 tagIds:
   - llm
   - ai
@@ -120,6 +120,8 @@ you productionize your service. This will provide a standardized way for a
 specific action like searching the internet.
 
 ## Overlapping Capabilities
+
+[![MCP vs AI Agents](/assets/images/mcp/mcp.gif)](https://blog.bytebytego.com/p/ep165-ai-agent-versus-mcp)
 
 At this point, you may have thought, _But ChatGPT can reference the internet and
 current events, so why do I need MCP?_

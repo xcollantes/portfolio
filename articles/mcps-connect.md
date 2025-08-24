@@ -5,7 +5,7 @@ author: Xavier Collantes
 dateWritten: 2025-08-24
 cardPageLink: "/articles/mcps-connect"
 articleType: BLOG
-imagePath: "/assets/images/mcps-connect/"
+imagePath: "/assets/images/mcps-connect/cursor.gif"
 tagIds:
   - llm
   - ai
