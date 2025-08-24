@@ -187,6 +187,18 @@ connect to MCP servers.
 At the moment, most clients are chatbot interfaces like ChatGPT and code editing
 tools like Cursor.
 
+### Chatbot Clients
+
+[Claude Desktop](https://claude.ai/download)
+
+[ChatGPT MCP Integration](https://community.openai.com/t/how-to-set-up-a-remote-mcp-server-and-connect-it-to-chatgpt-deep-research/1278375)
+
+### Code Editing Tools
+
+[Adding MCP Servers to Cursor](https://docs.cursor.com/en/context/mcp#installing-mcp-servers)
+
+### Other Clients
+
 [pulsemcp.com: Clients](https://www.pulsemcp.com/clients) - A collection of
 common MCP clients.
 
