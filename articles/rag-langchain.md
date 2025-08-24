@@ -8,6 +8,7 @@ cardPageLink: "/articles/rag-langchain"
 articleType: BLOG
 imagePath: "/assets/images/bulldog_band/hug.webp"
 tagIds:
+  - thingsIBuilt
   - ai
   - langchain
   - python

@@ -4,5 +4,5 @@ cardDescription: ""
 cardPageLink: ""
 imagePath: ""
 articleType: WORKEXP
-tagIds: ["iot", "python", "interests", "electronics"]
+tagIds: ["iot", "python", "interests", "electronics", "thingsIBuilt"]
 ---
