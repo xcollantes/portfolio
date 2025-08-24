@@ -10,6 +10,7 @@
  */
 export const orderedIncludeRecommendationsConfig: string[] = [
   "siobhan-williams.md",
+  "victor-lee-phd.md",
   "jeffrey-roth.md",
   "ehud-persitz.md",
   "niklas-dorsch.md",
