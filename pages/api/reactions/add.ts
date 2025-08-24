@@ -10,7 +10,7 @@ import {
   serverTimestamp
 } from 'firebase/firestore'
 import { db } from '../../../lib/firebase'
-import { EmojiType, REACTION_EMOJIS } from '../../../types/reactions'
+import { EmojiId, REACTION_EMOJIS } from '../../../types/reactions'
 
 export default async function handler(
   req: NextApiRequest,
@@ -21,19 +21,22 @@ export default async function handler(
     return res.status(405).end(`Method ${req.method} Not Allowed`)
   }
 
-  const { articleId, emoji } = req.body
+  console.log('Reaction request received: ', req.body)
+
+  /** Expected body parameters. */
+  const { articleId, emojiId } = req.body
 
   // Validate input
-  if (!articleId || !emoji) {
+  if (!articleId || !emojiId) {
     return res.status(400).json({
-      error: 'Article ID and emoji are required'
+      error: 'Article ID and emojiId are required'
     })
   }
 
-  const validEmojis = REACTION_EMOJIS.map(r => r.emoji)
-  if (!validEmojis.includes(emoji as EmojiType)) {
+  const validEmojis = REACTION_EMOJIS.map(r => r.emojiId)
+  if (!validEmojis.includes(emojiId as EmojiId)) {
     return res.status(400).json({
-      error: 'Invalid emoji'
+      error: 'Invalid emojiId'
     })
   }
 
@@ -49,10 +52,11 @@ export default async function handler(
     if (!articleReactionsSnap.exists()) {
       console.log('Creating initial reactions for article:', articleId)
       console.log('Creating initial document with all emojis set to 0')
+
       // Create initial document with all emojis set to 0
       const initialReactions = {}
       REACTION_EMOJIS.forEach(r => {
-        initialReactions[r.emoji] = 0
+        initialReactions[r.emojiId as EmojiId] = 0
       })
 
       await setDoc(articleReactionsRef, {
@@ -65,7 +69,7 @@ export default async function handler(
 
     // Update reaction count
     await updateDoc(articleReactionsRef, {
-      [`reactions.${emoji}`]: increment(1),
+      [`reactions.${emojiId as EmojiId}`]: increment(1),
       totalReactions: increment(1),
       lastUpdated: serverTimestamp(),
     })
