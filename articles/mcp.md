@@ -1,5 +1,5 @@
 ---
-title: "MCPs: Giving Your LLMs Tools To Work"
+title: "MCPs: Enable LLMs To Work Like A Human"
 cardDescription: "'Computer, update all my Jira tasks and create a PR on GitHub.'"
 author: Xavier Collantes
 dateWritten: 2025-08-23
