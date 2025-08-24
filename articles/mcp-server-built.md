@@ -12,10 +12,9 @@ tagIds:
   - ai
   - ml
   - machine-learning
-  - ai-agents
   - mcp
-  - databases
   - api
+  - automation
   - claude
   - cursor
 ---

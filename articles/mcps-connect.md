@@ -260,6 +260,11 @@ npx @composio/mcp@latest setup "https://mcp.composio.dev/github" --client cursor
 
 ## Common Pitfalls
 
+**.claude.json Scope**
+
+Field may not exist in the `.claude.json` file but use the outer most
+`mcpServers` field for user scoped servers.
+
 **Claude Desktop:**
 
 - **Server not appearing**: Ensure complete restart after config changes
