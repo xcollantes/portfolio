@@ -1,12 +1,21 @@
 /** Emoji reaction component for blog articles. */
 
 import { Box, Button, Skeleton, Tooltip, Typography } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { db } from '../lib/firebase'
 import { ArticleReactions, EmojiId, REACTION_EMOJIS } from '../types/reactions'
 
 interface EmojiReactionsProps {
   articleId: string
+}
+
+interface LocalStorageReactions {
+  [articleId: string]: EmojiId[]
+}
+
+interface ApiResponse {
+  success: boolean
+  reactions: Record<EmojiId, number>
 }
 
 export default function EmojiReactions({
@@ -18,7 +27,7 @@ export default function EmojiReactions({
   }
 
   const [reactions, setReactions] = useState<ArticleReactions | null>(null)
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState(true)
   const [clickedEmojis, setClickedEmojis] = useState<Set<EmojiId>>(new Set())
 
   useEffect(() => {
@@ -38,18 +47,37 @@ export default function EmojiReactions({
     }
 
     // Load clicked emojis from localStorage
-    const savedReactions = localStorage.getItem('article-reactions')
-    if (savedReactions) {
-      const reactionsData = JSON.parse(savedReactions)
-      if (reactionsData[articleId]) {
-        setClickedEmojis(new Set(reactionsData[articleId]))
+    const loadClickedEmojis = (): void => {
+      try {
+        const savedReactions = localStorage.getItem('article-reactions')
+        if (savedReactions) {
+          const reactionsData: LocalStorageReactions = JSON.parse(savedReactions)
+          if (reactionsData[articleId]) {
+            setClickedEmojis(new Set(reactionsData[articleId]))
+          }
+        }
+      } catch (error) {
+        console.error('Error loading clicked emojis:', error)
       }
     }
+
+    loadClickedEmojis()
 
     getReactions()
   }, [articleId])
 
-  const handleReaction = async (emojiId: EmojiId) => {
+  const updateLocalStorage = useCallback((newClickedEmojis: Set<EmojiId>): void => {
+    try {
+      const savedReactions = localStorage.getItem('article-reactions')
+      const reactionsData: LocalStorageReactions = savedReactions ? JSON.parse(savedReactions) : {}
+      reactionsData[articleId] = Array.from(newClickedEmojis)
+      localStorage.setItem('article-reactions', JSON.stringify(reactionsData))
+    } catch (error) {
+      console.error('Error updating localStorage:', error)
+    }
+  }, [articleId])
+
+  const handleReaction = useCallback(async (emojiId: EmojiId): Promise<void> => {
     // Check if user has already clicked this emoji
     if (clickedEmojis.has(emojiId)) {
       return
@@ -68,7 +96,7 @@ export default function EmojiReactions({
       })
 
       if (response.ok) {
-        const data = await response.json()
+        const data: ApiResponse = await response.json()
 
         // Update local state
         setReactions(prev => prev ? {
@@ -81,17 +109,12 @@ export default function EmojiReactions({
         const newClickedEmojis = new Set(clickedEmojis)
         newClickedEmojis.add(emojiId)
         setClickedEmojis(newClickedEmojis)
-
-        // Update localStorage with new structure
-        const savedReactions = localStorage.getItem('article-reactions')
-        const reactionsData = savedReactions ? JSON.parse(savedReactions) : {}
-        reactionsData[articleId] = Array.from(newClickedEmojis)
-        localStorage.setItem('article-reactions', JSON.stringify(reactionsData))
+        updateLocalStorage(newClickedEmojis)
       }
     } catch (error) {
       console.error('Error adding reaction:', error)
     }
-  }
+  }, [articleId, clickedEmojis, updateLocalStorage])
 
   if (loading) {
     return (
@@ -102,9 +125,9 @@ export default function EmojiReactions({
         mt: 3,
         mb: 2
       }}>
-        {REACTION_EMOJIS.map((_, index) => (
+        {REACTION_EMOJIS.map((emoji) => (
           <Skeleton
-            key={index}
+            key={emoji.emojiId}
             variant="rectangular"
             width={80}
             height={40}
@@ -117,7 +140,6 @@ export default function EmojiReactions({
 
   return (
     <Box sx={{ mt: 3, mb: 2 }}>
-
       <Box sx={{
         display: 'flex',
         gap: 1,
@@ -125,7 +147,7 @@ export default function EmojiReactions({
         alignItems: 'center'
       }}>
         {REACTION_EMOJIS.map((reactionEmoji) => {
-          const count = reactions?.reactions[reactionEmoji.emojiId] || 0
+          const count = reactions?.reactions[reactionEmoji.emojiId] ?? 0
           const hasClicked = clickedEmojis.has(reactionEmoji.emojiId)
 
           return (
@@ -137,6 +159,7 @@ export default function EmojiReactions({
                 variant="outlined"
                 size="small"
                 onClick={() => handleReaction(reactionEmoji.emojiId)}
+                aria-label={`${reactionEmoji.label} reaction`}
                 sx={{
                   minWidth: 'auto',
                   px: 1.5,
@@ -153,14 +176,16 @@ export default function EmojiReactions({
                   border: hasClicked ? '1px solid' : 'none',
                   borderColor: hasClicked ? 'primary.main' : 'transparent',
                   cursor: hasClicked ? 'not-allowed' : 'pointer',
+                  transition: 'transform 0.2s ease-in-out',
                   '&:hover': {
                     transform: hasClicked ? 'none' : 'scale(1.05)',
-                    transition: 'transform 0.2s ease-in-out',
                     backgroundColor: hasClicked ? 'primary.main' : 'action.hover',
                   },
                 }}
               >
-                <span>{reactionEmoji.emoji}</span>
+                <span role="img" aria-label={reactionEmoji.label}>
+                  {reactionEmoji.emoji}
+                </span>
                 <Typography
                   variant="caption"
                   component="span"
@@ -176,7 +201,6 @@ export default function EmojiReactions({
           )
         })}
       </Box>
-
     </Box>
   )
 }
