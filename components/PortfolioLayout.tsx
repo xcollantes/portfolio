@@ -2,7 +2,7 @@
  * Portfolio layout component - the original layout design.
  */
 
-import { Box, Theme, Typography, useMediaQuery, useTheme } from "@mui/material"
+import { Box, Button, Theme, Typography, useMediaQuery, useTheme } from "@mui/material"
 import Grid from "@mui/material/Unstable_Grid2"
 import { useSession } from "next-auth/react"
 import { NextRouter, useRouter } from "next/router"
@@ -22,6 +22,7 @@ import ExperienceCardsPlaceholder from "./ExperienceCardsPlaceholder"
 import FilterBar from "./FilterBar"
 import HiddenPreviewImage from "./HiddenPreviewImage"
 import LongPressWrapper from "./LongPressWrapper"
+import { MaterialLink } from "./MaterialLink"
 import RecommendationSlides from "./RecommendationSlides"
 import SocialMedia from "./SocialMedia"
 import {
@@ -145,6 +146,29 @@ export default function PortfolioLayout({
                   <RecommendationSlides
                     recommendationData={recommendationsProp}
                   />
+                  <Box sx={{ mt: 2, width: "100%" }}>
+                    <Button
+                      component={MaterialLink}
+                      to="/recs"
+                      variant="contained"
+                      fullWidth
+                      sx={{
+                        background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+                        boxShadow: "0 3px 5px 2px rgba(33, 203, 243, .3)",
+                        color: "white",
+                        fontWeight: "bold",
+                        py: 1.5,
+                        transition: "all 0.3s ease-in-out",
+                        "&:hover": {
+                          background: "linear-gradient(45deg, #1976D2 30%, #0288D1 90%)",
+                          boxShadow: "0 6px 10px 4px rgba(33, 203, 243, .4)",
+                          transform: "translateY(-2px)",
+                        },
+                      }}
+                    >
+                      View All Recommendations
+                    </Button>
+                  </Box>
                 </Box>
               </Box>
             </Box>
