@@ -49,24 +49,60 @@ export default function Carousel({
   return (
     <FadeCustom>
       <Box className={emblaCss.embla}>
-        <Box className={emblaCss.embla__viewport} ref={emblaRef}>
+        <Box
+          className={emblaCss.embla__viewport}
+          ref={emblaRef}
+          sx={{ position: "relative" }}
+        >
           <Box className={emblaCss.embla__container}>
             {slidesData.map((slide, index) => (
               <Box key={index} className={emblaCss.embla__slide}>{slide}</Box>
             ))}
           </Box>
 
-          <Stack
-            className={emblaCss.embla__buttons}
-            spacing={15}
+          {/* Left arrow - positioned on the left side of the cards */}
+          <Box
             sx={{
+              position: "absolute",
+              left: "2px",
+              top: "40%",
+              transform: "translateY(-50%)",
+              zIndex: 2,
+              width: "48px",
+              height: "48px",
+              display: "flex",
+              alignItems: "center",
               justifyContent: "center",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-50%) scale(1.1)",
+              }
             }}
-            direction={"row"}
           >
             <PrevButton onClick={scrollPrev} />
+          </Box>
+
+          {/* Right arrow - positioned on the right side of the cards */}
+          <Box
+            sx={{
+              position: "absolute",
+              right: "2px",
+              top: "40%",
+              transform: "translateY(-50%)",
+              zIndex: 2,
+              width: "48px",
+              height: "48px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-50%) scale(1.1)",
+              }
+            }}
+          >
             <NextButton onClick={scrollNext} />
-          </Stack>
+          </Box>
         </Box>
       </Box>
     </FadeCustom>
