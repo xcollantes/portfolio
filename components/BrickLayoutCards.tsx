@@ -1,3 +1,9 @@
+/**
+ * Text-less brick layout cards.
+ *
+ * Columns change based on screen size.
+*/
+
 import { Box, Typography } from "@mui/material"
 import { useEffect, useMemo, useState } from "react"
 import { filterDataConfig } from "../article_configs/filters_config"
