@@ -66,6 +66,8 @@ export default function EmojiReactions({
     getReactions()
   }, [articleId])
 
+  console.log('Reactions:', reactions)
+
   const updateLocalStorage = useCallback((newClickedEmojis: Set<EmojiId>): void => {
     try {
       const savedReactions = localStorage.getItem('article-reactions')
@@ -80,7 +82,7 @@ export default function EmojiReactions({
   const handleReaction = useCallback(async (emojiId: EmojiId): Promise<void> => {
     const hasClicked = clickedEmojis.has(emojiId)
     const endpoint = hasClicked ? '/api/reactions/remove' : '/api/reactions/add'
-    
+
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -95,6 +97,8 @@ export default function EmojiReactions({
 
       if (response.ok) {
         const data: ApiResponse = await response.json()
+
+        console.log('Reactions data updated:', data)
 
         // Update local state
         setReactions(prev => prev ? {
