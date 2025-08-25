@@ -134,10 +134,9 @@ export default function EmojiReactions({
               title={hasClicked ? `${reactionEmoji.label} (already clicked)` : reactionEmoji.label}
             >
               <Button
-                variant={hasClicked ? "contained" : "outlined"}
+                variant="outlined"
                 size="small"
                 onClick={() => handleReaction(reactionEmoji.emojiId)}
-                disabled={hasClicked}
                 sx={{
                   minWidth: 'auto',
                   px: 1.5,
@@ -149,14 +148,15 @@ export default function EmojiReactions({
                   alignItems: 'center',
                   gap: 0.5,
                   textTransform: 'none',
-                  opacity: hasClicked ? 0.7 : 1,
+                  backgroundColor: hasClicked ? 'primary.main' : 'transparent',
+                  color: hasClicked ? 'primary.contrastText' : 'inherit',
+                  border: hasClicked ? '1px solid' : 'none',
+                  borderColor: hasClicked ? 'primary.main' : 'transparent',
                   cursor: hasClicked ? 'not-allowed' : 'pointer',
                   '&:hover': {
                     transform: hasClicked ? 'none' : 'scale(1.05)',
                     transition: 'transform 0.2s ease-in-out',
-                  },
-                  '&.Mui-disabled': {
-                    opacity: 0.7,
+                    backgroundColor: hasClicked ? 'primary.main' : 'action.hover',
                   },
                 }}
               >
