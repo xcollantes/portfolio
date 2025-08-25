@@ -41,6 +41,17 @@ As Google is diverse and far reaching in its products, so has been my experience
 in honing my skills in software engineering and product management to improve
 features for the 2.7 billion Google Search users globally<sup>1</sup>.
 
+<callout
+  type="recommendation"
+  title="Software Engineer Manager at Google"
+  imageurl="/recommendations/profile_pics/siobhan.webp"
+  personname="Siobhan Williams, Ph.D."
+  quote="Here's an example of Xavier's excellence... Xavier's original design was
+  so well implemented, it scaled up (or down) seamlessly. That's impressive..."
+  url="/recs?recId=siobhan-williams"
+  urltext="View Testimonial">
+</callout>
+
 ## Software Engineering
 
 ![Image of me {priority}](/assets/images/google/front.webp)
@@ -129,6 +140,17 @@ A typical project for me would generally follow the process:
 Accomplishing these tasks requires meticulous documentation and well-defined
 metrics. The metrics are chosen at the beginning and determine if the project
 should continue.
+
+<callout
+  type="recommendation"
+  title="Director. Program Management, Core Search at Google"
+  imageurl="/recommendations/profile_pics/jeff.webp"
+  personname="Jeffery Roth"
+  quote="His deep technical expertise in SQL and Python code and integration of
+several internal systems allowed him to tackle complex challenges"
+  url="/recs?recId=jeffery-roth"
+  urltext="View Testimonial">
+</callout>
 
 ## Scaling
 
