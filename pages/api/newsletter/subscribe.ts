@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+import { doc, updateDoc, arrayUnion, getDoc, setDoc, serverTimestamp } from "firebase/firestore"
 import { db } from "../../../lib/firebase"
 
 interface NewsletterSubscriptionRequest {
@@ -40,12 +40,35 @@ export default async function handler(
       })
     }
 
-    await addDoc(collection(db, "newsletter"), {
-      email: email.toLowerCase().trim(),
-      subscribedAt: serverTimestamp(),
-      source: "website_signup",
-      active: true,
-    })
+    const signupsDocRef = doc(db, "newsletter", "signups")
+    const trimmedEmail = email.toLowerCase().trim()
+
+    // Check if the signups document exists
+    const signupsDoc = await getDoc(signupsDocRef)
+    
+    if (signupsDoc.exists()) {
+      // Check if email already exists in the array
+      const currentEmails = signupsDoc.data()?.emails || []
+      if (currentEmails.includes(trimmedEmail)) {
+        return res.status(400).json({
+          success: false,
+          message: "Email is already subscribed"
+        })
+      }
+
+      // Update existing document by adding email to array
+      await updateDoc(signupsDocRef, {
+        emails: arrayUnion(trimmedEmail),
+        lastUpdated: serverTimestamp()
+      })
+    } else {
+      // Create new document with emails array
+      await setDoc(signupsDocRef, {
+        emails: [trimmedEmail],
+        createdAt: serverTimestamp(),
+        lastUpdated: serverTimestamp()
+      })
+    }
 
     return res.status(200).json({
       success: true,

@@ -20,13 +20,11 @@ service cloud.firestore {
       allow read: if false;
     }
 
-    // Newsletter subscriptions - allow create only, no public reads
-    match /newsletter/{subscriptionId} {
-      // Allow creation of new subscriptions but no public reads
-      allow create: if isValidNewsletterSubscription();
-      allow read: if false;
-      allow write: if false;
-      allow delete: if false;
+    // Newsletter signups - allow read/write for signups document only
+    match /newsletter/signups {
+      // Allow read and write operations on the signups document
+      allow read, write: if isValidNewsletterSignupOperation();
+      allow create: if isValidNewsletterSignupCreate();
     }
 
     // Validation function for reaction create
@@ -47,20 +45,30 @@ service cloud.firestore {
       return data.keys().hasAll(['reactions', 'lastUpdated'])
     }
 
-    // Validation function for newsletter subscription creation
-    function isValidNewsletterSubscription() {
+    // Validation function for newsletter signups document operations
+    function isValidNewsletterSignupOperation() {
       let data = request.resource.data;
 
-      // Must have required fields and valid email format
-      return data.keys().hasAll(['email', 'subscribedAt', 'source', 'active'])
-        // Email must be a non-empty string with basic email format
-        && data.email is string && data.email.size() > 0 && data.email.matches('.*@.*\\..*')
-        // SubscribedAt must be a timestamp
-        && data.subscribedAt is timestamp
-        // Source must be a non-empty string
-        && data.source is string && data.source.size() > 0
-        // Active must be a boolean
-        && data.active is bool
+      // Must have emails array and lastUpdated timestamp
+      return data.keys().hasAll(['emails', 'lastUpdated'])
+        // Emails must be an array
+        && data.emails is list
+        // LastUpdated must be a timestamp
+        && data.lastUpdated is timestamp
+    }
+
+    // Validation function for newsletter signups document creation
+    function isValidNewsletterSignupCreate() {
+      let data = request.resource.data;
+
+      // Must have required fields for document creation
+      return data.keys().hasAll(['emails', 'createdAt', 'lastUpdated'])
+        // Emails must be an array
+        && data.emails is list
+        // CreatedAt must be a timestamp
+        && data.createdAt is timestamp
+        // LastUpdated must be a timestamp
+        && data.lastUpdated is timestamp
     }
   }
 }

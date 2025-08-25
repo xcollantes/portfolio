@@ -20,7 +20,7 @@ interface NewsletterSignupProps {
   subtitle?: string
 }
 
-export default function NewsletterSignup({ 
+export default function NewsletterSignup({
   variant = "full",
   title = "Stay Updated",
   subtitle = "Get the latest articles and insights delivered to your inbox."
@@ -37,7 +37,7 @@ export default function NewsletterSignup({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!email.trim()) {
       toast.error("Email is required")
       return
@@ -47,7 +47,7 @@ export default function NewsletterSignup({
       toast.error("Please enter a valid email address")
       return
     }
-
+    
     setLoading(true)
 
     try {
@@ -65,7 +65,7 @@ export default function NewsletterSignup({
         setSuccess(true)
         setEmail("")
         toast.success("Successfully subscribed to newsletter!")
-        
+
         // Reset success message after 5 seconds
         setTimeout(() => {
           setSuccess(false)
@@ -84,10 +84,10 @@ export default function NewsletterSignup({
 
   if (success) {
     return (
-      <Paper 
-        elevation={2} 
-        sx={{ 
-          p: variant === "compact" ? 2 : 3, 
+      <Paper
+        elevation={2}
+        sx={{
+          p: variant === "compact" ? 2 : 3,
           textAlign: "center",
           backgroundColor: "success.light",
           color: "success.contrastText"
