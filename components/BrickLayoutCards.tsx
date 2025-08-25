@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material"
-import { useRouter } from "next/router"
 import { useEffect, useMemo, useState } from "react"
 import { filterDataConfig } from "../article_configs/filters_config"
 import { MetadataType } from "../article_configs/process_articles"
@@ -14,7 +13,6 @@ export interface BrickLayoutCardsProps {
 }
 
 export default function BrickLayoutCards({ metadata }: BrickLayoutCardsProps) {
-  const router = useRouter()
   const [selected, setSelected] = useState<MetadataType[]>(metadata)
   const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
     useSelectedFilterTagContext()
@@ -41,14 +39,13 @@ export default function BrickLayoutCards({ metadata }: BrickLayoutCardsProps) {
   return (
     <Box
       sx={{
-        display: "grid",
-        gridTemplateColumns: {
-          xs: "repeat(2, 1fr)",
-          sm: "repeat(3, 1fr)",
-          md: "repeat(4, 1fr)",
-          lg: "repeat(5, 1fr)",
+        columns: {
+          xs: 1,
+          sm: 2,
+          md: 3,
+          lg: 4,
         },
-        gap: 1.5,
+        columnGap: "12px",
         mb: 10,
       }}
     >
@@ -66,9 +63,8 @@ interface BrickCardProps {
 
 function BrickCard({ card, index }: BrickCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
-  const [aspectRatio, setAspectRatio] = useState(1)
 
-  const heights = [200, 250, 300, 180, 220, 280, 320, 160, 240, 290]
+  const heights = [200, 250, 300, 180, 220, 280, 320, 160, 240, 290, 270, 190, 310, 230]
   const height = heights[index % heights.length]
 
   useEffect(() => {
@@ -76,7 +72,6 @@ function BrickCard({ card, index }: BrickCardProps) {
       const img = new Image()
       img.onload = () => {
         setImageLoaded(true)
-        setAspectRatio(img.width / img.height)
       }
       img.onerror = () => setImageLoaded(false)
       img.src = card.imagePath
@@ -89,6 +84,8 @@ function BrickCard({ card, index }: BrickCardProps) {
       to={card.cardPageLink}
       sx={{
         position: "relative",
+        display: "inline-block",
+        width: "100%",
         height: height,
         borderRadius: 2,
         overflow: "hidden",
@@ -100,6 +97,7 @@ function BrickCard({ card, index }: BrickCardProps) {
         backgroundRepeat: "no-repeat",
         backgroundColor: imageLoaded ? "transparent" : "grey.300",
         transition: "transform 0.2s ease-in-out",
+        breakInside: "avoid",
         "&:hover": {
           transform: "scale(1.02)",
           "& .hover-overlay": {
