@@ -6,9 +6,8 @@ dateCreated: 2024-01-26
 profileImagePath: "/recommendations/profile_pics/jeff.webp"
 linkedInLink: https://www.linkedin.com/in/jeffrey-roth-a374b61
 previewText: >
-  When starting a new process, Xavier was able to engage stakeholders in
-  finding pain points and consult with subject matter experts. Xavier's
-  experience often required collaborating...
+  Xavier has built a strong track record of building processes and automation
+  from the ground up
 showInSlides: true
 ---
 
