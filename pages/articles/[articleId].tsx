@@ -128,6 +128,7 @@ export default function article({
   return (
     <>
       <Head>
+        {/* Articles not indexed will fallback to default OG tags. */}
         {!allowIndexing && <meta name="robots" content="noindex" />}
 
         {/* Dynamic Open Graph meta tags for article sharing */}

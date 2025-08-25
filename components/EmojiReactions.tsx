@@ -66,8 +66,6 @@ export default function EmojiReactions({
     getReactions()
   }, [articleId])
 
-  console.log('Reactions:', reactions)
-
   const updateLocalStorage = useCallback((newClickedEmojis: Set<EmojiId>): void => {
     try {
       const savedReactions = localStorage.getItem('article-reactions')
