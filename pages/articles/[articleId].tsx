@@ -34,6 +34,7 @@ import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
 import RelatedArticles from "../../components/RelatedArticles"
 import ShareButton from "../../components/ShareButton"
 import TableOfContents from "../../components/TableOfContents"
+import { getSiteConfig } from "../../config/siteConfig"
 
 /**
  * Runs at build time to generate possible article paths.
@@ -108,6 +109,7 @@ export default function article({
   articleId,
 }: ArticlePageProps) {
   const theme: Theme = useTheme()
+  const siteConfig = getSiteConfig()
 
   let dateLastUpdatedL10n: string = ""
   if (metadata.dateLastUpdated) {
@@ -133,10 +135,10 @@ export default function article({
 
         {/* Dynamic Open Graph meta tags for article sharing */}
         <meta key="og:type" property="og:type" content="article" />
-        <meta key="og:url" property="og:url" content={`https://xaviercollantes.dev/articles/${articleId}`} />
+        <meta key="og:url" property="og:url" content={`${siteConfig.baseUrl}/articles/${articleId}`} />
         <meta key="og:title" property="og:title" content={metadata.title} />
         <meta key="og:description" property="og:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
-        <meta key="og:image" property="og:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.webp"} />
+        <meta key="og:image" property="og:image" content={metadata.imagePath ? `${siteConfig.baseUrl}${metadata.imagePath}` : `${siteConfig.baseUrl}/preview_image/front.webp`} />
         <meta key="og:image:width" property="og:image:width" content="1200" />
         <meta key="og:image:height" property="og:image:height" content="630" />
         <meta key="og:image:alt" property="og:image:alt" content={`${metadata.title} - Xavier Collantes`} />
@@ -149,7 +151,7 @@ export default function article({
         <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
         <meta key="twitter:title" name="twitter:title" content={metadata.title} />
         <meta key="twitter:description" name="twitter:description" content={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`} />
-        <meta key="twitter:image" name="twitter:image" content={metadata.imagePath ? `https://xaviercollantes.dev${metadata.imagePath}` : "https://xaviercollantes.dev/preview_image/front.webp"} />
+        <meta key="twitter:image" name="twitter:image" content={metadata.imagePath ? `${siteConfig.baseUrl}${metadata.imagePath}` : `${siteConfig.baseUrl}/preview_image/front.webp`} />
         <meta key="twitter:image:alt" name="twitter:image:alt" content={`${metadata.title} - Xavier Collantes`} />
 
         {/* Article-specific meta tags */}
@@ -234,7 +236,7 @@ export default function article({
             <EmojiReactions articleId={articleId as string} />
 
             <ShareButton
-              shareUrl={`https://xaviercollantes.dev/articles/${articleId}`}
+              shareUrl={`${siteConfig.baseUrl}/articles/${articleId}`}
               title={metadata.title}
               description={metadata.cardDescription || metadata.subTitle || `Read ${metadata.title} by ${metadata.author || 'Xavier Collantes'}`}
               source={`article_${articleId}`}
