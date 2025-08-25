@@ -50,6 +50,7 @@ interface UserMetrics {
   referer?: string
   visitCount?: number
   pagesVisited?: string[]
+  environment: string
   geolocation: {
     country: string
     country_code: string
@@ -71,6 +72,7 @@ interface PageVisit {
   timestamp: any
   userAgent: string
   referer?: string
+  environment: string
 }
 
 export default async function handler(
@@ -128,6 +130,7 @@ export default async function handler(
       userAgent: req.headers['user-agent'] || 'unknown',
       referer: req.headers.referer,
       pagesVisited: arrayUnion(currentPath),
+      environment: process.env.NODE_ENV || 'unknown',
     }
 
     // Add geolocation data only if this might be a new document
@@ -171,13 +174,20 @@ export default async function handler(
       timestamp: serverTimestamp(),
       userAgent: req.headers['user-agent'] || 'unknown',
       referer: req.headers.referer,
+      environment: process.env.NODE_ENV || 'unknown',
     }
 
     // Add to pageVisits collection - organized by IP address as subcollections
-    const pageVisitsRef = collection(db, 'pageVisits', ipDocId, 'visits')
-    await addDoc(pageVisitsRef, pageVisit)
-    
-    console.log('Added page visit record for IP:', ip, 'path:', currentPath)
+    // Structure: pageVisits/{ipDocId}/visits/{auto-generated-id}
+    // Firestore automatically creates collections and documents when first data is written
+    try {
+      const pageVisitsRef = collection(db, 'pageVisits', ipDocId, 'visits')
+      const docRef = await addDoc(pageVisitsRef, pageVisit)
+      console.log('Added page visit record for IP:', ip, 'path:', currentPath, 'docId:', docRef.id)
+    } catch (pageVisitError) {
+      console.warn('Failed to create page visit record:', pageVisitError)
+      // Don't fail the entire request if page visit logging fails
+    }
 
     res.status(200).json({
       success: true,
