@@ -27,6 +27,7 @@ import {
   RelatedArticleType,
 } from "../../article_configs/related_articles"
 import ArticleAnalytics from "../../components/ArticleAnalytics"
+import EmojiReactions from "../../components/EmojiReactions"
 import Footer from "../../components/Footer"
 import HiddenPreviewImage from "../../components/HiddenPreviewImage"
 import ReactMarkdownRules from "../../components/ReactMarkdownCustom"
@@ -230,6 +231,8 @@ export default function article({
               )}
             </Box>
 
+            <EmojiReactions articleId={articleId as string} />
+
             <ShareButton
               shareUrl={`https://xaviercollantes.dev/articles/${articleId}`}
               title={metadata.title}
@@ -249,12 +252,14 @@ export default function article({
             >
               {markdownBody}
             </ReactMarkdown>
-            
-            <RelatedArticles 
+
+            <EmojiReactions articleId={articleId as string} />
+
+            <RelatedArticles
               relatedArticles={relatedArticles}
               commonTags={commonTags}
             />
-            
+
             <Footer />
           </Container>
         </Box>
