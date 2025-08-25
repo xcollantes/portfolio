@@ -47,11 +47,11 @@ export default function PortfolioLayout({
   const theme: Theme = useTheme()
   const [loading, setLoading] = useState<boolean>(true)
 
-  const namePositionContainer = useMediaQuery(theme.breakpoints.down(1290))
+  const namePositionContainer = useMediaQuery(theme.breakpoints.down("lg"))
     ? { position: "static" }
     : { position: "fixed" }
 
-  const namePositionChild = useMediaQuery(theme.breakpoints.down(1290))
+  const namePositionChild = useMediaQuery(theme.breakpoints.down("lg"))
     ? { position: "static" }
     : { position: "absolute" }
 
@@ -91,7 +91,7 @@ export default function PortfolioLayout({
       <HiddenPreviewImage />
 
       <Grid container>
-        <Grid xs={12} sm={5} sx={{ display: "flex" }}>
+        <Grid xs={12} lg={5} sx={{ display: "flex" }}>
           <Box sx={{ m: 4, ...namePositionContainer }}>
             <Box sx={{ ...namePositionChild, right: -500 }}>
               <Box
@@ -112,7 +112,7 @@ export default function PortfolioLayout({
                 <Typography
                   variant="h1"
                   sx={{
-                    [theme.breakpoints.down(1290)]: { fontSize: 75 },
+                    [theme.breakpoints.down("lg")]: { fontSize: 75 },
                     [theme.breakpoints.down("sm")]: { fontSize: 50 },
                   }}
                   align="right"
@@ -183,7 +183,7 @@ export default function PortfolioLayout({
             </Box>
           </Box>
         </Grid>
-        <Grid xs={12} sm={7}>
+        <Grid xs={12} lg={7}>
           <Box sx={{ my: 3 }}>
             <FilterBar disabled={!isUserSignedIn(session)} />
           </Box>
