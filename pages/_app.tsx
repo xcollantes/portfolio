@@ -204,8 +204,6 @@ export default function App({
             {/* Search Engine Optimization */}
             <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-            <Script src="https://metricsloop.com/pixel/ZhNVupdLu2xSZ41u" />
-
             <title key="title">{siteConfig.title}</title>
           </Head>
 
