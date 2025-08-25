@@ -177,31 +177,31 @@ Only add articles to the exception list if they meet **ALL** of the following cr
 - Experimental or draft content
 - Content meant only for specific individuals
 
-### Adding article exceptions
+### Managing article restrictions
 
-**Important:** Exception articles bypass ALL access controls and become fully
-public. Search engines will index and cache the content permanently.
+**Important:** By default, all articles are public and indexed by search engines. 
+Only add articles to the deny list if they contain sensitive or personal information.
 
-1. **Review criteria:** Ensure your article meets all exception criteria above
-2. **Edit config:** Add entry to `articleExceptions` object in `article_configs/article_exceptions_config.ts`
+1. **Review criteria:** Ensure your article meets the restriction criteria
+2. **Edit config:** Add entry to `articleDenyList` object in `article_configs/article_exceptions_config.ts`
 3. **Configure settings:**
 
    ```typescript
    "your-article.md": {
-     bypassVerification: true,        // Skip human verification
-     allowSearchIndexing: true,       // Allow search engine indexing
-     reason: "Clear explanation of why this should be public"
+     requireVerification: true,       // Require human verification
+     blockSearchIndexing: true,      // Block search engine indexing
+     reason: "Clear explanation of why this should be restricted"
    }
    ```
 
-4. **Test accessibility:** Verify the article works in development
-5. **Monitor indexing:** Check search engine indexing after deployment
+4. **Test accessibility:** Verify the article behavior in development
+5. **Monitor indexing:** Ensure search engines respect the restrictions
 
 ### Security considerations
 
-- Exception articles become permanently public and searchable
-- Content will appear in search results and social media previews
-- Consider data privacy implications before adding exceptions
+- Articles are public and searchable by default
+- Only restrict articles with sensitive or personal information
+- Content not in deny list will appear in search results and social media previews
 - Review the detailed security guidelines in `article_configs/article_exceptions_config.ts`
 
 ## Adding new recommendation

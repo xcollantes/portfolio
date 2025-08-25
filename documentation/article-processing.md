@@ -104,33 +104,33 @@ By default, **all articles**:
 
 This protects sensitive or personal content from unintended exposure.
 
-### Exception System (`article_configs/article_exceptions_config.ts`)
+### Deny List System (`article_configs/article_exceptions_config.ts`)
 
-The exception system allows specific articles to bypass default restrictions:
+The deny list system restricts specific articles that should not be public by default:
 
-#### Exception Criteria
+#### Restriction Criteria
 
-Only add articles that meet **ALL** criteria:
+Add articles that meet **ANY** criteria:
 
-- ✅ Content suitable for public consumption
-- ✅ Content adds value for public discovery
-- ✅ Professional work or educational material
-- ✅ No personal or private information
+- ✅ Content contains sensitive or private information
+- ✅ Content is meant for specific individuals only
+- ✅ Content contains experimental or draft material
+- ✅ Content includes personal stories not meant for public discovery
 
-#### Exception Configuration
+#### Deny List Configuration
 
 ```typescript
-export const articleExceptions: Record<string, ArticleExceptionConfig> = {
-  "portfolio.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Portfolio overview showcases professional work",
+export const articleDenyList: Record<string, ArticleDenyConfig> = {
+  "personal-story.md": {
+    requireVerification: true,
+    blockSearchIndexing: true,
+    reason: "Personal experience not meant for public discovery",
   },
 
-  "measuring-tokens.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about LLM tokens",
+  "draft-content.md": {
+    requireVerification: true,
+    blockSearchIndexing: true,
+    reason: "Draft content not ready for public consumption",
   },
 }
 ```
@@ -138,34 +138,34 @@ export const articleExceptions: Record<string, ArticleExceptionConfig> = {
 #### Helper Functions
 
 ```typescript
-// Check if article bypasses verification
+// Check if article bypasses verification (true by default unless restricted)
 shouldBypassVerification(articleId: string): boolean
 
-// Check if article allows search indexing
+// Check if article allows search indexing (true by default unless blocked)
 shouldAllowSearchIndexing(articleId: string): boolean
 
-// Get all exception articles
-getExceptionArticles(): string[]
+// Get all restricted articles
+getRestrictedArticles(): string[]
 
-// Get reason for exception
-getExceptionReason(articleId: string): string | undefined
+// Get reason for restriction
+getRestrictionReason(articleId: string): string | undefined
 ```
 
-### When to Make Articles Public
+### When to Restrict Articles
 
-**✅ Safe for exceptions:**
-
-- Portfolio pieces showcasing professional work
-- Educational tutorials and technical guides
-- Public-facing work experiences and achievements
-- Blog posts intended for broader audience reach
-
-**❌ Do NOT make public:**
+**✅ Add to deny list:**
 
 - Personal stories or experiences
 - Content with sensitive company information
 - Experimental or draft content
 - Content meant only for specific individuals
+
+**❌ Do NOT restrict (keep public):**
+
+- Portfolio pieces showcasing professional work
+- Educational tutorials and technical guides
+- Public-facing work experiences and achievements
+- Blog posts intended for broader audience reach
 
 ## Adding New Articles
 
@@ -182,8 +182,8 @@ getExceptionReason(articleId: string): string | undefined
 
 ### 3. Configure Access (if needed)
 
-1. **Most articles**: No additional configuration (default security applies)
-2. **Public articles**: Add entry to `articleExceptions` in `article_exceptions_config.ts`
+1. **Most articles**: No additional configuration (public by default)
+2. **Restricted articles**: Add entry to `articleDenyList` in `article_exceptions_config.ts`
 
 ### 4. Update Filters (if needed)
 
@@ -191,12 +191,18 @@ Add new filter options to `filters_config.ts` if introducing new tag categories.
 
 ## Security Considerations
 
-### Exception Articles
+### Default Public Articles
 
-- Bypass **ALL** access controls
-- Become permanently public and searchable
+- **All articles are public by default** and searchable
 - Appear in search results and social media previews
 - Content will be cached by search engines
+- Only add restrictions for sensitive or personal content
+
+### Restricted Articles
+
+- Require human verification to access
+- Blocked from search engine indexing
+- Protected from public discovery
 
 ### Best Practices
 
