@@ -29,7 +29,7 @@ export default function NewsletterModal({
   const [open, setOpen] = useState(false)
   const [hasShown, setHasShown] = useState(false)
   const theme = useTheme()
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"))
+  const fullScreen = false // Never full screen
 
   // Clear localStorage for testing (temporary)
   useEffect(() => {
@@ -105,8 +105,8 @@ export default function NewsletterModal({
       fullWidth
       PaperProps={{
         sx: {
-          borderRadius: fullScreen ? 0 : 2,
-          m: fullScreen ? 0 : 2,
+          borderRadius: 2,
+          m: 2,
           backgroundColor: "background",
         },
       }}
