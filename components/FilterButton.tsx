@@ -6,6 +6,7 @@ import {
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
 import { useMemo, useState } from "react"
+import { useRouter } from "next/router"
 
 interface FilterButtonPropsType {
   displayText: string
@@ -21,6 +22,7 @@ export default function FilterButton({
   const { selectedTags, setSelectedTags }: SelectFilterTagContextType =
     useSelectedFilterTagContext()
   const [disabled, setDisabled] = useState<boolean>(false)
+  const router = useRouter()
 
   useMemo(() => {
     if (selectedTags.length <= 0 || selectedTags.includes(tagId)) {
@@ -47,6 +49,15 @@ export default function FilterButton({
       removeSelectedTag(tagId)
     } else {
       addSelectedTag(tagId)
+    }
+    
+    // Remove recId from URL when filters change to prevent filter conflicts
+    if (router.query.recId) {
+      const { recId, ...queryWithoutRecId } = router.query
+      router.push({
+        pathname: router.pathname,
+        query: queryWithoutRecId,
+      }, undefined, { shallow: true })
     }
   }
 
