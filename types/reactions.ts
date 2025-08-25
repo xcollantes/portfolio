@@ -1,6 +1,20 @@
 /** Types for emoji reaction system. */
 
-// Add remove emojis here.
+/**
+ * To add or remove emoji types:
+ * 
+ * 1. Update the EmojiId type below to include/exclude the emoji ID
+ * 2. Update the REACTION_EMOJIS array to add/remove the emoji entry
+ * 
+ * The system will automatically:
+ * - Update all API endpoints to handle the new/removed emoji types
+ * - Update the frontend component to show/hide the emojis
+ * - Generate proper empty reactions objects with all current emoji types
+ * 
+ * Example of adding a new emoji:
+ * - Add 'wow' to EmojiId type: 'like' | 'love' | 'funny' | 'thoughtful' | 'wow'
+ * - Add entry to REACTION_EMOJIS: { emoji: '😮', emojiId: 'wow', count: 0, label: 'Wow' }
+ */
 export type EmojiId = 'like' | 'love' | 'funny' | 'thoughtful'
 
 export const REACTION_EMOJIS: EmojiReaction[] = [
