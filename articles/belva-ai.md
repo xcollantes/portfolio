@@ -36,6 +36,16 @@ infrastructure that powered our AI services:
 - Containerized all services using Docker and orchestrated deployments with
   Kubernetes to ensure consistent environments across development and production
 
+<callout
+  type="recommendation"
+  title="AI/ML Engineer at Belva AI"
+  imageurl="/recommendations/profile_pics/victor.webp"
+  personname="Victor Guang Ming Lee, Ph.D."
+  quote="we shipped more than 20 AI agents together, and the process was always smooth thanks to his attention to detail and sense of ownership."
+  url="/recs?recId=victor-lee-phd"
+  urltext="View Testimonial">
+</callout>
+
 ### Database Architecture and Design
 
 I played a key role in the architectural planning and implementation of database
