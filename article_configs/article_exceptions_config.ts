@@ -42,6 +42,11 @@ export const articleDenyList: Record<string, ArticleDenyConfig> = {
     blockSearchIndexing: true,
   },
 
+  "web-opt.md": {
+    requireVerification: true,
+    blockSearchIndexing: true,
+  },
+
   // TEMPLATE FOR NEW ADDITIONS
   // Copy and modify this template when adding new restrictions:
   // "article-name.md": {
