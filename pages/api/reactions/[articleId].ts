@@ -4,6 +4,7 @@ import { doc, getDoc } from 'firebase/firestore'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '../../../lib/firebase'
 import { ArticleReactions, getEmptyReactions } from '../../../types/reactions'
+import { combineReactions } from '../../../utils/reactionUtils'
 
 export default async function handler(
   req: NextApiRequest,
@@ -31,10 +32,7 @@ export default async function handler(
 
         console.log('Reactions data:', data)
 
-        const totalReactions = { ...data.reactions }
-        for (const [emojiId, count] of Object.entries(data.deprecatedReactions)) {
-          totalReactions[emojiId] = (totalReactions[emojiId] || 0) + count
-        }
+        const totalReactions = combineReactions(data)
 
         console.log('Total reactions:', totalReactions)
 

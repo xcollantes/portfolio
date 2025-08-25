@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore'
 import { db } from '../../../lib/firebase'
 import { EmojiId, REACTION_EMOJIS } from '../../../types/reactions'
+import { combineReactions } from '../../../utils/reactionUtils'
 
 export default async function handler(
   req: NextApiRequest,
@@ -78,15 +79,16 @@ export default async function handler(
       lastUpdated: serverTimestamp(),
     })
 
-    // Get updated reactions to return
+    // Get updated reactions using shared utility function
     const updatedSnap = await getDoc(articleReactionsRef)
     const updatedData = updatedSnap.data()
+    const totalReactions = combineReactions(updatedData)
 
-    console.log('Updated reactions:', updatedData)
+    console.log('Updated reactions:', totalReactions)
 
     res.status(200).json({
       success: true,
-      reactions: updatedData?.reactions || {},
+      reactions: totalReactions,
     })
   } catch (error) {
     console.error('Error adding reaction:', error)
