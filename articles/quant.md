@@ -2,8 +2,10 @@
 title: Quantitative Trading System I Engineered
 cardDescription: Built automated trading system running on K3s cluster with real-time alerts.
 cardPageLink: "/articles/quant"
+# imagePath: "/assets/images/quant/ticker-reduce.gif"
+imagePath: "/assets/images/quant/tickersgreen.gif"
 author: Xavier Collantes
-dateWritten: 2025-01-25
+dateWritten: 2025-08-25
 articleType: BLOG
 tagIds:
   - thingsIBuilt
@@ -11,16 +13,23 @@ tagIds:
   - python
   - k3s
   - trading
+  - stocks
+  - finance
+  - interests
   - automation
   - containers
 ---
 
-## Overview
+![]()
 
 Developed an automated trading notification system that monitors market
 conditions and sends real-time alerts for trading opportunities. The system is
 containerized and deployed on a lightweight K3S Kubernetes cluster for
 scalability and reliability.
+
+## Why
+
+## People First
 
 ## Key Features
 
@@ -57,3 +66,12 @@ Using K3S provides several advantages:
 - **Easy Management**: Simple installation and maintenance
 - **Production Ready**: Suitable for edge computing and IoT deployments
 - **Cost Effective**: Runs efficiently on modest hardware resources
+
+## Future Improvements
+
+- Add more trading algorithms
+- Add more notification channels
+- Add more portfolio management features
+- Add more health monitoring and logging
+- Add more deployment benefits
+- Add more deployment benefits
