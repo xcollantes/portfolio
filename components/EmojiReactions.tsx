@@ -78,13 +78,11 @@ export default function EmojiReactions({
   }, [articleId])
 
   const handleReaction = useCallback(async (emojiId: EmojiId): Promise<void> => {
-    // Check if user has already clicked this emoji
-    if (clickedEmojis.has(emojiId)) {
-      return
-    }
-
+    const hasClicked = clickedEmojis.has(emojiId)
+    const endpoint = hasClicked ? '/api/reactions/remove' : '/api/reactions/add'
+    
     try {
-      const response = await fetch('/api/reactions/add', {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,14 +103,18 @@ export default function EmojiReactions({
           lastUpdated: new Date(),
         } : null)
 
-        // Mark this emoji as clicked and save to localStorage
+        // Toggle emoji in clicked set and save to localStorage
         const newClickedEmojis = new Set(clickedEmojis)
-        newClickedEmojis.add(emojiId)
+        if (hasClicked) {
+          newClickedEmojis.delete(emojiId)
+        } else {
+          newClickedEmojis.add(emojiId)
+        }
         setClickedEmojis(newClickedEmojis)
         updateLocalStorage(newClickedEmojis)
       }
     } catch (error) {
-      console.error('Error adding reaction:', error)
+      console.error(`Error ${hasClicked ? 'removing' : 'adding'} reaction:`, error)
     }
   }, [articleId, clickedEmojis, updateLocalStorage])
 
@@ -153,7 +155,7 @@ export default function EmojiReactions({
           return (
             <Tooltip
               key={reactionEmoji.emojiId}
-              title={hasClicked ? `${reactionEmoji.label} (already clicked)` : reactionEmoji.label}
+              title={hasClicked ? `Remove ${reactionEmoji.label} reaction` : `Add ${reactionEmoji.label} reaction`}
             >
               <Button
                 variant="outlined"
@@ -175,11 +177,11 @@ export default function EmojiReactions({
                   color: hasClicked ? 'primary.contrastText' : 'inherit',
                   border: hasClicked ? '1px solid' : 'none',
                   borderColor: hasClicked ? 'primary.main' : 'transparent',
-                  cursor: hasClicked ? 'not-allowed' : 'pointer',
+                  cursor: 'pointer',
                   transition: 'transform 0.2s ease-in-out',
                   '&:hover': {
-                    transform: hasClicked ? 'none' : 'scale(1.05)',
-                    backgroundColor: hasClicked ? 'primary.main' : 'action.hover',
+                    transform: 'scale(1.05)',
+                    backgroundColor: hasClicked ? 'primary.dark' : 'action.hover',
                   },
                 }}
               >
