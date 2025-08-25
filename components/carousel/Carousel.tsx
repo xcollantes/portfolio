@@ -52,7 +52,6 @@ export default function Carousel({
         <Box
           className={emblaCss.embla__viewport}
           ref={emblaRef}
-          sx={{ position: "relative" }}
         >
           <Box className={emblaCss.embla__container}>
             {slidesData.map((slide, index) => (

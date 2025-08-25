@@ -25,7 +25,6 @@ import ExperienceCards from "./ExperienceCards"
 import ExperienceCardsPlaceholder from "./ExperienceCardsPlaceholder"
 import FilterBar from "./FilterBar"
 import HiddenPreviewImage from "./HiddenPreviewImage"
-import { LoadingOverlay } from "./LoadingOverlay"
 import LongPressWrapper from "./LongPressWrapper"
 import { MaterialLink } from "./MaterialLink"
 import RecommendationSlides from "./RecommendationSlides"
@@ -45,7 +44,6 @@ export default function PortfolioLayout({
   const { data: session } = useSession()
   const router: NextRouter = useRouter()
   const theme: Theme = useTheme()
-  const [loading, setLoading] = useState<boolean>(true)
 
   const namePositionContainer = useMediaQuery(theme.breakpoints.down("lg"))
     ? { position: "static" }
@@ -78,12 +76,7 @@ export default function PortfolioLayout({
       })
     }
 
-    setLoading(false)
   }, [router])
-
-  if (loading) {
-    return <LoadingOverlay loading={loading} />
-  }
 
   return (
     <>
@@ -93,8 +86,8 @@ export default function PortfolioLayout({
       <Grid container>
         <Grid xs={12} lg={5} sx={{ display: "flex" }}>
           <Box sx={{ m: 4, ...namePositionContainer }}>
-            <Box sx={{ 
-              ...namePositionChild, 
+            <Box sx={{
+              ...namePositionChild,
               [theme.breakpoints.up("lg")]: { right: -500 },
               [theme.breakpoints.down("lg")]: { right: 0 }
             }}>
