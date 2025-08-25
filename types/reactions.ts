@@ -11,6 +11,10 @@
  * - Update the frontend component to show/hide the emojis
  * - Generate proper empty reactions objects with all current emoji types
  * 
+ * Database behavior:
+ * - Removed emojis: Data remains in database but won't display
+ * - Added emojis: Show as zero count until first reaction is added
+ * 
  * Example of adding a new emoji:
  * - Add 'wow' to EmojiId type: 'like' | 'love' | 'funny' | 'thoughtful' | 'wow'
  * - Add entry to REACTION_EMOJIS: { emoji: '😮', emojiId: 'wow', count: 0, label: 'Wow' }
