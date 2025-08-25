@@ -61,6 +61,12 @@ export default async function handler(
 
       await setDoc(articleReactionsRef, {
         articleId,
+        deprecatedReactions: {
+          like: 0,
+          love: 0,
+          funny: 0,
+          thoughtful: 0,
+        },
         reactions: initialReactions,
         lastUpdated: serverTimestamp(),
       })
