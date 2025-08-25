@@ -7,12 +7,10 @@ import { ArticleReactions, EmojiId, REACTION_EMOJIS } from '../types/reactions'
 
 interface EmojiReactionsProps {
   articleId: string
-  showInBlogMode?: boolean
 }
 
 export default function EmojiReactions({
   articleId,
-  showInBlogMode = true
 }: EmojiReactionsProps) {
   // Don't render if Firebase is not configured
   if (!db) {
@@ -20,7 +18,7 @@ export default function EmojiReactions({
   }
 
   const [reactions, setReactions] = useState<ArticleReactions | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState<boolean>(true)
   const [clickedEmojis, setClickedEmojis] = useState<Set<EmojiId>>(new Set())
 
   useEffect(() => {
@@ -83,7 +81,7 @@ export default function EmojiReactions({
         const newClickedEmojis = new Set(clickedEmojis)
         newClickedEmojis.add(emojiId)
         setClickedEmojis(newClickedEmojis)
-        
+
         // Update localStorage with new structure
         const savedReactions = localStorage.getItem('article-reactions')
         const reactionsData = savedReactions ? JSON.parse(savedReactions) : {}
@@ -93,11 +91,6 @@ export default function EmojiReactions({
     } catch (error) {
       console.error('Error adding reaction:', error)
     }
-  }
-
-  // Don't show in portfolio mode if showInBlogMode is false
-  if (!showInBlogMode) {
-    return null
   }
 
   if (loading) {
@@ -121,9 +114,6 @@ export default function EmojiReactions({
       </Box>
     )
   }
-
-  // Calculate total reactions from the reactions data
-  const totalReactions = reactions ? Object.values(reactions.reactions).reduce((sum, count) => sum + count, 0) : 0
 
   return (
     <Box sx={{ mt: 3, mb: 2 }}>
@@ -187,15 +177,6 @@ export default function EmojiReactions({
         })}
       </Box>
 
-      {totalReactions > 0 && (
-        <Typography
-          variant="caption"
-          color="text.secondary"
-          sx={{ mt: 1, display: 'block' }}
-        >
-          {totalReactions} {totalReactions === 1 ? 'reaction' : 'reactions'}
-        </Typography>
-      )}
     </Box>
   )
 }

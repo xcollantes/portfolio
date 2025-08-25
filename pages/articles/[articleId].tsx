@@ -231,6 +231,8 @@ export default function article({
               )}
             </Box>
 
+            <EmojiReactions articleId={articleId as string} />
+
             <ShareButton
               shareUrl={`https://xaviercollantes.dev/articles/${articleId}`}
               title={metadata.title}
@@ -251,17 +253,13 @@ export default function article({
               {markdownBody}
             </ReactMarkdown>
 
-            {/* Emoji Reactions */}
-            <EmojiReactions 
-              articleId={articleId as string}
-              showInBlogMode={true}
-            />
-            
-            <RelatedArticles 
+            <EmojiReactions articleId={articleId as string} />
+
+            <RelatedArticles
               relatedArticles={relatedArticles}
               commonTags={commonTags}
             />
-            
+
             <Footer />
           </Container>
         </Box>
