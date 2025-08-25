@@ -18,12 +18,14 @@ interface NewsletterSignupProps {
   variant?: "compact" | "full"
   title?: string
   subtitle?: string
+  onSubscriptionSuccess?: () => void
 }
 
 export default function NewsletterSignup({
   variant = "full",
-  title = "Stay Updated",
-  subtitle = "Get the latest articles and insights delivered to your inbox."
+  title = "Get updates on my latest articles",
+  subtitle = "",
+  onSubscriptionSuccess
 }: NewsletterSignupProps) {
   const [email, setEmail] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
@@ -47,7 +49,7 @@ export default function NewsletterSignup({
       toast.error("Please enter a valid email address")
       return
     }
-    
+
     setLoading(true)
 
     try {
@@ -65,6 +67,9 @@ export default function NewsletterSignup({
         setSuccess(true)
         setEmail("")
         toast.success("Successfully subscribed to newsletter!")
+
+        // Call success callback if provided
+        onSubscriptionSuccess?.()
 
         // Reset success message after 5 seconds
         setTimeout(() => {
@@ -99,7 +104,7 @@ export default function NewsletterSignup({
             Successfully Subscribed!
           </Typography>
           <Typography variant="body2">
-            Thank you for subscribing to our newsletter. You'll receive updates in your inbox.
+            Thank you for subscribing to my newsletter. You'll receive updates in your inbox.
           </Typography>
         </Stack>
       </Paper>
@@ -125,7 +130,7 @@ export default function NewsletterSignup({
             <TextField
               fullWidth
               type="email"
-              label="Email Address"
+              label=""
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               InputProps={{
@@ -133,7 +138,7 @@ export default function NewsletterSignup({
                   <EmailIcon sx={{ mr: 1, color: "action.active" }} />
                 ),
               }}
-              placeholder="your.email@example.com"
+              placeholder="email@example.com"
               disabled={loading}
               autoComplete="email"
             />
@@ -149,7 +154,7 @@ export default function NewsletterSignup({
                 fontWeight: "bold",
               }}
             >
-              {loading ? "Subscribing..." : "Subscribe to Newsletter"}
+              {loading ? "Subscribing..." : "Free newsletter"}
             </Button>
           </Stack>
         </Box>
