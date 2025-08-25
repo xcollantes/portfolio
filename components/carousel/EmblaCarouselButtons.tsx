@@ -9,11 +9,20 @@ import { Box } from "@mui/material"
 export function PrevButton(props) {
   return (
     <Box
-      sx={{ display: "inline-block" }}
-      className={`${emblaCss.embla__prev} ${emblaCss.embla__button} ${emblaCss.embla__button}--prev`}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+        color: "#666",
+        transition: "color 0.2s ease",
+        "&:hover": {
+          color: "#2196F3"
+        }
+      }}
       {...props}
     >
-      <ArrowBackIosNewIcon />
+      <ArrowBackIosNewIcon fontSize="medium" />
     </Box>
   )
 }
@@ -21,11 +30,20 @@ export function PrevButton(props) {
 export function NextButton(props) {
   return (
     <Box
-      sx={{ display: "inline-block" }}
-      className={`${emblaCss.embla__next} ${emblaCss.embla__button} ${emblaCss.embla__button}--prev`}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+        color: "#666",
+        transition: "color 0.2s ease",
+        "&:hover": {
+          color: "#2196F3"
+        }
+      }}
       {...props}
     >
-      <ArrowForwardIosIcon />
+      <ArrowForwardIosIcon fontSize="medium" />
     </Box>
   )
 }
