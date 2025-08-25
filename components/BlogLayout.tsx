@@ -26,7 +26,7 @@ import {
   useSelectedFilterTagContext,
 } from "../contexts/selectFilterTag"
 
-const BRICK_LAYOUT = process.env.NEXT_PUBLIC_BRICK_LAYOUT === "true"
+const BRICK_LAYOUT = process.env.NEXT_PUBLIC_BRICK_LAYOUT === "true" || false
 
 interface BlogLayoutProps {
   metadataProps: MetadataType[]

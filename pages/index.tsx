@@ -12,6 +12,8 @@ import BlogLayout from "../components/BlogLayout"
 import PortfolioLayout from "../components/PortfolioLayout"
 import NewsletterModal from "../components/NewsletterModal"
 
+const SHOW_NEWSLETTER_PROMPT = process.env.NEXT_PUBLIC_NEWSLETTER_PROMPT === "true" || false
+
 /**
  * Runs at build time to statically generate preview cards.
  */
@@ -47,7 +49,7 @@ export default function Page(props: IndexPropTypes) {
       {isBlogOnlyMode() ? <BlogLayout {...props} /> : <PortfolioLayout {...props} />}
 
       {/* Newsletter signup modal. Shows up after a time. Both portfolio and blog. */}
-      <NewsletterModal autoShow={true} delaySeconds={14} />
+      {SHOW_NEWSLETTER_PROMPT && <NewsletterModal autoShow={true} delaySeconds={14} />}
     </>
   )
 }
