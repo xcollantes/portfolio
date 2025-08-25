@@ -65,7 +65,7 @@ export default function Carousel({
             sx={{
               position: "absolute",
               left: "2px",
-              top: "20%",
+              top: "40%",
               transform: "translateY(-50%)",
               zIndex: 2,
               width: "48px",
@@ -87,7 +87,7 @@ export default function Carousel({
             sx={{
               position: "absolute",
               right: "2px",
-              top: "20%",
+              top: "40%",
               transform: "translateY(-50%)",
               zIndex: 2,
               width: "48px",
