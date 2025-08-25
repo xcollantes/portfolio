@@ -1,6 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { doc, updateDoc, arrayUnion, serverTimestamp } from "firebase/firestore"
+import { Resend } from "resend"
 import { db } from "../../../lib/firebase"
+
+const resend = new Resend(process.env.RESEND_API_KEY)
+const email = process.env.EMAIL_TO_NOTIFY
 
 interface NewsletterSubscriptionRequest {
   email: string
@@ -56,6 +60,42 @@ export default async function handler(
       lastUpdated: serverTimestamp()
     })
 
+    // Send notification email to you about the new signup
+    try {
+      await resend.emails.send({
+        from: 'Portfolio Newsletter <newsletter@xaviercollantes.dev>',
+        to: [email],
+        subject: '🎉 New Newsletter Signup!',
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #2563eb;">New Newsletter Subscription</h2>
+            <p>Someone just signed up for your newsletter!</p>
+
+            <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb;">
+              <p><strong>Email:</strong> ${trimmedEmail}</p>
+              <p><strong>Time:</strong> ${new Date().toLocaleString('en-US', {
+                timeZone: 'America/New_York',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZoneName: 'short'
+              })}</p>
+              <p><strong>Source:</strong> Website signup form</p>
+            </div>
+
+            <p style="margin-top: 20px; color: #64748b; font-size: 14px;">
+              This notification was sent automatically from your portfolio newsletter system.
+            </p>
+          </div>
+        `,
+      })
+    } catch (emailError) {
+      // Log email error but don't fail the subscription
+      console.warn('Failed to send notification email:', emailError)
+    }
 
     return res.status(200).json({
       success: true,
