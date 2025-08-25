@@ -26,6 +26,7 @@ import "../css/global.css"
 import { base } from "../themes/theme"
 import { getSiteConfig } from "../config/siteConfig"
 import Script from "next/script"
+import { useUserMetrics } from "../hooks/useUserMetrics"
 
 const GOOGLE_ANALYTICS_ID: string = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || '';
 
@@ -41,6 +42,10 @@ export default function App({
   const isHomePage = router.pathname === "/"
   const [loading, setLoading] = useState<boolean>(false)
   const siteConfig = getSiteConfig()
+
+  // Track user visits with geolocation data
+  // useUserMetrics({ enabled: process.env.NODE_ENV === 'production' })
+  useUserMetrics({ enabled: true })
 
   // Track UTM parameters on app initialization and route changes
   useEffect(() => {
