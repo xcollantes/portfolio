@@ -1,239 +1,102 @@
 /**
- * Article Exception Configuration System
+ * Article Deny List Configuration System
  *
- * This file manages articles that are exceptions to the normal access control rules.
- * By default, all articles require human verification and are not indexed by search engines.
- * This system allows specific articles to bypass these restrictions.
- *
- * EXCEPTION CRITERIA:
- * Only add articles here that meet ALL of the following criteria:
- * 1. Content is suitable for public consumption (no sensitive information)
- * 2. Content adds value for public discovery (educational, portfolio, etc.)
- * 3. Content represents professional work or educational material
- * 4. Content does not contain personal or private information
- *
- * WHEN TO ADD EXCEPTIONS:
- * ✅ Portfolio pieces showcasing professional work
- * ✅ Educational tutorials and technical guides
- * ✅ Public-facing work experiences and achievements
- * ✅ Blog posts intended for broader audience reach
- *
- * WHEN NOT TO ADD EXCEPTIONS:
- * ❌ Personal stories or experiences
- * ❌ Content with sensitive company information
- * ❌ Experimental or draft content
- * ❌ Content meant only for specific individuals
- *
- * SECURITY CONSIDERATIONS:
- * - Exceptions bypass all access controls - content becomes fully public
- * - Search engines will index and cache the content permanently
- * - Content will appear in search results and social media previews
- * - Consider data privacy implications before adding exceptions
- *
- * PROCESS FOR ADDING EXCEPTIONS:
- * 1. Ensure article meets all exception criteria above
- * 2. Add entry to articleExceptions object with clear reason
- * 3. Set both bypassVerification and allowSearchIndexing appropriately
- * 4. Test the article accessibility in development
- * 5. Monitor search engine indexing after deployment
+ * This file manages articles that should be restricted from public access and search indexing.
+ * By default, all articles bypass human verification and are indexed by search engines.
+ * This system allows specific articles to require verification or block search indexing.
  */
 
-export interface ArticleExceptionConfig {
-  /** Whether this article should bypass human verification. */
-  bypassVerification: boolean
-  /** Whether this article should be indexed by search engines (remove noindex). */
-  allowSearchIndexing: boolean
-  /** Optional reason for the exception (for documentation and audit purposes). */
+export interface ArticleDenyConfig {
+  /** Whether this article should require human verification. */
+  requireVerification: boolean
+  /** Whether this article should be blocked from search engine indexing (add noindex). */
+  blockSearchIndexing: boolean
+  /** Optional reason for the restriction (for documentation and audit purposes). */
   reason?: string
 }
 
 /**
- * Configuration object mapping article filenames to their exception settings.
+ * Configuration object mapping article filenames to their restriction settings.
+ * Articles NOT in this list will be publicly accessible and indexed by search engines.
  *
  * NAMING CONVENTION: Use the full filename including .md extension
  * CATEGORIZATION: Group similar types of content together with comments
- * REASONING: Always provide a clear reason for each exception
+ * REASONING: Always provide a clear reason for each restriction
  */
-export const articleExceptions: Record<string, ArticleExceptionConfig> = {
-  // PORTFOLIO AND WORK EXPERIENCES
-  // These showcase professional work and should be discoverable for career purposes.
-  "portfolio.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Portfolio overview showcases professional work"
+export const articleDenyList: Record<string, ArticleDenyConfig> = {
+
+  "amazon-price.md": {
+    requireVerification: true,
+    blockSearchIndexing: true,
+    reason: "Personal project with potential sensitive pricing information"
   },
 
-  "rx-blockchain.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Professional work experience suitable for public discovery"
+  "aws-gpu-selection-guide.md": {
+    requireVerification: true,
+    blockSearchIndexing: true,
+    reason: "Internal technical guide not ready for public consumption"
   },
 
-  "faxion-ai.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Professional work experience suitable for public discovery"
-  },
-
-  // EDUCATIONAL AND TECHNICAL CONTENT
-  // These provide value to the broader technical community.
-  "measuring-tokens.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about LLM tokens that benefits the technical community"
-  },
-
-  "llms-for-non-techies.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content that benefits the broader community"
-  },
-
-  "fastapi.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Technical tutorial with educational value for developers"
-  },
-
-  "bulldog-band.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational story about music and technology integration"
-  },
-
-  "web-opt.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Technical guide for web optimization best practices"
-  },
-
-  "llm-leaderboards.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Public benchmark performance for LLM models"
-  },
-
-  "rag-langchain.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about RAG implementation with LangChain"
-  },
-
-  "history-ai.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Public history of AI development"
-  },
-
-  "claude-cheatsheet.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about Claude Code that benefits the developer community"
-  },
-
-  "git-worktree.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about Git Worktrees and Claude Code that benefits the developer community"
-  },
-
-  "amplitude.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Technical guide for Amplitude analytics integration that benefits the developer community"
-  },
-
-  "vectorstores.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about vector storage solutions that benefits the developer community"
-  },
-
-  "qdrant_awsvector.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content comparing vector database solutions that benefits the developer community"
-  },
-
-  "mcp.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about MCP (Model Context Protocol) that benefits the developer community"
-  },
-
-  "mcps-connect.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about using MCP (Model Context Protocol) that benefits the developer community"
-  },
-
-  "mcp-servers.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about popular MCP servers that benefits the developer community"
-  },
-
-  "mcp-server-built.md": {
-    bypassVerification: true,
-    allowSearchIndexing: true,
-    reason: "Educational content about building MCP servers that benefits the developer community"
+  "google.md": {
+    requireVerification: true,
+    blockSearchIndexing: true,
   },
 
   // TEMPLATE FOR NEW ADDITIONS
-  // Copy and modify this template when adding new exceptions:
+  // Copy and modify this template when adding new restrictions:
   // "article-name.md": {
-  //   bypassVerification: true,
-  //   allowSearchIndexing: true,
-  //   reason: "Clear explanation of why this article should be public"
+  //   requireVerification: true,
+  //   blockSearchIndexing: true,
+  //   reason: "Clear explanation of why this article should be restricted"
   // },
 }
 
 /**
- * Helper Functions for Exception Management
+ * Helper Functions for Deny List Management
  *
- * These functions provide a clean API for checking article exception status
+ * These functions provide a clean API for checking article restriction status
  * throughout the application. They handle the filename conversion and provide
- * safe defaults when articles are not found in the exceptions list.
+ * safe defaults when articles are not found in the deny list.
  */
 
 /**
  * Check if an article should bypass human verification.
  *
  * @param articleId - The article identifier (without .md extension)
- * @returns true if the article should skip verification, false otherwise
+ * @returns true if the article should skip verification (default), false if it requires verification
  */
 export function shouldBypassVerification(articleId: string): boolean {
   const fileName = `${articleId}.md`
-  return articleExceptions[fileName]?.bypassVerification || false
+  return !articleDenyList[fileName]?.requireVerification
 }
 
 /**
  * Check if an article should be indexed by search engines.
  *
  * @param articleId - The article identifier (without .md extension)
- * @returns true if the article should be indexed, false otherwise
+ * @returns true if the article should be indexed (default), false if it should be blocked
  */
 export function shouldAllowSearchIndexing(articleId: string): boolean {
   const fileName = `${articleId}.md`
-  return articleExceptions[fileName]?.allowSearchIndexing || false
+  return !articleDenyList[fileName]?.blockSearchIndexing
 }
 
 /**
- * Get all articles that are configured as exceptions.
+ * Get all articles that are configured with restrictions.
  *
- * @returns Array of article filenames (including .md extension) that have exceptions
+ * @returns Array of article filenames (including .md extension) that have restrictions
  */
-export function getExceptionArticles(): string[] {
-  return Object.keys(articleExceptions)
+export function getRestrictedArticles(): string[] {
+  return Object.keys(articleDenyList)
 }
 
 /**
- * Get the documented reason for an article exception.
+ * Get the documented reason for an article restriction.
  *
  * @param articleId - The article identifier (without .md extension)
  * @returns The reason string if available, undefined otherwise
  */
-export function getExceptionReason(articleId: string): string | undefined {
+export function getRestrictionReason(articleId: string): string | undefined {
   const fileName = `${articleId}.md`
-  return articleExceptions[fileName]?.reason
+  return articleDenyList[fileName]?.reason
 }
