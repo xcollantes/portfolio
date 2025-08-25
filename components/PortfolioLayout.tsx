@@ -93,7 +93,11 @@ export default function PortfolioLayout({
       <Grid container>
         <Grid xs={12} lg={5} sx={{ display: "flex" }}>
           <Box sx={{ m: 4, ...namePositionContainer }}>
-            <Box sx={{ ...namePositionChild, right: -500 }}>
+            <Box sx={{ 
+              ...namePositionChild, 
+              [theme.breakpoints.up("lg")]: { right: -500 },
+              [theme.breakpoints.down("lg")]: { right: 0 }
+            }}>
               <Box
                 sx={{
                   [theme.breakpoints.down("sm")]: {
