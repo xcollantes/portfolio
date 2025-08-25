@@ -35,8 +35,6 @@ import RelatedArticles from "../../components/RelatedArticles"
 import ShareButton from "../../components/ShareButton"
 import TableOfContents from "../../components/TableOfContents"
 
-import { useRouter } from "next/router"
-
 /**
  * Runs at build time to generate possible article paths.
  *
@@ -67,6 +65,7 @@ interface ArticlePageProps {
   metadata: MetadataType  // Parsed metadata object instead of string
   relatedArticles: RelatedArticleType[]
   commonTags: string[]
+  articleId: string
 }
 
 export async function getStaticProps(
@@ -93,6 +92,7 @@ export async function getStaticProps(
     metadata: currentMetadata,
     relatedArticles,
     commonTags,
+    articleId: params.articleId,
   }
 
   return { props: articleProps }
@@ -105,10 +105,9 @@ export default function article({
   metadata,
   relatedArticles,
   commonTags,
+  articleId,
 }: ArticlePageProps) {
   const theme: Theme = useTheme()
-  const router = useRouter()
-  const { articleId } = router.query
 
   let dateLastUpdatedL10n: string = ""
   if (metadata.dateLastUpdated) {
