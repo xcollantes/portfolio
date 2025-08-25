@@ -1,7 +1,7 @@
 /** API endpoint for logging user visits with geolocation data. */
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import { doc, setDoc, getDoc, serverTimestamp, increment, arrayUnion } from 'firebase/firestore'
+import { doc, setDoc, getDoc, serverTimestamp, increment, arrayUnion, collection, addDoc } from 'firebase/firestore'
 import { db } from '../../../lib/firebase'
 
 interface IpWhoResponse {
@@ -63,6 +63,14 @@ interface UserMetrics {
     org: string
     isp: string
   }
+}
+
+interface PageVisit {
+  ip: string
+  pagePath: string
+  timestamp: any
+  userAgent: string
+  referer?: string
 }
 
 export default async function handler(
@@ -155,6 +163,21 @@ export default async function handler(
 
     await setDoc(userMetricsRef, fullUserMetrics, { merge: true })
     console.log('Updated/created visit record for IP:', ip, 'with path:', currentPath)
+
+    // Create individual page visit record (append-only)
+    const pageVisit: PageVisit = {
+      ip: ip,
+      pagePath: currentPath,
+      timestamp: serverTimestamp(),
+      userAgent: req.headers['user-agent'] || 'unknown',
+      referer: req.headers.referer,
+    }
+
+    // Add to pageVisits collection - organized by IP address as subcollections
+    const pageVisitsRef = collection(db, 'pageVisits', ipDocId, 'visits')
+    await addDoc(pageVisitsRef, pageVisit)
+    
+    console.log('Added page visit record for IP:', ip, 'path:', currentPath)
 
     res.status(200).json({
       success: true,
