@@ -7,6 +7,7 @@ const contentSecurityPolicy = `
   img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://*.doubleclick.net https://*.googleapis.com;
   font-src 'self' https://*.googleapis.com;
   style-src 'self' 'unsafe-inline' https://*.googleapis.com;
+  frame-src 'self' https://*.youtube.com https://*.youtube-nocookie.com https://*.giphy.com;
 `
 
 const securityHeaders = [
