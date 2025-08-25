@@ -34,6 +34,7 @@ export const orderedIncludeBlogs: string[] = [
   "bulldog-band.md",
   "mcps-connect.md",
   "ai-ide.md",
+  "rpi-camera.md",
   "measuring-tokens.md",
   "amplitude.md",
 
@@ -72,6 +73,7 @@ export const orderedIncludeBlogSite: string[] = [
   "mcp.md",
   "amplitude.md",
   "belva-ai.md",
+  "rpi-camera.md",
   "gonzaga-speaker-infosys.md",
   "bulldog-band.md",
   "portfolio.md",
