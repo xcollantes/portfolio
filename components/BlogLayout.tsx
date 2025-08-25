@@ -17,6 +17,7 @@ import AuthButton from "./AuthButton"
 import { isUserSignedIn } from "./AuthUtils"
 import BlogNavbar from "./BlogNavbar"
 import ExperienceCards from "./ExperienceCards"
+import BrickLayoutCards from "./BrickLayoutCards"
 import ExperienceCardsPlaceholder from "./ExperienceCardsPlaceholder"
 import FilterBar from "./FilterBar"
 import HiddenPreviewImage from "./HiddenPreviewImage"
@@ -76,9 +77,8 @@ export default function BlogLayout({ metadataProps }: BlogLayoutProps) {
           {/* Articles Section */}
           <Grid xs={12}>
             {isUserSignedIn(session) ? (
-              <ExperienceCards
+              <BrickLayoutCards
                 metadata={metadataProps}
-                useBackgroundImages={true}
               />
             ) : (
               <>
