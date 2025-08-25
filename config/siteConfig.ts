@@ -34,7 +34,7 @@ export function getSiteConfig(): SiteConfig {
       ? 'https://xaviercollantes.dev'
       : 'https://blog.xaviercollantes.dev',
     description: isPortfolio
-      ? 'Personal portfolio and blog of Xavier Collantes - Software Engineer & AI Enthusiast'
+      ? 'Professional portfolio and blog of Software Engineer Xavier Collantes'
       : 'Technical blog by Xavier Collantes covering AI, software engineering, and technology insights'
   }
 }
