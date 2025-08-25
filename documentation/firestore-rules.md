@@ -20,6 +20,15 @@ service cloud.firestore {
       allow read: if false;
     }
 
+    // Newsletter signups - allow only appending to emails array
+    match /newsletter/signups {
+      // Allow read for duplicate checking only
+      allow read: if true;
+      // Allow write only if appending to emails array
+      allow write: if isValidNewsletterEmailAppend();
+      allow create: if isValidNewsletterSignupCreate();
+    }
+
     // Validation function for reaction create
     function isValidReactionCreate() {
       let data = request.resource.data;
@@ -36,6 +45,32 @@ service cloud.firestore {
 
       // Must ONLY have required fields.
       return data.keys().hasAll(['reactions', 'lastUpdated'])
+    }
+
+    // Validation function for newsletter signups document operations
+    function isValidNewsletterSignupOperation() {
+      let data = request.resource.data;
+
+      // Must have emails array and lastUpdated timestamp
+      return data.keys().hasAll(['emails', 'lastUpdated'])
+        // Emails must be an array
+        && data.emails is list
+        // LastUpdated must be a timestamp
+        && data.lastUpdated is timestamp
+    }
+
+    // Validation function for newsletter signups document creation
+    function isValidNewsletterSignupCreate() {
+      let data = request.resource.data;
+
+      // Must have required fields for document creation
+      return data.keys().hasAll(['emails', 'createdAt', 'lastUpdated'])
+        // Emails must be an array
+        && data.emails is list
+        // CreatedAt must be a timestamp
+        && data.createdAt is timestamp
+        // LastUpdated must be a timestamp
+        && data.lastUpdated is timestamp
     }
   }
 }
