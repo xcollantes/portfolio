@@ -6,12 +6,16 @@ import { Box, Button, Theme, Typography, useMediaQuery, useTheme } from "@mui/ma
 import Grid from "@mui/material/Unstable_Grid2"
 import { useSession } from "next-auth/react"
 import { NextRouter, useRouter } from "next/router"
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import {
   FilterDataConfigType,
   filterDataConfig,
 } from "../article_configs/filters_config"
 import { MetadataType } from "../article_configs/process_articles"
+import {
+  SelectFilterTagContextType,
+  useSelectedFilterTagContext,
+} from "../contexts/selectFilterTag"
 import { RecommendationRawType } from "../recommendation_configs/RecommendationTypes"
 import AuthButton from "./AuthButton"
 import { isUserSignedIn } from "./AuthUtils"
@@ -21,14 +25,11 @@ import ExperienceCards from "./ExperienceCards"
 import ExperienceCardsPlaceholder from "./ExperienceCardsPlaceholder"
 import FilterBar from "./FilterBar"
 import HiddenPreviewImage from "./HiddenPreviewImage"
+import { LoadingOverlay } from "./LoadingOverlay"
 import LongPressWrapper from "./LongPressWrapper"
 import { MaterialLink } from "./MaterialLink"
 import RecommendationSlides from "./RecommendationSlides"
 import SocialMedia from "./SocialMedia"
-import {
-  SelectFilterTagContextType,
-  useSelectedFilterTagContext,
-} from "../contexts/selectFilterTag"
 
 const oneLiner: string = process.env.NEXT_PUBLIC_ONE_LINER || ""
 
@@ -44,6 +45,7 @@ export default function PortfolioLayout({
   const { data: session } = useSession()
   const router: NextRouter = useRouter()
   const theme: Theme = useTheme()
+  const [loading, setLoading] = useState<boolean>(true)
 
   const namePositionContainer = useMediaQuery(theme.breakpoints.down(1290))
     ? { position: "static" }
@@ -75,7 +77,13 @@ export default function PortfolioLayout({
         setSelectedTags([...selectedTags, ...cleanTags])
       })
     }
+
+    setLoading(false)
   }, [router])
+
+  if (loading) {
+    return <LoadingOverlay loading={loading} />
+  }
 
   return (
     <>
@@ -208,6 +216,7 @@ export default function PortfolioLayout({
           )}
         </Grid>
       </Grid>
+
     </>
   )
 }

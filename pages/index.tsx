@@ -10,6 +10,7 @@ import { RecommendationRawType } from "../recommendation_configs/RecommendationT
 import { getSiteConfig, isBlogOnlyMode } from "../config/siteConfig"
 import BlogLayout from "../components/BlogLayout"
 import PortfolioLayout from "../components/PortfolioLayout"
+import NewsletterModal from "../components/NewsletterModal"
 
 /**
  * Runs at build time to statically generate preview cards.
@@ -41,9 +42,12 @@ interface IndexPropTypes {
 
 export default function Page(props: IndexPropTypes) {
   // Render different layouts based on site mode
-  if (isBlogOnlyMode()) {
-    return <BlogLayout {...props} />
-  }
-  
-  return <PortfolioLayout {...props} />
+  return (
+    <>
+      {isBlogOnlyMode() ? <BlogLayout {...props} /> : <PortfolioLayout {...props} />}
+
+      {/* Newsletter signup modal. Shows up after a time. Both portfolio and blog. */}
+      <NewsletterModal autoShow={true} delaySeconds={14} />
+    </>
+  )
 }
