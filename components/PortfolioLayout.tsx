@@ -166,7 +166,7 @@ export default function PortfolioLayout({
                         },
                       }}
                     >
-                      View All Recommendations
+                      View recommendations
                     </Button>
                   </Box>
                 </Box>
