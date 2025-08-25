@@ -20,10 +20,12 @@ service cloud.firestore {
       allow read: if false;
     }
 
-    // Newsletter signups - allow read/write for signups document only
+    // Newsletter signups - allow only appending to emails array
     match /newsletter/signups {
-      // Allow read and write operations on the signups document
-      allow read, write: if isValidNewsletterSignupOperation();
+      // Allow read for duplicate checking only
+      allow read: if true;
+      // Allow write only if appending to emails array
+      allow write: if isValidNewsletterEmailAppend();
       allow create: if isValidNewsletterSignupCreate();
     }
 
