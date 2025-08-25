@@ -13,6 +13,13 @@ service cloud.firestore {
       allow create: if isValidReactionCreate();
     }
 
+    // User metrics - allow write/create only, no public reads
+    match /userMetrics/{document=**} {
+      // Allow writes and creates but no public reads
+      allow write, create: if true;
+      allow read: if false;
+    }
+
     // Validation function for reaction create
     function isValidReactionCreate() {
       let data = request.resource.data;
