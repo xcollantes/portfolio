@@ -3,7 +3,7 @@
 import { doc, getDoc } from 'firebase/firestore'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '../../../lib/firebase'
-import { ArticleReactions, FirestoreReactions, getEmptyReactions } from '../../../types/reactions'
+import { ArticleReactions, getEmptyReactions } from '../../../types/reactions'
 
 export default async function handler(
   req: NextApiRequest,
@@ -31,10 +31,16 @@ export default async function handler(
 
         console.log('Reactions data:', data)
 
-        const reactions: FirestoreReactions = {
+        const totalReactions = { ...data.reactions }
+        for (const [emojiId, count] of Object.entries(data.deprecatedReactions)) {
+          totalReactions[emojiId] = (totalReactions[emojiId] || 0) + count
+        }
+
+        console.log('Total reactions:', totalReactions)
+
+        const reactions: ArticleReactions = {
           articleId,
-          reactions: data.reactions || {},
-          deprecatedReactions: data.deprecatedReactions || {},
+          reactions: totalReactions || {},
           lastUpdated: data.lastUpdated?.toDate() || new Date(),
         }
 
