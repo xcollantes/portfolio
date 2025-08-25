@@ -180,7 +180,7 @@ export default function App({
             />
             <meta
               name="keywords"
-              content="resume,consulting,ai,llm,google,portfolio,career,projects,xavier,collantes,blog,technical,software,engineering"
+              content="xavier,collantes,resume,consulting,ai,llm,google,portfolio,career,projects,blog,technical,software,engineering"
             />
 
             {/* Open Graph meta tags for social sharing */}
