@@ -131,6 +131,7 @@ export default function PortfolioLayout({
                   position: "relative",
                   display: "flex",
                   mb: 70,
+                  pb: 12,
                 }}
               >
                 <Box
