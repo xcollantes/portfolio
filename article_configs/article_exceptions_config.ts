@@ -25,6 +25,11 @@ export interface ArticleDenyConfig {
  */
 export const articleDenyList: Record<string, ArticleDenyConfig> = {
 
+  "anderson-podcast.md": {
+    requireVerification: true,
+    blockSearchIndexing: true,
+  },
+
   "amazon-price.md": {
     requireVerification: true,
     blockSearchIndexing: true,
@@ -35,6 +40,12 @@ export const articleDenyList: Record<string, ArticleDenyConfig> = {
     requireVerification: true,
     blockSearchIndexing: true,
     reason: "Internal technical guide not ready for public consumption"
+  },
+
+  "easter-eggs.md": {
+    requireVerification: true,
+    blockSearchIndexing: true,
+    reason: "Personal project with potential sensitive pricing information"
   },
 
   "google.md": {
