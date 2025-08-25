@@ -19,7 +19,7 @@ export function useUserMetrics(options: UseUserMetricsOptions = {}) {
     }
 
     const currentPath = pagePath || router.asPath
-    
+
     // Don't log the same path multiple times per session
     if (loggedPaths.current.has(currentPath)) {
       return
@@ -38,7 +38,6 @@ export function useUserMetrics(options: UseUserMetricsOptions = {}) {
 
       if (response.ok) {
         const data = await response.json()
-        console.log('Visit logged:', data.location, 'for path:', currentPath)
         loggedPaths.current.add(currentPath)
       } else {
         console.warn('Failed to log visit:', response.statusText)
