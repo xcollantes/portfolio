@@ -36,9 +36,8 @@ hoped for green arrows (I still do today).
 Over time, I developed my own heuristics in trading stocks. I looked for
 certain qualities and metrics in companies and used my savings to trade. After
 years of experience as a Software Engineer, I decided to build my own trading
-platform.
-
-
+platform. In the end, I would use technical knowledge I picked up at Google,
+J.P. Morgan, and the startup I worked at to build a trading platform.
 
 ## Why
 
@@ -136,9 +135,15 @@ inspirations include:
 
 After taking dozens of pages of notes from my new mentors, system design began.
 
+I mapped out the evolution of the system: starting from a single server watching
+price action, sending alerts to my phone, to a distributed system running on
+Kubernetes executing trades on a trading API.
+
 ### Real-time Market Monitoring
 
 Need a source for low-latency market data.
+
+
 
 ## Architecture and Infrastructural Requirements
 
