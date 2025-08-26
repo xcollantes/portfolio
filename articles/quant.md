@@ -29,12 +29,16 @@ would watch Jim Cramer on CNBC. At the time I did not understand what colors
 meant but I understood my dad's mood was good when the arrows were green, so I
 hoped for green arrows (I still do today).
 
+![Jim Cramer {priority} {h: 400}](/assets/images/quant/madmoney.webp)
+
+###### Jim Cramer's "Mad Money", looking back I'm really not a fan 😂
+
 Over time, I developed my own heuristics in trading stocks. I looked for
 certain qualities and metrics in companies and used my savings to trade. After
 years of experience as a Software Engineer, I decided to build my own trading
 platform.
 
-![Jim Cramer {priority}]()
+
 
 ## Why
 
