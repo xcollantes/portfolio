@@ -21,6 +21,9 @@ export const shortUrlMap: Record<string, string> = {
   "a": "rag-langchain",
   "b": "choosing-embeddings",
   "c": "vectorstores",
+
+  "11": "rpi-camera",
+
   // "6": "fastapi",
   // "7": "claude-cheatsheet",
   // "8": "git-worktree",
