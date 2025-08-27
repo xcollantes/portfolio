@@ -23,8 +23,8 @@ export const shortUrlMap: Record<string, string> = {
   "c": "vectorstores",
 
   "11": "rpi-camera",
-
-  // "6": "fastapi",
+  "12": "fastapi",
+  
   // "7": "claude-cheatsheet",
   // "8": "git-worktree",
   // "9": "ai-ide",
