@@ -23,15 +23,16 @@ export const getServerSideProps: GetServerSideProps = async (
   const params = context.params! as ContextParamsType
   const shortId = params.shortId
 
-  // Only handle numeric short IDs to avoid conflicts with other routes.
+  // Only handle alphanumeric short IDs to avoid conflicts with other routes.
   //
   //   Examples:
   // - ✅ "4" → matches
   // - ✅ "123" → matches
-  // - ❌ "4a" → doesn't match
-  // - ❌ "abc" → doesn't match
+  // - ✅ "a" → matches
+  // - ✅ "abc" → matches
   // - ❌ "4-5" → doesn't match
-  if (!/^\d+$/.test(shortId)) {
+  // - ❌ "test-page" → doesn't match
+  if (!/^[0-9a-z]+$/i.test(shortId)) {
     return {
       notFound: true
     }
