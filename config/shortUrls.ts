@@ -19,12 +19,14 @@ export const shortUrlMap: Record<string, string> = {
   "8": "git-worktree",
   "9": "bulldog-band",
   "a": "rag-langchain",
-  "b": "choosing-embeddings",
+  "b": "belva-ai",
   "c": "vectorstores",
+  "d": "radio",
 
+  "10": "ai-ide",
   "11": "rpi-camera",
   "12": "fastapi",
-  
+
   // "7": "claude-cheatsheet",
   // "8": "git-worktree",
   // "9": "ai-ide",
